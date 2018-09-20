@@ -13,7 +13,7 @@ public class PlayerMover : MonoBehaviour
 	{
 		if (Input.GetMouseButtonDown(0))
 		{
-			var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			var ray = GlobalValues.MainCamera.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
 			if (Physics.Raycast(ray, out hit))
 			{
