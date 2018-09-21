@@ -36,9 +36,23 @@ namespace UnityUtility.Interactables
 		protected void InvokeActivated() { if (OnActivated != null) OnActivated(); }
 		protected void InvokeDeactivated() { if (OnDeactivated != null) OnDeactivated(); }
 
-		public abstract void StartInteracting();
+		public virtual void StartInteracting()
+		{
+			if (!isInteracting)
+			{
+				InvokeStartInteracting();
+			}
+			isInteracting = true;
+		}
 
-		public abstract void StopInteracting();
+		public virtual void StopInteracting()
+		{
+			if (isInteracting)
+			{
+				InvokeStopInteracting();
+			}
+			isInteracting = false;
+		}
 
 		protected virtual void Update()
 		{

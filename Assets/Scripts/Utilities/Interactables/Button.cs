@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 namespace UnityUtility.Interactables
 {
@@ -19,7 +18,8 @@ namespace UnityUtility.Interactables
 			}
 
 			isActivated = true;
-			isInteracting = true;
+
+			base.StartInteracting();
 		}
 
 		public override void StopInteracting()
@@ -34,7 +34,8 @@ namespace UnityUtility.Interactables
 			}
 
 			isActivated = false;
-			isInteracting = false;
+
+			base.StopInteracting();
 		}
 	}
 }

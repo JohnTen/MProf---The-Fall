@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
+// TODO: Refactor, separate click and move
 public class PlayerMover : MonoBehaviour
 {
 	[SerializeField] float moveSpeed;
@@ -11,7 +13,7 @@ public class PlayerMover : MonoBehaviour
 
 	void Update ()
 	{
-		if (Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
 		{
 			var ray = GlobalValues.MainCamera.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
@@ -24,6 +26,8 @@ public class PlayerMover : MonoBehaviour
 
 	void MoveTowards(Vector3 point)
 	{
+		// TODO: move this to a proper place
+		WorldUI.CropMenu.CloseMenu();
 		point.y = transform.position.y;
 		target = point;
 

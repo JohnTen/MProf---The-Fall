@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityUtility.Interactables;
 
 public class Interactor : MonoBehaviour
 {
-	[SerializeField]
-	Transform interactableSign;
+	[SerializeField] int interactableDistance;
+	[SerializeField] Transform interactableSign;
 
 	MonoInteractable currentObj;
 
@@ -40,13 +41,19 @@ public class Interactor : MonoBehaviour
 	{
 		var ray = GlobalValues.MainCamera.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
+		MonoInteractable obj = null;
 		
-		Physics.Raycast(ray, out hit);
-		var obj = hit.collider.GetComponentInParent<MonoInteractable>();
+		if (Physics.Raycast(ray, out hit))
+		{
+			var dist = hit.collider.transform.position - this.transform.position;
+			if (dist.sqrMagnitude < interactableDistance * interactableDistance &&
+				!EventSystem.current.IsPointerOverGameObject())
+				obj = hit.collider.GetComponentInParent<MonoInteractable>();
+		}
 
 		if (obj == currentObj) return;
 		
-		if (obj == null && currentObj.IsInteracting)
+		if (obj == null && currentObj != null && currentObj.IsInteracting)
 		{
 			currentObj.StopInteracting();
 		}
