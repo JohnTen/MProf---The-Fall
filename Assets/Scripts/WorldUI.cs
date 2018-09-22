@@ -6,11 +6,23 @@ using UnityUtility;
 
 public class WorldUI : MonoSingleton<WorldUI>
 {
-	[SerializeField] CropMenu cropMenu;
+	[SerializeField] ButtonMenu cropMenu;
+	[SerializeField] ButtonMenu fertiliserMenu;
 
-	public static CropMenu CropMenu
+	public static ButtonMenu CropMenu
 	{
 		get { return Instance.cropMenu; }
+	}
+
+	public static ButtonMenu FertiliserMenu
+	{
+		get { return Instance.fertiliserMenu; }
+	}
+
+	public static void CloseAllMenu()
+	{
+		CropMenu.CloseMenu();
+		FertiliserMenu.CloseMenu();
 	}
 
 	public static void MoveUIByPixelPosition(Transform ui, Vector3 pixelPosition)

@@ -8,40 +8,65 @@ public class FieldBlock : MonoInteractable
 	[SerializeField] GameObject cropModel;
 
 	Crop currentCrop;
-	int plantingDate;
 	int currentGrowingPeriod;
+	bool fertilised;
+
+	public Crop CurrentCrop
+	{
+		get { return currentCrop; }
+	}
 
 	public override void StartInteracting()
 	{
-		if (currentCrop == null)
+		if (currentCrop == null &&
+			(GlobalValues.CurrentWheatSeed > 0 ||
+			GlobalValues.CurrentOatSeed > 0))
 		{
 			WorldUI.MoveUIByWorldPosition(WorldUI.CropMenu.transform, this.transform.position);
 			WorldUI.CropMenu.OpenMenu();
-			WorldUI.CropMenu.OnCropChosed += CropMenu_OnCropChosed;
+			WorldUI.CropMenu.OnChosed += CropMenu_OnCropChosed;
 			return;
 		}
-
-		var neededTime = currentCrop.growingPeriods.Length - currentGrowingPeriod;
-		if (neededTime > 0)
+		else if (
+			currentCrop.growingPeriod > currentGrowingPeriod &&
+			GlobalValues.CurrentFertiliser > 0 &&
+			!fertilised)
 		{
-			print("This crop needs " + neededTime + " more week(s) to grow up.");
+			WorldUI.MoveUIByWorldPosition(WorldUI.FertiliserMenu.transform, this.transform.position);
+			WorldUI.FertiliserMenu.OpenMenu();
+			WorldUI.FertiliserMenu.OnChosed += FertiliserMenu_OnChosed; ;
 			return;
 		}
-
-		GlobalValues.CurrentFood += currentCrop.foodValue;
-		Destroy(cropModel);
-		currentGrowingPeriod = 0;
-		currentCrop = null;
+		else
+		{
+			Harvest();
+		}
 
 		base.StartInteracting();
 	}
 
-	private void CropMenu_OnCropChosed(Crop crop)
+	private void FertiliserMenu_OnChosed(int index)
 	{
+		WorldUI.FertiliserMenu.CloseMenu();
+		if (currentCrop == null)
+		{
+			Debug.LogError(name + " has no crop planted ");
+			return;
+		}
+
+		GlobalValues.CurrentFertiliser--;
+
+		fertilised = true;
+		currentCrop.foodValue *= 2;
+	}
+
+	private void CropMenu_OnCropChosed(int index)
+	{
+		var crop = DataBase.Instance.cropList[index];
 		WorldUI.CropMenu.CloseMenu();
 		if (currentCrop != null)
 		{
-			Debug.LogWarning(name + " Already planted " + crop.name);
+			Debug.LogError(name + " Already planted " + crop.name);
 			return;
 		}
 		Plant(crop);
@@ -51,13 +76,48 @@ public class FieldBlock : MonoInteractable
 
 	public void Plant(Crop crop)
 	{
-		currentCrop = crop;
+		if (GlobalValues.CurrentCropSeeds[crop.index] <= 0)
+		{
+			Debug.Log("You are out of seeds.");
+			return;
+		}
+		GlobalValues.CurrentCropSeeds[crop.index]--;
+		GlobalValues.UpdateValues();
+
+		currentCrop = new Crop(crop);
 		currentGrowingPeriod = 0;
-		plantingDate = TimeManager.Date;
 
 		cropModel = Instantiate(currentCrop.modelsForGrowingPeriod[currentGrowingPeriod]);
 		cropModel.transform.position = this.transform.position;
 		cropModel.transform.SetParent(this.transform);
+
+		isActivated = true;
+		InvokeActivated();
+		onActivated.Invoke();
+	}
+
+	public void Harvest()
+	{
+		if (currentCrop == null ||
+			currentCrop.growingPeriod > currentGrowingPeriod)
+			return;
+
+		if (Random.value < currentCrop.dropSeedPossibility)
+			GlobalValues.CurrentCropSeeds[currentCrop.index] += currentCrop.dropSeedNumber;
+		GlobalValues.CurrentCrops[currentCrop.index] += currentCrop.foodValue;
+		GlobalValues.UpdateValues();
+
+		Clear();
+	}
+
+	public void Clear()
+	{
+		if (cropModel != null)
+			Destroy(cropModel);
+
+		fertilised = false;
+		currentGrowingPeriod = 0;
+		currentCrop = null;
 	}
 
 	private void Awake()
@@ -68,16 +128,20 @@ public class FieldBlock : MonoInteractable
 	private void TimeManager_OnTimePassed(int date)
 	{
 		if (currentCrop == null) return;
-		if (currentGrowingPeriod >= currentCrop.growingPeriods.Length) return;
-		if ((date - plantingDate) < currentCrop.growingPeriods[currentGrowingPeriod])
-			return;
-
-		plantingDate = date;
+		if (currentGrowingPeriod >= currentCrop.growingPeriod) return;
+		
 		currentGrowingPeriod++;
 
 		Destroy(cropModel);
 		cropModel = Instantiate(currentCrop.modelsForGrowingPeriod[currentGrowingPeriod]);
 		cropModel.transform.position = this.transform.position;
 		cropModel.transform.SetParent(this.transform);
+
+		if (currentGrowingPeriod >= currentCrop.growingPeriod)
+		{
+			isActivated = false;
+			InvokeDeactivated();
+			onDeactivated.Invoke();
+		}
 	}
 }

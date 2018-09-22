@@ -4,23 +4,24 @@ using UnityEngine;
 using UnityUtility;
 
 [CreateAssetMenu]
-public class CropCollection : ScriptableObject
+public class DataBase : ScriptableObject
 {
 	public List<Crop> cropList = new List<Crop>();
+	public List<Animal> animalList = new List<Animal>();
 
-	static CropCollection _instance;
-	public static CropCollection Instance
+	static DataBase _instance;
+	public static DataBase Instance
 	{
 		get
 		{
 			if (_instance != null)
 				return _instance;
 			
-			_instance = (CropCollection)Resources.Load("CropCollection");
+			_instance = (DataBase)Resources.Load("DataBase");
 			if (_instance != null)
 				return _instance;
 
-			_instance = CreateInstance<CropCollection>();
+			_instance = CreateInstance<DataBase>();
 			return _instance;
 		}
 	}

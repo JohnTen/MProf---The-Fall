@@ -93,6 +93,16 @@ namespace UnityUtility
 				angle.y.Clamp180());
 		}
 
+		public static float RandomBetween(this Vector2 vec)
+		{
+			return UnityEngine.Random.Range(vec.x, vec.y);
+		}
+
+		public static float LerpBetween(this Vector2 vec, float t)
+		{
+			return Mathf.Lerp(vec.x, vec.y, t);
+		}
+
 		public static Vector3Int ToVector3Int(this Vector3 vec)
 		{
 			vec.x += vec.x < 0 ? -1 : 0;

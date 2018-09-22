@@ -21,16 +21,10 @@ public class TimeManager : MonoSingleton<TimeManager>
 		get { return Instance.date; }
 	}
 
-	private void Update()
+	public void ToNextTimePeriod()
 	{
-		timeOfPeriod += Time.deltaTime;
-
-		if (timeOfPeriod > periodDuration)
-		{
-			timeOfPeriod -= periodDuration;
-			date++;
-			if (OnTimePassed != null)
-				OnTimePassed.Invoke(date);
-		}
+		date++;
+		if (OnTimePassed != null)
+			OnTimePassed.Invoke(date);
 	}
 }

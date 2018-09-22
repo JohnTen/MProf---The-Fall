@@ -27,7 +27,7 @@ public class PlayerMover : MonoBehaviour
 	void MoveTowards(Vector3 point)
 	{
 		// TODO: move this to a proper place
-		WorldUI.CropMenu.CloseMenu();
+		WorldUI.CloseAllMenu();
 		point.y = transform.position.y;
 		target = point;
 

@@ -6,21 +6,23 @@ using UnityEngine;
 public class Crop
 {
 	public string name;
+	public int index;
 	public int foodValue;
-	public int[] growingPeriods;
+	public int growingPeriod;
+	public float dropSeedPossibility;
+	public int dropSeedNumber;
 	public GameObject[] modelsForGrowingPeriod;
 
 	public Crop() { }
 	public Crop(Crop crop)
 	{
+		name = crop.name;
+		index = crop.index;
 		foodValue = crop.foodValue;
-		growingPeriods = new int[crop.growingPeriods.Length];
+		growingPeriod = crop.growingPeriod;
+		dropSeedPossibility = crop.dropSeedPossibility;
+		dropSeedNumber = crop.dropSeedNumber;
 		modelsForGrowingPeriod = new GameObject[crop.modelsForGrowingPeriod.Length];
-
-		for (int i = 0; i < growingPeriods.Length; i++)
-		{
-			growingPeriods[i] = crop.growingPeriods[i];
-		}
 
 		for (int i = 0; i < modelsForGrowingPeriod.Length; i++)
 		{
