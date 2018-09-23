@@ -38,20 +38,46 @@ namespace UnityUtility.Interactables
 
 		public virtual void StartInteracting()
 		{
-			if (!isInteracting)
-			{
-				InvokeStartInteracting();
-			}
-			isInteracting = true;
+			SetInteractingStatus(true);
 		}
 
 		public virtual void StopInteracting()
 		{
+			SetInteractingStatus(false);
+		}
+
+		protected virtual void SetActiveStatus(bool active)
+		{
+			if (active == isActivated) return;
+			isActivated = active;
+
+			if (isActivated)
+			{
+				InvokeActivated();
+				if (onActivated != null)
+					onActivated.Invoke();
+			}
+			else
+			{
+				InvokeDeactivated();
+				if (onDeactivated != null)
+					onDeactivated.Invoke();
+			}
+		}
+
+		protected virtual void SetInteractingStatus(bool interacting)
+		{
+			if (interacting == isInteracting) return;
+			isInteracting = interacting;
+
 			if (isInteracting)
+			{
+				InvokeStartInteracting();
+			}
+			else
 			{
 				InvokeStopInteracting();
 			}
-			isInteracting = false;
 		}
 
 		protected virtual void Update()

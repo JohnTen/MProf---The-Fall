@@ -3,34 +3,65 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityUtility.Interactables;
 
+[System.Serializable]
+public struct FieldBlockStatus
+{
+	public bool plantedCrop;
+	public Crop currentCrop;
+	public int currentGrowingPeriod;
+	public bool fertilised;
+
+	public FieldBlockStatus(FieldBlockStatus status)
+	{
+		plantedCrop				= status.plantedCrop;
+		currentCrop				= new Crop(status.currentCrop);
+		currentGrowingPeriod	= status.currentGrowingPeriod;
+		fertilised				= status.fertilised;
+	}
+}
+
 public class FieldBlock : MonoInteractable
 {
 	[SerializeField] GameObject cropModel;
 
-	Crop currentCrop;
-	int currentGrowingPeriod;
-	bool fertilised;
+	[SerializeField] FieldBlockStatus status;
 
-	public Crop CurrentCrop
+	public FieldBlockStatus Status
 	{
-		get { return currentCrop; }
+		get { return status; }
+		set
+		{
+			status = value;
+
+			if (status.plantedCrop)
+			{
+				ForcePlant(status.currentCrop, status.currentGrowingPeriod);
+			}
+			else
+			{
+				Clear();
+			}
+		}
 	}
 
 	public override void StartInteracting()
 	{
-		if (currentCrop == null &&
-			(GlobalValues.CurrentWheatSeed > 0 ||
-			GlobalValues.CurrentOatSeed > 0))
+		if (status.currentCrop == null)
 		{
-			WorldUI.MoveUIByWorldPosition(WorldUI.CropMenu.transform, this.transform.position);
-			WorldUI.CropMenu.OpenMenu();
-			WorldUI.CropMenu.OnChosed += CropMenu_OnCropChosed;
-			return;
+			if (
+			GameDataManager.CurrentWheatSeed > 0 ||
+			GameDataManager.CurrentOatSeed > 0)
+			{
+				WorldUI.MoveUIByWorldPosition(WorldUI.CropMenu.transform, this.transform.position);
+				WorldUI.CropMenu.OpenMenu();
+				WorldUI.CropMenu.OnChosed += CropMenu_OnCropChosed;
+				return;
+			}
 		}
 		else if (
-			currentCrop.growingPeriod > currentGrowingPeriod &&
-			GlobalValues.CurrentFertiliser > 0 &&
-			!fertilised)
+			status.currentCrop.growingPeriod > status.currentGrowingPeriod &&
+			GameDataManager.CurrentFertiliser > 0 &&
+			!status.fertilised)
 		{
 			WorldUI.MoveUIByWorldPosition(WorldUI.FertiliserMenu.transform, this.transform.position);
 			WorldUI.FertiliserMenu.OpenMenu();
@@ -48,23 +79,23 @@ public class FieldBlock : MonoInteractable
 	private void FertiliserMenu_OnChosed(int index)
 	{
 		WorldUI.FertiliserMenu.CloseMenu();
-		if (currentCrop == null)
+		if (status.currentCrop == null)
 		{
 			Debug.LogError(name + " has no crop planted ");
 			return;
 		}
 
-		GlobalValues.CurrentFertiliser--;
+		GameDataManager.CurrentFertiliser--;
 
-		fertilised = true;
-		currentCrop.foodValue *= 2;
+		status.fertilised = true;
+		status.currentCrop.foodValue *= 2;
 	}
 
 	private void CropMenu_OnCropChosed(int index)
 	{
 		var crop = DataBase.Instance.cropList[index];
 		WorldUI.CropMenu.CloseMenu();
-		if (currentCrop != null)
+		if (status.currentCrop != null)
 		{
 			Debug.LogError(name + " Already planted " + crop.name);
 			return;
@@ -76,20 +107,35 @@ public class FieldBlock : MonoInteractable
 
 	public void Plant(Crop crop)
 	{
-		if (GlobalValues.CurrentCropSeeds[crop.index] <= 0)
+		if (GameDataManager.CurrentCropSeeds[crop.index] <= 0)
 		{
 			Debug.Log("You are out of seeds.");
 			return;
 		}
-		GlobalValues.CurrentCropSeeds[crop.index]--;
-		GlobalValues.UpdateValues();
+		GameDataManager.CurrentCropSeeds[crop.index]--;
+		GameDataManager.UpdateValues();
 
-		currentCrop = new Crop(crop);
-		currentGrowingPeriod = 0;
+		status.plantedCrop = true;
+		status.currentCrop = new Crop(crop);
+		status.currentGrowingPeriod = 0;
 
-		cropModel = Instantiate(currentCrop.modelsForGrowingPeriod[currentGrowingPeriod]);
-		cropModel.transform.position = this.transform.position;
-		cropModel.transform.SetParent(this.transform);
+		CreateCropModel();
+
+		isActivated = true;
+		InvokeActivated();
+		onActivated.Invoke();
+	}
+
+	public void ForcePlant(Crop crop, int growingPeriod)
+	{
+		status.plantedCrop = true;
+		status.currentCrop = new Crop(crop);
+		status.currentGrowingPeriod = growingPeriod;
+		
+		CreateCropModel();
+
+		if (status.currentGrowingPeriod >= status.currentCrop.growingPeriod)
+			return;
 
 		isActivated = true;
 		InvokeActivated();
@@ -98,14 +144,14 @@ public class FieldBlock : MonoInteractable
 
 	public void Harvest()
 	{
-		if (currentCrop == null ||
-			currentCrop.growingPeriod > currentGrowingPeriod)
+		if (status.currentCrop == null ||
+			status.currentCrop.growingPeriod > status.currentGrowingPeriod)
 			return;
 
-		if (Random.value < currentCrop.dropSeedPossibility)
-			GlobalValues.CurrentCropSeeds[currentCrop.index] += currentCrop.dropSeedNumber;
-		GlobalValues.CurrentCrops[currentCrop.index] += currentCrop.foodValue;
-		GlobalValues.UpdateValues();
+		if (Random.value < status.currentCrop.dropSeedPossibility)
+			GameDataManager.CurrentCropSeeds[status.currentCrop.index] += status.currentCrop.dropSeedNumber;
+		GameDataManager.CurrentCrops[status.currentCrop.index] += status.currentCrop.foodValue;
+		GameDataManager.UpdateValues();
 
 		Clear();
 	}
@@ -115,29 +161,36 @@ public class FieldBlock : MonoInteractable
 		if (cropModel != null)
 			Destroy(cropModel);
 
-		fertilised = false;
-		currentGrowingPeriod = 0;
-		currentCrop = null;
+		status.plantedCrop			= false;
+		status.fertilised			= false;
+		status.currentCrop			= null;
+		status.currentGrowingPeriod = 0;
+	}
+
+	private void CreateCropModel()
+	{
+		cropModel = Instantiate(DataBase.Instance.GetGrowingModel(status.currentCrop.index, status.currentGrowingPeriod));
+		cropModel.transform.position = this.transform.position;
+		cropModel.transform.SetParent(this.transform);
 	}
 
 	private void Awake()
 	{
+		status = new FieldBlockStatus();
 		TimeManager.OnTimePassed += TimeManager_OnTimePassed;
 	}
 
 	private void TimeManager_OnTimePassed(int date)
 	{
-		if (currentCrop == null) return;
-		if (currentGrowingPeriod >= currentCrop.growingPeriod) return;
-		
-		currentGrowingPeriod++;
+		if (status.currentCrop == null) return;
+		if (status.currentGrowingPeriod >= status.currentCrop.growingPeriod) return;
+
+		status.currentGrowingPeriod++;
 
 		Destroy(cropModel);
-		cropModel = Instantiate(currentCrop.modelsForGrowingPeriod[currentGrowingPeriod]);
-		cropModel.transform.position = this.transform.position;
-		cropModel.transform.SetParent(this.transform);
+		CreateCropModel();
 
-		if (currentGrowingPeriod >= currentCrop.growingPeriod)
+		if (status.currentGrowingPeriod >= status.currentCrop.growingPeriod)
 		{
 			isActivated = false;
 			InvokeDeactivated();

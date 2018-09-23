@@ -8,21 +8,7 @@ namespace UnityUtility.Interactables
 	{
 		public override void StartInteracting()
 		{
-			isActivated = !isActivated;
-			if (isActivated)
-			{
-				InvokeActivated();
-
-				if (onActivated != null)
-					onActivated.Invoke();
-			}
-			else
-			{
-				InvokeDeactivated();
-
-				if (onDeactivated != null)
-					onDeactivated.Invoke();
-			}
+			SetActiveStatus(!isActivated);
 
 			base.StartInteracting();
 		}

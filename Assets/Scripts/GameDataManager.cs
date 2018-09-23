@@ -1,13 +1,24 @@
-﻿using System.Collections;
+﻿using System.IO;
 using System.Collections.Generic;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 using UnityEngine;
 using UnityUtility;
 
-public class GlobalValues : MonoSingleton<GlobalValues>
+[System.Serializable]
+public class GameData
+{
+	public int Date;
+	public GameValues values;
+	public GameValues offset;
+	public List<FieldBlockStatus> fieldBlocks;
+}
+
+public class GameDataManager : GlobalSingleton<GameDataManager>
 {
 	[SerializeField] Camera mainCamera;
 	[SerializeField] GameValues values;
-	[SerializeField] GameValues offsets;
+	[SerializeField] GameValues offset;
 
 	public static event Action OnValueChanged;
 
@@ -25,6 +36,11 @@ public class GlobalValues : MonoSingleton<GlobalValues>
 	public static GameValues Values
 	{
 		get { return Instance.values; }
+	}
+
+	public static GameValues EventOffset
+	{
+		get { return Instance.offset; }
 	}
 
 	public static int[] CurrentCrops
@@ -58,7 +74,7 @@ public class GlobalValues : MonoSingleton<GlobalValues>
 		{
 			return 
 				CurrentWheat + 
-				Instance.offsets.crops[0];
+				Instance.offset.crops[0];
 		}
 	}
 	
@@ -78,7 +94,7 @@ public class GlobalValues : MonoSingleton<GlobalValues>
 		{
 			return 
 				CurrentOat + 
-				Instance.offsets.crops[1];
+				Instance.offset.crops[1];
 		}
 	}
 
@@ -98,7 +114,7 @@ public class GlobalValues : MonoSingleton<GlobalValues>
 		{
 			return 
 				CurrentWheatSeed + 
-				Instance.offsets.cropSeeds[0];
+				Instance.offset.cropSeeds[0];
 		}
 	}
 
@@ -118,7 +134,7 @@ public class GlobalValues : MonoSingleton<GlobalValues>
 		{
 			return
 				CurrentOatSeed +
-				Instance.offsets.cropSeeds[1];
+				Instance.offset.cropSeeds[1];
 		}
 	}
 
@@ -138,7 +154,7 @@ public class GlobalValues : MonoSingleton<GlobalValues>
 		{
 			return
 				CurrentFertiliser +
-				Instance.offsets.fertiliser;
+				Instance.offset.fertiliser;
 		}
 	}
 
@@ -158,7 +174,7 @@ public class GlobalValues : MonoSingleton<GlobalValues>
 		{
 			return
 				CurrentFamily +
-				Instance.offsets.family;
+				Instance.offset.family;
 		}
 	}
 
@@ -178,7 +194,7 @@ public class GlobalValues : MonoSingleton<GlobalValues>
 		{
 			return
 				CurrentChicken +
-				Instance.offsets.animals[0];
+				Instance.offset.animals[0];
 		}
 	}
 
@@ -198,7 +214,7 @@ public class GlobalValues : MonoSingleton<GlobalValues>
 		{
 			return
 				CurrentOx +
-				Instance.offsets.animals[1];
+				Instance.offset.animals[1];
 		}
 	}
 
@@ -214,7 +230,7 @@ public class GlobalValues : MonoSingleton<GlobalValues>
 
 	public static int OffsetedFamilyHunger
 	{
-		get { return CurrentFamilyHunger + Instance.offsets.familyHungeryPoint; }
+		get { return CurrentFamilyHunger + Instance.offset.familyHungeryPoint; }
 	}
 
 	public static int CurrentAnimalHunger
@@ -229,17 +245,92 @@ public class GlobalValues : MonoSingleton<GlobalValues>
 
 	public static int OffsetedAnimalHunger
 	{
-		get { return CurrentAnimalHunger + Instance.offsets.animalHungeryPoint; }
-	}
-
-	public static GameValues EventOffset
-	{
-		get { return Instance.offsets; }
+		get { return CurrentAnimalHunger + Instance.offset.animalHungeryPoint; }
 	}
 
 	public static void UpdateValues()
 	{
 		if (OnValueChanged != null)
 			OnValueChanged.Invoke();
+	}
+
+	public static void SaveGame()
+	{
+		Instance._Save();
+	}
+
+	public void _Save()
+	{
+		GameData data = new GameData();
+
+		data.Date = TimeManager.Date;
+		data.values = Values;
+		data.offset = EventOffset;
+		data.fieldBlocks = new List<FieldBlockStatus>();
+
+		for (int i = 0; i < FieldManager.Instance.FieldBlocks.Count; i++)
+		{
+			data.fieldBlocks.Add(FieldManager.Instance.FieldBlocks[i].Status);
+		}
+
+		FileStream fs = new FileStream(Application.persistentDataPath + "/game.sav", FileMode.Create);
+		BinaryFormatter bf = new BinaryFormatter();
+		bf.Serialize(fs, data);
+		fs.Close();
+	}
+
+	public static void Load()
+	{
+		Instance._Load();
+	}
+
+	public void _Load()
+	{
+		BinaryFormatter bf = new BinaryFormatter();
+		FileStream fs;
+
+		try
+		{
+			fs = File.Open(Application.persistentDataPath + "/game.sav", FileMode.Open);
+		}
+		catch (FileNotFoundException)
+		{
+			Debug.Log("Save file is not found.");
+			return;
+		}
+
+		object deserialized = null;
+		GameData game;
+		try
+		{
+			deserialized = bf.Deserialize(fs);
+			game = (GameData)deserialized;
+		}
+		catch (SerializationException)
+		{
+			Debug.LogWarning("Loading game save failed");
+			return;
+		}
+
+		SettingGame(game);
+	}
+
+	void SettingGame(GameData data)
+	{
+		TimeManager.Date = data.Date;
+		values = data.values;
+		offset = data.offset;
+		UpdateValues();
+
+		var field = FieldManager.Instance.FieldBlocks;
+		if (field.Count != data.fieldBlocks.Count)
+		{
+			Debug.LogWarning("Data doesn't match the actual field!");
+		}
+
+		for (int i = 0; i < field.Count; i ++)
+		{
+			field[i].Status = data.fieldBlocks[i];
+		}
 	}
 }

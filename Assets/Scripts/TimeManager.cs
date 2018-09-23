@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityUtility;
 
-public class TimeManager : MonoSingleton<TimeManager>
+public class TimeManager : GlobalSingleton<TimeManager>
 {
 	[Tooltip("How long a day will be in seconds")]
 	[SerializeField] float periodDuration;
@@ -19,6 +19,7 @@ public class TimeManager : MonoSingleton<TimeManager>
 	public static int Date
 	{
 		get { return Instance.date; }
+		set { Instance.date = value; }
 	}
 
 	public void ToNextTimePeriod()

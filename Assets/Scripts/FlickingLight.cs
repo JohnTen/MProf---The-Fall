@@ -9,9 +9,9 @@ public class FlickingLight : MonoBehaviour
 	[SerializeField, MinMaxSlider(0, 3)] Vector2 intensity;
 	[SerializeField, MinMaxSlider(0, 0.5f)] Vector2 duration;
 	[SerializeField, MinMaxSlider(5, 20f)] Vector2 range;
-	[SerializeField, MinMaxSlider(0, 0.2f)] Vector2 xFlickingRange;
-	[SerializeField, MinMaxSlider(0, 0.2f)] Vector2 yFlickingRange;
-	[SerializeField, MinMaxSlider(0, 0.2f)] Vector2 zFlickingRange;
+	[SerializeField, MinMaxSlider(-0.2f, 0.2f)] Vector2 xFlickingRange;
+	[SerializeField, MinMaxSlider(-0.2f, 0.2f)] Vector2 yFlickingRange;
+	[SerializeField, MinMaxSlider(-0.2f, 0.2f)] Vector2 zFlickingRange;
 
 	Timer timer;
 	Vector3 origPos;
@@ -56,7 +56,6 @@ public class FlickingLight : MonoBehaviour
 		{
 			time -= Time.deltaTime;
 			var t = time / duration;
-			print(t);
 			light.intensity = Mathf.Lerp(intensity, origIntensity, t);
 			light.range = Mathf.Lerp(range, origRange, t);
 			transform.position = Vector3.Lerp(newPos, curPos, t);

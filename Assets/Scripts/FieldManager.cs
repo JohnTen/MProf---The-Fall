@@ -7,19 +7,24 @@ public class FieldManager : MonoSingleton<FieldManager>
 {
 	[SerializeField] List<FieldBlock> fieldBlocks = new List<FieldBlock>();
 
-	protected override void Awake()
+	public List<FieldBlock> FieldBlocks
 	{
-		base.Awake();
-		GetComponentsInChildren(fieldBlocks);
+		get { return Instance.fieldBlocks; }
 	}
 
 	public void Harvest()
 	{
-		foreach (var fb in fieldBlocks)
+		foreach (var fb in FieldBlocks)
 		{
 			fb.Harvest();
 		}
 
-		GlobalValues.UpdateValues();
+		GameDataManager.UpdateValues();
+	}
+
+	protected override void Awake()
+	{
+		base.Awake();
+		GetComponentsInChildren(fieldBlocks);
 	}
 }

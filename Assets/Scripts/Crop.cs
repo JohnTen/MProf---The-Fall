@@ -11,7 +11,6 @@ public class Crop
 	public int growingPeriod;
 	public float dropSeedPossibility;
 	public int dropSeedNumber;
-	public GameObject[] modelsForGrowingPeriod;
 
 	public Crop() { }
 	public Crop(Crop crop)
@@ -22,11 +21,5 @@ public class Crop
 		growingPeriod = crop.growingPeriod;
 		dropSeedPossibility = crop.dropSeedPossibility;
 		dropSeedNumber = crop.dropSeedNumber;
-		modelsForGrowingPeriod = new GameObject[crop.modelsForGrowingPeriod.Length];
-
-		for (int i = 0; i < modelsForGrowingPeriod.Length; i++)
-		{
-			modelsForGrowingPeriod[i] = crop.modelsForGrowingPeriod[i];
-		}
 	}
 }

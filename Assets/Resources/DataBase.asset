@@ -18,19 +18,12 @@ MonoBehaviour:
     growingPeriod: 1
     dropSeedPossibility: 0.5
     dropSeedNumber: 2
-    modelsForGrowingPeriod:
-    - {fileID: 1599083167999082, guid: d5c80fcf8eb883c4fa963b19e625af3c, type: 2}
-    - {fileID: 1647637685298478, guid: 6552ea7e787f94549acafdf27ce1c837, type: 2}
   - name: Oat
     index: 1
     foodValue: 3
     growingPeriod: 2
     dropSeedPossibility: 0.5
     dropSeedNumber: 2
-    modelsForGrowingPeriod:
-    - {fileID: 1383955921637276, guid: 0ae2249206ef8314ead753fb5cd62ae2, type: 2}
-    - {fileID: 1815598618852438, guid: 0517c9c2da96a8c4b84ceca0e80a881a, type: 2}
-    - {fileID: 1530363282148904, guid: ec08e2b6f6ba85a4e8f2dbe9669c6269, type: 2}
   animalList:
   - name: Chicken
     index: 0
@@ -40,3 +33,11 @@ MonoBehaviour:
     index: 1
     requiredOat: 2
     ProvidedFood: 5
+  cropGrowingModelList:
+  - models:
+    - {fileID: 1599083167999082, guid: d5c80fcf8eb883c4fa963b19e625af3c, type: 2}
+    - {fileID: 1647637685298478, guid: 6552ea7e787f94549acafdf27ce1c837, type: 2}
+  - models:
+    - {fileID: 1383955921637276, guid: 0ae2249206ef8314ead753fb5cd62ae2, type: 2}
+    - {fileID: 1815598618852438, guid: 0517c9c2da96a8c4b84ceca0e80a881a, type: 2}
+    - {fileID: 1530363282148904, guid: ec08e2b6f6ba85a4e8f2dbe9669c6269, type: 2}

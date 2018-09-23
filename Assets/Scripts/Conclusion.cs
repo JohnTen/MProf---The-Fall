@@ -62,12 +62,12 @@ public class Conclusion : MonoSingleton<Conclusion>
 		TaxCanvas.enabled = true;
 
 		taxRateText.text = ((int)(taxRate * 100)).ToString() + "%";
-		paidWheat	= Mathf.CeilToInt(GlobalValues.CurrentWheat * taxRate);
-		paidOat		= Mathf.CeilToInt(GlobalValues.CurrentOat * taxRate);
+		paidWheat	= Mathf.CeilToInt(GameDataManager.CurrentWheat * taxRate);
+		paidOat		= Mathf.CeilToInt(GameDataManager.CurrentOat * taxRate);
 
 		StringBuilder sb = new StringBuilder(explanation);
-		sb.Replace("{0}", GlobalValues.OffsetedWheat.ToString());
-		sb.Replace("{1}", GlobalValues.OffsetedOat.ToString());
+		sb.Replace("{0}", GameDataManager.OffsetedWheat.ToString());
+		sb.Replace("{1}", GameDataManager.OffsetedOat.ToString());
 		sb.Replace("{2}", paidWheat.ToString());
 		sb.Replace("{3}", paidOat.ToString());
 
@@ -83,18 +83,18 @@ public class Conclusion : MonoSingleton<Conclusion>
 	{
 		BasicCanvas.enabled = true;
 		ConclusionCanvas.enabled = true;
-		remainedWheat.text = GlobalValues.CurrentWheat.ToString();
-		remainedOat.text = GlobalValues.CurrentOat.ToString();
+		remainedWheat.text = GameDataManager.CurrentWheat.ToString();
+		remainedOat.text = GameDataManager.CurrentOat.ToString();
 
 		var hWheat = 0;
 		var hOat = 0;
 		if (autoHarvest)
 		{
-			var wheat	= GlobalValues.CurrentWheat;
-			var oat		= GlobalValues.CurrentOat;
+			var wheat	= GameDataManager.CurrentWheat;
+			var oat		= GameDataManager.CurrentOat;
 			FieldManager.Instance.Harvest();
-			hWheat		= GlobalValues.CurrentWheat - wheat;
-			hOat		= GlobalValues.CurrentOat - oat;
+			hWheat		= GameDataManager.CurrentWheat - wheat;
+			hOat		= GameDataManager.CurrentOat - oat;
 		}
 		ChangeColor(harvestedWheat, hWheat);
 		ChangeColor(harvestedOat, hOat);
@@ -107,43 +107,43 @@ public class Conclusion : MonoSingleton<Conclusion>
 		ChangeColor(oatTax, paidOat);
 		wheatTax.text				= paidWheat.ToString();
 		oatTax.text					= paidOat.ToString();
-		GlobalValues.CurrentWheat	+= paidWheat;
-		GlobalValues.CurrentOat		+= paidOat;
+		GameDataManager.CurrentWheat	+= paidWheat;
+		GameDataManager.CurrentOat		+= paidOat;
 
-		var tFamily = -GlobalValues.CurrentFamily;
-		if (GlobalValues.CurrentFamily > GlobalValues.OffsetedWheat)
+		var tFamily = -GameDataManager.CurrentFamily;
+		if (GameDataManager.CurrentFamily > GameDataManager.OffsetedWheat)
 		{
-			tFamily = -GlobalValues.OffsetedWheat;
-			GlobalValues.CurrentFamilyHunger += GlobalValues.CurrentFamily - GlobalValues.OffsetedWheat;
+			tFamily = -GameDataManager.OffsetedWheat;
+			GameDataManager.CurrentFamilyHunger += GameDataManager.CurrentFamily - GameDataManager.OffsetedWheat;
 		}
 		ChangeColor(tendFamily, tFamily);
 		tendFamily.text = tFamily.ToString();
-		GlobalValues.CurrentWheat += tFamily;
+		GameDataManager.CurrentWheat += tFamily;
 
 		var tAnimal = 0;
-		for (int i = 0; i < GlobalValues.CurrentAnimals.Length; i++)
+		for (int i = 0; i < GameDataManager.CurrentAnimals.Length; i++)
 		{
-			tAnimal += DataBase.Instance.animalList[i].requiredOat * GlobalValues.CurrentAnimals[i];
+			tAnimal += DataBase.Instance.animalList[i].requiredOat * GameDataManager.CurrentAnimals[i];
 		}
-		if (tAnimal > GlobalValues.OffsetedOat)
+		if (tAnimal > GameDataManager.OffsetedOat)
 		{
-			GlobalValues.CurrentAnimalHunger += tAnimal - GlobalValues.OffsetedOat;
-			tAnimal = GlobalValues.OffsetedOat;
+			GameDataManager.CurrentAnimalHunger += tAnimal - GameDataManager.OffsetedOat;
+			tAnimal = GameDataManager.OffsetedOat;
 		}
 		tAnimal *= -1;
 		ChangeColor(tendAnimal, tAnimal);
 		tendAnimal.text = tAnimal.ToString();
-		GlobalValues.CurrentOat += tAnimal;
+		GameDataManager.CurrentOat += tAnimal;
 
-		ChangeColor(eventWheat, GlobalValues.EventOffset.crops[0]);
-		ChangeColor(eventOat, GlobalValues.EventOffset.crops[1]);
-		eventWheat.text = GlobalValues.EventOffset.crops[0].ToString();
-		eventOat.text	= GlobalValues.EventOffset.crops[1].ToString();
-		GlobalValues.CurrentWheat	+= GlobalValues.EventOffset.crops[0];
-		GlobalValues.CurrentOat		+= GlobalValues.EventOffset.crops[1];
+		ChangeColor(eventWheat, GameDataManager.EventOffset.crops[0]);
+		ChangeColor(eventOat, GameDataManager.EventOffset.crops[1]);
+		eventWheat.text = GameDataManager.EventOffset.crops[0].ToString();
+		eventOat.text	= GameDataManager.EventOffset.crops[1].ToString();
+		GameDataManager.CurrentWheat	+= GameDataManager.EventOffset.crops[0];
+		GameDataManager.CurrentOat		+= GameDataManager.EventOffset.crops[1];
 
-		finalWheat.text = GlobalValues.CurrentWheat.ToString();
-		finalOat.text	= GlobalValues.CurrentOat.ToString();
+		finalWheat.text = GameDataManager.CurrentWheat.ToString();
+		finalOat.text	= GameDataManager.CurrentOat.ToString();
 	}
 
 	public void OnPaidWheatChange(float value)

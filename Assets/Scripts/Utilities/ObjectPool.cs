@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace UnityUtility
 {
-	public class ObjectPool : MonoSingleton<ObjectPool>
+	public class ObjectPool : GlobalSingleton<ObjectPool>
 	{
 		/// <summary>
 		/// For pooling the GameObjects

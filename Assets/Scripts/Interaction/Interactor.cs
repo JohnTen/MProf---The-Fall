@@ -39,7 +39,7 @@ public class Interactor : MonoBehaviour
 
 	void CheckInteractable()
 	{
-		var ray = GlobalValues.MainCamera.ScreenPointToRay(Input.mousePosition);
+		var ray = GameDataManager.MainCamera.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 		MonoInteractable obj = null;
 		

@@ -15,7 +15,7 @@ public class PlayerMover : MonoBehaviour
 	{
 		if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
 		{
-			var ray = GlobalValues.MainCamera.ScreenPointToRay(Input.mousePosition);
+			var ray = GameDataManager.MainCamera.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
 			if (Physics.Raycast(ray, out hit))
 			{

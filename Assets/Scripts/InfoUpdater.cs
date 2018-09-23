@@ -20,7 +20,7 @@ public class InfoUpdater : MonoBehaviour
 
 	private void Awake()
 	{
-		GlobalValues.OnValueChanged += GlobalValues_OnvalueChanged;
+		GameDataManager.OnValueChanged += GlobalValues_OnvalueChanged;
 		TimeManager.OnTimePassed += TimeManager_OnTimePassed;
 		
 		UpdateInfo();
@@ -34,16 +34,16 @@ public class InfoUpdater : MonoBehaviour
 	public void UpdateInfo()
 	{
 		dateText.text			= TimeManager.Date.ToString();
-		wheatText.text			= GlobalValues.OffsetedWheat.ToString();
-		oatText.text			= GlobalValues.OffsetedOat.ToString();
-		wheatSeedText.text		= GlobalValues.OffsetedWheatSeed.ToString();
-		oatSeedText.text		= GlobalValues.OffsetedOatSeed.ToString();
-		fertiliserText.text		= GlobalValues.OffsetedFertiliser.ToString();
-		familyText.text			= GlobalValues.OffsetedFamily.ToString();
-		chickenText.text		= GlobalValues.OffsetedChicken.ToString();
-		oxText.text				= GlobalValues.OffsetedOx.ToString();
-		fHungerText.text		= GlobalValues.OffsetedFamilyHunger.ToString();
-		aHungerText.text		= GlobalValues.OffsetedAnimalHunger.ToString();
+		wheatText.text			= GameDataManager.OffsetedWheat.ToString();
+		oatText.text			= GameDataManager.OffsetedOat.ToString();
+		wheatSeedText.text		= GameDataManager.OffsetedWheatSeed.ToString();
+		oatSeedText.text		= GameDataManager.OffsetedOatSeed.ToString();
+		fertiliserText.text		= GameDataManager.OffsetedFertiliser.ToString();
+		familyText.text			= GameDataManager.OffsetedFamily.ToString();
+		chickenText.text		= GameDataManager.OffsetedChicken.ToString();
+		oxText.text				= GameDataManager.OffsetedOx.ToString();
+		fHungerText.text		= GameDataManager.OffsetedFamilyHunger.ToString();
+		aHungerText.text		= GameDataManager.OffsetedAnimalHunger.ToString();
 	}
 
 	private void GlobalValues_OnvalueChanged()
