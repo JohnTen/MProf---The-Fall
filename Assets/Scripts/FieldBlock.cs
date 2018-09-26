@@ -31,22 +31,19 @@ public class FieldBlock : MonoInteractable
 		get { return status; }
 		set
 		{
+			Clear();
 			status = value;
 
 			if (status.plantedCrop)
 			{
 				ForcePlant(status.currentCrop, status.currentGrowingPeriod);
 			}
-			else
-			{
-				Clear();
-			}
 		}
 	}
 
 	public override void StartInteracting()
 	{
-		if (status.currentCrop == null)
+		if (!status.plantedCrop)
 		{
 			if (
 			GameDataManager.CurrentWheatSeed > 0 ||
@@ -79,7 +76,7 @@ public class FieldBlock : MonoInteractable
 	private void FertiliserMenu_OnChosed(int index)
 	{
 		WorldUI.FertiliserMenu.CloseMenu();
-		if (status.currentCrop == null)
+		if (!status.plantedCrop)
 		{
 			Debug.LogError(name + " has no crop planted ");
 			return;
@@ -93,9 +90,9 @@ public class FieldBlock : MonoInteractable
 
 	private void CropMenu_OnCropChosed(int index)
 	{
-		var crop = DataBase.Instance.cropList[index];
+		var crop = Database.Instance.cropList[index];
 		WorldUI.CropMenu.CloseMenu();
-		if (status.currentCrop != null)
+		if (status.plantedCrop)
 		{
 			Debug.LogError(name + " Already planted " + crop.name);
 			return;
@@ -107,12 +104,12 @@ public class FieldBlock : MonoInteractable
 
 	public void Plant(Crop crop)
 	{
-		if (GameDataManager.CurrentCropSeeds[crop.index] <= 0)
+		if (GameDataManager.GetCropSeedNumbr(crop.index) <= 0)
 		{
 			Debug.Log("You are out of seeds.");
 			return;
 		}
-		GameDataManager.CurrentCropSeeds[crop.index]--;
+		GameDataManager.ModifyCropSeedNumbr(crop.index, -1);
 		GameDataManager.UpdateValues();
 
 		status.plantedCrop = true;
@@ -144,13 +141,13 @@ public class FieldBlock : MonoInteractable
 
 	public void Harvest()
 	{
-		if (status.currentCrop == null ||
+		if (!status.plantedCrop ||
 			status.currentCrop.growingPeriod > status.currentGrowingPeriod)
 			return;
-
-		if (Random.value < status.currentCrop.dropSeedPossibility)
-			GameDataManager.CurrentCropSeeds[status.currentCrop.index] += status.currentCrop.dropSeedNumber;
-		GameDataManager.CurrentCrops[status.currentCrop.index] += status.currentCrop.foodValue;
+		
+		if (Random.value < status.currentCrop.dropSeedPossibility * GameDataManager.GameValues[GameValueType.SeedDroppingRate])
+			GameDataManager.ModifyCropSeedNumbr(status.currentCrop.index, Mathf.RoundToInt(status.currentCrop.dropSeedNumber * GameDataManager.GameValues[GameValueType.SeedProduction]));
+		GameDataManager.GameValues[GameValueType.NumberOfWheat] += Mathf.RoundToInt(status.currentCrop.foodValue * GameDataManager.GameValues[GameValueType.CropProduction]);
 		GameDataManager.UpdateValues();
 
 		Clear();
@@ -169,7 +166,7 @@ public class FieldBlock : MonoInteractable
 
 	private void CreateCropModel()
 	{
-		cropModel = Instantiate(DataBase.Instance.GetGrowingModel(status.currentCrop.index, status.currentGrowingPeriod));
+		cropModel = Instantiate(Database.Instance.GetGrowingModel(status.currentCrop.index, status.currentGrowingPeriod));
 		cropModel.transform.position = this.transform.position;
 		cropModel.transform.SetParent(this.transform);
 	}
@@ -182,7 +179,7 @@ public class FieldBlock : MonoInteractable
 
 	private void TimeManager_OnTimePassed(int date)
 	{
-		if (status.currentCrop == null) return;
+		if (!status.plantedCrop) return;
 		if (status.currentGrowingPeriod >= status.currentCrop.growingPeriod) return;
 
 		status.currentGrowingPeriod++;

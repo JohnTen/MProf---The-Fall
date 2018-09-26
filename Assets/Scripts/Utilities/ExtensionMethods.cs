@@ -98,6 +98,11 @@ namespace UnityUtility
 			return UnityEngine.Random.Range(vec.x, vec.y);
 		}
 
+		public static int RandomBetween(this Vector2Int vec)
+		{
+			return UnityEngine.Random.Range(vec.x, vec.y);
+		}
+
 		public static float LerpBetween(this Vector2 vec, float t)
 		{
 			return Mathf.Lerp(vec.x, vec.y, t);
@@ -109,6 +114,16 @@ namespace UnityUtility
 			vec.y += vec.y < 0 ? -1 : 0;
 			vec.z += vec.z < 0 ? -1 : 0;
 			return new Vector3Int((int)vec.x, (int)vec.y, (int)vec.z);
+		}
+
+		public static bool IsIncluded(this Vector2 bound, float value)
+		{
+			return value >= bound.x && value <= bound.y;
+		}
+
+		public static bool IsIncluded(this Vector2Int bound, float value)
+		{
+			return value >= bound.x && value <= bound.y;
 		}
 
 		public static bool IsWithInBound(this Bounds self, Bounds other)

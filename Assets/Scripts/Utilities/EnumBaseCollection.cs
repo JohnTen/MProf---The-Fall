@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -98,13 +99,15 @@ namespace UnityUtility
 		/// </summary>
 		public override void Init()
 		{
-			if (keys != null && keys.Count > 0) return;
+			if (keys != null && keys.Count > 0)
+			{
+				if (dict != null) return;
+				OnAfterDeserialize();
+			}
 			
 			Clear();
 			var eValues = Enum.GetValues(typeof(E));
 			int enumNum = eValues.Length;
-
-			dict = new Dictionary<E, V>();
 
 			for (int i = 0; i < enumNum; i++)
 			{
@@ -139,8 +142,8 @@ namespace UnityUtility
 			}
 		}
 
-		////// Unity Serialization //////
-
+		////// Serialization //////
+		
 		public void OnBeforeSerialize()
 		{
 			var values = Enum.GetValues(EnumType);
@@ -162,7 +165,7 @@ namespace UnityUtility
 				vals[i] = (dict[keys[i]]);
 			}
 		}
-
+		
 		public void OnAfterDeserialize()
 		{
 			if (dict == null) dict = new Dictionary<E, V>();
@@ -170,6 +173,12 @@ namespace UnityUtility
 			{
 				dict[keys[i]] = vals[i];
 			}
+		}
+
+		[OnDeserialized]
+		void AfterDeserialize(StreamingContext context)
+		{
+			OnAfterDeserialize();
 		}
 	}
 }

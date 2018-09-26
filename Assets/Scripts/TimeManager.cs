@@ -5,14 +5,10 @@ using UnityUtility;
 
 public class TimeManager : GlobalSingleton<TimeManager>
 {
-	[Tooltip("How long a day will be in seconds")]
-	[SerializeField] float periodDuration;
-	
 	[Tooltip("Current date")]
 	[SerializeField] int date;
-	
-	[Tooltip("Visualised debuging only")]
-	[SerializeField] float timeOfPeriod;
+
+	[SerializeField] GameEvent eve;
 
 	public static event Action<int> OnTimePassed;
 
@@ -27,5 +23,7 @@ public class TimeManager : GlobalSingleton<TimeManager>
 		date++;
 		if (OnTimePassed != null)
 			OnTimePassed.Invoke(date);
+
+		//eve.CheckEvent();
 	}
 }

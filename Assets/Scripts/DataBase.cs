@@ -10,25 +10,28 @@ public class CropModelList
 }
 
 [CreateAssetMenu]
-public class DataBase : ScriptableObject
+public class Database : ScriptableObject
 {
 	public List<Crop> cropList = new List<Crop>();
 	public List<Animal> animalList = new List<Animal>();
+	public List<Family> familyList = new List<Family>();
 	public List<CropModelList> cropGrowingModelList = new List<CropModelList>();
 
-	static DataBase _instance;
-	public static DataBase Instance
+	public List<GameEvent> eventList = new List<GameEvent>();
+
+	static Database _instance;
+	public static Database Instance
 	{
 		get
 		{
 			if (_instance != null)
 				return _instance;
 			
-			_instance = (DataBase)Resources.Load("DataBase");
+			_instance = (Database)Resources.Load("DataBase");
 			if (_instance != null)
 				return _instance;
 
-			_instance = CreateInstance<DataBase>();
+			_instance = CreateInstance<Database>();
 			return _instance;
 		}
 	}

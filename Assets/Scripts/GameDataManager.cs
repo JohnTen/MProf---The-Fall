@@ -9,16 +9,14 @@ using UnityUtility;
 public class GameData
 {
 	public int Date;
-	public GameValues values;
-	public GameValues offset;
+	public GameValues gameValues;
 	public List<FieldBlockStatus> fieldBlocks;
 }
 
 public class GameDataManager : GlobalSingleton<GameDataManager>
 {
 	[SerializeField] Camera mainCamera;
-	[SerializeField] GameValues values;
-	[SerializeField] GameValues offset;
+	[SerializeField] GameValues gameValues;
 
 	public static event Action OnValueChanged;
 
@@ -33,219 +31,209 @@ public class GameDataManager : GlobalSingleton<GameDataManager>
 		}
 	}
 
-	public static GameValues Values
-	{
-		get { return Instance.values; }
-	}
+	//public static GameValuesOld Values
+	//{
+	//	get { return Instance.values; }
+	//}
 
-	public static GameValues EventOffset
-	{
-		get { return Instance.offset; }
-	}
+	//public static GameValuesOld EventOffset
+	//{
+	//	get { return Instance.offset; }
+	//}
 
-	public static int[] CurrentCrops
+	public static GameValues GameValues
 	{
-		get { return Instance.values.crops; }
-	}
-
-	public static int[] CurrentCropSeeds
-	{
-		get { return Instance.values.cropSeeds; }
-	}
-
-	public static int[] CurrentAnimals
-	{
-		get { return Instance.values.animals; }
+		get { return Instance.gameValues; }
 	}
 
 	public static int CurrentWheat
 	{
-		get { return Instance.values.crops[0]; }
+		get { return (int)GameValues[GameValueType.NumberOfWheat]; }
 		set
 		{
-			Instance.values.crops[0] = value;
+			GameValues[GameValueType.NumberOfWheat] = value;
 			UpdateValues();
-		}
-	}
-
-	public static int OffsetedWheat
-	{
-		get
-		{
-			return 
-				CurrentWheat + 
-				Instance.offset.crops[0];
 		}
 	}
 	
 	public static int CurrentOat
 	{
-		get { return Instance.values.crops[1]; }
+		get { return (int)GameValues[GameValueType.NumberOfOat]; }
 		set
 		{
-			Instance.values.crops[1] = value;
+			GameValues[GameValueType.NumberOfOat] = value;
 			UpdateValues();
-		}
-	}
-
-	public static int OffsetedOat
-	{
-		get
-		{
-			return 
-				CurrentOat + 
-				Instance.offset.crops[1];
 		}
 	}
 
 	public static int CurrentWheatSeed
 	{
-		get { return Instance.values.cropSeeds[0]; }
+		get { return (int)GameValues[GameValueType.NumberOfWheatSeed]; }
 		set
 		{
-			Instance.values.cropSeeds[0] = value;
+			GameValues[GameValueType.NumberOfWheatSeed] = value;
 			UpdateValues();
-		}
-	}
-
-	public static int OffsetedWheatSeed
-	{
-		get
-		{
-			return 
-				CurrentWheatSeed + 
-				Instance.offset.cropSeeds[0];
 		}
 	}
 
 	public static int CurrentOatSeed
 	{
-		get { return Instance.values.cropSeeds[1]; }
+		get { return (int)GameValues[GameValueType.NumberOfOatSeed]; }
 		set
 		{
-			Instance.values.cropSeeds[1] = value;
+			GameValues[GameValueType.NumberOfOatSeed] = value;
 			UpdateValues();
-		}
-	}
-
-	public static int OffsetedOatSeed
-	{
-		get
-		{
-			return
-				CurrentOatSeed +
-				Instance.offset.cropSeeds[1];
 		}
 	}
 
 	public static int CurrentFertiliser
 	{
-		get { return Instance.values.fertiliser; }
+		get { return (int)GameValues[GameValueType.NumberOfFertiliser]; }
 		set
 		{
-			Instance.values.fertiliser = value;
+			GameValues[GameValueType.NumberOfFertiliser] = value;
 			UpdateValues();
 		}
 	}
 
-	public static int OffsetedFertiliser
+	public static int CurrentWife
 	{
-		get
-		{
-			return
-				CurrentFertiliser +
-				Instance.offset.fertiliser;
-		}
-	}
-
-	public static int CurrentFamily
-	{
-		get { return Instance.values.family; }
+		get { return (int)GameValues[GameValueType.NumberOfWife]; }
 		set
 		{
-			Instance.values.family = value;
+			GameValues[GameValueType.NumberOfWife] = value;
 			UpdateValues();
 		}
 	}
 
-	public static int OffsetedFamily
+	public static int CurrentKid
 	{
-		get
+		get { return (int)GameValues[GameValueType.NumberOfKid]; }
+		set
 		{
-			return
-				CurrentFamily +
-				Instance.offset.family;
+			GameValues[GameValueType.NumberOfKid] = value;
+			UpdateValues();
 		}
 	}
 
 	public static int CurrentChicken
 	{
-		get { return Instance.values.animals[0]; }
+		get { return (int)GameValues[GameValueType.NumberOfChicken]; }
 		set
 		{
-			Instance.values.animals[0] = value;
+			GameValues[GameValueType.NumberOfChicken] = value;
 			UpdateValues();
-		}
-	}
-
-	public static int OffsetedChicken
-	{
-		get
-		{
-			return
-				CurrentChicken +
-				Instance.offset.animals[0];
 		}
 	}
 
 	public static int CurrentOx
 	{
-		get { return Instance.values.animals[1]; }
+		get { return (int)GameValues[GameValueType.NumberOfOx]; }
 		set
 		{
-			Instance.values.animals[1] = value;
+			GameValues[GameValueType.NumberOfOx] = value;
 			UpdateValues();
-		}
-	}
-
-	public static int OffsetedOx
-	{
-		get
-		{
-			return
-				CurrentOx +
-				Instance.offset.animals[1];
 		}
 	}
 
 	public static int CurrentFamilyHunger
 	{
-		get { return Instance.values.familyHungeryPoint; }
+		get { return (int)GameValues[GameValueType.FamilyHunger]; }
 		set
 		{
-			Instance.values.familyHungeryPoint = value;
+			GameValues[GameValueType.FamilyHunger] = value;
 			UpdateValues();
 		}
-	}
-
-	public static int OffsetedFamilyHunger
-	{
-		get { return CurrentFamilyHunger + Instance.offset.familyHungeryPoint; }
 	}
 
 	public static int CurrentAnimalHunger
 	{
-		get { return Instance.values.animalHungeryPoint; }
+		get { return (int)GameValues[GameValueType.AnimalHunger]; }
 		set
 		{
-			Instance.values.animalHungeryPoint = value;
+			GameValues[GameValueType.AnimalHunger] = value;
 			UpdateValues();
 		}
 	}
 
-	public static int OffsetedAnimalHunger
+	public static int GetCropNumber(int id)
 	{
-		get { return CurrentAnimalHunger + Instance.offset.animalHungeryPoint; }
+		switch (id)
+		{
+			case 0: return (int)GameValues[GameValueType.NumberOfWheat];
+			case 1: return (int)GameValues[GameValueType.NumberOfOat];
+		}
+
+		return -1;
+	}
+
+	public static int GetCropSeedNumbr(int id)
+	{
+		switch (id)
+		{
+			case 0: return (int)GameValues[GameValueType.NumberOfWheatSeed];
+			case 1: return (int)GameValues[GameValueType.NumberOfOatSeed];
+		}
+
+		return -1;
+	}
+
+	public static int GetAnimalNumber(int id)
+	{
+		switch (id)
+		{
+			case 0: return (int)GameValues[GameValueType.NumberOfChicken];
+			case 1: return (int)GameValues[GameValueType.NumberOfOx];
+		}
+
+		return -1;
+	}
+
+	public static int GetFamilyNumber(int id)
+	{
+		switch (id)
+		{
+			case 0: return (int)GameValues[GameValueType.NumberOfWife];
+			case 1: return (int)GameValues[GameValueType.NumberOfKid];
+		}
+
+		return -1;
+	}
+
+	public static void ModifyCropNumber(int id, int value)
+	{
+		switch (id)
+		{
+			case 0: GameValues[GameValueType.NumberOfWheat] += value; break;
+			case 1: GameValues[GameValueType.NumberOfOat] += value; break;
+		}
+	}
+
+	public static void ModifyCropSeedNumbr(int id, int value)
+	{
+		switch (id)
+		{
+			case 0: GameValues[GameValueType.NumberOfWheatSeed] += value; break;
+			case 1: GameValues[GameValueType.NumberOfOatSeed] += value; break;
+		}
+	}
+
+	public static void ModifyAnimalNumber(int id, int value)
+	{
+		switch (id)
+		{
+			case 0: GameValues[GameValueType.NumberOfChicken] += value; break;
+			case 1: GameValues[GameValueType.NumberOfOx] += value; break;
+		}
+	}
+
+	public static void ModifyFamilyNumber(int id, int value)
+	{
+		switch (id)
+		{
+			case 0: GameValues[GameValueType.NumberOfWife] += value; break;
+			case 1: GameValues[GameValueType.NumberOfKid] += value; break;
+		}
 	}
 
 	public static void UpdateValues()
@@ -264,8 +252,7 @@ public class GameDataManager : GlobalSingleton<GameDataManager>
 		GameData data = new GameData();
 
 		data.Date = TimeManager.Date;
-		data.values = Values;
-		data.offset = EventOffset;
+		data.gameValues = gameValues;
 		data.fieldBlocks = new List<FieldBlockStatus>();
 
 		for (int i = 0; i < FieldManager.Instance.FieldBlocks.Count; i++)
@@ -275,6 +262,7 @@ public class GameDataManager : GlobalSingleton<GameDataManager>
 
 		FileStream fs = new FileStream(Application.persistentDataPath + "/game.sav", FileMode.Create);
 		BinaryFormatter bf = new BinaryFormatter();
+
 		bf.Serialize(fs, data);
 		fs.Close();
 	}
@@ -309,17 +297,18 @@ public class GameDataManager : GlobalSingleton<GameDataManager>
 		catch (SerializationException)
 		{
 			Debug.LogWarning("Loading game save failed");
+			fs.Close();
 			return;
 		}
 
+		fs.Close();
 		SettingGame(game);
 	}
 
 	void SettingGame(GameData data)
 	{
 		TimeManager.Date = data.Date;
-		values = data.values;
-		offset = data.offset;
+		gameValues = data.gameValues;
 		UpdateValues();
 
 		var field = FieldManager.Instance.FieldBlocks;

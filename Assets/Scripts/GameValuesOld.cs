@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class GameValues
+public class GameValuesOld
 {
 	public int[] crops;
 	public int[] cropSeeds;
@@ -13,7 +13,7 @@ public class GameValues
 	public int familyHungeryPoint;
 	public int animalHungeryPoint;
 
-	public GameValues()
+	public GameValuesOld()
 	{
 		crops = new int[2];
 		cropSeeds = new int[2];
@@ -21,7 +21,7 @@ public class GameValues
 		family = 0;
 	}
 
-	public GameValues(GameValues value)
+	public GameValuesOld(GameValuesOld value)
 	{
 		crops = new int[value.crops.Length];
 		for (int i = 0; i < crops.Length; i++)

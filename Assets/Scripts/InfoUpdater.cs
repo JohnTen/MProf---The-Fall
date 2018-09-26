@@ -12,7 +12,8 @@ public class InfoUpdater : MonoBehaviour
 	[SerializeField] Text wheatSeedText;
 	[SerializeField] Text oatSeedText;
 	[SerializeField] Text fertiliserText;
-	[SerializeField] Text familyText;
+	[SerializeField] Text kidText;
+	[SerializeField] Text wifeText;
 	[SerializeField] Text chickenText;
 	[SerializeField] Text oxText;
 	[SerializeField] Text fHungerText;
@@ -33,17 +34,19 @@ public class InfoUpdater : MonoBehaviour
 
 	public void UpdateInfo()
 	{
+		GameDataManager.GameValues.CalculateModifiedValue();
 		dateText.text			= TimeManager.Date.ToString();
-		wheatText.text			= GameDataManager.OffsetedWheat.ToString();
-		oatText.text			= GameDataManager.OffsetedOat.ToString();
-		wheatSeedText.text		= GameDataManager.OffsetedWheatSeed.ToString();
-		oatSeedText.text		= GameDataManager.OffsetedOatSeed.ToString();
-		fertiliserText.text		= GameDataManager.OffsetedFertiliser.ToString();
-		familyText.text			= GameDataManager.OffsetedFamily.ToString();
-		chickenText.text		= GameDataManager.OffsetedChicken.ToString();
-		oxText.text				= GameDataManager.OffsetedOx.ToString();
-		fHungerText.text		= GameDataManager.OffsetedFamilyHunger.ToString();
-		aHungerText.text		= GameDataManager.OffsetedAnimalHunger.ToString();
+		wheatText.text			= GameDataManager.CurrentWheat.ToString();
+		oatText.text			= GameDataManager.CurrentOat.ToString();
+		wheatSeedText.text		= GameDataManager.CurrentWheatSeed.ToString();
+		oatSeedText.text		= GameDataManager.CurrentOatSeed.ToString();
+		fertiliserText.text		= GameDataManager.CurrentFertiliser.ToString();
+		kidText.text			= GameDataManager.CurrentKid.ToString();
+		wifeText.text			= GameDataManager.CurrentWife.ToString();
+		chickenText.text		= GameDataManager.CurrentChicken.ToString();
+		oxText.text				= GameDataManager.CurrentOx.ToString();
+		fHungerText.text		= GameDataManager.CurrentFamilyHunger.ToString();
+		aHungerText.text		= GameDataManager.CurrentAnimalHunger.ToString();
 	}
 
 	private void GlobalValues_OnvalueChanged()
