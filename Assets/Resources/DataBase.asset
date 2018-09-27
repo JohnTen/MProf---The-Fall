@@ -55,32 +55,29 @@ MonoBehaviour:
     ID: 0
     useSubEventMessages: 0
     startingMessage:
-    - Pregnant Wife 1
-    - Pregnant Wife 2
-    - Pregnant Wife 3
-    - 
+    - Wife is due to give birth in a few weeks
     endingMessage:
-    - Wife give birth
+    - Wife gave birth to a boy, his name is sob
     scenario: -1
     oddsOfOccuring: 1
     MaxOccurencePerPlaythrough: 1
     Occurence: {x: 2, y: 30}
-    Duration: {x: 2, y: 4}
+    Duration: {x: 1, y: 4}
     modifers:
-    - propertyType: 10
-      modificationType: 0
-      value_1: -1
-      value_2: 0
-      value_3: 0
     - propertyType: 13
       modificationType: 0
-      value_1: 0.1
+      value_1: 0.3
+      value_2: 0
+      value_3: 0
+    - propertyType: 0
+      modificationType: 1
+      value_1: 0.2
       value_2: 0
       value_3: 0
     SubEvents:
     - occuringMethod: 2
       chance: 0
-      Duration: {x: 0, y: 0}
+      Duration: {x: 0, y: 20}
       modifers:
       - propertyType: 9
         modificationType: 0
@@ -103,53 +100,44 @@ MonoBehaviour:
     scenario: -1
     oddsOfOccuring: 1
     MaxOccurencePerPlaythrough: 1
-    Occurence: {x: 2, y: 4}
-    Duration: {x: 1, y: 2}
-    modifers:
-    - propertyType: 4
-      modificationType: 0
-      value_1: 15
-      value_2: 15
-      value_3: 15
-    SubEvents: []
+    Occurence: {x: 4, y: 30}
+    Duration: {x: 1, y: 3}
+    modifers: []
+    SubEvents:
+    - occuringMethod: 2
+      chance: 0
+      Duration: {x: 0, y: 0}
+      modifers:
+      - propertyType: 4
+        modificationType: 0
+        value_1: 15
+        value_2: 0
+        value_3: 0
+      startingMessage: []
+      endingMessage: []
+      isExecuting: 0
     occuring: 0
     occuredTimes: 0
     occurationStartDate: 0
-  - name: LordRequest
+  - name: Lord's Request
     ID: 2
     useSubEventMessages: 0
     startingMessage:
-    - Lord request something from you
+    - Lord requests (demands) sob come work on his garden
     endingMessage:
-    - Lord has given back your family
-    scenario: 1
-    oddsOfOccuring: 0
-    MaxOccurencePerPlaythrough: 3
-    Occurence: {x: 0, y: 40}
-    Duration: {x: 0, y: 0}
-    modifers: []
-    SubEvents:
-    - occuringMethod: 0
-      chance: 0.33
-      Duration: {x: 2, y: 2}
-      modifers: []
-      startingMessage: []
-      endingMessage: []
-      isExecuting: 0
-    - occuringMethod: 0
-      chance: 0.33
-      Duration: {x: 0, y: 0}
-      modifers: []
-      startingMessage: []
-      endingMessage: []
-      isExecuting: 0
-    - occuringMethod: 0
-      chance: 0.33
-      Duration: {x: 1, y: 1}
-      modifers: []
-      startingMessage: []
-      endingMessage: []
-      isExecuting: 0
+    - 'Sob has returned '
+    scenario: -1
+    oddsOfOccuring: 1
+    MaxOccurencePerPlaythrough: 1
+    Occurence: {x: 5, y: 40}
+    Duration: {x: 1, y: 2}
+    modifers:
+    - propertyType: 9
+      modificationType: 0
+      value_1: -1
+      value_2: 0
+      value_3: 0
+    SubEvents: []
     occuring: 0
     occuredTimes: 3
     occurationStartDate: 0
