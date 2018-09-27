@@ -58,17 +58,18 @@ MonoBehaviour:
     - Pregnant Wife 1
     - Pregnant Wife 2
     - Pregnant Wife 3
+    - 
     endingMessage:
     - Wife give birth
     scenario: -1
     oddsOfOccuring: 1
     MaxOccurencePerPlaythrough: 1
-    Occurence: {x: 0, y: 30}
-    Duration: {x: 3, y: 7}
+    Occurence: {x: 2, y: 30}
+    Duration: {x: 2, y: 4}
     modifers:
-    - propertyType: 1
+    - propertyType: 10
       modificationType: 0
-      value_1: 0.1
+      value_1: -1
       value_2: 0
       value_3: 0
     - propertyType: 13
@@ -92,18 +93,24 @@ MonoBehaviour:
     occuring: 0
     occuredTimes: 1
     occurationStartDate: 3
-  - name: Dragon took kid
+  - name: 'Sent Kid Hunting '
     ID: 1
     useSubEventMessages: 0
     startingMessage:
-    - Dragon took your kid
-    endingMessage: []
-    scenario: 2
-    oddsOfOccuring: 0
+    - 'Kid went to go get food '
+    endingMessage:
+    - +15 to to Food
+    scenario: -1
+    oddsOfOccuring: 1
     MaxOccurencePerPlaythrough: 1
-    Occurence: {x: 10, y: 30}
-    Duration: {x: 0, y: 0}
-    modifers: []
+    Occurence: {x: 2, y: 4}
+    Duration: {x: 1, y: 2}
+    modifers:
+    - propertyType: 4
+      modificationType: 0
+      value_1: 15
+      value_2: 15
+      value_3: 15
     SubEvents: []
     occuring: 0
     occuredTimes: 0
