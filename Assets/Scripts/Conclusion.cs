@@ -172,6 +172,9 @@ public class Conclusion : MonoSingleton<Conclusion>
 		tendAnimal.text = animalConsumption.ToString();
 		GameDataManager.CurrentOat += animalConsumption;
 
+		// Fertiliser
+		GameDataManager.CurrentFertiliser += GameDataManager.CurrentChicken + GameDataManager.CurrentOx;
+
 		// Events
 		if (OnCalculateEvents != null)
 			OnCalculateEvents.Invoke();

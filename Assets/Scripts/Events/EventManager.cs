@@ -88,9 +88,4 @@ public class EventManager : MonoSingleton<EventManager>
 			MessageBox.DisplayMessage(ge.name, message);
 		}
 	}
-
-	private void TimeManager_OnTimePassed(int date)
-	{
-		CheckEvents();
-	}
 }
