@@ -22,9 +22,9 @@ public class GameEvent
 	public string[] startingMessage = new string[0];
 	public string[] endingMessage = new string[0];
 	public Scenario scenario;
-	public float oddsOfOccuring;
+	public DynamicValue oddsOfOccuring = new DynamicValue();
 
-	public int MaxOccurencePerPlaythrough;
+	public DynamicValue MaxOccurencePerPlaythrough = new DynamicValue();
 	[MinMaxSlider(0, 30)] public Vector2Int Occurence;
 	[MinMaxSlider(0, 10)] public Vector2Int Duration;
 
@@ -45,8 +45,8 @@ public class GameEvent
 		ID = gEvent.ID;
 		useSubEventMessages = gEvent.useSubEventMessages;
 		scenario = gEvent.scenario;
-		oddsOfOccuring = gEvent.oddsOfOccuring;
-		MaxOccurencePerPlaythrough = gEvent.MaxOccurencePerPlaythrough;
+		oddsOfOccuring = new DynamicValue(gEvent.oddsOfOccuring);
+		MaxOccurencePerPlaythrough = new DynamicValue(gEvent.MaxOccurencePerPlaythrough);
 		Occurence = gEvent.Occurence;
 		Duration = gEvent.Duration;
 
@@ -65,7 +65,7 @@ public class GameEvent
 		modifers = new GameValueModifer[gEvent.modifers.Length];
 		for (int i = 0; i < modifers.Length; i++)
 		{
-			modifers[i] = gEvent.modifers[i];
+			modifers[i] = new GameValueModifer(gEvent.modifers[i]);
 		}
 
 		SubEvents = new SubEvent[gEvent.SubEvents.Length];
@@ -126,7 +126,9 @@ public class GameEvent
 		chanceSum = 0;
 		for (int i = 0; i < SubEvents.Length; i++)
 		{
-			if (SubEvents[i].occuringMethod == SubEvent.OccuringMethod.AtTheEnd) continue;
+			if (SubEvents[i].occuringMethod == SubEvent.OccuringMethod.AtTheEnd_Once ||
+				SubEvents[i].occuringMethod == SubEvent.OccuringMethod.AtTheEnd_Multiple)
+				continue;
 			if (chanceOnce.ElementAt(i))
 			{
 				chanceSum += SubEvents[i].chance;
@@ -175,14 +177,48 @@ public class GameEvent
 		{
 			GameDataManager.GameValues.RemoveModifier(modifers[i]);
 		}
-		
+
+		var chanceOnce = SubEvents.Select((x) => { return x.occuringMethod == SubEvent.OccuringMethod.AtTheEnd_Once; });
+		var chanceSum = 0f;
+		var chanceNum = 0f;
+
 		for (int i = 0; i < SubEvents.Length; i++)
 		{
-			if (SubEvents[i].occuringMethod == SubEvent.OccuringMethod.AtTheEnd)
-				SubEvents[i].Execute();
-			else if (SubEvents[i].isExecuting)
-				SubEvents[i].Stop();
+			if (!chanceOnce.ElementAt(i) || SubEvents[i].isExecuting) continue;
+			chanceSum += SubEvents[i].chance;
 		}
+
+		chanceNum = Random.value * chanceSum;
+		chanceSum = 0;
+
+		for (int i = 0; i < SubEvents.Length; i++)
+		{
+			if (SubEvents[i].occuringMethod == SubEvent.OccuringMethod.AtTheEnd_Once ||
+				SubEvents[i].occuringMethod == SubEvent.OccuringMethod.AtTheEnd_Multiple)
+			{
+				if (SubEvents[i].isExecuting)
+					SubEvents[i].Stop();
+				continue;
+			}
+
+			if (chanceOnce.ElementAt(i))
+			{
+				chanceSum += SubEvents[i].chance;
+				if (chanceSum > chanceNum)
+				{
+					Debug.Log("Subevent " + i + " is executing");
+					SubEvents[i].Execute();
+					chanceNum = float.PositiveInfinity;
+				}
+				continue;
+			}
+
+			if (Random.value < SubEvents[i].chance)
+			{
+				SubEvents[i].Execute();
+			}
+		}
+
 		occuring = false;
 	}
 }
@@ -194,11 +230,12 @@ public class SubEvent
 	{
 		Chance_Once,
 		Chance_Multiple,
-		AtTheEnd,
+		AtTheEnd_Once,
+		AtTheEnd_Multiple,
 	}
 
 	public OccuringMethod occuringMethod;
-	public float chance;
+	public DynamicValue chance = new DynamicValue();
 	[MinMaxSlider(0, 20)] public Vector2Int Duration;
 	public GameValueModifer[] modifers = new GameValueModifer[0];
 	public string[] startingMessage = new string[0];
@@ -210,7 +247,7 @@ public class SubEvent
 	public SubEvent(SubEvent sEvent)
 	{
 		occuringMethod = sEvent.occuringMethod;
-		chance = sEvent.chance;
+		chance = new DynamicValue(sEvent.chance);
 		Duration = sEvent.Duration;
 
 		startingMessage = new string[sEvent.startingMessage.Length];

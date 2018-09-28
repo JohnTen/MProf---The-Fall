@@ -29,17 +29,23 @@ MonoBehaviour:
     index: 0
     requiredOat: 1
     ProvidedFood: 2
+    ProvidedFertiliser: 1
   - name: Ox
     index: 1
     requiredOat: 2
     ProvidedFood: 5
+    ProvidedFertiliser: 1
   familyList:
   - name: Wife
     index: 0
     requiredWheat: 1
     ProvidedFood: 2
-  - name: Kid
+  - name: Daughter
     index: 1
+    requiredWheat: 1
+    ProvidedFood: 4
+  - name: Son
+    index: 2
     requiredWheat: 1
     ProvidedFood: 4
   cropGrowingModelList:
@@ -59,31 +65,46 @@ MonoBehaviour:
     endingMessage:
     - Wife gave birth to a boy, his name is sob
     scenario: -1
-    oddsOfOccuring: 1
-    MaxOccurencePerPlaythrough: 1
+    oddsOfOccuring:
+      constantValue: 0.3
+      useGameValue: 0
+      valueType: 1
+      serializedtype: CropProduction
+    MaxOccurencePerPlaythrough:
+      constantValue: 1
+      useGameValue: 0
+      valueType: 1
+      serializedtype: CropProduction
     Occurence: {x: 2, y: 30}
     Duration: {x: 1, y: 4}
     modifers:
-    - propertyType: 13
+    - propertyType: 1
       modificationType: 0
-      value_1: 0.3
+      value_1: 1
       value_2: 0
       value_3: 0
-    - propertyType: 0
-      modificationType: 1
+      serializedtype: WheatConsumptionOffset
+    - propertyType: 17
+      modificationType: 0
       value_1: 0.2
       value_2: 0
       value_3: 0
+      serializedtype: DyingRateOfWife
     SubEvents:
     - occuringMethod: 2
-      chance: 0
-      Duration: {x: 0, y: 20}
+      chance:
+        constantValue: 0
+        useGameValue: 0
+        valueType: 0
+        serializedtype: 
+      Duration: {x: 0, y: 0}
       modifers:
-      - propertyType: 9
+      - propertyType: 14
         modificationType: 0
         value_1: 1
         value_2: 0
         value_3: 0
+        serializedtype: NumberOfSon
       startingMessage: []
       endingMessage: []
       isExecuting: 0
@@ -98,14 +119,26 @@ MonoBehaviour:
     endingMessage:
     - +15 to to Food
     scenario: -1
-    oddsOfOccuring: 1
-    MaxOccurencePerPlaythrough: 1
+    oddsOfOccuring:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 0
+      serializedtype: 
+    MaxOccurencePerPlaythrough:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 0
+      serializedtype: 
     Occurence: {x: 4, y: 30}
     Duration: {x: 1, y: 3}
     modifers: []
     SubEvents:
     - occuringMethod: 2
-      chance: 0
+      chance:
+        constantValue: 0
+        useGameValue: 0
+        valueType: 0
+        serializedtype: 
       Duration: {x: 0, y: 0}
       modifers:
       - propertyType: 4
@@ -113,6 +146,7 @@ MonoBehaviour:
         value_1: 15
         value_2: 0
         value_3: 0
+        serializedtype: 
       startingMessage: []
       endingMessage: []
       isExecuting: 0
@@ -127,8 +161,16 @@ MonoBehaviour:
     endingMessage:
     - 'Sob has returned '
     scenario: -1
-    oddsOfOccuring: 1
-    MaxOccurencePerPlaythrough: 1
+    oddsOfOccuring:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 0
+      serializedtype: 
+    MaxOccurencePerPlaythrough:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 0
+      serializedtype: 
     Occurence: {x: 5, y: 40}
     Duration: {x: 1, y: 2}
     modifers:
@@ -137,6 +179,7 @@ MonoBehaviour:
       value_1: -1
       value_2: 0
       value_3: 0
+      serializedtype: 
     SubEvents: []
     occuring: 0
     occuredTimes: 3
@@ -148,8 +191,16 @@ MonoBehaviour:
     endingMessage:
     - Test2
     scenario: 0
-    oddsOfOccuring: 0
-    MaxOccurencePerPlaythrough: 0
+    oddsOfOccuring:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 0
+      serializedtype: 
+    MaxOccurencePerPlaythrough:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 0
+      serializedtype: 
     Occurence: {x: 0, y: 0}
     Duration: {x: 0, y: 0}
     modifers: []
@@ -157,19 +208,92 @@ MonoBehaviour:
     occuring: 0
     occuredTimes: 0
     occurationStartDate: 0
-  - name: Test2
+  - name: RandomDeath!
     ID: 4
     useSubEventMessages: 0
     startingMessage:
-    - Test3
-    endingMessage:
-    - Test4
-    scenario: 0
-    oddsOfOccuring: 0
-    MaxOccurencePerPlaythrough: 0
+    - Your wife just died
+    endingMessage: []
+    scenario: -1
+    oddsOfOccuring:
+      constantValue: 0
+      useGameValue: 1
+      valueType: 17
+      serializedtype: DyingRateOfWife
+    MaxOccurencePerPlaythrough:
+      constantValue: 999
+      useGameValue: 1
+      valueType: 12
+      serializedtype: NumberOfWife
     Occurence: {x: 0, y: 0}
     Duration: {x: 0, y: 0}
-    modifers: []
+    modifers:
+    - propertyType: 12
+      modificationType: 0
+      value_1: -1
+      value_2: 0
+      value_3: 0
+      serializedtype: NumberOfWife
+    SubEvents: []
+    occuring: 0
+    occuredTimes: 0
+    occurationStartDate: 0
+  - name: RandomDeath!
+    ID: 5
+    useSubEventMessages: 0
+    startingMessage:
+    - Your daughter just died
+    endingMessage: []
+    scenario: -1
+    oddsOfOccuring:
+      constantValue: 0
+      useGameValue: 1
+      valueType: 18
+      serializedtype: DyingRateOfDaughter
+    MaxOccurencePerPlaythrough:
+      constantValue: 999
+      useGameValue: 1
+      valueType: 13
+      serializedtype: NumberOfDaughter
+    Occurence: {x: 0, y: 0}
+    Duration: {x: 0, y: 0}
+    modifers:
+    - propertyType: 13
+      modificationType: 0
+      value_1: -1
+      value_2: 0
+      value_3: 0
+      serializedtype: NumberOfDaughter
+    SubEvents: []
+    occuring: 0
+    occuredTimes: 0
+    occurationStartDate: 0
+  - name: RandomDeath!
+    ID: 6
+    useSubEventMessages: 0
+    startingMessage:
+    - Your son just died
+    endingMessage: []
+    scenario: -1
+    oddsOfOccuring:
+      constantValue: 0
+      useGameValue: 1
+      valueType: 19
+      serializedtype: DyingRateOfSon
+    MaxOccurencePerPlaythrough:
+      constantValue: 999
+      useGameValue: 1
+      valueType: 14
+      serializedtype: NumberOfSon
+    Occurence: {x: 0, y: 0}
+    Duration: {x: 0, y: 0}
+    modifers:
+    - propertyType: 14
+      modificationType: 0
+      value_1: -1
+      value_2: 0
+      value_3: 0
+      serializedtype: NumberOfSon
     SubEvents: []
     occuring: 0
     occuredTimes: 0

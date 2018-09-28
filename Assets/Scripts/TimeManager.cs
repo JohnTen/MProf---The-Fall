@@ -8,8 +8,6 @@ public class TimeManager : GlobalSingleton<TimeManager>
 	[Tooltip("Current date")]
 	[SerializeField] int date;
 
-	[SerializeField] GameEvent eve;
-
 	public static event Action<int> OnTimePassed;
 
 	public static int Date
@@ -23,7 +21,5 @@ public class TimeManager : GlobalSingleton<TimeManager>
 		date++;
 		if (OnTimePassed != null)
 			OnTimePassed.Invoke(date);
-
-		//eve.CheckEvent();
 	}
 }

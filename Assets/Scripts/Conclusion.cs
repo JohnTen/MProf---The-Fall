@@ -142,7 +142,7 @@ public class Conclusion : MonoSingleton<Conclusion>
 		{
 			familyConsumption += Mathf.CeilToInt(Database.Instance.familyList[i].requiredWheat * GameDataManager.GetFamilyNumber(i));
 		}
-		familyConsumption = Mathf.RoundToInt(familyConsumption * GameDataManager.GameValues[GameValueType.FoodConsumption]);
+		familyConsumption = Mathf.RoundToInt(familyConsumption * GameDataManager.GameValues[GameValueType.WheatConsumption] + GameDataManager.GameValues[GameValueType.WheatConsumptionOffset]);
 		if (familyConsumption > GameDataManager.CurrentWheat)
 		{
 			GameDataManager.CurrentFamilyHunger += Mathf.CeilToInt((familyConsumption - GameDataManager.CurrentWheat) * GameDataManager.GameValues[GameValueType.FamilyHungerRate]);
@@ -161,7 +161,7 @@ public class Conclusion : MonoSingleton<Conclusion>
 		{
 			animalConsumption += Mathf.CeilToInt(Database.Instance.animalList[i].requiredOat * GameDataManager.GetAnimalNumber(i));
 		}
-		animalConsumption = Mathf.RoundToInt(animalConsumption * GameDataManager.GameValues[GameValueType.FoodConsumption]);
+		animalConsumption = Mathf.RoundToInt(animalConsumption * GameDataManager.GameValues[GameValueType.OatConsumption] + GameDataManager.GameValues[GameValueType.OatConsumptionOffset]);
 		if (animalConsumption > GameDataManager.CurrentOat)
 		{
 			GameDataManager.CurrentAnimalHunger += Mathf.CeilToInt((animalConsumption - GameDataManager.CurrentOat) * GameDataManager.GameValues[GameValueType.AnimalHungerRate]);
@@ -173,7 +173,9 @@ public class Conclusion : MonoSingleton<Conclusion>
 		GameDataManager.CurrentOat += animalConsumption;
 
 		// Fertiliser
-		GameDataManager.CurrentFertiliser += GameDataManager.CurrentChicken + GameDataManager.CurrentOx;
+		GameDataManager.CurrentFertiliser += 
+			GameDataManager.CurrentChicken * Database.Instance.animalList[0].ProvidedFertiliser + 
+			GameDataManager.CurrentOx * Database.Instance.animalList[1].ProvidedFertiliser;
 
 		// Events
 		if (OnCalculateEvents != null)

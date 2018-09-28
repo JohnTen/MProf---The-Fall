@@ -6,7 +6,10 @@ using UnityUtility.MVS;
 
 public enum GameValueType
 {
-	FoodConsumption,
+	WheatConsumption,
+	WheatConsumptionOffset,
+	OatConsumption,
+	OatConsumptionOffset,
 	CropProduction,
 	SeedProduction,
 	SeedDroppingRate,
@@ -15,12 +18,16 @@ public enum GameValueType
 	NumberOfWheatSeed,
 	NumberOfOatSeed,
 	NumberOfFertiliser,
-	NumberOfKid,
 	NumberOfWife,
+	NumberOfDaughter,
+	NumberOfSon,
 	NumberOfOx,
 	NumberOfChicken,
-	DyingRate,
+	DyingRateOfWife,
+	DyingRateOfDaughter,
+	DyingRateOfSon,
 	TaxRate,
+	ForcedTaxRate,
 	FamilyHunger,
 	AnimalHunger,
 	FamilyHungerRate,
@@ -30,6 +37,8 @@ public enum GameValueType
 [System.Serializable]
 public class GameValueModifer : Modifier<GameValueType>
 {
+	public string serializedtype;
+
 	public GameValueModifer() : base() { }
 	public GameValueModifer(Modifier<GameValueType> modifier) : base(modifier)
 	{

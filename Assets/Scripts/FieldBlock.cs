@@ -147,7 +147,7 @@ public class FieldBlock : MonoInteractable
 		
 		if (Random.value < status.currentCrop.dropSeedPossibility * GameDataManager.GameValues[GameValueType.SeedDroppingRate])
 			GameDataManager.ModifyCropSeedNumbr(status.currentCrop.index, Mathf.RoundToInt(status.currentCrop.dropSeedNumber * GameDataManager.GameValues[GameValueType.SeedProduction]));
-		GameDataManager.GameValues[GameValueType.NumberOfWheat] += Mathf.RoundToInt(status.currentCrop.foodValue * GameDataManager.GameValues[GameValueType.CropProduction]);
+		GameDataManager.ModifyCropNumber(status.currentCrop.index, Mathf.RoundToInt(status.currentCrop.foodValue * GameDataManager.GameValues[GameValueType.CropProduction]));
 		GameDataManager.UpdateValues();
 
 		Clear();

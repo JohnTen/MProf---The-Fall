@@ -10,4 +10,5 @@ public class Animal
 	public int index;
 	public int requiredOat;
 	public int ProvidedFood;
+	public int ProvidedFertiliser;
 }

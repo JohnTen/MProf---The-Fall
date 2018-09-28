@@ -12,7 +12,8 @@ public class InfoUpdater : MonoBehaviour
 	[SerializeField] Text wheatSeedText;
 	[SerializeField] Text oatSeedText;
 	[SerializeField] Text fertiliserText;
-	[SerializeField] Text kidText;
+	[SerializeField] Text sonText;
+	[SerializeField] Text daughterText;
 	[SerializeField] Text wifeText;
 	[SerializeField] Text chickenText;
 	[SerializeField] Text oxText;
@@ -41,7 +42,8 @@ public class InfoUpdater : MonoBehaviour
 		wheatSeedText.text		= GameDataManager.CurrentWheatSeed.ToString();
 		oatSeedText.text		= GameDataManager.CurrentOatSeed.ToString();
 		fertiliserText.text		= GameDataManager.CurrentFertiliser.ToString();
-		kidText.text			= GameDataManager.CurrentKid.ToString();
+		sonText.text			= GameDataManager.CurrentSon.ToString();
+		daughterText.text		= GameDataManager.CurrentDaughter.ToString();
 		wifeText.text			= GameDataManager.CurrentWife.ToString();
 		chickenText.text		= GameDataManager.CurrentChicken.ToString();
 		oxText.text				= GameDataManager.CurrentOx.ToString();

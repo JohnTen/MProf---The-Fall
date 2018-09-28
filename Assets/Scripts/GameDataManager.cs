@@ -106,12 +106,22 @@ public class GameDataManager : GlobalSingleton<GameDataManager>
 		}
 	}
 
-	public static int CurrentKid
+	public static int CurrentSon
 	{
-		get { return (int)GameValues[GameValueType.NumberOfKid]; }
+		get { return (int)GameValues[GameValueType.NumberOfSon]; }
 		set
 		{
-			GameValues[GameValueType.NumberOfKid] = value;
+			GameValues[GameValueType.NumberOfSon] = value;
+			UpdateValues();
+		}
+	}
+
+	public static int CurrentDaughter
+	{
+		get { return (int)GameValues[GameValueType.NumberOfDaughter]; }
+		set
+		{
+			GameValues[GameValueType.NumberOfDaughter] = value;
 			UpdateValues();
 		}
 	}
@@ -194,7 +204,7 @@ public class GameDataManager : GlobalSingleton<GameDataManager>
 		switch (id)
 		{
 			case 0: return (int)GameValues[GameValueType.NumberOfWife];
-			case 1: return (int)GameValues[GameValueType.NumberOfKid];
+			case 1: return (int)GameValues[GameValueType.NumberOfSon];
 		}
 
 		return -1;
@@ -232,7 +242,7 @@ public class GameDataManager : GlobalSingleton<GameDataManager>
 		switch (id)
 		{
 			case 0: GameValues[GameValueType.NumberOfWife] += value; break;
-			case 1: GameValues[GameValueType.NumberOfKid] += value; break;
+			case 1: GameValues[GameValueType.NumberOfSon] += value; break;
 		}
 	}
 

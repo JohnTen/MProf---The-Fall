@@ -68,8 +68,8 @@ public class EventEditor : EditorWindow
 					list[i].name = EditorGUILayout.TextField("Name", list[i].name);
 
 					list[i].scenario = (Scenario)EditorGUILayout.EnumFlagsField("Scenario", list[i].scenario);
-					list[i].oddsOfOccuring = EditorGUILayout.FloatField("Odds of Occuring", list[i].oddsOfOccuring);
-					list[i].MaxOccurencePerPlaythrough = EditorGUILayout.IntField("Max Occurence", list[i].MaxOccurencePerPlaythrough);
+					DynamicValueField("Odds of Occuring", list[i].oddsOfOccuring);
+					DynamicValueField("Max Occurence", list[i].MaxOccurencePerPlaythrough);
 					list[i].Occurence = DrawMinMaxslider(list[i].Occurence, typeof(GameEvent), "Occurence");
 					list[i].Duration = DrawMinMaxslider(list[i].Duration, typeof(GameEvent), "Duration");
 					list[i].useSubEventMessages = EditorGUILayout.Toggle("Use Sub Event Messages", list[i].useSubEventMessages);
@@ -146,7 +146,7 @@ public class EventEditor : EditorWindow
 		GUI.color = Color.green;
 		if (GUILayout.Button("+"))
 		{
-			list.Add(new GameEvent());
+			list.Add(new GameEvent(list[list.Count - 1]));
 		}
 		GUI.color = Color.white;
 
@@ -195,31 +195,33 @@ public class EventEditor : EditorWindow
 			if (foldingFlag[i])
 			{
 				list[i].occuringMethod = (SubEvent.OccuringMethod)EditorGUILayout.EnumPopup("Occuring Method", list[i].occuringMethod);
-				if (list[i].occuringMethod != SubEvent.OccuringMethod.AtTheEnd)
+				if (list[i].occuringMethod != SubEvent.OccuringMethod.AtTheEnd_Once)
 				{
-					list[i].chance = EditorGUILayout.FloatField("Occuring Chance", list[i].chance);
+					DynamicValueField("Occuring Chance", list[i].chance);
 				}
 				
 				list[i].Duration = DrawMinMaxslider(list[i].Duration, typeof(SubEvent), "Duration");
 				
-
-				if (i >= foldingFlag2.Count)
+				while ((i * 3 + 2) >= foldingFlag2.Count)
 					foldingFlag2.Add(false);
-				foldingFlag2[i] = EditorGUILayout.Foldout(foldingFlag2[i], "Modifiers");
-				if (foldingFlag2[i])
+
+				foldingFlag2[i * 3] = EditorGUILayout.Foldout(foldingFlag2[i * 3], "Modifiers");
+				if (foldingFlag2[i * 3])
 					list[i].modifers = DrawModifiers(list[i].modifers, foldingFlag3);
 				
-				if ((i + 1) >= foldingFlag4.Count)
+				if ((i * 2 + 1) >= foldingFlag4.Count)
 				{
 					foldingFlag4.Add(false);
 				}
-				foldingFlag4[i] = EditorGUILayout.Foldout(foldingFlag4[i], "Starting Message");
-				if (foldingFlag4[i])
+
+				foldingFlag2[i * 3 + 1] = EditorGUILayout.Foldout(foldingFlag2[i * 3 + 1], "Starting Message");
+				if (foldingFlag2[i * 3 + 1])
 				{
 					list[i].startingMessage = DrawMessageAreas(list[i].startingMessage);
 				}
-				foldingFlag4[i + 1] = EditorGUILayout.Foldout(foldingFlag4[i + 1], "Ending Message");
-				if (foldingFlag4[i + 1])
+
+				foldingFlag2[i * 3 + 2] = EditorGUILayout.Foldout(foldingFlag2[i * 3 + 2], "Ending Message");
+				if (foldingFlag2[i * 3 + 2])
 				{
 					list[i].endingMessage = DrawMessageAreas(list[i].endingMessage);
 				}
@@ -262,7 +264,17 @@ public class EventEditor : EditorWindow
 			GUILayout.EndHorizontal();
 			if (foldingFlag[i])
 			{
-				list[i].propertyType = (GameValueType)EditorGUILayout.EnumPopup("Property Type", list[i].propertyType);
+				GameValueType type;
+				try
+				{
+					type = (GameValueType)Enum.Parse(typeof(GameValueType), list[i].serializedtype);
+				}
+				catch
+				{
+					type = GameValueType.CropProduction;
+				}
+				list[i].propertyType = (GameValueType)EditorGUILayout.EnumPopup("Property Type", type);
+				list[i].serializedtype = list[i].propertyType.ToString();
 				list[i].modificationType = (ModificationType)EditorGUILayout.EnumPopup("Modification Type", list[i].modificationType);
 				list[i].value_1 = EditorGUILayout.FloatField("Value 1", list[i].value_1);
 				list[i].value_2 = EditorGUILayout.FloatField("Value 2", list[i].value_2);
@@ -311,5 +323,55 @@ public class EventEditor : EditorWindow
 		GUILayout.EndVertical();
 
 		return list.ToArray();
+	}
+
+	private void DynamicValueField(DynamicValue dv)
+	{
+		GUILayout.BeginHorizontal();
+		dv.useGameValue = EditorGUILayout.Toggle(dv.useGameValue, GUILayout.Width(20));
+		if (dv.useGameValue)
+		{
+			GameValueType type;
+			try
+			{
+				type = (GameValueType)Enum.Parse(typeof(GameValueType), dv.serializedtype);
+			}
+			catch
+			{
+				type = GameValueType.CropProduction;
+			}
+			dv.valueType = (GameValueType)EditorGUILayout.EnumPopup(type);
+			dv.serializedtype = dv.valueType.ToString();
+		}
+		else
+		{
+			dv.constantValue = EditorGUILayout.FloatField(dv.constantValue);
+		}
+		GUILayout.EndHorizontal();
+	}
+
+	private void DynamicValueField(string label, DynamicValue dv)
+	{
+		GUILayout.BeginHorizontal();
+		dv.useGameValue = EditorGUILayout.Toggle(label, dv.useGameValue, GUILayout.ExpandWidth(false));
+		if (dv.useGameValue)
+		{
+			GameValueType type;
+			try
+			{
+				type = (GameValueType)Enum.Parse(typeof(GameValueType), dv.serializedtype);
+			}
+			catch
+			{
+				type = GameValueType.CropProduction;
+			}
+			dv.valueType = (GameValueType)EditorGUILayout.EnumPopup(type);
+			dv.serializedtype = dv.valueType.ToString();
+		}
+		else
+		{
+			dv.constantValue = EditorGUILayout.FloatField(dv.constantValue);
+		}
+		GUILayout.EndHorizontal();
 	}
 }
