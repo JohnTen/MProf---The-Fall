@@ -1,0 +1,884 @@
+fileFormatVersion: 2
+guid: 6f2c5f8a99a683a428b55b3aa0e2e1dd
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: BobWalk Spritesheet 2_0
+    21300002: BobWalk Spritesheet 2_1
+    21300004: BobWalk Spritesheet 2_2
+    21300006: BobWalk Spritesheet 2_3
+    21300008: BobWalk Spritesheet 2_4
+    21300010: BobWalk Spritesheet 2_5
+    21300012: BobWalk Spritesheet 2_6
+    21300014: BobWalk Spritesheet 2_7
+    21300016: BobWalk Spritesheet 2_8
+    21300018: BobWalk Spritesheet 2_9
+    21300020: BobWalk Spritesheet 2_10
+    21300022: BobWalk Spritesheet 2_11
+    21300024: BobWalk Spritesheet 2_12
+    21300026: BobWalk Spritesheet 2_13
+    21300028: BobWalk Spritesheet 2_14
+    21300030: BobWalk Spritesheet 2_15
+    21300032: BobWalk Spritesheet 2_16
+    21300034: BobWalk Spritesheet 2_17
+    21300036: BobWalk Spritesheet 2_18
+    21300038: BobWalk Spritesheet 2_19
+    21300040: BobWalk Spritesheet 2_20
+    21300042: BobWalk Spritesheet 2_21
+    21300044: BobWalk Spritesheet 2_22
+    21300046: BobWalk Spritesheet 2_23
+    21300048: BobWalk Spritesheet 2_24
+    21300050: BobWalk Spritesheet 2_25
+    21300052: BobWalk Spritesheet 2_26
+    21300054: BobWalk Spritesheet 2_27
+    21300056: BobWalk Spritesheet 2_28
+    21300058: BobWalk Spritesheet 2_29
+    21300060: BobWalk Spritesheet 2_30
+    21300062: BobWalk Spritesheet 2_31
+    21300064: BobWalk Spritesheet 2_32
+    21300066: BobWalk Spritesheet 2_33
+    21300068: BobWalk Spritesheet 2_34
+    21300070: BobWalk Spritesheet 2_35
+  externalObjects: {}
+  serializedVersion: 5
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_0
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 2708
+        width: 401
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4ac94d7cdaf64e4f929d28c1eb8da55
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_1
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 2708
+        width: 397
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cc0097e731c36442b4ee1f3f12ac8d7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_2
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 2709
+        width: 393
+        height: 524
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c9c0faaace684d4bb4ebcd309dbfad2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_3
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 2709
+        width: 390
+        height: 524
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d06af066a81b904d8ce00ad41b7cd24
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_4
+      rect:
+        serializedVersion: 2
+        x: 1829
+        y: 2711
+        width: 388
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e9f5d1932960624ea18c8a0e4ddc130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_5
+      rect:
+        serializedVersion: 2
+        x: 2280
+        y: 2712
+        width: 375
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc0c37d8ebd68104ea01a8ccb37583d1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_6
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 2173
+        width: 375
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4a07da6a22133d4b989138379cf03fc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_7
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 2175
+        width: 375
+        height: 521
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 592a2bbb3531f9b4ea9d901792318458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_8
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 2175
+        width: 374
+        height: 523
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db60f862788884547b103a5f1520ea0c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_9
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 2176
+        width: 375
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c08ee10324f08a469d3eedc8ecafc93
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_10
+      rect:
+        serializedVersion: 2
+        x: 1830
+        y: 2178
+        width: 375
+        height: 520
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24713acd4f436d346ba0636d4598b625
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_11
+      rect:
+        serializedVersion: 2
+        x: 2280
+        y: 2181
+        width: 375
+        height: 517
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 281904865916c8544ab0988fbf509b78
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_12
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 1643
+        width: 374
+        height: 514
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fe71fb8fac24d443a9fe60f1cb8ce31
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_13
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 1648
+        width: 375
+        height: 509
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1cb26cf4dfbeab48b42dc9834fb0f39
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_14
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 1653
+        width: 374
+        height: 504
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 586cfc5442970b340802a0d0a46c1bc9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_15
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 1651
+        width: 378
+        height: 505
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caac61d53f52a5640947b59c339b52d9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_16
+      rect:
+        serializedVersion: 2
+        x: 1830
+        y: 1649
+        width: 382
+        height: 507
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f299f54bf7d217449869e299a3a00be
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_17
+      rect:
+        serializedVersion: 2
+        x: 2280
+        y: 1648
+        width: 387
+        height: 508
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4cc02c5a0e42f2489a2a25191ac87c3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_18
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 1107
+        width: 391
+        height: 507
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0064aa2b31070b84e91cd3d936326fd2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_19
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 1105
+        width: 395
+        height: 509
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3ca32c506cae5c4ab6b50fff89f58fd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_20
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 1102
+        width: 385
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9267de88d6dc6a4a987338f504e309f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_21
+      rect:
+        serializedVersion: 2
+        x: 1380
+        y: 1097
+        width: 377
+        height: 517
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f4618bcf4d2c234d9ebe3b29c86856e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_22
+      rect:
+        serializedVersion: 2
+        x: 1830
+        y: 1094
+        width: 374
+        height: 519
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29bb2e6941d09054786c1549280a9b1d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_23
+      rect:
+        serializedVersion: 2
+        x: 2280
+        y: 1091
+        width: 375
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53409946b8904a445b31419ac552b222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_24
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 547
+        width: 375
+        height: 526
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eac7e8ccd92cd4a45b5ffd6e83084d91
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_25
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 544
+        width: 375
+        height: 529
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea9f38f798db8f640990c5e248e95c17
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_26
+      rect:
+        serializedVersion: 2
+        x: 929
+        y: 542
+        width: 375
+        height: 531
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7188da7270f5fa1449dd3d99fbcb195e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_27
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 543
+        width: 376
+        height: 530
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 798ce75a7d276fb47a2a23996c10f315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_28
+      rect:
+        serializedVersion: 2
+        x: 1829
+        y: 547
+        width: 376
+        height: 526
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b59625c36fc3ca4ba7fc542224bc2e2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_29
+      rect:
+        serializedVersion: 2
+        x: 2278
+        y: 551
+        width: 396
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62aa0e32665146f46b6a4a0abeaa6110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_30
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 10
+        width: 397
+        height: 524
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f4e9b4520aa0bd45a01288401dae798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_31
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 9
+        width: 398
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f87453ef7c415a4bbe2ac497f53758f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_32
+      rect:
+        serializedVersion: 2
+        x: 929
+        y: 9
+        width: 400
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37a4fbb3f392d09479de9a4f728135db
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_33
+      rect:
+        serializedVersion: 2
+        x: 1379
+        y: 7
+        width: 401
+        height: 527
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4fe3188f2e1c2148ad560a68bb3c290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_34
+      rect:
+        serializedVersion: 2
+        x: 1830
+        y: 7
+        width: 399
+        height: 527
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3198d8ea6ecd48468ec9c24c9e0b751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BobWalk Spritesheet 2_35
+      rect:
+        serializedVersion: 2
+        x: 2280
+        y: 7
+        width: 400
+        height: 527
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ed199d06525c044980f988d90663575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: afdb9acf7fed6fc4380c864d7f63e338
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
