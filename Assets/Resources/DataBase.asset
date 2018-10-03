@@ -73,6 +73,36 @@ MonoBehaviour:
       useGameValue: 0
       valueType: 2
       serializedtype: CropProduction
+    StartingCondition:
+      operators: 
+      conditions:
+      - type: 0
+        operator: 1
+        value_1:
+          constantValue: 0
+          useGameValue: 1
+          valueType: 10
+          serializedtype: NumberOfWife
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 2
+          serializedtype: CropProduction
+    ContinualCondition:
+      operators: 
+      conditions:
+      - type: 0
+        operator: 1
+        value_1:
+          constantValue: 0
+          useGameValue: 1
+          valueType: 10
+          serializedtype: NumberOfWife
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 2
+          serializedtype: CropProduction
     MaxOccurencePerPlaythrough:
       constantValue: 1
       useGameValue: 0
@@ -111,6 +141,12 @@ MonoBehaviour:
         serializedtype: NumberOfSon
       startingMessage: []
       endingMessage: []
+      StartingCondition:
+        operators: 
+        conditions: []
+      ContinualCondition:
+        operators: 
+        conditions: []
   - name: Kid Hunter
     ID: 1
     useSubEventMessages: 0
@@ -126,6 +162,24 @@ MonoBehaviour:
       useGameValue: 0
       valueType: 2
       serializedtype: CropProduction
+    StartingCondition:
+      operators: 
+      conditions:
+      - type: 0
+        operator: 1
+        value_1:
+          constantValue: 0
+          useGameValue: 1
+          valueType: 12
+          serializedtype: NumberOfSon
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 2
+          serializedtype: CropProduction
+    ContinualCondition:
+      operators: 
+      conditions: []
     MaxOccurencePerPlaythrough:
       constantValue: 1
       useGameValue: 0
@@ -155,6 +209,24 @@ MonoBehaviour:
       useGameValue: 0
       valueType: 2
       serializedtype: CropProduction
+    StartingCondition:
+      operators: 
+      conditions:
+      - type: 0
+        operator: 1
+        value_1:
+          constantValue: 0
+          useGameValue: 1
+          valueType: 6
+          serializedtype: NumberOfOat
+        value_2:
+          constantValue: 10
+          useGameValue: 0
+          valueType: 2
+          serializedtype: CropProduction
+    ContinualCondition:
+      operators: 
+      conditions: []
     MaxOccurencePerPlaythrough:
       constantValue: 3
       useGameValue: 0
@@ -181,6 +253,12 @@ MonoBehaviour:
         serializedtype: NumberOfOat
       startingMessage: []
       endingMessage: []
+      StartingCondition:
+        operators: 
+        conditions: []
+      ContinualCondition:
+        operators: 
+        conditions: []
   - name: Death!
     ID: 3
     useSubEventMessages: 0
@@ -195,9 +273,27 @@ MonoBehaviour:
       useGameValue: 1
       valueType: 17
       serializedtype: DyingRateOfSon
+    StartingCondition:
+      operators: 
+      conditions:
+      - type: 0
+        operator: 1
+        value_1:
+          constantValue: 0
+          useGameValue: 1
+          valueType: 12
+          serializedtype: NumberOfSon
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 2
+          serializedtype: CropProduction
+    ContinualCondition:
+      operators: 
+      conditions: []
     MaxOccurencePerPlaythrough:
       constantValue: 999
-      useGameValue: 1
+      useGameValue: 0
       valueType: 12
       serializedtype: NumberOfSon
     Occurence: {x: 3, y: 30}
@@ -214,7 +310,7 @@ MonoBehaviour:
     ID: 4
     useSubEventMessages: 0
     startingMessage:
-    - 'Sal poked the Ox, Ox pocked Sal back, in the face, with a leg.
+    - 'Sal poked the Ox, Ox poked Sal back, in the face, with its leg.
 
       Sal is no more. '
     endingMessage: []
@@ -224,9 +320,27 @@ MonoBehaviour:
       useGameValue: 1
       valueType: 16
       serializedtype: DyingRateOfDaughter
+    StartingCondition:
+      operators: 
+      conditions:
+      - type: 0
+        operator: 1
+        value_1:
+          constantValue: 0
+          useGameValue: 1
+          valueType: 11
+          serializedtype: NumberOfDaughter
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 2
+          serializedtype: CropProduction
+    ContinualCondition:
+      operators: 
+      conditions: []
     MaxOccurencePerPlaythrough:
       constantValue: 999
-      useGameValue: 1
+      useGameValue: 0
       valueType: 11
       serializedtype: NumberOfDaughter
     Occurence: {x: 3, y: 30}
@@ -248,11 +362,29 @@ MonoBehaviour:
     scenario: -1
     oddsOfOccuring:
       constantValue: 0
-      useGameValue: 0
+      useGameValue: 1
       valueType: 15
       serializedtype: DyingRateOfWife
+    StartingCondition:
+      operators: 
+      conditions:
+      - type: 0
+        operator: 1
+        value_1:
+          constantValue: 0
+          useGameValue: 1
+          valueType: 10
+          serializedtype: NumberOfWife
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 2
+          serializedtype: CropProduction
+    ContinualCondition:
+      operators: 
+      conditions: []
     MaxOccurencePerPlaythrough:
-      constantValue: 0
+      constantValue: 999
       useGameValue: 0
       valueType: 10
       serializedtype: NumberOfWife
@@ -281,13 +413,19 @@ MonoBehaviour:
       useGameValue: 0
       valueType: 15
       serializedtype: DyingRateOfWife
+    StartingCondition:
+      operators: 
+      conditions: []
+    ContinualCondition:
+      operators: 
+      conditions: []
     MaxOccurencePerPlaythrough:
       constantValue: 1
       useGameValue: 0
       valueType: 10
       serializedtype: NumberOfWife
     Occurence: {x: 15, y: 30}
-    Duration: {x: 1, y: 6}
+    Duration: {x: 0, y: 5}
     modifers:
     - propertyType: 2
       modificationType: 0
@@ -301,4 +439,40 @@ MonoBehaviour:
       value_2: 0
       value_3: 0
       serializedtype: SeedProduction
+    subEvents: []
+  - name: War!
+    ID: 7
+    useSubEventMessages: 0
+    startingMessage:
+    - 'The army needs more food.
+
+      10% of produce.'
+    endingMessage:
+    - The War has ended
+    scenario: -1
+    oddsOfOccuring:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 15
+      serializedtype: DyingRateOfWife
+    StartingCondition:
+      operators: 
+      conditions: []
+    ContinualCondition:
+      operators: 
+      conditions: []
+    MaxOccurencePerPlaythrough:
+      constantValue: 1
+      useGameValue: 0
+      valueType: 10
+      serializedtype: NumberOfWife
+    Occurence: {x: 0, y: 30}
+    Duration: {x: 0, y: 10}
+    modifers:
+    - propertyType: 19
+      modificationType: 0
+      value_1: 0.1
+      value_2: 0
+      value_3: 0
+      serializedtype: ForcedTaxRate
     subEvents: []
