@@ -145,7 +145,9 @@ MonoBehaviour:
     ID: 2
     useSubEventMessages: 0
     startingMessage:
-    - Lord requests (demands) Oats
+    - 'Lord requests (demands) Oats
+
+      -10 Oats'
     endingMessage: []
     scenario: -1
     oddsOfOccuring:
@@ -160,14 +162,25 @@ MonoBehaviour:
       serializedtype: CropProduction
     Occurence: {x: 3, y: 30}
     Duration: {x: 0, y: 0}
-    modifers:
-    - propertyType: 6
-      modificationType: 0
-      value_1: -10
-      value_2: 0
-      value_3: 0
-      serializedtype: NumberOfOat
-    subEvents: []
+    modifers: []
+    subEvents:
+    - label: Sub event
+      occuringMethod: 2
+      chance:
+        constantValue: 0
+        useGameValue: 0
+        valueType: 2
+        serializedtype: CropProduction
+      Duration: {x: 0, y: 0}
+      modifers:
+      - propertyType: 6
+        modificationType: 0
+        value_1: -10
+        value_2: 0
+        value_3: 0
+        serializedtype: NumberOfOat
+      startingMessage: []
+      endingMessage: []
   - name: Death!
     ID: 3
     useSubEventMessages: 0
@@ -235,12 +248,12 @@ MonoBehaviour:
     scenario: -1
     oddsOfOccuring:
       constantValue: 0
-      useGameValue: 1
+      useGameValue: 0
       valueType: 15
       serializedtype: DyingRateOfWife
     MaxOccurencePerPlaythrough:
-      constantValue: 999
-      useGameValue: 1
+      constantValue: 0
+      useGameValue: 0
       valueType: 10
       serializedtype: NumberOfWife
     Occurence: {x: 3, y: 30}
