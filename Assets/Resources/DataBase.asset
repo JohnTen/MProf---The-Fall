@@ -451,7 +451,7 @@ MonoBehaviour:
     - The War has ended
     scenario: -1
     oddsOfOccuring:
-      constantValue: 0
+      constantValue: 0.2
       useGameValue: 0
       valueType: 15
       serializedtype: DyingRateOfWife
@@ -466,7 +466,7 @@ MonoBehaviour:
       useGameValue: 0
       valueType: 10
       serializedtype: NumberOfWife
-    Occurence: {x: 0, y: 30}
+    Occurence: {x: 15, y: 30}
     Duration: {x: 0, y: 10}
     modifers:
     - propertyType: 19
