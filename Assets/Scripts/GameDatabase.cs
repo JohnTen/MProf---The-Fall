@@ -10,7 +10,7 @@ public class CropModelList
 }
 
 [CreateAssetMenu]
-public class Database : ScriptableObject
+public class GameDatabase : ScriptableObject
 {
 	public List<Crop> cropList = new List<Crop>();
 	public List<Animal> animalList = new List<Animal>();
