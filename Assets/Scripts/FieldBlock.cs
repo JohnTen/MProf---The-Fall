@@ -56,7 +56,7 @@ public class FieldBlock : MonoInteractable
 			}
 		}
 		else if (
-			status.currentCrop.growingPeriod > status.currentGrowingPeriod &&
+			status.currentGrowingPeriod == 0 &&
 			GameDataManager.CurrentFertiliser > 0 &&
 			!status.fertilised)
 		{
