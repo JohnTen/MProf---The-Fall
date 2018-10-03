@@ -19,19 +19,19 @@ public class GameDatabase : ScriptableObject
 
 	public List<GameEvent> eventList = new List<GameEvent>();
 
-	static Database _instance;
-	public static Database Instance
+	static GameDatabase _instance;
+	public static GameDatabase Instance
 	{
 		get
 		{
 			if (_instance != null)
 				return _instance;
 			
-			_instance = (Database)Resources.Load("DataBase");
+			_instance = (GameDatabase)Resources.Load("DataBase");
 			if (_instance != null)
 				return _instance;
 
-			_instance = CreateInstance<Database>();
+			_instance = CreateInstance<GameDatabase>();
 			return _instance;
 		}
 	}

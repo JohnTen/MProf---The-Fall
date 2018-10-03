@@ -21,11 +21,11 @@ public class RuntimeEvent
 
 	public RuntimeEvent(int id)
 	{
-		if (id < 0 || id >= Database.Instance.eventList.Count)
+		if (id < 0 || id >= GameDatabase.Instance.eventList.Count)
 			throw new System.ArgumentOutOfRangeException();
 
 		ID = id;
-		eventRef = Database.Instance.eventList[id];
+		eventRef = GameDatabase.Instance.eventList[id];
 
 		subEvents = new RuntimeSubEvent[eventRef.subEvents.Length];
 		for (int i = 0; i < subEvents.Length; i ++)

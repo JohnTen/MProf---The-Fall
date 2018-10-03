@@ -12,7 +12,7 @@ public class EventManager : MonoSingleton<EventManager>
 		base.Awake();
 		//TimeManager.OnTimePassed += TimeManager_OnTimePassed;
 		EventList = new List<RuntimeEvent>();
-		foreach (var e in Database.Instance.eventList)
+		foreach (var e in GameDatabase.Instance.eventList)
 		{
 			EventList.Add(new RuntimeEvent(e.ID));
 		}

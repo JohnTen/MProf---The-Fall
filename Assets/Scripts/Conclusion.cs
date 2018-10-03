@@ -138,9 +138,9 @@ public class Conclusion : MonoSingleton<Conclusion>
 		if (OnCalculateFamilyConsumption != null)
 			OnCalculateFamilyConsumption.Invoke();
 		var familyConsumption = 0;
-		for (int i = 0; i < Database.Instance.familyList.Count; i++)
+		for (int i = 0; i < GameDatabase.Instance.familyList.Count; i++)
 		{
-			familyConsumption += Mathf.CeilToInt(Database.Instance.familyList[i].requiredWheat * GameDataManager.GetFamilyNumber(i));
+			familyConsumption += Mathf.CeilToInt(GameDatabase.Instance.familyList[i].requiredWheat * GameDataManager.GetFamilyNumber(i));
 		}
 		familyConsumption = 
 			Mathf.RoundToInt(
@@ -161,9 +161,9 @@ public class Conclusion : MonoSingleton<Conclusion>
 		if (OnCalculateAnimalConsumption != null)
 			OnCalculateAnimalConsumption.Invoke();
 		var animalConsumption = 0;
-		for (int i = 0; i < Database.Instance.animalList.Count; i++)
+		for (int i = 0; i < GameDatabase.Instance.animalList.Count; i++)
 		{
-			animalConsumption += Mathf.CeilToInt(Database.Instance.animalList[i].requiredOat * GameDataManager.GetAnimalNumber(i));
+			animalConsumption += Mathf.CeilToInt(GameDatabase.Instance.animalList[i].requiredOat * GameDataManager.GetAnimalNumber(i));
 		}
 		animalConsumption = 
 			Mathf.RoundToInt(
@@ -182,8 +182,8 @@ public class Conclusion : MonoSingleton<Conclusion>
 
 		// Fertiliser
 		GameDataManager.CurrentFertiliser += 
-			GameDataManager.CurrentChicken * Database.Instance.animalList[0].ProvidedFertiliser + 
-			GameDataManager.CurrentOx * Database.Instance.animalList[1].ProvidedFertiliser;
+			GameDataManager.CurrentChicken * GameDatabase.Instance.animalList[0].ProvidedFertiliser + 
+			GameDataManager.CurrentOx * GameDatabase.Instance.animalList[1].ProvidedFertiliser;
 
 		// Events
 		if (OnCalculateEvents != null)

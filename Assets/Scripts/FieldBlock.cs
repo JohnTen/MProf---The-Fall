@@ -90,7 +90,7 @@ public class FieldBlock : MonoInteractable
 
 	private void CropMenu_OnCropChosed(int index)
 	{
-		var crop = Database.Instance.cropList[index];
+		var crop = GameDatabase.Instance.cropList[index];
 		WorldUI.CropMenu.CloseMenu();
 		if (status.plantedCrop)
 		{
@@ -166,7 +166,7 @@ public class FieldBlock : MonoInteractable
 
 	private void CreateCropModel()
 	{
-		cropModel = Instantiate(Database.Instance.GetGrowingModel(status.currentCrop.index, status.currentGrowingPeriod));
+		cropModel = Instantiate(GameDatabase.Instance.GetGrowingModel(status.currentCrop.index, status.currentGrowingPeriod));
 		cropModel.transform.position = this.transform.position;
 		cropModel.transform.SetParent(this.transform);
 	}

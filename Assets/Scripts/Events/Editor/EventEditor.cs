@@ -8,7 +8,7 @@ using UnityUtility.MVS;
 
 public class EventEditor : EditorWindow
 {
-	private static Database database;
+	private static GameDatabase database;
 	private Vector2 scrollPosition;
 
 	private List<bool> deleteFlags = new List<bool>();
@@ -23,7 +23,7 @@ public class EventEditor : EditorWindow
 	{
 		GetWindow<EventEditor>();
 
-		database = Database.Instance;
+		database = GameDatabase.Instance;
 	}
 
 	private void OnGUI()
