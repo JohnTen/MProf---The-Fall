@@ -36,16 +36,16 @@ public class RuntimeEvent
 
 	public void CheckEvent()
 	{
-		if (occuring && CanStop())
-		{
-			TryStop();
-		}
-
 		if (!occuring)
 		{
 			occuring = TryInvoke();
 			if (occuring && CanStop())
 				occuring = false;
+		}
+    
+		if (occuring && CanStop())
+		{
+			TryStop();
 		}
 	}
 

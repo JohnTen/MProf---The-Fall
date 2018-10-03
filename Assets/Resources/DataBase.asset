@@ -66,7 +66,7 @@ MonoBehaviour:
     startingMessage:
     - Wife is due to give birth in a few weeks
     endingMessage:
-    - Wife gave birth to a boy, his name is sob
+    - Wife gave birth to a boy, his name is Sob
     scenario: -1
     oddsOfOccuring:
       constantValue: 0.3
@@ -78,7 +78,7 @@ MonoBehaviour:
       useGameValue: 0
       valueType: 2
       serializedtype: CropProduction
-    Occurence: {x: 2, y: 30}
+    Occurence: {x: 5, y: 30}
     Duration: {x: 1, y: 4}
     modifers:
     - propertyType: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
       serializedtype: DyingRateOfWife
     subEvents:
     - label: Give Birth
-      occuringMethod: 0
+      occuringMethod: 2
       chance:
         constantValue: 1
         useGameValue: 0
@@ -119,36 +119,32 @@ MonoBehaviour:
     ID: 1
     useSubEventMessages: 0
     startingMessage:
-    - 'Kid went to go get food '
+    - 'Cob left the farm to hunt for food '
     endingMessage:
-    - +15 to to Food
+    - 'Cob is back
+
+      +15 to Food'
     scenario: -1
     oddsOfOccuring:
-      constantValue: 0
+      constantValue: 1
       useGameValue: 0
       valueType: 2
       serializedtype: CropProduction
     MaxOccurencePerPlaythrough:
-      constantValue: 0
+      constantValue: 3
       useGameValue: 0
       valueType: 2
       serializedtype: CropProduction
-    Occurence: {x: 4, y: 30}
+    Occurence: {x: 2, y: 15}
     Duration: {x: 1, y: 3}
-    modifers: []
-    subEvents:
-    - label: Sub event
-      occuringMethod: 0
-      chance:
-        constantValue: 0
-        useGameValue: 0
-        valueType: 2
-        serializedtype: CropProduction
-      Duration: {x: 0, y: 0}
-      modifers: []
-      startingMessage: []
-      endingMessage: []
-      isExecuting: 0
+    modifers:
+    - propertyType: 12
+      modificationType: 0
+      value_1: -1
+      value_2: 0
+      value_3: 0
+      serializedtype: NumberOfSon
+    subEvents: []
     occuring: 0
     occuredTimes: 0
     occurationStartDate: 0
@@ -183,67 +179,40 @@ MonoBehaviour:
     occuring: 0
     occuredTimes: 3
     occurationStartDate: 0
-  - name: Test1
+  - name: Death!
     ID: 3
     useSubEventMessages: 0
     startingMessage:
-    - Test start 1
-    - Test start 2
-    - Test start3
-    endingMessage:
-    - Test end 1
-    - Test end 2
-    - Test end 3
-    scenario: -1
-    oddsOfOccuring:
-      constantValue: 1
-      useGameValue: 0
-      valueType: 2
-      serializedtype: CropProduction
-    MaxOccurencePerPlaythrough:
-      constantValue: 99
-      useGameValue: 0
-      valueType: 2
-      serializedtype: CropProduction
-    Occurence: {x: 0, y: 30}
-    Duration: {x: 0, y: 2}
-    modifers: []
-    subEvents: []
-    occuring: 0
-    occuredTimes: 0
-    occurationStartDate: 0
-  - name: RandomDeath!
-    ID: 4
-    useSubEventMessages: 0
-    startingMessage:
-    - Your wife just died
+    - 'Nob tripped and fell into the fireplace
+
+      He is no more'
     endingMessage: []
     scenario: -1
     oddsOfOccuring:
       constantValue: 0
       useGameValue: 1
-      valueType: 15
-      serializedtype: DyingRateOfWife
+      valueType: 17
+      serializedtype: DyingRateOfSon
     MaxOccurencePerPlaythrough:
       constantValue: 999
       useGameValue: 1
-      valueType: 10
-      serializedtype: NumberOfWife
-    Occurence: {x: 0, y: 30}
+      valueType: 12
+      serializedtype: NumberOfSon
+    Occurence: {x: 1, y: 30}
     Duration: {x: 0, y: 0}
     modifers:
-    - propertyType: 10
+    - propertyType: 12
       modificationType: 0
       value_1: -1
       value_2: 0
       value_3: 0
-      serializedtype: NumberOfWife
+      serializedtype: NumberOfSon
     subEvents: []
     occuring: 0
     occuredTimes: 0
     occurationStartDate: 0
-  - name: RandomDeath!
-    ID: 5
+  - name: Death!
+    ID: 4
     useSubEventMessages: 0
     startingMessage:
     - Your daughter just died
@@ -259,7 +228,7 @@ MonoBehaviour:
       useGameValue: 1
       valueType: 11
       serializedtype: NumberOfDaughter
-    Occurence: {x: 0, y: 30}
+    Occurence: {x: 1, y: 30}
     Duration: {x: 0, y: 0}
     modifers:
     - propertyType: 11
@@ -273,7 +242,7 @@ MonoBehaviour:
     occuredTimes: 0
     occurationStartDate: 0
   - name: RandomDeath!
-    ID: 6
+    ID: 5
     useSubEventMessages: 0
     startingMessage:
     - Your son just died
@@ -299,106 +268,6 @@ MonoBehaviour:
       value_3: 0
       serializedtype: NumberOfSon
     subEvents: []
-    occuring: 0
-    occuredTimes: 0
-    occurationStartDate: 0
-  - name: Test2
-    ID: 7
-    useSubEventMessages: 1
-    startingMessage:
-    - Your son just died
-    endingMessage: []
-    scenario: -1
-    oddsOfOccuring:
-      constantValue: 1
-      useGameValue: 0
-      valueType: 17
-      serializedtype: DyingRateOfSon
-    MaxOccurencePerPlaythrough:
-      constantValue: 999
-      useGameValue: 0
-      valueType: 12
-      serializedtype: NumberOfSon
-    Occurence: {x: 0, y: 30}
-    Duration: {x: 1, y: 3}
-    modifers:
-    - propertyType: 12
-      modificationType: 0
-      value_1: -1
-      value_2: 0
-      value_3: 0
-      serializedtype: 
-    subEvents:
-    - label: Start 1
-      occuringMethod: 2
-      chance:
-        constantValue: 0.2
-        useGameValue: 0
-        valueType: 2
-        serializedtype: CropProduction
-      Duration: {x: 0, y: 2}
-      modifers: []
-      startingMessage:
-      - Start 1
-      endingMessage:
-      - End 1
-      isExecuting: 0
-    - label: Start 2
-      occuringMethod: 2
-      chance:
-        constantValue: 0.2
-        useGameValue: 0
-        valueType: 2
-        serializedtype: CropProduction
-      Duration: {x: 0, y: 2}
-      modifers: []
-      startingMessage:
-      - Start 2
-      endingMessage:
-      - End 2
-      isExecuting: 0
-    - label: Start 3
-      occuringMethod: 3
-      chance:
-        constantValue: 0.5
-        useGameValue: 0
-        valueType: 2
-        serializedtype: CropProduction
-      Duration: {x: 0, y: 2}
-      modifers: []
-      startingMessage:
-      - Start 3
-      endingMessage:
-      - End 3
-      isExecuting: 0
-    - label: Start 4
-      occuringMethod: 3
-      chance:
-        constantValue: 0.5
-        useGameValue: 0
-        valueType: 2
-        serializedtype: CropProduction
-      Duration: {x: 0, y: 2}
-      modifers: []
-      startingMessage:
-      - Start 4
-      endingMessage:
-      - End 4
-      isExecuting: 0
-    - label: Start 5
-      occuringMethod: 3
-      chance:
-        constantValue: 0.5
-        useGameValue: 0
-        valueType: 2
-        serializedtype: CropProduction
-      Duration: {x: 0, y: 2}
-      modifers: []
-      startingMessage:
-      - Start 5
-      endingMessage:
-      - End 5
-      isExecuting: 0
     occuring: 0
     occuredTimes: 0
     occurationStartDate: 0
