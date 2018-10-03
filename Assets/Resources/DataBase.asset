@@ -69,7 +69,7 @@ MonoBehaviour:
     - Wife gave birth to a boy, his name is Sob
     scenario: -1
     oddsOfOccuring:
-      constantValue: 0.3
+      constantValue: 0.2
       useGameValue: 0
       valueType: 2
       serializedtype: CropProduction
@@ -111,7 +111,7 @@ MonoBehaviour:
         serializedtype: NumberOfSon
       startingMessage: []
       endingMessage: []
-  - name: 'Sent Kid Hunting '
+  - name: Kid Hunter
     ID: 1
     useSubEventMessages: 0
     startingMessage:
@@ -122,12 +122,12 @@ MonoBehaviour:
       +15 to Food'
     scenario: -1
     oddsOfOccuring:
-      constantValue: 1
+      constantValue: 0.2
       useGameValue: 0
       valueType: 2
       serializedtype: CropProduction
     MaxOccurencePerPlaythrough:
-      constantValue: 3
+      constantValue: 1
       useGameValue: 0
       valueType: 2
       serializedtype: CropProduction
@@ -141,40 +141,33 @@ MonoBehaviour:
       value_3: 0
       serializedtype: NumberOfSon
     subEvents: []
-    occuring: 0
-    occuredTimes: 0
-    occurationStartDate: 0
   - name: Lord's Request
     ID: 2
     useSubEventMessages: 0
     startingMessage:
-    - Lord requests (demands) sob come work on his garden
-    endingMessage:
-    - 'Sob has returned '
+    - Lord requests (demands) Oats
+    endingMessage: []
     scenario: -1
     oddsOfOccuring:
-      constantValue: 0
+      constantValue: 0.15
       useGameValue: 0
       valueType: 2
       serializedtype: CropProduction
     MaxOccurencePerPlaythrough:
-      constantValue: 0
+      constantValue: 3
       useGameValue: 0
       valueType: 2
       serializedtype: CropProduction
-    Occurence: {x: 5, y: 40}
-    Duration: {x: 1, y: 2}
+    Occurence: {x: 3, y: 30}
+    Duration: {x: 0, y: 0}
     modifers:
-    - propertyType: 2
+    - propertyType: 6
       modificationType: 0
-      value_1: -1
+      value_1: -10
       value_2: 0
       value_3: 0
-      serializedtype: CropProduction
+      serializedtype: NumberOfOat
     subEvents: []
-    occuring: 0
-    occuredTimes: 3
-    occurationStartDate: 0
   - name: Death!
     ID: 3
     useSubEventMessages: 0
@@ -194,7 +187,7 @@ MonoBehaviour:
       useGameValue: 1
       valueType: 12
       serializedtype: NumberOfSon
-    Occurence: {x: 1, y: 30}
+    Occurence: {x: 3, y: 30}
     Duration: {x: 0, y: 0}
     modifers:
     - propertyType: 12
@@ -204,14 +197,13 @@ MonoBehaviour:
       value_3: 0
       serializedtype: NumberOfSon
     subEvents: []
-    occuring: 0
-    occuredTimes: 0
-    occurationStartDate: 0
   - name: Death!
     ID: 4
     useSubEventMessages: 0
     startingMessage:
-    - Your daughter just died
+    - 'Sal poked the Ox, Ox pocked Sal back, in the face, with a leg.
+
+      Sal is no more. '
     endingMessage: []
     scenario: -1
     oddsOfOccuring:
@@ -224,7 +216,7 @@ MonoBehaviour:
       useGameValue: 1
       valueType: 11
       serializedtype: NumberOfDaughter
-    Occurence: {x: 1, y: 30}
+    Occurence: {x: 3, y: 30}
     Duration: {x: 0, y: 0}
     modifers:
     - propertyType: 11
@@ -234,33 +226,30 @@ MonoBehaviour:
       value_3: 0
       serializedtype: NumberOfDaughter
     subEvents: []
-  - name: RandomDeath!
+  - name: Death!
     ID: 5
     useSubEventMessages: 0
     startingMessage:
-    - Your son just died
+    - Your Wife just died
     endingMessage: []
     scenario: -1
     oddsOfOccuring:
       constantValue: 0
       useGameValue: 1
-      valueType: 17
-      serializedtype: DyingRateOfSon
+      valueType: 15
+      serializedtype: DyingRateOfWife
     MaxOccurencePerPlaythrough:
       constantValue: 999
       useGameValue: 1
-      valueType: 12
-      serializedtype: NumberOfSon
-    Occurence: {x: 0, y: 30}
+      valueType: 10
+      serializedtype: NumberOfWife
+    Occurence: {x: 3, y: 30}
     Duration: {x: 0, y: 0}
     modifers:
-    - propertyType: 12
+    - propertyType: 10
       modificationType: 0
       value_1: -1
       value_2: 0
       value_3: 0
-      serializedtype: NumberOfSon
+      serializedtype: NumberOfWife
     subEvents: []
-    occuring: 0
-    occuredTimes: 0
-    occurationStartDate: 0
