@@ -29,7 +29,7 @@ public class GameEvent
 	[MinMaxSlider(0, 10)] public Vector2Int Duration;
 
 	public GameValueModifer[] modifers = new GameValueModifer[0];
-	public SubEvent[] SubEvents = new SubEvent[0];
+	public SubEvent[] subEvents = new SubEvent[0];
 
 	public bool occuring;
 	public int occuredTimes = 0;
@@ -68,158 +68,11 @@ public class GameEvent
 			modifers[i] = new GameValueModifer(gEvent.modifers[i]);
 		}
 
-		SubEvents = new SubEvent[gEvent.SubEvents.Length];
-		for (int i = 0; i < SubEvents.Length; i++)
+		subEvents = new SubEvent[gEvent.subEvents.Length];
+		for (int i = 0; i < subEvents.Length; i++)
 		{
-			SubEvents[i] = new SubEvent(gEvent.SubEvents[i]);
+			subEvents[i] = new SubEvent(gEvent.subEvents[i]);
 		}
-	}
-
-	public void CheckEvent()
-	{
-		if (occuring && CanStop())
-		{
-			Stop();
-		}
-
-		if (!occuring)
-		{
-			occuring = TryInvoke();
-			if (CanStop())
-				occuring = false;
-		}
-	}
-
-	bool TryInvoke()
-	{
-		if (occuredTimes >= MaxOccurencePerPlaythrough ||
-			!Occurence.IsIncluded(TimeManager.Date) ||
-			Random.value > oddsOfOccuring)
-			return false;
-
-		Debug.Log("Event Occuring, Start date " + TimeManager.Date);
-		if (OnEventOccuring != null)
-			OnEventOccuring.Invoke(this);
-
-		occurationStartDate = TimeManager.Date;
-		occuredTimes++;
-		for (int i = 0; i < modifers.Length; i ++)
-		{
-			// If this is a event that has no duration(forever), merge modifiers into the basic game values
-			if (Duration == Vector2Int.zero)
-				GameDataManager.GameValues.MergeModifier(modifers[i]);
-			else
-				GameDataManager.GameValues.AddModifier(modifers[i]);
-		}
-		
-		var chanceOnce = SubEvents.Select((x) => { return x.occuringMethod == SubEvent.OccuringMethod.Chance_Once; });
-		var chanceSum = 0f;
-		var chanceNum = 0f;
-
-		for (int i = 0; i < SubEvents.Length; i ++)
-		{
-			if (!chanceOnce.ElementAt(i) || SubEvents[i].isExecuting) continue;
-			chanceSum += SubEvents[i].chance;
-		}
-
-		chanceNum = Random.value * chanceSum;
-		chanceSum = 0;
-		for (int i = 0; i < SubEvents.Length; i++)
-		{
-			if (SubEvents[i].occuringMethod == SubEvent.OccuringMethod.AtTheEnd_Once ||
-				SubEvents[i].occuringMethod == SubEvent.OccuringMethod.AtTheEnd_Multiple)
-				continue;
-			if (chanceOnce.ElementAt(i))
-			{
-				chanceSum += SubEvents[i].chance;
-				if (chanceSum > chanceNum)
-				{
-					Debug.Log("Subevent " + i + " is executing");
-					SubEvents[i].Execute();
-					chanceNum = float.PositiveInfinity;
-				}
-				continue;
-			}
-			
-			if (Random.value < SubEvents[i].chance)
-			{
-				SubEvents[i].Execute();
-			}
-		}
-
-		return true;
-	}
-
-	bool CanStop()
-	{
-		foreach (var se in SubEvents)
-		{
-			if (se.isExecuting && !se.CanStop(occurationStartDate, TimeManager.Date))
-			{
-				Debug.Log(se.Duration);
-				return false;
-			}
-		}
-
-		if (Duration == Vector2Int.zero) return true;
-		if (Duration.RandomBetween() > (TimeManager.Date - occurationStartDate))
-			return false;
-
-		return true;
-	}
-
-	void Stop()
-	{
-		Debug.Log("Event Stoping, ending date: " + TimeManager.Date);
-		if (OnEventStoping != null)
-			OnEventStoping.Invoke(this);
-		for (int i = 0; i < modifers.Length; i++)
-		{
-			GameDataManager.GameValues.RemoveModifier(modifers[i]);
-		}
-
-		var chanceOnce = SubEvents.Select((x) => { return x.occuringMethod == SubEvent.OccuringMethod.AtTheEnd_Once; });
-		var chanceSum = 0f;
-		var chanceNum = 0f;
-
-		for (int i = 0; i < SubEvents.Length; i++)
-		{
-			if (!chanceOnce.ElementAt(i) || SubEvents[i].isExecuting) continue;
-			chanceSum += SubEvents[i].chance;
-		}
-
-		chanceNum = Random.value * chanceSum;
-		chanceSum = 0;
-
-		for (int i = 0; i < SubEvents.Length; i++)
-		{
-			if (SubEvents[i].occuringMethod == SubEvent.OccuringMethod.AtTheEnd_Once ||
-				SubEvents[i].occuringMethod == SubEvent.OccuringMethod.AtTheEnd_Multiple)
-			{
-				if (SubEvents[i].isExecuting)
-					SubEvents[i].Stop();
-				continue;
-			}
-
-			if (chanceOnce.ElementAt(i))
-			{
-				chanceSum += SubEvents[i].chance;
-				if (chanceSum > chanceNum)
-				{
-					Debug.Log("Subevent " + i + " is executing");
-					SubEvents[i].Execute();
-					chanceNum = float.PositiveInfinity;
-				}
-				continue;
-			}
-
-			if (Random.value < SubEvents[i].chance)
-			{
-				SubEvents[i].Execute();
-			}
-		}
-
-		occuring = false;
 	}
 }
 
@@ -228,12 +81,13 @@ public class SubEvent
 {
 	public enum OccuringMethod
 	{
-		Chance_Once,
-		Chance_Multiple,
-		AtTheEnd_Once,
+		Chose_One,
+		Chose_Multiple,
+		AtTheEnd_One,
 		AtTheEnd_Multiple,
 	}
 
+	public string label = "Sub event";
 	public OccuringMethod occuringMethod;
 	public DynamicValue chance = new DynamicValue();
 	[MinMaxSlider(0, 20)] public Vector2Int Duration;
@@ -246,6 +100,7 @@ public class SubEvent
 
 	public SubEvent(SubEvent sEvent)
 	{
+		label = sEvent.label;
 		occuringMethod = sEvent.occuringMethod;
 		chance = new DynamicValue(sEvent.chance);
 		Duration = sEvent.Duration;
@@ -267,38 +122,5 @@ public class SubEvent
 		{
 			modifers[i] = sEvent.modifers[i];
 		}
-	}
-
-	public void Execute()
-	{
-		for (int i = 0; i < modifers.Length; i++)
-		{
-			// If this is a event that has no duration(forever), merge modifiers into the basic game values
-			if (Duration == Vector2Int.zero)
-				GameDataManager.GameValues.MergeModifier(modifers[i]);
-			else
-			{
-				GameDataManager.GameValues.AddModifier(modifers[i]);
-				isExecuting = true;
-			}
-		}
-	}
-
-	public bool CanStop(int startingDate, int currentDate)
-	{
-		if (Duration == Vector2Int.zero) return true;
-		if (Duration.RandomBetween() <= currentDate - startingDate) return true;
-		return false;
-	}
-
-	public void Stop()
-	{
-		if (Duration == Vector2.zero) return;
-
-		for (int i = 0; i < modifers.Length; i++)
-		{
-			GameDataManager.GameValues.RemoveModifier(modifers[i]);
-		}
-		isExecuting = false;
 	}
 }

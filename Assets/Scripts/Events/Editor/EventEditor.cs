@@ -1,26 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityUtility;
 using UnityUtility.MVS;
-using System.Reflection;
-using System;
 
 public class EventEditor : EditorWindow
 {
 	private static Database database;
 	private Vector2 scrollPosition;
 
-	private bool confirmDeletion;
-
+	private List<bool> deleteFlags = new List<bool>();
 	private List<bool> foldOutFlags = new List<bool>();
 	private List<bool> secFoldOutFlags = new List<bool>();
 	private List<bool> thdFoldOutFlags = new List<bool>();
 	private List<bool> forFoldOutFlags = new List<bool>();
 	private List<bool> fifFoldOutFlags = new List<bool>();
-	private List<bool> sixFoldOutFlags = new List<bool>();
-	private List<bool> sevFoldOutFlags = new List<bool>();
 
 	[MenuItem("Event Management/Edit Events")]
 	private static void Init()
@@ -44,22 +40,52 @@ public class EventEditor : EditorWindow
 
 		var list = database.eventList;
 
-		while (secFoldOutFlags.Count < 4)
-			secFoldOutFlags.Add(false);
-
-
 		for (int i = 0; i < list.Count; i++)
 		{
 			try
 			{
-				// Displaying one card
-				if (i >= foldOutFlags.Count)
+				while (i * 5 >= foldOutFlags.Count)
 					foldOutFlags.Add(false);
+				while (i >= deleteFlags.Count)
+					deleteFlags.Add(false);
 
 				GUILayout.BeginVertical("box");
-				foldOutFlags[i] = EditorGUILayout.Foldout(foldOutFlags[i], list[i].name);
-				if (foldOutFlags[i])
+				GUILayout.BeginHorizontal();
+				foldOutFlags[i * 5] = EditorGUILayout.Foldout(foldOutFlags[i * 5], list[i].name);
+
+				if (!deleteFlags[i])
 				{
+					GUI.color = Color.red;
+					if (GUILayout.Button("Delete", GUILayout.Width(60)))
+					{
+						deleteFlags[i] = true;
+					}
+					GUI.color = Color.white;
+				}
+				else
+				{
+					GUI.color = Color.green;
+					if (GUILayout.Button("Yes", GUILayout.Width(50)))
+					{
+						list.RemoveAt(i);
+						deleteFlags.RemoveAt(i);
+						EditorUtility.SetDirty(database);
+					}
+					GUI.color = Color.white;
+
+					GUI.color = Color.red;
+					if (GUILayout.Button("No", GUILayout.Width(50)))
+					{
+						deleteFlags.RemoveAt(i);
+					}
+					GUI.color = Color.white;
+				}
+				GUILayout.EndHorizontal();
+
+				if (foldOutFlags[i * 5])
+				{
+					AddIndent();
+					GUILayout.BeginVertical();
 					EditorUtility.SetDirty(database);
 
 					list[i].ID = i;
@@ -74,60 +100,12 @@ public class EventEditor : EditorWindow
 					list[i].Duration = DrawMinMaxslider(list[i].Duration, typeof(GameEvent), "Duration");
 					list[i].useSubEventMessages = EditorGUILayout.Toggle("Use Sub Event Messages", list[i].useSubEventMessages);
 
-					secFoldOutFlags[0] = EditorGUILayout.Foldout(secFoldOutFlags[0], "Starting Messages");
-					if (secFoldOutFlags[0])
-					{
-						list[i].startingMessage = DrawMessageAreas(list[i].startingMessage);
-					}
-					secFoldOutFlags[1] = EditorGUILayout.Foldout(secFoldOutFlags[1], "Ending Messages");
-					if (secFoldOutFlags[1])
-					{
-						list[i].endingMessage = DrawMessageAreas(list[i].endingMessage);
-					}
-					secFoldOutFlags[2] = EditorGUILayout.Foldout(secFoldOutFlags[2], "Modifiers");
-					if (secFoldOutFlags[2])
-					{
-						list[i].modifers = DrawModifiers(list[i].modifers, thdFoldOutFlags);
-					}
-					secFoldOutFlags[3] = EditorGUILayout.Foldout(secFoldOutFlags[3], "Sub Events");
-					if (secFoldOutFlags[3])
-					{
-						list[i].SubEvents = DrawSubEvents(list[i].SubEvents, forFoldOutFlags, fifFoldOutFlags, sixFoldOutFlags, sevFoldOutFlags);
-					}
-
-					// Deletion box
-					GUILayout.BeginVertical("box");
-
-					if (!confirmDeletion)
-					{
-						// Button for Delete this card
-						GUI.color = Color.red;
-						if (GUILayout.Button("Delete Event"))
-						{
-							confirmDeletion = true;
-						}
-						GUI.color = Color.white;
-					}
-					else
-					{
-						GUILayout.Label("Are you sure?");
-						GUI.color = Color.red;
-						if (GUILayout.Button("No"))
-						{
-							confirmDeletion = false;
-						}
-						GUI.color = Color.white;
-
-						GUI.color = Color.green;
-						if (GUILayout.Button("Yes"))
-						{
-							list.RemoveAt(i);
-							confirmDeletion = false;
-							EditorUtility.SetDirty(database);
-						}
-						GUI.color = Color.white;
-					}
-
+					foldOutFlags[i * 5 + 1] = DrawMessageAreas("Starting Message", foldOutFlags[i * 5 + 1], ref list[i].startingMessage);
+					foldOutFlags[i * 5 + 2] = DrawMessageAreas("Ending Message"  , foldOutFlags[i * 5 + 2], ref list[i].endingMessage);
+					foldOutFlags[i * 5 + 3] = DrawModifiers	 ("Modifiers"		, foldOutFlags[i * 5 + 3], secFoldOutFlags, ref list[i].modifers);
+					foldOutFlags[i * 5 + 4] = DrawSubEvents("Sub Events", foldOutFlags[i * 5 + 4], thdFoldOutFlags, forFoldOutFlags, fifFoldOutFlags, ref list[i].subEvents);
+					
+					MinusIndent();
 					GUILayout.EndVertical();
 				}
 				else
@@ -171,10 +149,33 @@ public class EventEditor : EditorWindow
 		return new Vector2Int(Mathf.RoundToInt(min), Mathf.RoundToInt(max));
 	}
 
-	private SubEvent[] DrawSubEvents(SubEvent[] subEvents, List<bool> foldingFlag, List<bool> foldingFlag2, List<bool> foldingFlag3, List<bool> foldingFlag4)
+	private bool DrawSubEvents(string label, bool foldout, List<bool> foldingFlag, List<bool> foldingFlag2, List<bool> foldingFlag3, ref SubEvent[] subEvents)
 	{
 		List<SubEvent> list = new List<SubEvent>(subEvents);
+
 		GUILayout.BeginVertical("box");
+		GUILayout.BeginHorizontal();
+		foldout = EditorGUILayout.Foldout(foldout, label);
+
+		GUI.color = Color.green;
+		if (GUILayout.Button("+", GUILayout.MaxWidth(50)))
+		{
+			if (list.Count > 0)
+				list.Add(new SubEvent(list[list.Count - 1]));
+			else
+				list.Add(new SubEvent());
+		}
+		GUI.color = Color.white;
+		GUILayout.EndHorizontal();
+
+		if (!foldout)
+		{
+			GUILayout.EndVertical();
+			return foldout;
+		}
+
+		AddIndent();
+		GUILayout.BeginVertical();
 
 		for (int i = 0; i < list.Count; i++)
 		{
@@ -182,7 +183,7 @@ public class EventEditor : EditorWindow
 				foldingFlag.Add(false);
 			GUILayout.BeginVertical("box");
 			GUILayout.BeginHorizontal();
-			foldingFlag[i] = EditorGUILayout.Foldout(foldingFlag[i], "Sub Event " + (i + 1));
+			foldingFlag[i] = EditorGUILayout.Foldout(foldingFlag[i], list[i].label);
 
 			GUI.color = Color.red;
 			if (GUILayout.Button("X", GUILayout.MaxWidth(50)))
@@ -194,8 +195,9 @@ public class EventEditor : EditorWindow
 			GUILayout.EndHorizontal();
 			if (foldingFlag[i])
 			{
+				list[i].label = EditorGUILayout.TextField("Label", list[i].label);
 				list[i].occuringMethod = (SubEvent.OccuringMethod)EditorGUILayout.EnumPopup("Occuring Method", list[i].occuringMethod);
-				if (list[i].occuringMethod != SubEvent.OccuringMethod.AtTheEnd_Once)
+				if (list[i].occuringMethod != SubEvent.OccuringMethod.AtTheEnd_One)
 				{
 					DynamicValueField("Occuring Chance", list[i].chance);
 				}
@@ -205,54 +207,89 @@ public class EventEditor : EditorWindow
 				while ((i * 3 + 2) >= foldingFlag2.Count)
 					foldingFlag2.Add(false);
 
-				foldingFlag2[i * 3] = EditorGUILayout.Foldout(foldingFlag2[i * 3], "Modifiers");
-				if (foldingFlag2[i * 3])
-					list[i].modifers = DrawModifiers(list[i].modifers, foldingFlag3);
-				
-				if ((i * 2 + 1) >= foldingFlag4.Count)
-				{
-					foldingFlag4.Add(false);
-				}
+				foldingFlag2[i * 3] = DrawModifiers("Modifiers", foldingFlag2[i * 3], foldingFlag3, ref list[i].modifers);
 
-				foldingFlag2[i * 3 + 1] = EditorGUILayout.Foldout(foldingFlag2[i * 3 + 1], "Starting Message");
-				if (foldingFlag2[i * 3 + 1])
-				{
-					list[i].startingMessage = DrawMessageAreas(list[i].startingMessage);
-				}
-
-				foldingFlag2[i * 3 + 2] = EditorGUILayout.Foldout(foldingFlag2[i * 3 + 2], "Ending Message");
-				if (foldingFlag2[i * 3 + 2])
-				{
-					list[i].endingMessage = DrawMessageAreas(list[i].endingMessage);
-				}
+				foldingFlag2[i * 3 + 1] = DrawMessageAreas("Starting Message", foldingFlag2[i * 3 + 1], ref list[i].startingMessage);
+				foldingFlag2[i * 3 + 2] = DrawMessageAreas("Ending Message"  , foldingFlag2[i * 3 + 2], ref list[i].endingMessage);
 			}
 
 			GUILayout.EndVertical();
 		}
-
-		GUI.color = Color.green;
-		if (GUILayout.Button("+"))
-		{
-			list.Add(new SubEvent());
-		}
-		GUI.color = Color.white;
+		
+		GUILayout.EndVertical();
+		MinusIndent();
 		GUILayout.EndVertical();
 
-		return list.ToArray();
+		subEvents = list.ToArray();
+		
+		return foldout;
 	}
 
-	private GameValueModifer[] DrawModifiers(GameValueModifer[] modifers, List<bool> foldingFlag)
+	private bool DrawConditionGroup(string label, bool foldout, ref EventConditionGroup group)
+	{
+		var list = group.conditions;
+		GUILayout.BeginVertical("box");
+		GUILayout.BeginHorizontal();
+		foldout = EditorGUILayout.Foldout(foldout, label);
+
+		GUI.color = Color.green;
+		if (GUILayout.Button("+", GUILayout.MaxWidth(50)))
+		{
+			if (list.Count > 0)
+				list.Add(new EventCondition(list[list.Count - 1]));
+			else
+				list.Add(new EventCondition());
+		}
+		GUI.color = Color.white;
+		GUILayout.EndHorizontal();
+
+		if (!foldout)
+		{
+			GUILayout.EndVertical();
+			return foldout;
+		}
+
+		return foldout;
+	}
+
+	private bool DrawModifiers(string label, bool foldout, List<bool> foldingFlag, ref GameValueModifer[] modifers)
 	{
 		List<GameValueModifer> list = new List<GameValueModifer>(modifers);
+
 		GUILayout.BeginVertical("box");
+		GUILayout.BeginHorizontal();
+		foldout = EditorGUILayout.Foldout(foldout, label);
+
+		GUI.color = Color.green;
+		if (GUILayout.Button("+", GUILayout.MaxWidth(50)))
+		{
+			if (list.Count > 0)
+				list.Add(new GameValueModifer(list[list.Count - 1]));
+			else
+				list.Add(new GameValueModifer());
+		}
+		GUI.color = Color.white;
+		GUILayout.EndHorizontal();
+
+		if (!foldout)
+		{
+			GUILayout.EndVertical();
+			return foldout;
+		}
+
+		AddIndent();
+		GUILayout.BeginVertical();
 		
 		for (int i = 0; i < list.Count; i++)
 		{
 			if (i >= foldingFlag.Count)
 				foldingFlag.Add(false);
+
 			GUILayout.BeginVertical("box");
 			GUILayout.BeginHorizontal();
-			foldingFlag[i] = EditorGUILayout.Foldout(foldingFlag[i], list[i].propertyType.ToString());
+
+			DeserialiseGameValueType(list[i]);
+			foldingFlag[i] = EditorGUILayout.Foldout(foldingFlag[i], list[i].serializedtype);
 
 			GUI.color = Color.red;
 			if (GUILayout.Button("X", GUILayout.MaxWidth(50)))
@@ -264,16 +301,7 @@ public class EventEditor : EditorWindow
 			GUILayout.EndHorizontal();
 			if (foldingFlag[i])
 			{
-				GameValueType type;
-				try
-				{
-					type = (GameValueType)Enum.Parse(typeof(GameValueType), list[i].serializedtype);
-				}
-				catch
-				{
-					type = GameValueType.CropProduction;
-				}
-				list[i].propertyType = (GameValueType)EditorGUILayout.EnumPopup("Property Type", type);
+				list[i].propertyType = (GameValueType)EditorGUILayout.EnumPopup("Property Type", list[i].propertyType);
 				list[i].serializedtype = list[i].propertyType.ToString();
 				list[i].modificationType = (ModificationType)EditorGUILayout.EnumPopup("Modification Type", list[i].modificationType);
 				list[i].value_1 = EditorGUILayout.FloatField("Value 1", list[i].value_1);
@@ -283,21 +311,41 @@ public class EventEditor : EditorWindow
 			GUILayout.EndVertical();
 		}
 
-		GUI.color = Color.green;
-		if (GUILayout.Button("+"))
-		{
-			list.Add(new GameValueModifer());
-		}
-		GUI.color = Color.white;
+		GUILayout.EndVertical();
+		MinusIndent();
 		GUILayout.EndVertical();
 
-		return list.ToArray();
+		modifers = list.ToArray();
+		return foldout;
 	}
 
-	private string[] DrawMessageAreas(string[] messages)
+	private bool DrawMessageAreas(string label, bool foldout, ref string[] messages)
 	{
 		List<string> list = new List<string>(messages);
+
 		GUILayout.BeginVertical("box");
+		GUILayout.BeginHorizontal();
+		foldout = EditorGUILayout.Foldout(foldout, label);
+
+		GUI.color = Color.green;
+		if (GUILayout.Button("+", GUILayout.MaxWidth(50)))
+		{
+			if (list.Count > 0)
+				list.Add(list[list.Count - 1]);
+			else
+				list.Add("");
+		}
+		GUI.color = Color.white;
+		GUILayout.EndHorizontal();
+
+		if (!foldout)
+		{
+			GUILayout.EndVertical();
+			return foldout;
+		}
+
+		AddIndent();
+		GUILayout.BeginVertical();
 		for (int i = 0; i < list.Count; i ++)
 		{
 			GUILayout.BeginHorizontal("box");
@@ -314,33 +362,24 @@ public class EventEditor : EditorWindow
 			GUILayout.EndHorizontal();
 		}
 
-		GUI.color = Color.green;
-		if (GUILayout.Button("+"))
-		{
-			list.Add("");
-		}
-		GUI.color = Color.white;
+		messages = list.ToArray();
+		
+		GUILayout.EndVertical();
 		GUILayout.EndVertical();
 
-		return list.ToArray();
+		MinusIndent();
+		return foldout;
 	}
 
 	private void DynamicValueField(DynamicValue dv)
 	{
 		GUILayout.BeginHorizontal();
 		dv.useGameValue = EditorGUILayout.Toggle(dv.useGameValue, GUILayout.Width(20));
+
+		DeserialiseGameValueType(dv);
 		if (dv.useGameValue)
 		{
-			GameValueType type;
-			try
-			{
-				type = (GameValueType)Enum.Parse(typeof(GameValueType), dv.serializedtype);
-			}
-			catch
-			{
-				type = GameValueType.CropProduction;
-			}
-			dv.valueType = (GameValueType)EditorGUILayout.EnumPopup(type);
+			dv.valueType = (GameValueType)EditorGUILayout.EnumPopup(dv.valueType);
 			dv.serializedtype = dv.valueType.ToString();
 		}
 		else
@@ -354,24 +393,60 @@ public class EventEditor : EditorWindow
 	{
 		GUILayout.BeginHorizontal();
 		dv.useGameValue = EditorGUILayout.Toggle(label, dv.useGameValue, GUILayout.ExpandWidth(false));
+
+		DeserialiseGameValueType(dv);
 		if (dv.useGameValue)
 		{
-			GameValueType type;
-			try
-			{
-				type = (GameValueType)Enum.Parse(typeof(GameValueType), dv.serializedtype);
-			}
-			catch
-			{
-				type = GameValueType.CropProduction;
-			}
-			dv.valueType = (GameValueType)EditorGUILayout.EnumPopup(type);
+			dv.valueType = (GameValueType)EditorGUILayout.EnumPopup(dv.valueType);
 			dv.serializedtype = dv.valueType.ToString();
 		}
 		else
 		{
 			dv.constantValue = EditorGUILayout.FloatField(dv.constantValue);
 		}
+		GUILayout.EndHorizontal();
+	}
+
+	private void DeserialiseGameValueType(GameValueModifer modifer)
+	{
+		GameValueType type;
+		try
+		{
+			type = (GameValueType)Enum.Parse(typeof(GameValueType), modifer.serializedtype);
+		}
+		catch
+		{
+			type = GameValueType.CropProduction;
+		}
+		modifer.propertyType = type;
+		modifer.serializedtype = type.ToString();
+	}
+
+	private void DeserialiseGameValueType(DynamicValue value)
+	{
+		GameValueType type;
+		try
+		{
+			type = (GameValueType)Enum.Parse(typeof(GameValueType), value.serializedtype);
+		}
+		catch
+		{
+			type = GameValueType.CropProduction;
+		}
+		value.valueType = type;
+		value.serializedtype = type.ToString();
+	}
+
+	public void AddIndent()
+	{
+		//EditorGUI.indentLevel++;
+		GUILayout.BeginHorizontal();
+		GUILayout.Space(20);
+	}
+
+	public void MinusIndent()
+	{
+		//EditorGUI.indentLevel--;
 		GUILayout.EndHorizontal();
 	}
 }

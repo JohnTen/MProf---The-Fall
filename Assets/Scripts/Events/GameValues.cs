@@ -7,9 +7,7 @@ using UnityUtility.MVS;
 public enum GameValueType
 {
 	WheatConsumption,
-	WheatConsumptionOffset,
 	OatConsumption,
-	OatConsumptionOffset,
 	CropProduction,
 	SeedProduction,
 	SeedDroppingRate,

@@ -9,4 +9,5 @@ public class Family
 	public int index;
 	public int requiredWheat;
 	public int ProvidedFood;
+	public int ProvidedFertiliser;
 }
