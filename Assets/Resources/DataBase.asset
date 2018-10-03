@@ -414,8 +414,32 @@ MonoBehaviour:
       valueType: 15
       serializedtype: DyingRateOfWife
     StartingCondition:
-      operators: 
-      conditions: []
+      operators: 020000000100000002000000
+      conditions:
+      - type: 1
+        operator: 0
+        value_1:
+          constantValue: 7
+          useGameValue: 0
+          valueType: 0
+          serializedtype: 
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 0
+          serializedtype: 
+      - type: 1
+        operator: 0
+        value_1:
+          constantValue: 8
+          useGameValue: 0
+          valueType: 0
+          serializedtype: 
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 0
+          serializedtype: 
     ContinualCondition:
       operators: 
       conditions: []
@@ -456,8 +480,20 @@ MonoBehaviour:
       valueType: 15
       serializedtype: DyingRateOfWife
     StartingCondition:
-      operators: 02000000
+      operators: 020000000100000002000000
       conditions:
+      - type: 1
+        operator: 0
+        value_1:
+          constantValue: 6
+          useGameValue: 0
+          valueType: 0
+          serializedtype: 
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 0
+          serializedtype: 
       - type: 1
         operator: 0
         value_1:
@@ -504,8 +540,20 @@ MonoBehaviour:
       valueType: 15
       serializedtype: DyingRateOfWife
     StartingCondition:
-      operators: 02000000
+      operators: 020000000100000002000000
       conditions:
+      - type: 1
+        operator: 0
+        value_1:
+          constantValue: 6
+          useGameValue: 0
+          valueType: 0
+          serializedtype: 
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 0
+          serializedtype: 
       - type: 1
         operator: 0
         value_1:
