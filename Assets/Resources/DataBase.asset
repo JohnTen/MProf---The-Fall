@@ -111,10 +111,6 @@ MonoBehaviour:
         serializedtype: NumberOfSon
       startingMessage: []
       endingMessage: []
-      isExecuting: 0
-    occuring: 0
-    occuredTimes: 1
-    occurationStartDate: 3
   - name: 'Sent Kid Hunting '
     ID: 1
     useSubEventMessages: 0
@@ -238,9 +234,6 @@ MonoBehaviour:
       value_3: 0
       serializedtype: NumberOfDaughter
     subEvents: []
-    occuring: 0
-    occuredTimes: 0
-    occurationStartDate: 0
   - name: RandomDeath!
     ID: 5
     useSubEventMessages: 0

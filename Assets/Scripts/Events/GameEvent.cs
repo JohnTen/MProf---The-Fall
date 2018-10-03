@@ -23,6 +23,8 @@ public class GameEvent
 	public string[] endingMessage = new string[0];
 	public Scenario scenario;
 	public DynamicValue oddsOfOccuring = new DynamicValue();
+	public EventConditionGroup StartingCondition;
+	public EventConditionGroup ContinualCondition;
 
 	public DynamicValue MaxOccurencePerPlaythrough = new DynamicValue();
 	[MinMaxSlider(0, 30)] public Vector2Int Occurence;
@@ -30,13 +32,6 @@ public class GameEvent
 
 	public GameValueModifer[] modifers = new GameValueModifer[0];
 	public SubEvent[] subEvents = new SubEvent[0];
-
-	public bool occuring;
-	public int occuredTimes = 0;
-	public int occurationStartDate;
-
-	public event Action<GameEvent> OnEventOccuring;
-	public event Action<GameEvent> OnEventStoping;
 
 	public GameEvent() { }
 	public GameEvent(GameEvent gEvent)
@@ -94,7 +89,9 @@ public class SubEvent
 	public GameValueModifer[] modifers = new GameValueModifer[0];
 	public string[] startingMessage = new string[0];
 	public string[] endingMessage = new string[0];
-	public bool isExecuting;
+
+	public EventConditionGroup StartingCondition;
+	public EventConditionGroup ContinualCondition;
 
 	public SubEvent() { }
 
