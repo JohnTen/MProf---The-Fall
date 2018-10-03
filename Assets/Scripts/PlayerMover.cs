@@ -8,8 +8,16 @@ public class PlayerMover : MonoBehaviour
 {
 	[SerializeField] float moveSpeed;
 	[SerializeField] Vector3 raycastOffset;
+	[SerializeField] new SpriteRenderer renderer;
+
+	Animator playerAnimator;
 
 	Vector3 target;
+
+	private void Awake()
+	{
+		playerAnimator = GetComponent<Animator>();
+	}
 
 	void Update ()
 	{
@@ -42,6 +50,7 @@ public class PlayerMover : MonoBehaviour
 
 	IEnumerator Moving()
 	{
+		playerAnimator.SetBool("Walking", true);
 		while (true)
 		{
 			var dir = target - transform.position;
@@ -59,7 +68,11 @@ public class PlayerMover : MonoBehaviour
 			}
 
 			transform.Translate(dir.normalized * moveDist);
+			
+			renderer.flipX = dir.x > 0;
+
 			yield return null;
 		}
+		playerAnimator.SetBool("Walking", false);
 	}
 }

@@ -10,23 +10,6 @@ public enum ArithmeticOperator
 	Div,
 }
 
-public enum LogicalOperator
-{
-	And,
-	Or,
-	Not,
-}
-
-public enum RelationalOperator
-{
-	Equal,
-	NotEqual,
-	Greater,
-	GreaterAndEqual,
-	Lesser,
-	LesserAndEqual,
-}
-
 [System.Serializable]
 public class DynamicFormula
 {

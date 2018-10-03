@@ -46,6 +46,36 @@ namespace UnityUtility.MVS
 			return ModifiedValue[valueType];
 		}
 
+		public float GetMultiplicationModify(E valueType)
+		{
+			float mul = 1;
+			for (int i = 0; i < modifiers.Count; i ++)
+			{
+				if (!modifiers[i].propertyType.Equals(valueType) ||
+					modifiers[i].modificationType != ModificationType.Mul_Add)
+					continue;
+
+				mul += modifiers[i].value_1;
+			}
+
+			return mul;
+		}
+
+		public float GetAdditionModify(E valueType)
+		{
+			float add = 1;
+			for (int i = 0; i < modifiers.Count; i++)
+			{
+				if (!modifiers[i].propertyType.Equals(valueType) ||
+					modifiers[i].modificationType != ModificationType.Add)
+					continue;
+
+				add += modifiers[i].value_1;
+			}
+
+			return add;
+		}
+
 		public virtual List<Modifier<E>> Modifiers
 		{
 			get { return modifiers; }

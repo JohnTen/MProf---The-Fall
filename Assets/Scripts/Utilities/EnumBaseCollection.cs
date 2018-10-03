@@ -156,6 +156,8 @@ namespace UnityUtility
 				}
 			}
 
+			keys = new List<E>();
+			vals = new List<V>();
 			while (keys.Count < values.Length) keys.Add(default(E));
 			while (vals.Count < values.Length) vals.Add(default(V));
 			
