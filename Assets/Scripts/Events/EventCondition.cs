@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,6 +24,7 @@ public enum ConditionType
 	GameEvent,
 }
 
+[System.Serializable]
 public class EventConditionGroup
 {
 	public List<LogicalOperator> operators = new List<LogicalOperator>();
@@ -90,6 +91,7 @@ public class EventConditionGroup
 	}
 }
 
+[System.Serializable]
 public class EventCondition
 {
 	public ConditionType type;

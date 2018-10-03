@@ -36,13 +36,23 @@ public class RuntimeEvent
 
 	public void CheckEvent()
 	{
-		if (!occuring)
+		if (!occuring && eventRef.StartingCondition.IsSatisfied())
 		{
 			occuring = TryInvoke();
 			if (occuring && CanStop())
 				occuring = false;
 		}
-    
+
+		if (!eventRef.ContinualCondition.IsSatisfied())
+			Abort();
+
+		foreach (var se in subEvents)
+		{
+			if (se.isExecuting &&
+				!se.eventRef.ContinualCondition.IsSatisfied())
+				se.Stop();
+		}
+
 		if (occuring && CanStop())
 		{
 			TryStop();
@@ -79,7 +89,8 @@ public class RuntimeEvent
 		for (int i = 0; i < subEvents.Length; i++)
 		{
 			if (subEvents[i].eventRef.occuringMethod != SubEvent.OccuringMethod.Chose_One || 
-				subEvents[i].isExecuting)
+				subEvents[i].isExecuting ||
+				!subEvents[i].eventRef.StartingCondition.IsSatisfied())
 				continue;
 			chanceSum += subEvents[i].eventRef.chance;
 		}
@@ -97,7 +108,9 @@ public class RuntimeEvent
 
 			if (subEvents[i].eventRef.occuringMethod == SubEvent.OccuringMethod.Chose_One)
 			{
-				if (chanceSum >= chanceNum) continue;
+				if (chanceSum >= chanceNum ||
+					!subEvents[i].eventRef.StartingCondition.IsSatisfied())
+					continue;
 
 				chanceSum += subEvents[i].eventRef.chance;
 				if (chanceSum > chanceNum)
@@ -105,7 +118,9 @@ public class RuntimeEvent
 					subEvents[i].Execute();
 				}
 			}
-			else if (Random.value < subEvents[i].eventRef.chance)
+			else 
+			if (Random.value < subEvents[i].eventRef.chance &&
+				subEvents[i].eventRef.StartingCondition.IsSatisfied())
 			{
 				subEvents[i].Execute();
 			}
@@ -120,6 +135,9 @@ public class RuntimeEvent
 
 	bool CanStop()
 	{
+		if (!eventRef.ContinualCondition.IsSatisfied())
+			return true;
+
 		foreach (var se in subEvents)
 		{
 			if (se.isExecuting && !se.CanStop())
@@ -152,7 +170,8 @@ public class RuntimeEvent
 		for (int i = 0; i < subEvents.Length; i++)
 		{
 			if (subEvents[i].eventRef.occuringMethod != SubEvent.OccuringMethod.AtTheEnd_One || 
-				subEvents[i].isExecuting)
+				subEvents[i].isExecuting ||
+				!subEvents[i].eventRef.StartingCondition.IsSatisfied())
 				continue;
 			chanceSum += subEvents[i].eventRef.chance;
 		}
@@ -164,7 +183,10 @@ public class RuntimeEvent
 		{
 			if (subEvents[i].eventRef.occuringMethod == SubEvent.OccuringMethod.AtTheEnd_One)
 			{
-				if (chanceSum >= chanceNum) continue;
+				if (chanceSum >= chanceNum ||
+					!subEvents[i].eventRef.StartingCondition.IsSatisfied())
+					continue;
+
 				chanceSum += subEvents[i].eventRef.chance;
 				if (chanceSum > chanceNum)
 				{
@@ -175,7 +197,8 @@ public class RuntimeEvent
 			}
 			else if (
 				subEvents[i].eventRef.occuringMethod == SubEvent.OccuringMethod.AtTheEnd_Multiple &&
-				Random.value < subEvents[i].eventRef.chance)
+				Random.value < subEvents[i].eventRef.chance &&
+				subEvents[i].eventRef.StartingCondition.IsSatisfied())
 			{
 				subEvents[i].Execute();
 			}
@@ -198,6 +221,22 @@ public class RuntimeEvent
 		{
 			if (subEvents[i].isExecuting)
 				subEvents[i].Stop();
+		}
+
+		occuring = false;
+	}
+
+	void Abort()
+	{
+		for (int i = 0; i < eventRef.modifers.Length; i++)
+		{
+			GameDataManager.GameValues.RemoveModifier(eventRef.modifers[i]);
+		}
+
+		foreach (var se in subEvents)
+		{
+			if (se.isExecuting)
+				se.Stop();
 		}
 
 		occuring = false;
@@ -243,6 +282,9 @@ public class RuntimeSubEvent
 
 	public bool CanStop()
 	{
+		if (!eventRef.ContinualCondition.IsSatisfied())
+			return true;
+
 		return occurationEndDate <= TimeManager.Date;
 	}
 

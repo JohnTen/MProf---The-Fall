@@ -44,14 +44,14 @@ public class EventEditor : EditorWindow
 		{
 			try
 			{
-				while (i * 5 + 4 >= foldOutFlags.Count)
+				while (i * 7 + 6 >= foldOutFlags.Count)
 					foldOutFlags.Add(false);
 				while (i >= deleteFlags.Count)
 					deleteFlags.Add(false);
 
 				GUILayout.BeginVertical("box");
 				GUILayout.BeginHorizontal();
-				foldOutFlags[i * 5] = EditorGUILayout.Foldout(foldOutFlags[i * 5], list[i].name);
+				foldOutFlags[i * 7] = EditorGUILayout.Foldout(foldOutFlags[i * 7], list[i].name);
 
 				if (!deleteFlags[i])
 				{
@@ -82,7 +82,7 @@ public class EventEditor : EditorWindow
 				}
 				GUILayout.EndHorizontal();
 
-				if (foldOutFlags[i * 5])
+				if (foldOutFlags[i * 7])
 				{
 					AddIndent();
 					GUILayout.BeginVertical();
@@ -100,10 +100,12 @@ public class EventEditor : EditorWindow
 					list[i].Duration = DrawMinMaxslider(list[i].Duration, typeof(GameEvent), "Duration");
 					list[i].useSubEventMessages = EditorGUILayout.Toggle("Use Sub Event Messages", list[i].useSubEventMessages);
 
-					foldOutFlags[i * 5 + 1] = DrawMessageAreas("Starting Message", foldOutFlags[i * 5 + 1], ref list[i].startingMessage);
-					foldOutFlags[i * 5 + 2] = DrawMessageAreas("Ending Message"  , foldOutFlags[i * 5 + 2], ref list[i].endingMessage);
-					foldOutFlags[i * 5 + 3] = DrawModifiers	 ("Modifiers"		, foldOutFlags[i * 5 + 3], secFoldOutFlags, ref list[i].modifers);
-					foldOutFlags[i * 5 + 4] = DrawSubEvents("Sub Events", foldOutFlags[i * 5 + 4], thdFoldOutFlags, forFoldOutFlags, fifFoldOutFlags, ref list[i].subEvents);
+					foldOutFlags[i * 7 + 1] = DrawConditionGroup("Starting Condition"	, foldOutFlags[i * 7 + 1], ref list[i].StartingCondition);
+					foldOutFlags[i * 7 + 2] = DrawConditionGroup("Continual Condition"	, foldOutFlags[i * 7 + 2], ref list[i].ContinualCondition);
+					foldOutFlags[i * 7 + 3] = DrawMessageAreas	("Starting Message"		, foldOutFlags[i * 7 + 3], ref list[i].startingMessage);
+					foldOutFlags[i * 7 + 4] = DrawMessageAreas	("Ending Message"		, foldOutFlags[i * 7 + 4], ref list[i].endingMessage);
+					foldOutFlags[i * 7 + 5] = DrawModifiers		("Modifiers"			, foldOutFlags[i * 7 + 5], secFoldOutFlags, ref list[i].modifers);
+					foldOutFlags[i * 7 + 6] = DrawSubEvents		("Sub Events"			, foldOutFlags[i * 7 + 6], thdFoldOutFlags, forFoldOutFlags, fifFoldOutFlags, ref list[i].subEvents);
 					
 					MinusIndent();
 					GUILayout.EndVertical();
@@ -204,13 +206,14 @@ public class EventEditor : EditorWindow
 				
 				list[i].Duration = DrawMinMaxslider(list[i].Duration, typeof(SubEvent), "Duration");
 				
-				while ((i * 3 + 2) >= foldingFlag2.Count)
+				while ((i * 5 + 4) >= foldingFlag2.Count)
 					foldingFlag2.Add(false);
-
-				foldingFlag2[i * 3] = DrawModifiers("Modifiers", foldingFlag2[i * 3], foldingFlag3, ref list[i].modifers);
-
-				foldingFlag2[i * 3 + 1] = DrawMessageAreas("Starting Message", foldingFlag2[i * 3 + 1], ref list[i].startingMessage);
-				foldingFlag2[i * 3 + 2] = DrawMessageAreas("Ending Message"  , foldingFlag2[i * 3 + 2], ref list[i].endingMessage);
+				
+				foldOutFlags[i * 5 + 0] = DrawConditionGroup("Starting Condition"	, foldOutFlags[i * 5 + 0], ref list[i].StartingCondition);
+				foldOutFlags[i * 5 + 1] = DrawConditionGroup("Continual Condition"	, foldOutFlags[i * 5 + 1], ref list[i].ContinualCondition);
+				foldingFlag2[i * 5 + 2] = DrawMessageAreas	("Starting Message"		, foldingFlag2[i * 5 + 2], ref list[i].startingMessage);
+				foldingFlag2[i * 5 + 3] = DrawMessageAreas	("Ending Message"		, foldingFlag2[i * 5 + 3], ref list[i].endingMessage);
+				foldingFlag2[i * 5 + 4] = DrawModifiers		("Modifiers"			, foldingFlag2[i * 5 + 4], foldingFlag3, ref list[i].modifers);
 			}
 
 			GUILayout.EndVertical();
@@ -228,6 +231,9 @@ public class EventEditor : EditorWindow
 	private bool DrawConditionGroup(string label, bool foldout, ref EventConditionGroup group)
 	{
 		var list = group.conditions;
+		var notList = new List<bool>();
+		var oprList = new List<LogicalOperator>();
+
 		GUILayout.BeginVertical("box");
 		GUILayout.BeginHorizontal();
 		foldout = EditorGUILayout.Foldout(foldout, label);
@@ -236,7 +242,10 @@ public class EventEditor : EditorWindow
 		if (GUILayout.Button("+", GUILayout.MaxWidth(50)))
 		{
 			if (list.Count > 0)
+			{
+				group.operators.Add(LogicalOperator.And);
 				list.Add(new EventCondition(list[list.Count - 1]));
+			}
 			else
 				list.Add(new EventCondition());
 		}
@@ -249,7 +258,125 @@ public class EventEditor : EditorWindow
 			return foldout;
 		}
 
+		// Seperate Not from other two operators
+		for (int i = 0; i < list.Count; i++)
+		{
+			notList.Add(false);
+		}
+
+		for (int i = 0, j = 0; i < group.operators.Count; i++)
+		{
+			if (group.operators[i] == LogicalOperator.Not)
+			{
+				notList[j] = true;
+			}
+			else
+			{
+				oprList.Add(group.operators[i]);
+				j++;
+				if (j >= list.Count)
+					break;
+			}
+		}
+
+		AddIndent();
+		GUILayout.BeginVertical();
+
+		for (int i = 0; i < list.Count; i ++)
+		{
+			GUILayout.BeginHorizontal("box");
+
+			// Button for delete this condition
+			GUI.color = Color.red;
+			if(GUILayout.Button("X", GUILayout.MaxWidth(50)))
+			{
+				list.RemoveAt(i);
+				notList.RemoveAt(i);
+				if (oprList.Count > i + 1)
+					oprList.RemoveAt(i);
+				else if (i - 1 >= 0)
+					oprList.RemoveAt(i - 1);
+
+				continue;
+			}
+			GUI.color = Color.white;
+			GUILayout.Space(3);
+
+			// Toggle for switch between EventCondition and ValueCondition
+			var isEventCond = list[i].type == ConditionType.GameEvent;
+			isEventCond = EditorGUILayout.Toggle(isEventCond);
+			if ((list[i].type == ConditionType.GameEvent) != isEventCond)
+			{
+				list[i] = new EventCondition()
+				{
+					type = isEventCond ? ConditionType.GameEvent : ConditionType.GameValue
+				};
+			}
+
+			// Button for toggle Not
+			if (notList[i])
+				GUI.color = Color.green;
+			else
+				GUI.color = Color.red;
+			if (GUILayout.Button("Not", GUILayout.Width(45)))
+			{
+				notList[i] = !notList[i];
+			}
+			GUI.color = Color.white;
+
+			if (list[i].type == ConditionType.GameValue)
+				ValueConditionField(list[i]);
+			else
+				EventConditionField(list[i]);
+
+			// Logical operators between conditions, the last condition won't need one
+			if (i < oprList.Count)
+			{
+				if (GUILayout.Button(oprList[i].ToString(), GUILayout.Width(45)))
+				{
+					if (oprList[i] == LogicalOperator.And)
+						oprList[i] = LogicalOperator.Or;
+					else
+						oprList[i] = LogicalOperator.And;
+				}
+			}
+			else
+			{
+				GUILayout.Space(50);
+			}
+			GUILayout.EndHorizontal();
+
+		}
+
+		// Update operators
+		group.operators.Clear();
+		for (int i = 0; i < notList.Count; i++)
+		{
+			if (notList[i])
+				group.operators.Add(LogicalOperator.Not);
+			if (oprList.Count > i)
+				group.operators.Add(oprList[i]);
+		}
+
+		GUILayout.EndVertical();
+		MinusIndent();
+		GUILayout.EndVertical();
+
 		return foldout;
+	}
+
+	private void ValueConditionField(EventCondition condition)
+	{
+		DynamicValueField(condition.value_1);
+		condition.@operator = (RelationalOperator)EditorGUILayout.EnumPopup(condition.@operator);
+		DynamicValueField(condition.value_2);
+	}
+
+	private void EventConditionField(EventCondition condition)
+	{
+		GUILayout.Label("When event");
+		condition.value_1.constantValue = EditorGUILayout.IntField((int)condition.value_1.constantValue);
+		GUILayout.Label(" is running.");
 	}
 
 	private bool DrawModifiers(string label, bool foldout, List<bool> foldingFlag, ref GameValueModifer[] modifers)

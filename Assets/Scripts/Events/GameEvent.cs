@@ -23,8 +23,8 @@ public class GameEvent
 	public string[] endingMessage = new string[0];
 	public Scenario scenario;
 	public DynamicValue oddsOfOccuring = new DynamicValue();
-	public EventConditionGroup StartingCondition;
-	public EventConditionGroup ContinualCondition;
+	public EventConditionGroup StartingCondition = new EventConditionGroup();
+	public EventConditionGroup ContinualCondition = new EventConditionGroup();
 
 	public DynamicValue MaxOccurencePerPlaythrough = new DynamicValue();
 	[MinMaxSlider(0, 30)] public Vector2Int Occurence;
@@ -90,8 +90,8 @@ public class SubEvent
 	public string[] startingMessage = new string[0];
 	public string[] endingMessage = new string[0];
 
-	public EventConditionGroup StartingCondition;
-	public EventConditionGroup ContinualCondition;
+	public EventConditionGroup StartingCondition = new EventConditionGroup();
+	public EventConditionGroup ContinualCondition = new EventConditionGroup();
 
 	public SubEvent() { }
 

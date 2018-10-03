@@ -43,6 +43,8 @@ public class Conclusion : MonoSingleton<Conclusion>
 
 	int paidWheat;
 	int paidOat;
+	int forcedPaidWheat;
+	int forcedPaidOat;
 
 	// When those event raised, the handlers can access to all the values they needed
 	// so it is not necessary to use parameters
@@ -71,9 +73,11 @@ public class Conclusion : MonoSingleton<Conclusion>
 		TaxCanvas.enabled = true;
 
 		var taxRate = GameDataManager.GameValues[GameValueType.TaxRate];
-		taxRateText.text = ((int)(taxRate * 100)).ToString() + "%";
-		paidWheat	= Mathf.CeilToInt(GameDataManager.CurrentWheat	* taxRate);
-		paidOat		= Mathf.CeilToInt(GameDataManager.CurrentOat	* taxRate);
+		taxRateText.text	= ((int)(taxRate * 100)).ToString() + "%";
+		paidWheat			= Mathf.CeilToInt(GameDataManager.CurrentWheat	* taxRate);
+		paidOat				= Mathf.CeilToInt(GameDataManager.CurrentOat	* taxRate);
+		forcedPaidWheat		= -Mathf.CeilToInt(GameDataManager.GameValues[GameValueType.ForcedTaxRate] * GameDataManager.CurrentWheat);
+		forcedPaidOat		= -Mathf.CeilToInt(GameDataManager.GameValues[GameValueType.ForcedTaxRate] * GameDataManager.CurrentOat);
 
 		StringBuilder sb = new StringBuilder(explanation);
 		sb.Replace("{0}", GameDataManager.CurrentWheat.ToString());
@@ -133,6 +137,8 @@ public class Conclusion : MonoSingleton<Conclusion>
 		oatTax.text					= paidOat.ToString();
 		GameDataManager.CurrentWheat	+= paidWheat;
 		GameDataManager.CurrentOat		+= paidOat;
+		GameDataManager.CurrentWheat += forcedPaidWheat;
+		GameDataManager.CurrentOat += forcedPaidOat;
 
 		// Family consumption
 		if (OnCalculateFamilyConsumption != null)
@@ -188,8 +194,8 @@ public class Conclusion : MonoSingleton<Conclusion>
 		// Events
 		if (OnCalculateEvents != null)
 			OnCalculateEvents.Invoke();
-		var wDiff = (int)GameDataManager.GameValues.GetBasicValue(GameValueType.NumberOfWheat)	- GameDataManager.CurrentWheat;
-		var oDiff = (int)GameDataManager.GameValues.GetBasicValue(GameValueType.NumberOfOat)	- GameDataManager.CurrentOat;
+		var wDiff = forcedPaidWheat;
+		var oDiff = forcedPaidOat;
 		ChangeColor(eventWheat, wDiff);
 		ChangeColor(eventOat, oDiff);
 		eventWheat.text = wDiff.ToString();
