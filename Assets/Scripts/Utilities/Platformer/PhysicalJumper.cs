@@ -8,7 +8,7 @@ namespace UnityUtility.Platformer
 	[RequireComponent(typeof(BaseGroundDetector))]
 	public class PhysicalJumper : BaseCharacterJumper
 	{
-		new protected Rigidbody2D rigidbody;
+		protected Rigidbody2D rigidbody;
 		protected BaseGroundDetector groundDetector;
 
 		protected override void Jumping()

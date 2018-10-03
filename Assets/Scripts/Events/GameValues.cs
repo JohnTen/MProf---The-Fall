@@ -38,9 +38,7 @@ public class GameValueModifer : Modifier<GameValueType>
 	public string serializedtype;
 
 	public GameValueModifer() : base() { }
-	public GameValueModifer(Modifier<GameValueType> modifier) : base(modifier)
-	{
-	}
+	public GameValueModifer(Modifier<GameValueType> modifier) : base(modifier) { }
 }
 
 [System.Serializable]

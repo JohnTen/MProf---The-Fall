@@ -35,6 +35,11 @@ public class Interactor : MonoBehaviour
 		{
 			currentObj.StopInteracting();
 		}
+
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			Application.Quit();
+		}
 	}
 
 	void CheckInteractable()

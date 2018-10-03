@@ -8,7 +8,7 @@ public class PlayerMover : MonoBehaviour
 {
 	[SerializeField] float moveSpeed;
 	[SerializeField] Vector3 raycastOffset;
-	[SerializeField] new SpriteRenderer renderer;
+	[SerializeField] SpriteRenderer renderer;
 
 	Animator playerAnimator;
 

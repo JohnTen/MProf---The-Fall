@@ -11,8 +11,8 @@ public class RuntimeEvent
 	
 	public bool occuring;
 	public int occuredTimes = 0;
-	public int occurationStartDate;
-	public int occurationEndDate;
+	public int occurationStartDate = -1;
+	public int occurationEndDate = -1;
 
 	public RuntimeSubEvent[] subEvents;
 
@@ -213,6 +213,10 @@ public class RuntimeEvent
 
 			if (se.isExecuting && !se.CanStop())
 			{
+				// Update ending date for event occuring checking
+				if (se.occurationEndDate > occurationEndDate)
+					occurationEndDate = se.occurationEndDate;
+
 				return;
 			}
 		}

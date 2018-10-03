@@ -137,12 +137,12 @@ public class EventCondition
 		{
 			foreach (var e in list)
 			{
-				if (e.occuring) return true;
+				if (e.occurationEndDate >= TimeManager.Date) return true;
 			}
 			return false;
 		}
 
-		return list[(int)value_1].occuring;
+		return list[(int)value_1].occurationEndDate >= TimeManager.Date;
 	}
 
 	bool CheckGameValueSatisfication()

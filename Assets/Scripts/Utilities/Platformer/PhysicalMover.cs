@@ -9,7 +9,7 @@ namespace UnityUtility.Platformer
 	{
 		[SerializeField] Bounds characterBound;
 
-		new protected Rigidbody2D rigidbody;
+		protected Rigidbody2D rigidbody;
 
 		protected override bool IsMovable(Vector3 vector)
 		{
