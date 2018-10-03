@@ -44,7 +44,7 @@ public class EventEditor : EditorWindow
 		{
 			try
 			{
-				while (i * 5 >= foldOutFlags.Count)
+				while (i * 5 + 4 >= foldOutFlags.Count)
 					foldOutFlags.Add(false);
 				while (i >= deleteFlags.Count)
 					deleteFlags.Add(false);
