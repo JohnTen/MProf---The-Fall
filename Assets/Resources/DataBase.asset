@@ -109,7 +109,7 @@ MonoBehaviour:
       valueType: 2
       serializedtype: CropProduction
     Occurence: {x: 5, y: 30}
-    Duration: {x: 1, y: 4}
+    Duration: {x: 3, y: 5}
     modifers:
     - propertyType: 0
       modificationType: 0
@@ -170,7 +170,7 @@ MonoBehaviour:
       +15 to Food'
     scenario: -1
     oddsOfOccuring:
-      constantValue: 0.1
+      constantValue: 0
       useGameValue: 0
       valueType: 2
       serializedtype: CropProduction
@@ -197,8 +197,8 @@ MonoBehaviour:
       useGameValue: 0
       valueType: 2
       serializedtype: CropProduction
-    Occurence: {x: 2, y: 15}
-    Duration: {x: 1, y: 3}
+    Occurence: {x: 0, y: 15}
+    Duration: {x: 3, y: 3}
     modifers:
     - propertyType: 12
       modificationType: 0
@@ -206,7 +206,30 @@ MonoBehaviour:
       value_2: 0
       value_3: 0
       serializedtype: NumberOfSon
-    subEvents: []
+    subEvents:
+    - label: Crops
+      occuringMethod: 2
+      chance:
+        constantValue: 0
+        useGameValue: 0
+        valueType: 2
+        serializedtype: CropProduction
+      Duration: {x: 0, y: 0}
+      modifers:
+      - propertyType: 5
+        modificationType: 0
+        value_1: 15
+        value_2: 0
+        value_3: 0
+        serializedtype: NumberOfWheat
+      startingMessage: []
+      endingMessage: []
+      StartingCondition:
+        operators: 
+        conditions: []
+      ContinualCondition:
+        operators: 
+        conditions: []
   - name: Lord's Request
     ID: 2
     useSubEventMessages: 0
@@ -461,7 +484,7 @@ MonoBehaviour:
       valueType: 10
       serializedtype: NumberOfWife
     Occurence: {x: 15, y: 30}
-    Duration: {x: 0, y: 5}
+    Duration: {x: 5, y: 5}
     modifers:
     - propertyType: 3
       modificationType: 0
@@ -527,7 +550,7 @@ MonoBehaviour:
       valueType: 10
       serializedtype: NumberOfWife
     Occurence: {x: 15, y: 30}
-    Duration: {x: 0, y: 10}
+    Duration: {x: 10, y: 10}
     modifers:
     - propertyType: 19
       modificationType: 0
@@ -587,7 +610,7 @@ MonoBehaviour:
       valueType: 10
       serializedtype: NumberOfWife
     Occurence: {x: 15, y: 30}
-    Duration: {x: 0, y: 10}
+    Duration: {x: 10, y: 10}
     modifers:
     - propertyType: 15
       modificationType: 0
@@ -610,7 +633,7 @@ MonoBehaviour:
     subEvents: []
   - name: Son goes to War
     ID: 9
-    useSubEventMessages: 1
+    useSubEventMessages: 0
     startingMessage:
     - 'The lord suggests Cob join the Army.
 
@@ -621,7 +644,7 @@ MonoBehaviour:
       He dies of infection the next day.'
     scenario: -1
     oddsOfOccuring:
-      constantValue: 1
+      constantValue: 0
       useGameValue: 0
       valueType: 15
       serializedtype: DyingRateOfWife
@@ -670,3 +693,111 @@ MonoBehaviour:
       value_3: 0
       serializedtype: NumberOfSon
     subEvents: []
+  - name: Bad Crops!
+    ID: 10
+    useSubEventMessages: 0
+    startingMessage:
+    - Its a bad harvest. All produce for this week is lost.
+    endingMessage: []
+    scenario: -1
+    oddsOfOccuring:
+      constantValue: 0.1
+      useGameValue: 0
+      valueType: 15
+      serializedtype: DyingRateOfWife
+    StartingCondition:
+      operators: 
+      conditions: []
+    ContinualCondition:
+      operators: 
+      conditions: []
+    MaxOccurencePerPlaythrough:
+      constantValue: 3
+      useGameValue: 0
+      valueType: 10
+      serializedtype: NumberOfWife
+    Occurence: {x: 10, y: 30}
+    Duration: {x: 0, y: 1}
+    modifers:
+    - propertyType: 2
+      modificationType: 2
+      value_1: 0
+      value_2: 0
+      value_3: 0
+      serializedtype: CropProduction
+    - propertyType: 3
+      modificationType: 2
+      value_1: 0
+      value_2: 0
+      value_3: 0
+      serializedtype: SeedProduction
+    subEvents: []
+  - name: Helper Son!
+    ID: 11
+    useSubEventMessages: 0
+    startingMessage:
+    - Fob has left to help a neighbouring farm.
+    endingMessage:
+    - Fob is back and brought some crop with him.
+    scenario: -1
+    oddsOfOccuring:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 15
+      serializedtype: DyingRateOfWife
+    StartingCondition:
+      operators: 
+      conditions:
+      - type: 0
+        operator: 1
+        value_1:
+          constantValue: 0
+          useGameValue: 1
+          valueType: 12
+          serializedtype: NumberOfSon
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 2
+          serializedtype: CropProduction
+    ContinualCondition:
+      operators: 
+      conditions: []
+    MaxOccurencePerPlaythrough:
+      constantValue: 1
+      useGameValue: 0
+      valueType: 10
+      serializedtype: NumberOfWife
+    Occurence: {x: 0, y: 30}
+    Duration: {x: 4, y: 6}
+    modifers:
+    - propertyType: 12
+      modificationType: 0
+      value_1: -1
+      value_2: 0
+      value_3: 0
+      serializedtype: NumberOfSon
+    subEvents:
+    - label: Sub event
+      occuringMethod: 2
+      chance:
+        constantValue: 0
+        useGameValue: 0
+        valueType: 2
+        serializedtype: CropProduction
+      Duration: {x: 0, y: 0}
+      modifers:
+      - propertyType: 5
+        modificationType: 0
+        value_1: 15
+        value_2: 0
+        value_3: 0
+        serializedtype: NumberOfWheat
+      startingMessage: []
+      endingMessage: []
+      StartingCondition:
+        operators: 
+        conditions: []
+      ContinualCondition:
+        operators: 
+        conditions: []
