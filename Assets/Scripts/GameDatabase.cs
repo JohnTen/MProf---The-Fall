@@ -18,6 +18,8 @@ public class GameDatabase : ScriptableObject
 	public List<CropModelList> cropGrowingModelList = new List<CropModelList>();
 
 	public List<GameEvent> eventList = new List<GameEvent>();
+	public GameObject normalFertiliserModel;
+	public GameObject corpseFertiliserModel;
 
 	static GameDatabase _instance;
 	public static GameDatabase Instance

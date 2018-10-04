@@ -153,6 +153,7 @@ public class Conclusion : MonoSingleton<Conclusion>
 				familyConsumption * 
 				GameDataManager.GameValues.GetMultiplicationModify(GameValueType.WheatConsumption) + 
 				GameDataManager.GameValues.GetAdditionModify(GameValueType.WheatConsumption));
+		
 		if (familyConsumption > GameDataManager.CurrentWheat)
 		{
 			GameDataManager.CurrentFamilyHunger += Mathf.CeilToInt((familyConsumption - GameDataManager.CurrentWheat) * GameDataManager.GameValues[GameValueType.FamilyHungerRate]);

@@ -63,7 +63,7 @@ namespace UnityUtility.MVS
 
 		public float GetAdditionModify(E valueType)
 		{
-			float add = 1;
+			float add = 0;
 			for (int i = 0; i < modifiers.Count; i++)
 			{
 				if (!modifiers[i].propertyType.Equals(valueType) ||

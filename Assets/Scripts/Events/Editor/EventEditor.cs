@@ -199,10 +199,7 @@ public class EventEditor : EditorWindow
 			{
 				list[i].label = EditorGUILayout.TextField("Label", list[i].label);
 				list[i].occuringMethod = (SubEvent.OccuringMethod)EditorGUILayout.EnumPopup("Occuring Method", list[i].occuringMethod);
-				if (list[i].occuringMethod != SubEvent.OccuringMethod.AtTheEnd_One)
-				{
-					DynamicValueField("Occuring Chance", list[i].chance);
-				}
+				DynamicValueField("Occuring Chance", list[i].chance);
 				
 				list[i].Duration = DrawMinMaxslider(list[i].Duration, typeof(SubEvent), "Duration");
 				

@@ -11,6 +11,7 @@ public class GameData
 	public int Date;
 	public GameValues gameValues;
 	public List<FieldBlockStatus> fieldBlocks;
+	public List<RuntimeEvent> events;
 }
 
 public class GameDataManager : GlobalSingleton<GameDataManager>
@@ -204,7 +205,8 @@ public class GameDataManager : GlobalSingleton<GameDataManager>
 		switch (id)
 		{
 			case 0: return (int)GameValues[GameValueType.NumberOfWife];
-			case 1: return (int)GameValues[GameValueType.NumberOfSon];
+			case 1: return (int)GameValues[GameValueType.NumberOfDaughter];
+			case 2: return (int)GameValues[GameValueType.NumberOfSon];
 		}
 
 		return -1;
@@ -264,6 +266,7 @@ public class GameDataManager : GlobalSingleton<GameDataManager>
 		data.Date = TimeManager.Date;
 		data.gameValues = gameValues;
 		data.fieldBlocks = new List<FieldBlockStatus>();
+		data.events = EventManager.Instance.EventList;
 
 		for (int i = 0; i < FieldManager.Instance.FieldBlocks.Count; i++)
 		{
@@ -320,6 +323,7 @@ public class GameDataManager : GlobalSingleton<GameDataManager>
 		TimeManager.Date = data.Date;
 		gameValues = data.gameValues;
 		UpdateValues();
+		EventManager.Instance.EventList = data.events;
 
 		var field = FieldManager.Instance.FieldBlocks;
 		if (field.Count != data.fieldBlocks.Count)

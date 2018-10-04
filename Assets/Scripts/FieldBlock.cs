@@ -23,6 +23,7 @@ public struct FieldBlockStatus
 public class FieldBlock : MonoInteractable
 {
 	[SerializeField] GameObject cropModel;
+	[SerializeField] GameObject fertiliserModel;
 
 	[SerializeField] FieldBlockStatus status;
 
@@ -86,6 +87,9 @@ public class FieldBlock : MonoInteractable
 
 		status.fertilised = true;
 		status.currentCrop.foodValue *= 2;
+		fertiliserModel = Instantiate(GameDatabase.Instance.normalFertiliserModel);
+		fertiliserModel.transform.position = this.transform.position;
+		fertiliserModel.transform.SetParent(this.transform);
 	}
 
 	private void CropMenu_OnCropChosed(int index)
@@ -157,6 +161,9 @@ public class FieldBlock : MonoInteractable
 	{
 		if (cropModel != null)
 			Destroy(cropModel);
+
+		if (fertiliserModel != null)
+			Destroy(fertiliserModel);
 
 		status.plantedCrop			= false;
 		status.fertilised			= false;

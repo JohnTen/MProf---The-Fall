@@ -4,6 +4,7 @@ using System.Text;
 using UnityEngine;
 using UnityUtility;
 
+[System.Serializable]
 public class RuntimeEvent
 {
 	public readonly int ID;
@@ -18,6 +19,13 @@ public class RuntimeEvent
 
 	public event Action<RuntimeEvent> OnEventOccuring;
 	public event Action<RuntimeEvent> OnEventStoping;
+	public event Action<RuntimeEvent, RuntimeSubEvent> OnSubEventOccuring;
+	public event Action<RuntimeEvent, RuntimeSubEvent> OnSubEventStoping;
+
+	public bool IsReachedEndingDate
+	{
+		get { return occurationEndDate <= TimeManager.Date; }
+	}
 
 	public RuntimeEvent(int id)
 	{
@@ -70,9 +78,16 @@ public class RuntimeEvent
 
 		Debug.Log("Event Occuring, Start date " + TimeManager.Date);
 
+		// Invoke occuring event
+		if (OnEventOccuring != null)
+			OnEventOccuring.Invoke(this);
+
+		// Update occuring data
 		occurationStartDate = TimeManager.Date;
 		occurationEndDate = occurationStartDate + eventRef.Duration.RandomBetween();
 		occuredTimes++;
+
+		// Apply modifiers
 		for (int i = 0; i < eventRef.modifers.Length; i++)
 		{
 			// If this is a event that has no duration(forever), merge modifiers into the basic game values
@@ -82,7 +97,7 @@ public class RuntimeEvent
 				GameDataManager.GameValues.AddModifier(eventRef.modifers[i]);
 		}
 
-		// Calculate occurence of sub events with occuring method of chose one
+		// Calculate occuring chance of sub events with occuring method of chose one
 		var chanceSum = 0f;
 		var chanceNum = 0f;
 
@@ -94,8 +109,7 @@ public class RuntimeEvent
 				continue;
 			chanceSum += subEvents[i].eventRef.chance;
 		}
-
-		Debug.Log("Event " + ID + ", Chance sum " + chanceSum);
+		
 		chanceNum = Random.value * chanceSum;
 		chanceSum = 0;
 
@@ -113,9 +127,11 @@ public class RuntimeEvent
 					continue;
 
 				chanceSum += subEvents[i].eventRef.chance;
-				if (chanceSum > chanceNum)
+				if (chanceSum >= chanceNum)
 				{
 					subEvents[i].Execute();
+					if (OnSubEventOccuring != null)
+						OnSubEventOccuring.Invoke(this, subEvents[i]);
 				}
 			}
 			else 
@@ -123,12 +139,10 @@ public class RuntimeEvent
 				subEvents[i].eventRef.StartingCondition.IsSatisfied())
 			{
 				subEvents[i].Execute();
+				if (OnSubEventOccuring != null)
+					OnSubEventOccuring.Invoke(this, subEvents[i]);
 			}
 		}
-
-		// Invoke occuring event
-		if (OnEventOccuring != null)
-			OnEventOccuring.Invoke(this);
 
 		return true;
 	}
@@ -147,7 +161,7 @@ public class RuntimeEvent
 			}
 		}
 		
-		if (occurationEndDate > TimeManager.Date)
+		if (!IsReachedEndingDate)
 			return false;
 
 		return true;
@@ -155,15 +169,25 @@ public class RuntimeEvent
 
 	void TryStop()
 	{
-		Debug.Log("Event Stoping, ending date: " + TimeManager.Date);
+		Debug.Log(eventRef.name + " trying to stop, ending date: " + TimeManager.Date);
 		if (OnEventStoping != null)
 			OnEventStoping.Invoke(this);
+		
+		// See if we are ending ending events
+		if (TryStopSubEvents())
+		{
+			// If so, return;
+			occuring = false;
+			return;
+		}
 
-		for (int i = 0; i < eventRef.modifers.Length; i++)
+		// Stop the event itself
+		for (int i = 0; i < eventRef.modifers.Length; i ++)
 		{
 			GameDataManager.GameValues.RemoveModifier(eventRef.modifers[i]);
 		}
-		
+
+		// Calculate occuring chance of sub events with occuring method of AtTheEnd_One
 		var chanceSum = 0f;
 		var chanceNum = 0f;
 
@@ -176,14 +200,20 @@ public class RuntimeEvent
 			chanceSum += subEvents[i].eventRef.chance;
 		}
 
+		Debug.Log("ChanceSum: " + chanceSum);
 		chanceNum = Random.value * chanceSum;
 		chanceSum = 0;
 
 		for (int i = 0; i < subEvents.Length; i++)
 		{
+			if (subEvents[i].eventRef.occuringMethod == SubEvent.OccuringMethod.Chose_Multiple ||
+				subEvents[i].eventRef.occuringMethod == SubEvent.OccuringMethod.Chose_One)
+				continue;
+
 			if (subEvents[i].eventRef.occuringMethod == SubEvent.OccuringMethod.AtTheEnd_One)
 			{
 				if (chanceSum >= chanceNum ||
+					subEvents[i].isExecuting ||
 					!subEvents[i].eventRef.StartingCondition.IsSatisfied())
 					continue;
 
@@ -192,42 +222,54 @@ public class RuntimeEvent
 				{
 					Debug.Log("Subevent " + i + " is executing");
 					subEvents[i].Execute();
+					if (OnSubEventOccuring != null)
+						OnSubEventOccuring.Invoke(this, subEvents[i]);
+
 					chanceNum = float.PositiveInfinity;
 				}
 			}
-			else if (
-				subEvents[i].eventRef.occuringMethod == SubEvent.OccuringMethod.AtTheEnd_Multiple &&
-				Random.value < subEvents[i].eventRef.chance &&
+			else 
+			if (Random.value < subEvents[i].eventRef.chance &&
 				subEvents[i].eventRef.StartingCondition.IsSatisfied())
 			{
 				subEvents[i].Execute();
+				if (OnSubEventOccuring != null)
+					OnSubEventOccuring.Invoke(this, subEvents[i]);
 			}
 		}
 
-		// If ending event is executing, we cannot stop this event now.
 		foreach (var se in subEvents)
 		{
-			if (se.eventRef.occuringMethod == SubEvent.OccuringMethod.Chose_One ||
-				se.eventRef.occuringMethod == SubEvent.OccuringMethod.Chose_Multiple)
-				continue;
-
-			if (se.isExecuting && !se.CanStop())
-			{
-				// Update ending date for event occuring checking
-				if (se.occurationEndDate > occurationEndDate)
-					occurationEndDate = se.occurationEndDate;
-
-				return;
-			}
+			// Update ending date for event occuring checking
+			if (se.occurationEndDate > occurationEndDate)
+				occurationEndDate = se.occurationEndDate;
 		}
 
-		for (int i = 0; i < subEvents.Length; i++)
-		{
-			if (subEvents[i].isExecuting)
-				subEvents[i].Stop();
-		}
+		// If ending date updated, return;
+		if (!IsReachedEndingDate) return;
+
+		Debug.Log(eventRef.name + " stopped, ending date: " + TimeManager.Date);
 
 		occuring = false;
+	}
+
+	bool TryStopSubEvents()
+	{
+		var end = false;
+		for (int i = 0; i < subEvents.Length; i++)
+		{
+			if (!subEvents[i].isExecuting) continue;
+			if (subEvents[i].IsReachedEndingDate)
+				subEvents[i].Stop();
+			if (!subEvents[i].isExecuting && OnSubEventStoping != null)
+				OnSubEventStoping.Invoke(this, subEvents[i]);
+
+			if (subEvents[i].eventRef.occuringMethod == SubEvent.OccuringMethod.AtTheEnd_Multiple ||
+				subEvents[i].eventRef.occuringMethod == SubEvent.OccuringMethod.AtTheEnd_One)
+				end = true;
+		}
+
+		return end;
 	}
 
 	void Abort()
@@ -247,6 +289,7 @@ public class RuntimeEvent
 	}
 }
 
+[System.Serializable]
 public class RuntimeSubEvent
 {
 	public readonly SubEvent eventRef;
@@ -254,6 +297,11 @@ public class RuntimeSubEvent
 	public int occurationStartDate = -1;
 	public int occurationEndDate = -1;
 	public bool isExecuting;
+
+	public bool IsReachedEndingDate
+	{
+		get { return occurationEndDate <= TimeManager.Date; }
+	}
 
 	public RuntimeSubEvent(SubEvent @event)
 	{
@@ -269,17 +317,19 @@ public class RuntimeSubEvent
 		
 		occurationStartDate = TimeManager.Date;
 		occurationEndDate = eventRef.Duration.RandomBetween() + occurationStartDate;
+		if (eventRef.Duration != Vector2Int.zero)
+			isExecuting = true;
+
 		for (int i = 0; i < eventRef.modifers.Length; i++)
 		{
 			// If this is a event that has no duration(forever), merge modifiers into the basic game values
-			if (eventRef.Duration == Vector2Int.zero)
+			if (!isExecuting)
 			{
 				GameDataManager.GameValues.MergeModifier(eventRef.modifers[i]);
 			}
 			else
 			{
 				GameDataManager.GameValues.AddModifier(eventRef.modifers[i]);
-				isExecuting = true;
 			}
 		}
 	}
@@ -294,7 +344,7 @@ public class RuntimeSubEvent
 
 	public void Stop()
 	{
-		if (eventRef.Duration == Vector2.zero) return;
+		if (!isExecuting) return;
 
 		for (int i = 0; i < eventRef.modifers.Length; i++)
 		{

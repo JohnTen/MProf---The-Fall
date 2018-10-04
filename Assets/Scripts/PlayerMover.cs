@@ -8,7 +8,7 @@ public class PlayerMover : MonoBehaviour
 {
 	[SerializeField] float moveSpeed;
 	[SerializeField] Vector3 raycastOffset;
-	[SerializeField] SpriteRenderer renderer;
+	[SerializeField] SpriteRenderer pcRender;
 
 	Animator playerAnimator;
 
@@ -25,7 +25,7 @@ public class PlayerMover : MonoBehaviour
 		{
 			var ray = GameDataManager.MainCamera.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
-			if (Physics.Raycast(ray, out hit))
+			if (Physics.Raycast(ray, out hit, 30))
 			{
 				MoveTowards(hit.point);
 			}
@@ -69,7 +69,7 @@ public class PlayerMover : MonoBehaviour
 
 			transform.Translate(dir.normalized * moveDist);
 			
-			renderer.flipX = dir.x > 0;
+			pcRender.flipX = dir.x > 0;
 
 			yield return null;
 		}

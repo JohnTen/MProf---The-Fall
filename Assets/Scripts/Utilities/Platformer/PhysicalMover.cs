@@ -9,7 +9,7 @@ namespace UnityUtility.Platformer
 	{
 		[SerializeField] Bounds characterBound;
 
-		protected Rigidbody2D rigidbody;
+		protected Rigidbody2D rigidBody;
 
 		protected override bool IsMovable(Vector3 vector)
 		{
@@ -42,11 +42,11 @@ namespace UnityUtility.Platformer
 
 		protected override void Moving(Vector3 vector)
 		{
-			var vel = rigidbody.velocity;
+			var vel = rigidBody.velocity;
 
 			vel.x = vector.x;
 			vel.y += vector.y;
-			rigidbody.velocity = vel;
+			rigidBody.velocity = vel;
 		}
 
 		protected virtual void Awake()
@@ -54,7 +54,7 @@ namespace UnityUtility.Platformer
 			Physics2D.queriesStartInColliders = false;
 			Physics2D.queriesHitTriggers = false;
 
-			rigidbody = GetComponent<Rigidbody2D>();
+			rigidBody = GetComponent<Rigidbody2D>();
 		}
 
 		protected virtual void FixedUpdate()

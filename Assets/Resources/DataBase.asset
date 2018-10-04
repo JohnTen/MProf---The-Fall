@@ -53,12 +53,12 @@ MonoBehaviour:
     ProvidedFertiliser: 0
   cropGrowingModelList:
   - models:
-    - {fileID: 1599083167999082, guid: d5c80fcf8eb883c4fa963b19e625af3c, type: 2}
-    - {fileID: 1647637685298478, guid: 6552ea7e787f94549acafdf27ce1c837, type: 2}
+    - {fileID: 1694441300873736, guid: 8bd2d27a40c94c14b953ab23ed15af82, type: 2}
+    - {fileID: 1158925162261758, guid: 9d9eaee16ef92c749bc48b336e8f1d73, type: 2}
   - models:
-    - {fileID: 1383955921637276, guid: 0ae2249206ef8314ead753fb5cd62ae2, type: 2}
-    - {fileID: 1815598618852438, guid: 0517c9c2da96a8c4b84ceca0e80a881a, type: 2}
-    - {fileID: 1530363282148904, guid: ec08e2b6f6ba85a4e8f2dbe9669c6269, type: 2}
+    - {fileID: 1166154215026446, guid: d58a78de6a8dc0646b8d02d94d52726f, type: 2}
+    - {fileID: 1458799794971660, guid: 40ccc907c4dff0148a0a06c463b35afb, type: 2}
+    - {fileID: 1369337820829568, guid: 280b82556c5e553468cf8a3d8c6e1536, type: 2}
   eventList:
   - name: Pregnant Wife
     ID: 0
@@ -801,3 +801,7 @@ MonoBehaviour:
       ContinualCondition:
         operators: 
         conditions: []
+  normalFertiliserModel: {fileID: 1839906539185826, guid: 5755f03a94ab8564d8dd95cff468c902,
+    type: 2}
+  corpseFertiliserModel: {fileID: 1915673026167930, guid: 570fc993815d63f40a74606acfc14826,
+    type: 2}

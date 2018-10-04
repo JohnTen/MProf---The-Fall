@@ -8,18 +8,18 @@ namespace UnityUtility.Platformer
 	[RequireComponent(typeof(BaseGroundDetector))]
 	public class PhysicalJumper : BaseCharacterJumper
 	{
-		protected Rigidbody2D rigidbody;
+		protected Rigidbody2D rigidBody;
 		protected BaseGroundDetector groundDetector;
 
 		protected override void Jumping()
 		{
 			if (groundDetector.OnGround)
 			{
-				var vel = rigidbody.velocity;
+				var vel = rigidBody.velocity;
 
 				// Concluded from S = Vi * t + 1/2 * a * t^2 and t = (Vf - Vi)/a
-				vel.y = Mathf.Sqrt(19.62f * jumpHeight * rigidbody.gravityScale);
-				rigidbody.velocity = vel;
+				vel.y = Mathf.Sqrt(19.62f * jumpHeight * rigidBody.gravityScale);
+				rigidBody.velocity = vel;
 			}
 		}
 
@@ -33,7 +33,7 @@ namespace UnityUtility.Platformer
 
 		protected virtual void Awake()
 		{
-			rigidbody = GetComponent<Rigidbody2D>();
+			rigidBody = GetComponent<Rigidbody2D>();
 			groundDetector = GetComponent<BaseGroundDetector>();
 		}
 	}

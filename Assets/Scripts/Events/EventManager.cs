@@ -21,6 +21,8 @@ public class EventManager : MonoSingleton<EventManager>
 		{
 			EventList[i].OnEventOccuring += EventManager_OnEventOccuring;
 			EventList[i].OnEventStoping += EventManager_OnEventStoping;
+			EventList[i].OnSubEventOccuring += EventManager_OnSubEventOccuring;
+			EventList[i].OnSubEventStoping += EventManager_OnSubEventStoping;
 		}
 		CheckEvents();
 	}
@@ -35,56 +37,55 @@ public class EventManager : MonoSingleton<EventManager>
 		GameDataManager.UpdateValues();
 	}
 
+	private void EventManager_OnSubEventStoping(RuntimeEvent ge, RuntimeSubEvent se)
+	{
+		if (!ge.eventRef.useSubEventMessages) return;
+		int index;
+		string message;
+
+		Debug.Log(se.eventRef.label + " Ending");
+
+		index = Random.Range(0, se.eventRef.endingMessage.Length);
+		message = se.eventRef.endingMessage[index];
+		MessageBox.DisplayMessage(se.eventRef.label, message);
+	}
+
+	private void EventManager_OnSubEventOccuring(RuntimeEvent ge, RuntimeSubEvent se)
+	{
+		if (!ge.eventRef.useSubEventMessages) return;
+		int index;
+		string message;
+
+		Debug.Log(se.eventRef.label + " Starting");
+
+		index = Random.Range(0, se.eventRef.startingMessage.Length);
+		message = se.eventRef.startingMessage[index];
+		MessageBox.DisplayMessage(se.eventRef.label, message);
+	}
+
 	private void EventManager_OnEventStoping(RuntimeEvent ge)
 	{
+		if (ge.eventRef.useSubEventMessages) return;
 		int index;
 		string message;
 
 		Debug.Log(ge.eventRef.name + " Ending");
-		if (ge.eventRef.useSubEventMessages)
-		{
-			foreach (var se in ge.subEvents)
-			{
-				if (!se.isExecuting) continue;
-				if (se.eventRef.endingMessage.Length <= 0)
-					continue;
-				index = Random.Range(0, se.eventRef.endingMessage.Length);
-				message = se.eventRef.endingMessage[index];
-				MessageBox.DisplayMessage(se.eventRef.label, message);
-			}
-		}
-		else
-		{
-			index = Random.Range(0, ge.eventRef.endingMessage.Length);
-			message = ge.eventRef.endingMessage[index];
-			MessageBox.DisplayMessage(ge.eventRef.name, message);
-		}
+		
+		index = Random.Range(0, ge.eventRef.endingMessage.Length);
+		message = ge.eventRef.endingMessage[index];
+		MessageBox.DisplayMessage(ge.eventRef.name, message);
 	}
 
 	private void EventManager_OnEventOccuring(RuntimeEvent ge)
 	{
+		if (ge.eventRef.useSubEventMessages) return;
 		int index;
 		string message;
 
 		Debug.Log(ge.eventRef.name + " Starting");
-
-		if (ge.eventRef.useSubEventMessages)
-		{
-			foreach (var se in ge.subEvents)
-			{
-				if (se.occurationStartDate != TimeManager.Date) continue;
-				if (se.eventRef.startingMessage.Length <= 0)
-					continue;
-				index = Random.Range(0, se.eventRef.startingMessage.Length);
-				message = se.eventRef.startingMessage[index];
-				MessageBox.DisplayMessage(se.eventRef.label, message);
-			}
-		}
-		else
-		{
-			index = Random.Range(0, ge.eventRef.startingMessage.Length);
-			message = ge.eventRef.startingMessage[index];
-			MessageBox.DisplayMessage(ge.eventRef.name, message);
-		}
+		
+		index = Random.Range(0, ge.eventRef.startingMessage.Length);
+		message = ge.eventRef.startingMessage[index];
+		MessageBox.DisplayMessage(ge.eventRef.name, message);
 	}
 }
