@@ -5299,6 +5299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db3613e394c23f741b56037e2a8bbb50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EventList: []
 --- !u!1 &806577582
 GameObject:
   m_ObjectHideFlags: 0
@@ -8211,6 +8212,11 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 6f2c5f8a99a683a428b55b3aa0e2e1dd,
         type: 3}
+    - target: {fileID: 114999131958287644, guid: f92628d1010e0ed4b97fa364df8ef6e5,
+        type: 2}
+      propertyPath: pcRender
+      value: 
+      objectReference: {fileID: 1301452718}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f92628d1010e0ed4b97fa364df8ef6e5, type: 2}
   m_IsPrefabParent: 0
@@ -8582,6 +8588,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1282543211}
+--- !u!212 &1301452718 stripped
+SpriteRenderer:
+  m_PrefabParentObject: {fileID: 212464049759624224, guid: f92628d1010e0ed4b97fa364df8ef6e5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1203749940}
 --- !u!1 &1310112946
 GameObject:
   m_ObjectHideFlags: 0

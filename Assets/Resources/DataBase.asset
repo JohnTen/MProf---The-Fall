@@ -165,12 +165,13 @@ MonoBehaviour:
     startingMessage:
     - 'Hob left the farm to hunt for food '
     endingMessage:
-    - 'Hob is back
+    - 'Hob has returned.
 
-      +15 to Food'
+
+      +15 Wheat'
     scenario: -1
     oddsOfOccuring:
-      constantValue: 0
+      constantValue: 0.2
       useGameValue: 0
       valueType: 2
       serializedtype: CropProduction
@@ -197,8 +198,8 @@ MonoBehaviour:
       useGameValue: 0
       valueType: 2
       serializedtype: CropProduction
-    Occurence: {x: 0, y: 15}
-    Duration: {x: 3, y: 3}
+    Occurence: {x: 10, y: 30}
+    Duration: {x: 3, y: 4}
     modifers:
     - propertyType: 12
       modificationType: 0
@@ -210,7 +211,7 @@ MonoBehaviour:
     - label: Crops
       occuringMethod: 2
       chance:
-        constantValue: 0
+        constantValue: 1
         useGameValue: 0
         valueType: 2
         serializedtype: CropProduction
@@ -234,7 +235,8 @@ MonoBehaviour:
     ID: 2
     useSubEventMessages: 0
     startingMessage:
-    - 'Lord requests (demands) Oats
+    - 'Lord requests (demands) Oats.
+
 
       -10 Oats'
     endingMessage: []
@@ -441,7 +443,7 @@ MonoBehaviour:
     endingMessage:
     - 'Famine is over
 
-      Production rates are back to default'
+      Production rates and hunger are back to default'
     scenario: -1
     oddsOfOccuring:
       constantValue: 1
@@ -631,17 +633,17 @@ MonoBehaviour:
       value_3: 0
       serializedtype: DyingRateOfSon
     subEvents: []
-  - name: Son goes to War
+  - name: Son goes to War!
     ID: 9
-    useSubEventMessages: 0
+    useSubEventMessages: 1
     startingMessage:
     - 'The lord suggests Cob join the Army.
 
       Cob picks up his favourite stick and leaves to fight in the war.'
     endingMessage:
-    - 'Cob is back, he''s missing an arm and an ear but at least he is alive.
+    - 'Cob is back from war, he''s missing an arm and an ear
 
-      He dies of infection the next day.'
+      but at least he is alive.'
     scenario: -1
     oddsOfOccuring:
       constantValue: 0
@@ -683,16 +685,59 @@ MonoBehaviour:
       useGameValue: 0
       valueType: 10
       serializedtype: NumberOfWife
-    Occurence: {x: 0, y: 15}
-    Duration: {x: 5, y: 5}
-    modifers:
-    - propertyType: 12
-      modificationType: 0
-      value_1: -1
-      value_2: 0
-      value_3: 0
-      serializedtype: NumberOfSon
-    subEvents: []
+    Occurence: {x: 0, y: 3}
+    Duration: {x: 2, y: 2}
+    modifers: []
+    subEvents:
+    - label: Death!
+      occuringMethod: 2
+      chance:
+        constantValue: 1
+        useGameValue: 0
+        valueType: 2
+        serializedtype: CropProduction
+      Duration: {x: 0, y: 1}
+      modifers:
+      - propertyType: 12
+        modificationType: 0
+        value_1: 1
+        value_2: 0
+        value_3: 0
+        serializedtype: NumberOfSon
+      startingMessage:
+      - Go back from war
+      endingMessage:
+      - Kid died
+      StartingCondition:
+        operators: 
+        conditions: []
+      ContinualCondition:
+        operators: 
+        conditions: []
+    - label: Go War
+      occuringMethod: 0
+      chance:
+        constantValue: 1
+        useGameValue: 0
+        valueType: 2
+        serializedtype: CropProduction
+      Duration: {x: 0, y: 0}
+      modifers:
+      - propertyType: 12
+        modificationType: 0
+        value_1: -1
+        value_2: 0
+        value_3: 0
+        serializedtype: NumberOfSon
+      startingMessage:
+      - Go War
+      endingMessage: []
+      StartingCondition:
+        operators: 
+        conditions: []
+      ContinualCondition:
+        operators: 
+        conditions: []
   - name: Bad Crops!
     ID: 10
     useSubEventMessages: 0
@@ -717,7 +762,7 @@ MonoBehaviour:
       valueType: 10
       serializedtype: NumberOfWife
     Occurence: {x: 10, y: 30}
-    Duration: {x: 0, y: 1}
+    Duration: {x: 0, y: 0}
     modifers:
     - propertyType: 2
       modificationType: 2
@@ -738,10 +783,13 @@ MonoBehaviour:
     startingMessage:
     - Fob has left to help a neighbouring farm.
     endingMessage:
-    - Fob is back and brought some crop with him.
+    - 'Fob is back and brought some crop with him.
+
+
+      +10 Wheat'
     scenario: -1
     oddsOfOccuring:
-      constantValue: 0
+      constantValue: 0.2
       useGameValue: 0
       valueType: 15
       serializedtype: DyingRateOfWife
@@ -768,8 +816,8 @@ MonoBehaviour:
       useGameValue: 0
       valueType: 10
       serializedtype: NumberOfWife
-    Occurence: {x: 0, y: 30}
-    Duration: {x: 4, y: 6}
+    Occurence: {x: 10, y: 30}
+    Duration: {x: 6, y: 8}
     modifers:
     - propertyType: 12
       modificationType: 0
@@ -778,10 +826,10 @@ MonoBehaviour:
       value_3: 0
       serializedtype: NumberOfSon
     subEvents:
-    - label: Sub event
+    - label: Crops
       occuringMethod: 2
       chance:
-        constantValue: 0
+        constantValue: 1
         useGameValue: 0
         valueType: 2
         serializedtype: CropProduction
@@ -789,7 +837,7 @@ MonoBehaviour:
       modifers:
       - propertyType: 5
         modificationType: 0
-        value_1: 15
+        value_1: 10
         value_2: 0
         value_3: 0
         serializedtype: NumberOfWheat
@@ -801,7 +849,257 @@ MonoBehaviour:
       ContinualCondition:
         operators: 
         conditions: []
-  normalFertiliserModel: {fileID: 1839906539185826, guid: 5755f03a94ab8564d8dd95cff468c902,
-    type: 2}
-  corpseFertiliserModel: {fileID: 1915673026167930, guid: 570fc993815d63f40a74606acfc14826,
-    type: 2}
+  - name: Offering!
+    ID: 12
+    useSubEventMessages: 0
+    startingMessage:
+    - "The Lord is expecting an offering from all his serfs,\nfor his birthday. \n\n-1
+      Chicken"
+    endingMessage: []
+    scenario: -1
+    oddsOfOccuring:
+      constantValue: 0.3
+      useGameValue: 0
+      valueType: 15
+      serializedtype: DyingRateOfWife
+    StartingCondition:
+      operators: 
+      conditions:
+      - type: 0
+        operator: 1
+        value_1:
+          constantValue: 0
+          useGameValue: 1
+          valueType: 14
+          serializedtype: NumberOfChicken
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 2
+          serializedtype: CropProduction
+    ContinualCondition:
+      operators: 
+      conditions: []
+    MaxOccurencePerPlaythrough:
+      constantValue: 1
+      useGameValue: 0
+      valueType: 10
+      serializedtype: NumberOfWife
+    Occurence: {x: 15, y: 17}
+    Duration: {x: 0, y: 0}
+    modifers:
+    - propertyType: 14
+      modificationType: 0
+      value_1: -1
+      value_2: 0
+      value_3: 0
+      serializedtype: NumberOfChicken
+    subEvents: []
+  - name: Witch Burning!
+    ID: 13
+    useSubEventMessages: 1
+    startingMessage: []
+    endingMessage: []
+    scenario: -1
+    oddsOfOccuring:
+      constantValue: 0.2
+      useGameValue: 0
+      valueType: 15
+      serializedtype: DyingRateOfWife
+    StartingCondition:
+      operators: 
+      conditions:
+      - type: 0
+        operator: 1
+        value_1:
+          constantValue: 0
+          useGameValue: 1
+          valueType: 11
+          serializedtype: NumberOfDaughter
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 2
+          serializedtype: CropProduction
+    ContinualCondition:
+      operators: 
+      conditions: []
+    MaxOccurencePerPlaythrough:
+      constantValue: 1
+      useGameValue: 0
+      valueType: 10
+      serializedtype: NumberOfWife
+    Occurence: {x: 7, y: 30}
+    Duration: {x: 0, y: 0}
+    modifers:
+    - propertyType: 14
+      modificationType: 0
+      value_1: -1
+      value_2: 0
+      value_3: 0
+      serializedtype: 
+    subEvents:
+    - label: Witch Hunt!
+      occuringMethod: 0
+      chance:
+        constantValue: 1
+        useGameValue: 0
+        valueType: 2
+        serializedtype: CropProduction
+      Duration: {x: 2, y: 2}
+      modifers: []
+      startingMessage:
+      - The neighbours suspect Jil of being a witch
+      endingMessage: []
+      StartingCondition:
+        operators: 
+        conditions: []
+      ContinualCondition:
+        operators: 
+        conditions: []
+    - label: Witch Hunt!
+      occuringMethod: 2
+      chance:
+        constantValue: 1
+        useGameValue: 0
+        valueType: 2
+        serializedtype: CropProduction
+      Duration: {x: 0, y: 0}
+      modifers:
+      - propertyType: 11
+        modificationType: 0
+        value_1: -1
+        value_2: 0
+        value_3: 0
+        serializedtype: NumberOfDaughter
+      startingMessage:
+      - Jil was burned at the stake
+      endingMessage: []
+      StartingCondition:
+        operators: 
+        conditions: []
+      ContinualCondition:
+        operators: 
+        conditions: []
+  - name: Hunting Accident!
+    ID: 14
+    useSubEventMessages: 0
+    startingMessage: []
+    endingMessage: []
+    scenario: -1
+    oddsOfOccuring:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 15
+      serializedtype: DyingRateOfWife
+    StartingCondition:
+      operators: 
+      conditions:
+      - type: 0
+        operator: 0
+        value_1:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 2
+          serializedtype: CropProduction
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 2
+          serializedtype: CropProduction
+    ContinualCondition:
+      operators: 
+      conditions: []
+    MaxOccurencePerPlaythrough:
+      constantValue: 1
+      useGameValue: 0
+      valueType: 10
+      serializedtype: NumberOfWife
+    Occurence: {x: 0, y: 30}
+    Duration: {x: 0, y: 0}
+    modifers:
+    - propertyType: 14
+      modificationType: 0
+      value_1: -1
+      value_2: 0
+      value_3: 0
+      serializedtype: 
+    subEvents:
+    - label: Witch Hunt!
+      occuringMethod: 0
+      chance:
+        constantValue: 1
+        useGameValue: 0
+        valueType: 2
+        serializedtype: CropProduction
+      Duration: {x: 2, y: 2}
+      modifers: []
+      startingMessage:
+      - The neighbours suspect Jil of being a witch
+      endingMessage: []
+      StartingCondition:
+        operators: 
+        conditions: []
+      ContinualCondition:
+        operators: 
+        conditions: []
+    - label: Witch Hunt!
+      occuringMethod: 2
+      chance:
+        constantValue: 1
+        useGameValue: 0
+        valueType: 2
+        serializedtype: CropProduction
+      Duration: {x: 0, y: 0}
+      modifers:
+      - propertyType: 11
+        modificationType: 0
+        value_1: -1
+        value_2: 0
+        value_3: 0
+        serializedtype: NumberOfDaughter
+      startingMessage:
+      - Jil was burned at the stake
+      endingMessage: []
+      StartingCondition:
+        operators: 
+        conditions: []
+      ContinualCondition:
+        operators: 
+        conditions: []
+  - name: Small Pox!
+    ID: 15
+    useSubEventMessages: 0
+    startingMessage:
+    - "Everyone in the neighbouring \nfarm died to diseases.\nLob \"borrowed\" the
+      dead's Ox\n\n+1 Ox"
+    endingMessage: []
+    scenario: -1
+    oddsOfOccuring:
+      constantValue: 0.2
+      useGameValue: 0
+      valueType: 15
+      serializedtype: DyingRateOfWife
+    StartingCondition:
+      operators: 
+      conditions: []
+    ContinualCondition:
+      operators: 
+      conditions: []
+    MaxOccurencePerPlaythrough:
+      constantValue: 2
+      useGameValue: 0
+      valueType: 10
+      serializedtype: NumberOfWife
+    Occurence: {x: 10, y: 20}
+    Duration: {x: 0, y: 0}
+    modifers:
+    - propertyType: 13
+      modificationType: 0
+      value_1: 1
+      value_2: 0
+      value_3: 0
+      serializedtype: NumberOfOx
+    subEvents: []
+  normalFertiliserModel: {fileID: 0}
+  corpseFertiliserModel: {fileID: 0}
