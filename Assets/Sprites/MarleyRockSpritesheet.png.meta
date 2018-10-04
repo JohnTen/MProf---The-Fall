@@ -1,12 +1,52 @@
 fileFormatVersion: 2
 guid: 9224f9feb71f50c4cb8ee65a15c1b4e3
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: MarleyRockSpritesheet_0
+    21300002: MarleyRockSpritesheet_1
+    21300004: MarleyRockSpritesheet_2
+    21300006: MarleyRockSpritesheet_3
+    21300008: MarleyRockSpritesheet_4
+    21300010: MarleyRockSpritesheet_5
+    21300012: MarleyRockSpritesheet_6
+    21300014: MarleyRockSpritesheet_7
+    21300016: MarleyRockSpritesheet_8
+    21300018: MarleyRockSpritesheet_9
+    21300020: MarleyRockSpritesheet_10
+    21300022: MarleyRockSpritesheet_11
+    21300024: MarleyRockSpritesheet_12
+    21300026: MarleyRockSpritesheet_13
+    21300028: MarleyRockSpritesheet_14
+    21300030: MarleyRockSpritesheet_15
+    21300032: MarleyRockSpritesheet_16
+    21300034: MarleyRockSpritesheet_17
+    21300036: MarleyRockSpritesheet_18
+    21300038: MarleyRockSpritesheet_19
+    21300040: MarleyRockSpritesheet_20
+    21300042: MarleyRockSpritesheet_21
+    21300044: MarleyRockSpritesheet_22
+    21300046: MarleyRockSpritesheet_23
+    21300048: MarleyRockSpritesheet_24
+    21300050: MarleyRockSpritesheet_25
+    21300052: MarleyRockSpritesheet_26
+    21300054: MarleyRockSpritesheet_27
+    21300056: MarleyRockSpritesheet_28
+    21300058: MarleyRockSpritesheet_29
+    21300060: MarleyRockSpritesheet_30
+    21300062: MarleyRockSpritesheet_31
+    21300064: MarleyRockSpritesheet_32
+    21300066: MarleyRockSpritesheet_33
+    21300068: MarleyRockSpritesheet_34
+    21300070: MarleyRockSpritesheet_35
+    21300072: MarleyRockSpritesheet_36
+    21300074: MarleyRockSpritesheet_37
+    21300076: MarleyRockSpritesheet_38
+    21300078: MarleyRockSpritesheet_39
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -32,13 +72,13 @@ TextureImporter:
     filterMode: -1
     aniso: -1
     mipBias: -1
-    wrapU: -1
-    wrapV: -1
+    wrapU: 1
+    wrapV: 1
     wrapW: -1
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -47,9 +87,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   maxTextureSizeSet: 0
@@ -67,13 +107,857 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 3424
+        width: 202
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b0297001ffadde4987423006b25cbc0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 3424
+        width: 203
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e2f906971f2390428c5928bb5206e33
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 1206
+        y: 3424
+        width: 204
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35bf3fa6a9d98d84296e26c3ed0f71ac
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 1726
+        y: 3424
+        width: 204
+        height: 564
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c26180d9de00e0f419dba1b3b48cc450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 2246
+        y: 3424
+        width: 204
+        height: 564
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad3a2fdfaed02af458434831cda5a8fd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 2766
+        y: 3424
+        width: 204
+        height: 564
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4759926ddec3da045909841fb6d6fac0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 2855
+        width: 204
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b82be146aeb800b43833bfb70f040f61
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 683
+        y: 2855
+        width: 207
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c310ecf4841969489f8a3c99d9ece49
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 1203
+        y: 2855
+        width: 207
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 442d278ccdda1c94680985f3459f6ece
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 1722
+        y: 2855
+        width: 208
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2575f7fa7ba50d345871f05a92d4f9bb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 2243
+        y: 2855
+        width: 207
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 748d94be8d453874ba63b5a00a2f8f40
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 2764
+        y: 2855
+        width: 206
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d54d0357fc1e8246a55b109b7b016a7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 2284
+        width: 204
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2cd18e19fbef7a439c3760ed3b23c00
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 2284
+        width: 205
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d15cb4541aa3324ab8be31f84dba706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 1205
+        y: 2284
+        width: 205
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eba9209ea593d6b4b882d1c8bfcd778b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 1726
+        y: 2284
+        width: 204
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d32047e452c72ae48b53d307d56368be
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 2246
+        y: 2284
+        width: 204
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a5652f2b6d2c354cbe2509f9546fbe3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 2766
+        y: 2284
+        width: 204
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e46b8c812ee8d7e4bb873168bc22fa02
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 1715
+        width: 202
+        height: 562
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98145189f2b4eff44bf44d235fdcc674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 1715
+        width: 203
+        height: 562
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc37e45c96155624ca86bd1bc8a4b8dc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 1206
+        y: 1715
+        width: 204
+        height: 562
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0bf3e2e2b4b0a146ac39348a4701b47
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 1726
+        y: 1715
+        width: 204
+        height: 562
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c49528354cada9419075f9a5e5bee19
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 2246
+        y: 1715
+        width: 204
+        height: 562
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2d183cc70f4a3b4c810171960339d8a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 2766
+        y: 1715
+        width: 204
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d179bff956cd21429f676e5971aa232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 1145
+        width: 202
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3aa54c0583d6e44ca29e4e430f51265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 1145
+        width: 204
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4bd9e9509beb4314d8b55af0e4259739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 1205
+        y: 1145
+        width: 205
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 719ec2e9ac93fb74087d4a3975ae42da
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 1726
+        y: 1145
+        width: 204
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 849cab385625f694fbd1f0c316760050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 2246
+        y: 1145
+        width: 204
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e37e16fa419b304fb9245eb181e9667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 2766
+        y: 1145
+        width: 204
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee59bc64832d0f943872456e256701cc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 574
+        width: 202
+        height: 565
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 840bac69d09620c4e8894ebbc710fda0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 574
+        width: 203
+        height: 565
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 859b154007ee1534babc6a56167d1d06
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 1206
+        y: 574
+        width: 204
+        height: 565
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 524b01d09dbe4bc4ba061610ad9fc5e1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_33
+      rect:
+        serializedVersion: 2
+        x: 1726
+        y: 574
+        width: 204
+        height: 565
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a3227c2c6458264b91ce1607e1d073c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_34
+      rect:
+        serializedVersion: 2
+        x: 2246
+        y: 574
+        width: 204
+        height: 565
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ec382955a8099546a90124580b1e117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_35
+      rect:
+        serializedVersion: 2
+        x: 2766
+        y: 574
+        width: 205
+        height: 565
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74cea1fc7d3ad7141b5627f1a2f51e86
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_36
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 5
+        width: 202
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ca9da7e5ba0c6d42a877de1d77bf7ff
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_37
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 5
+        width: 204
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 087e69fa21b0984479637ec0f7f0bf1a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_38
+      rect:
+        serializedVersion: 2
+        x: 1205
+        y: 5
+        width: 205
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dbe31223193a364e9e4582e78fe98ea
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MarleyRockSpritesheet_39
+      rect:
+        serializedVersion: 2
+        x: 1726
+        y: 5
+        width: 204
+        height: 563
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c6e0a8bfdeeb4442bcc9b5ec8f836d7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f4de29a3537a94e4ea69357bf62be577
     vertices: []
     indices: 
     edges: []

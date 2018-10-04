@@ -143,7 +143,19 @@ MonoBehaviour:
       endingMessage: []
       StartingCondition:
         operators: 
-        conditions: []
+        conditions:
+        - type: 0
+          operator: 1
+          value_1:
+            constantValue: 0
+            useGameValue: 1
+            valueType: 10
+            serializedtype: NumberOfWife
+          value_2:
+            constantValue: 0
+            useGameValue: 0
+            valueType: 2
+            serializedtype: CropProduction
       ContinualCondition:
         operators: 
         conditions: []
@@ -151,9 +163,9 @@ MonoBehaviour:
     ID: 1
     useSubEventMessages: 0
     startingMessage:
-    - 'Cob left the farm to hunt for food '
+    - 'Hob left the farm to hunt for food '
     endingMessage:
-    - 'Cob is back
+    - 'Hob is back
 
       +15 to Food'
     scenario: -1
@@ -402,7 +414,7 @@ MonoBehaviour:
     ID: 6
     useSubEventMessages: 0
     startingMessage:
-    - Production rates for seeds and crops is halved.
+    - Production rates for seeds is reduced and the family is hungrier.
     endingMessage:
     - 'Famine is over
 
@@ -451,18 +463,18 @@ MonoBehaviour:
     Occurence: {x: 15, y: 30}
     Duration: {x: 0, y: 5}
     modifers:
-    - propertyType: 2
-      modificationType: 0
-      value_1: -0.5
-      value_2: 0
-      value_3: 0
-      serializedtype: CropProduction
     - propertyType: 3
       modificationType: 0
       value_1: -0.5
       value_2: 0
       value_3: 0
       serializedtype: SeedProduction
+    - propertyType: 0
+      modificationType: 0
+      value_1: 1
+      value_2: 0
+      value_3: 0
+      serializedtype: WheatConsumption
     subEvents: []
   - name: War!
     ID: 7
@@ -595,4 +607,66 @@ MonoBehaviour:
       value_2: 0
       value_3: 0
       serializedtype: DyingRateOfSon
+    subEvents: []
+  - name: Son goes to War
+    ID: 9
+    useSubEventMessages: 1
+    startingMessage:
+    - 'The lord suggests Cob join the Army.
+
+      Cob picks up his favourite stick and leaves to fight in the war.'
+    endingMessage:
+    - 'Cob is back, he''s missing an arm and an ear but at least he is alive.
+
+      He dies of infection the next day.'
+    scenario: -1
+    oddsOfOccuring:
+      constantValue: 1
+      useGameValue: 0
+      valueType: 15
+      serializedtype: DyingRateOfWife
+    StartingCondition:
+      operators: 00000000
+      conditions:
+      - type: 0
+        operator: 1
+        value_1:
+          constantValue: 0
+          useGameValue: 1
+          valueType: 12
+          serializedtype: NumberOfSon
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 2
+          serializedtype: CropProduction
+    ContinualCondition:
+      operators: 
+      conditions:
+      - type: 0
+        operator: 1
+        value_1:
+          constantValue: 0
+          useGameValue: 1
+          valueType: 12
+          serializedtype: NumberOfSon
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 2
+          serializedtype: CropProduction
+    MaxOccurencePerPlaythrough:
+      constantValue: 1
+      useGameValue: 0
+      valueType: 10
+      serializedtype: NumberOfWife
+    Occurence: {x: 0, y: 15}
+    Duration: {x: 5, y: 5}
+    modifers:
+    - propertyType: 12
+      modificationType: 0
+      value_1: -1
+      value_2: 0
+      value_3: 0
+      serializedtype: NumberOfSon
     subEvents: []
