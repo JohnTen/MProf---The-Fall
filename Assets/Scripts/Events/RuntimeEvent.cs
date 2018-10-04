@@ -76,7 +76,7 @@ public class RuntimeEvent
 			Random.value > eventRef.oddsOfOccuring)
 			return false;
 
-		Debug.Log("Event Occuring, Start date " + TimeManager.Date);
+		Debug.Log(eventRef.name + " Occuring, Start date " + TimeManager.Date);
 
 		// Invoke occuring event
 		if (OnEventOccuring != null)
@@ -84,7 +84,7 @@ public class RuntimeEvent
 
 		// Update occuring data
 		occurationStartDate = TimeManager.Date;
-		occurationEndDate = occurationStartDate + eventRef.Duration.RandomBetween();
+		occurationEndDate = occurationStartDate + eventRef.Duration.RandomBetweenIncluded();
 		occuredTimes++;
 
 		// Apply modifiers
@@ -248,6 +248,9 @@ public class RuntimeEvent
 		// If ending date updated, return;
 		if (!IsReachedEndingDate) return;
 
+		// Try stopping sub events once more to clean sub events with 0 duration
+		TryStopSubEvents();
+
 		Debug.Log(eventRef.name + " stopped, ending date: " + TimeManager.Date);
 
 		occuring = false;
@@ -316,7 +319,7 @@ public class RuntimeSubEvent
 		Debug.Log(eventRef.label + " is executing");
 		
 		occurationStartDate = TimeManager.Date;
-		occurationEndDate = eventRef.Duration.RandomBetween() + occurationStartDate;
+		occurationEndDate = eventRef.Duration.RandomBetweenIncluded() + occurationStartDate;
 		if (eventRef.Duration != Vector2Int.zero)
 			isExecuting = true;
 

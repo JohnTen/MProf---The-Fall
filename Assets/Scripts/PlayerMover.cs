@@ -17,6 +17,7 @@ public class PlayerMover : MonoBehaviour
 	private void Awake()
 	{
 		playerAnimator = GetComponent<Animator>();
+		pcRender = GetComponentInChildren<SpriteRenderer>();
 	}
 
 	void Update ()

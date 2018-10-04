@@ -103,6 +103,11 @@ namespace UnityUtility
 			return UnityEngine.Random.Range(vec.x, vec.y);
 		}
 
+		public static int RandomBetweenIncluded(this Vector2Int vec)
+		{
+			return UnityEngine.Random.Range(vec.x, vec.y + 1);
+		}
+
 		public static float LerpBetween(this Vector2 vec, float t)
 		{
 			return Mathf.Lerp(vec.x, vec.y, t);

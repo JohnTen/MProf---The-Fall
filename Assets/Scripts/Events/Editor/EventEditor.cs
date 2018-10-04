@@ -70,13 +70,14 @@ public class EventEditor : EditorWindow
 						list.RemoveAt(i);
 						deleteFlags.RemoveAt(i);
 						EditorUtility.SetDirty(database);
+						i--;
 					}
 					GUI.color = Color.white;
 
 					GUI.color = Color.red;
 					if (GUILayout.Button("No", GUILayout.Width(50)))
 					{
-						deleteFlags.RemoveAt(i);
+						deleteFlags[i] = false;
 					}
 					GUI.color = Color.white;
 				}
