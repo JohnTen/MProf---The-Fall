@@ -26,6 +26,9 @@ public class FieldBlock : MonoInteractable
 	[SerializeField] GameObject fertiliserModel;
 
 	[SerializeField] FieldBlockStatus status;
+	[SerializeField] string plantingSoundLabel = "Planting";
+	[SerializeField] string harvestingSoundLabel = "Harvesting";
+	[SerializeField] string fertilisingSoundLabel = "Fertilising";
 
 	public FieldBlockStatus Status
 	{
@@ -84,6 +87,7 @@ public class FieldBlock : MonoInteractable
 		}
 
 		GameDataManager.CurrentFertiliser--;
+		SoundManager.Play(fertilisingSoundLabel);
 
 		status.fertilised = true;
 		status.currentCrop.foodValue *= 2;
@@ -115,6 +119,7 @@ public class FieldBlock : MonoInteractable
 		}
 		GameDataManager.ModifyCropSeedNumbr(crop.index, -1);
 		GameDataManager.UpdateValues();
+		SoundManager.Play(plantingSoundLabel);
 
 		status.plantedCrop = true;
 		status.currentCrop = new Crop(crop);
@@ -153,6 +158,7 @@ public class FieldBlock : MonoInteractable
 			GameDataManager.ModifyCropSeedNumbr(status.currentCrop.index, Mathf.RoundToInt(status.currentCrop.dropSeedNumber * GameDataManager.GameValues[GameValueType.SeedProduction]));
 		GameDataManager.ModifyCropNumber(status.currentCrop.index, Mathf.RoundToInt(status.currentCrop.foodValue * GameDataManager.GameValues[GameValueType.CropProduction]));
 		GameDataManager.UpdateValues();
+		SoundManager.Play(harvestingSoundLabel);
 
 		Clear();
 	}

@@ -150,6 +150,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   cropModel: {fileID: 0}
+  fertiliserModel: {fileID: 0}
   status:
     plantedCrop: 0
     currentCrop:
@@ -161,3 +162,6 @@ MonoBehaviour:
       dropSeedNumber: 0
     currentGrowingPeriod: 0
     fertilised: 0
+  plantingSoundLabel: Planting
+  harvestingSoundLabel: Harvesting
+  fertilisingSoundLabel: Fertilising

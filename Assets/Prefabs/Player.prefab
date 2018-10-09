@@ -116,7 +116,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   raycastOffset: {x: 0, y: 1, z: 0}
-  renderer: {fileID: 212464049759624224}
+  pcRender: {fileID: 0}
+  walkingSoundLabel: Walking
 --- !u!212 &212464049759624224
 SpriteRenderer:
   m_ObjectHideFlags: 1

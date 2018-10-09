@@ -9,6 +9,7 @@ public class PlayerMover : MonoBehaviour
 	[SerializeField] float moveSpeed;
 	[SerializeField] Vector3 raycastOffset;
 	[SerializeField] SpriteRenderer pcRender;
+	[SerializeField] string walkingSoundLabel = "Walking";
 
 	Animator playerAnimator;
 
@@ -71,6 +72,9 @@ public class PlayerMover : MonoBehaviour
 			transform.Translate(dir.normalized * moveDist);
 			
 			pcRender.flipX = dir.x > 0;
+
+			if (!SoundManager.IsPlaying(walkingSoundLabel))
+				SoundManager.Play(walkingSoundLabel);
 
 			yield return null;
 		}
