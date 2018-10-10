@@ -159,6 +159,11 @@ public class Conclusion : MonoSingleton<Conclusion>
 			GameDataManager.CurrentFamilyHunger += Mathf.CeilToInt((familyConsumption - GameDataManager.CurrentWheat) * GameDataManager.GameValues[GameValueType.FamilyHungerRate]);
 			familyConsumption = GameDataManager.CurrentWheat;
 		}
+		else
+		{
+			GameDataManager.CurrentFamilyHunger = 0;
+		}
+
 		familyConsumption *= -1;
 		ChangeColor(tendFamily, familyConsumption);
 		tendFamily.text = familyConsumption.ToString();
@@ -181,6 +186,10 @@ public class Conclusion : MonoSingleton<Conclusion>
 		{
 			GameDataManager.CurrentAnimalHunger += Mathf.CeilToInt((animalConsumption - GameDataManager.CurrentOat) * GameDataManager.GameValues[GameValueType.AnimalHungerRate]);
 			animalConsumption = GameDataManager.CurrentOat;
+		}
+		else
+		{
+			GameDataManager.CurrentAnimalHunger = 0;
 		}
 		animalConsumption *= -1;
 		ChangeColor(tendAnimal, animalConsumption);
