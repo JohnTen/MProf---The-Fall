@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
-public class MouseEvent : MonoBehaviour
+public class MouseEvent : MonoBehaviour, IPointerUpHandler, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
 	[SerializeField] UnityEvent MouseUp;
 	[SerializeField] UnityEvent MouseDown;
@@ -36,6 +37,30 @@ public class MouseEvent : MonoBehaviour
 	}
 
 	private void OnMouseExit()
+	{
+		if (MouseExit != null)
+			MouseExit.Invoke();
+	}
+
+	public void OnPointerUp(PointerEventData eventData)
+	{
+		if (MouseUp != null)
+			MouseUp.Invoke();
+	}
+
+	public void OnPointerDown(PointerEventData eventData)
+	{
+		if (MouseDown != null)
+			MouseDown.Invoke();
+	}
+
+	public void OnPointerEnter(PointerEventData eventData)
+	{
+		if (MouseEnter != null)
+			MouseEnter.Invoke();
+	}
+
+	public void OnPointerExit(PointerEventData eventData)
 	{
 		if (MouseExit != null)
 			MouseExit.Invoke();

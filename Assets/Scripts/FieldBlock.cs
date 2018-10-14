@@ -6,29 +6,31 @@ using UnityUtility.Interactables;
 [System.Serializable]
 public struct FieldBlockStatus
 {
+	public bool fouled;
 	public bool plantedCrop;
 	public Crop currentCrop;
+	public Crop lastPlantedCrop;
 	public int currentGrowingPeriod;
-	public bool fertilised;
 
 	public FieldBlockStatus(FieldBlockStatus status)
 	{
+		fouled					= status.fouled;
 		plantedCrop				= status.plantedCrop;
 		currentCrop				= new Crop(status.currentCrop);
+		lastPlantedCrop			= new Crop(status.lastPlantedCrop);
 		currentGrowingPeriod	= status.currentGrowingPeriod;
-		fertilised				= status.fertilised;
 	}
 }
 
 public class FieldBlock : MonoInteractable
 {
-	[SerializeField] GameObject cropModel;
-	[SerializeField] GameObject fertiliserModel;
+	[SerializeField] GameObject[] cropModels;
+	[SerializeField] GameObject[] fertiliserModels;
+	[SerializeField] Transform[] subFields;
 
 	[SerializeField] FieldBlockStatus status;
 	[SerializeField] string plantingSoundLabel = "Planting";
 	[SerializeField] string harvestingSoundLabel = "Harvesting";
-	[SerializeField] string fertilisingSoundLabel = "Fertilising";
 
 	public FieldBlockStatus Status
 	{
@@ -47,26 +49,14 @@ public class FieldBlock : MonoInteractable
 
 	public override void StartInteracting()
 	{
+		if (status.fouled)
+			return;
+
 		if (!status.plantedCrop)
 		{
-			if (
-			GameDataManager.CurrentWheatSeed > 0 ||
-			GameDataManager.CurrentOatSeed > 0)
-			{
-				WorldUI.MoveUIByWorldPosition(WorldUI.CropMenu.transform, this.transform.position);
-				WorldUI.CropMenu.OpenMenu();
-				WorldUI.CropMenu.OnChosed += CropMenu_OnCropChosed;
-				return;
-			}
-		}
-		else if (
-			status.currentGrowingPeriod == 0 &&
-			GameDataManager.CurrentFertiliser > 0 &&
-			!status.fertilised)
-		{
-			WorldUI.MoveUIByWorldPosition(WorldUI.FertiliserMenu.transform, this.transform.position);
-			WorldUI.FertiliserMenu.OpenMenu();
-			WorldUI.FertiliserMenu.OnChosed += FertiliserMenu_OnChosed; ;
+			WorldUI.MoveUIByWorldPosition(WorldUI.CropMenu.transform, this.transform.position);
+			WorldUI.CropMenu.OpenMenu();
+			WorldUI.CropMenu.OnChosed += CropMenu_OnCropChosed;
 			return;
 		}
 		else
@@ -75,25 +65,6 @@ public class FieldBlock : MonoInteractable
 		}
 
 		base.StartInteracting();
-	}
-
-	private void FertiliserMenu_OnChosed(int index)
-	{
-		WorldUI.FertiliserMenu.CloseMenu();
-		if (!status.plantedCrop)
-		{
-			Debug.LogError(name + " has no crop planted ");
-			return;
-		}
-
-		GameDataManager.CurrentFertiliser--;
-		SoundManager.Play(fertilisingSoundLabel);
-
-		status.fertilised = true;
-		status.currentCrop.foodValue *= 2;
-		fertiliserModel = Instantiate(GameDatabase.Instance.normalFertiliserModel);
-		fertiliserModel.transform.position = this.transform.position;
-		fertiliserModel.transform.SetParent(this.transform);
 	}
 
 	private void CropMenu_OnCropChosed(int index)
@@ -105,31 +76,47 @@ public class FieldBlock : MonoInteractable
 			Debug.LogError(name + " Already planted " + crop.name);
 			return;
 		}
+
+		if (status.lastPlantedCrop != null &&
+			status.lastPlantedCrop.index == index &&
+			status.lastPlantedCrop.index != 0)
+		{
+			MessageBox.DisplayMessage("You cannot plant the same crop except wheat twice in a row.");
+			return;
+		}
+
 		Plant(crop);
 	}
 
 	public override void StopInteracting() { }
 
-	public void Plant(Crop crop)
+	public void WaitForMinigame(bool result)
 	{
-		if (GameDataManager.GetCropSeedNumbr(crop.index) <= 0)
+		status.fouled = !result;
+		if (status.fouled)
 		{
-			Debug.Log("You are out of seeds.");
+			status.lastPlantedCrop = null;
+			Clear();
 			return;
 		}
-		GameDataManager.ModifyCropSeedNumbr(crop.index, -1);
-		GameDataManager.UpdateValues();
-		SoundManager.Play(plantingSoundLabel);
-
-		status.plantedCrop = true;
-		status.currentCrop = new Crop(crop);
-		status.currentGrowingPeriod = 0;
+		status.lastPlantedCrop = status.currentCrop;
 
 		CreateCropModel();
 
 		isActivated = true;
 		InvokeActivated();
 		onActivated.Invoke();
+	}
+
+	public void Plant(Crop crop)
+	{
+		SoundManager.Play(plantingSoundLabel);
+
+		status.plantedCrop = true;
+		status.currentCrop = new Crop(crop);
+		status.currentGrowingPeriod = 0;
+
+		FieldManager.Instance.StartPlantMinigame(crop.index, WaitForMinigame);
 	}
 
 	public void ForcePlant(Crop crop, int growingPeriod)
@@ -165,39 +152,55 @@ public class FieldBlock : MonoInteractable
 
 	public void Clear()
 	{
-		if (cropModel != null)
-			Destroy(cropModel);
+		for (int i = 0; i < cropModels.Length; i++)
+		{
+			if (cropModels[i] != null)
+				Destroy(cropModels[i]);
+		}
 
-		if (fertiliserModel != null)
-			Destroy(fertiliserModel);
+		for (int i = 0; i < fertiliserModels.Length; i++)
+		{
+			if (fertiliserModels[i] != null)
+				Destroy(fertiliserModels[i]);
+		}
 
 		status.plantedCrop			= false;
-		status.fertilised			= false;
 		status.currentCrop			= null;
 		status.currentGrowingPeriod = 0;
 	}
 
 	private void CreateCropModel()
 	{
-		cropModel = Instantiate(GameDatabase.Instance.GetGrowingModel(status.currentCrop.index, status.currentGrowingPeriod));
-		cropModel.transform.position = this.transform.position;
-		cropModel.transform.SetParent(this.transform);
+		for (int i = 0; i < subFields.Length; i++)
+		{
+			cropModels[i] = Instantiate(GameDatabase.Instance.GetGrowingModel(status.currentCrop.index, status.currentGrowingPeriod));
+			cropModels[i].transform.position = subFields[i].position;
+			cropModels[i].transform.SetParent(subFields[i]);
+		}
 	}
 
 	private void Awake()
 	{
 		status = new FieldBlockStatus();
 		TimeManager.OnTimePassed += TimeManager_OnTimePassed;
+		cropModels = new GameObject[subFields.Length];
+		fertiliserModels = new GameObject[subFields.Length];
 	}
 
 	private void TimeManager_OnTimePassed(int date)
 	{
+		if (status.fouled) status.fouled = false;
+
 		if (!status.plantedCrop) return;
 		if (status.currentGrowingPeriod >= status.currentCrop.growingPeriod) return;
 
 		status.currentGrowingPeriod++;
 
-		Destroy(cropModel);
+		for (int i = 0; i < cropModels.Length; i++)
+		{
+			if (cropModels[i] != null)
+				Destroy(cropModels[i]);
+		}
 		CreateCropModel();
 
 		if (status.currentGrowingPeriod >= status.currentCrop.growingPeriod)

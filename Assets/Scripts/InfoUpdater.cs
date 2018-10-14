@@ -36,7 +36,7 @@ public class InfoUpdater : MonoBehaviour
 	public void UpdateInfo()
 	{
 		GameDataManager.GameValues.CalculateModifiedValue();
-		dateText.text			= TimeManager.Date.ToString();
+		dateText.text			= (GameDataManager.MaxWeek - TimeManager.Date).ToString();
 		wheatText.text			= GameDataManager.CurrentWheat.ToString();
 		oatText.text			= GameDataManager.CurrentOat.ToString();
 		wheatSeedText.text		= GameDataManager.CurrentWheatSeed.ToString();

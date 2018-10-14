@@ -10,6 +10,8 @@ public class MessageBox : MonoSingleton<MessageBox>
 	[SerializeField] Text titleText;
 	[SerializeField] Text contentText;
 
+	[SerializeField] GameObject block;
+
 	public static bool IsShowingMessage { get; private set; }
 
 	Queue<string> contentQueue = new Queue<string>();
@@ -22,6 +24,8 @@ public class MessageBox : MonoSingleton<MessageBox>
 
 	public static void DisplayMessage(string title, string content)
 	{
+		Instance.block.SetActive(false);
+		Instance.block.SetActive(true);
 		if (IsShowingMessage)
 		{
 			Instance.titleQueue.Enqueue(title);
