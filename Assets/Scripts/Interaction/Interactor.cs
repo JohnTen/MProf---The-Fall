@@ -25,6 +25,7 @@ public class Interactor : MonoBehaviour
 
 		interactableSign.gameObject.SetActive(true);
 		interactableSign.transform.position = currentObj.transform.position;
+		interactableSign.transform.SetParent(null);
 
 		if (Input.GetButtonDown("Fire1"))
 		{

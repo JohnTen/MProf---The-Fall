@@ -27,7 +27,7 @@ public class PlayerMover : MonoBehaviour
 		{
 			var ray = GameDataManager.MainCamera.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
-			if (Physics.Raycast(ray, out hit, 30))
+			if (Physics.Raycast(ray, out hit, 40))
 			{
 				MoveTowards(hit.point);
 			}

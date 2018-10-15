@@ -16,6 +16,7 @@ public class GameData
 
 public class GameDataManager : GlobalSingleton<GameDataManager>
 {
+	[SerializeField] int maxWeek;
 	[SerializeField] Camera mainCamera;
 	[SerializeField] GameValues gameValues;
 
@@ -41,6 +42,11 @@ public class GameDataManager : GlobalSingleton<GameDataManager>
 	//{
 	//	get { return Instance.offset; }
 	//}
+
+	public static float MaxWeek
+	{
+		get { return Instance.maxWeek; }
+	}
 
 	public static GameValues GameValues
 	{
