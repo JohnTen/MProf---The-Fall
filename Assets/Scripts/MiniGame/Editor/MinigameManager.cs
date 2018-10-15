@@ -243,7 +243,6 @@ public class MinigameManager : EditorWindow
 		saveAsName = EditorGUILayout.TextField(saveAsName);
 
 		var path = "Assets/Prefabs/MinigameMazes/Level" + saveAsLevel + "/" + saveAsName + ".prefab";
-		Debug.Log(path);
 
 		if (lastTypeInName != saveAsName)
 		{
@@ -256,12 +255,25 @@ public class MinigameManager : EditorWindow
 			GUI.backgroundColor = Color.green;
 			if (GUILayout.Button("Overwrite?"))
 			{
+				currentEditingLevel = saveAsLevel - 1;
+				currentEditingLevelIndex = FindMazeIndex(currentEditingLevel, (AssetDatabase.LoadAssetAtPath(path, typeof(GameObject)) as GameObject).GetComponent<MinigameMaze>());
+
 				currentEditingMazePrefab = CreateNewPrefab(currentEditingMaze.gameObject, path);
 
-				ReplaceMaze(
-					currentEditingLevel,
-					currentEditingLevelIndex,
-					currentEditingMazePrefab.GetComponent<MinigameMaze>());
+				if (currentEditingLevelIndex < 0)
+				{
+					Debug.LogWarning("Cannot find the maze in list... add maze instead");
+					currentEditingLevelIndex = AddMaze(
+						currentEditingLevel,
+						currentEditingMazePrefab.GetComponent<MinigameMaze>());
+				}
+				else
+				{
+					ReplaceMaze(
+						currentEditingLevel,
+						currentEditingLevelIndex,
+						currentEditingMazePrefab.GetComponent<MinigameMaze>());
+				}
 
 				overwriting = false;
 				savingAs = false;
@@ -325,6 +337,26 @@ public class MinigameManager : EditorWindow
 			case 2: farmingGame.Level3Mazes[index] = maze; break;
 			case 3: farmingGame.Level4Mazes[index] = maze; break;
 		}
+	}
+
+	private int FindMazeIndex(int level, MinigameMaze maze)
+	{
+		List<MinigameMaze> list = new List<MinigameMaze>();
+		switch (level)
+		{
+			case 0: list = farmingGame.Level1Mazes; break;
+			case 1: list = farmingGame.Level2Mazes; break;
+			case 2: list = farmingGame.Level3Mazes; break;
+			case 3: list = farmingGame.Level4Mazes; break;
+		}
+
+		for (int i = 0; i < list.Count; i ++)
+		{
+			if (list[i].gameObject == maze.gameObject)
+				return i;
+		}
+
+		return -1;
 	}
 
 	private void RemoveMaze(int level, int index)
