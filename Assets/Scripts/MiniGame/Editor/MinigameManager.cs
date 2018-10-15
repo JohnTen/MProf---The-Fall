@@ -243,6 +243,7 @@ public class MinigameManager : EditorWindow
 		saveAsName = EditorGUILayout.TextField(saveAsName);
 
 		var path = "Assets/Prefabs/MinigameMazes/Level" + saveAsLevel + "/" + saveAsName + ".prefab";
+		Debug.Log(path);
 
 		if (lastTypeInName != saveAsName)
 		{

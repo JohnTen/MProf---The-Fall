@@ -1,12 +1,42 @@
 fileFormatVersion: 2
 guid: 9c9464bf159b7ae41bb54794b93cbcf4
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: SobPlaySpriteSheet_0
+    21300002: SobPlaySpriteSheet_1
+    21300004: SobPlaySpriteSheet_2
+    21300006: SobPlaySpriteSheet_3
+    21300008: SobPlaySpriteSheet_4
+    21300010: SobPlaySpriteSheet_5
+    21300012: SobPlaySpriteSheet_6
+    21300014: SobPlaySpriteSheet_7
+    21300016: SobPlaySpriteSheet_8
+    21300018: SobPlaySpriteSheet_9
+    21300020: SobPlaySpriteSheet_10
+    21300022: SobPlaySpriteSheet_11
+    21300024: SobPlaySpriteSheet_12
+    21300026: SobPlaySpriteSheet_13
+    21300028: SobPlaySpriteSheet_14
+    21300030: SobPlaySpriteSheet_15
+    21300032: SobPlaySpriteSheet_16
+    21300034: SobPlaySpriteSheet_17
+    21300036: SobPlaySpriteSheet_18
+    21300038: SobPlaySpriteSheet_19
+    21300040: SobPlaySpriteSheet_20
+    21300042: SobPlaySpriteSheet_21
+    21300044: SobPlaySpriteSheet_22
+    21300046: SobPlaySpriteSheet_23
+    21300048: SobPlaySpriteSheet_24
+    21300050: SobPlaySpriteSheet_25
+    21300052: SobPlaySpriteSheet_26
+    21300054: SobPlaySpriteSheet_27
+    21300056: SobPlaySpriteSheet_28
+    21300058: SobPlaySpriteSheet_29
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -32,13 +62,13 @@ TextureImporter:
     filterMode: -1
     aniso: -1
     mipBias: -1
-    wrapU: -1
-    wrapV: -1
+    wrapU: 1
+    wrapV: 1
     wrapW: -1
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -47,9 +77,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   maxTextureSizeSet: 0
@@ -67,13 +97,635 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2850
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00bea720311cacd469efe84a1d60ec43
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 2850
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fde19772fca54944cabe1913cc053338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 2850
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48209df6d051d5040b39455f8159ebd6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 2850
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de3aa07a42cdfa74b8a512c2b412d765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 2080
+        y: 2850
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a08a77653aabae34fa4dbfed27d58d34
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2280
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38a2995b24dd0df47a74ce8ed5e820a6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 2280
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30bceb10ae9b03d489b801fa9371b553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 2280
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30f1dbc5c5781254586a7fef72770e51
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 2280
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4ecc8c505ba63740a0350090bc4273e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 2080
+        y: 2280
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efbd57a2568c75843ad08d901ab97e52
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1710
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5aede5490d6a2d04bb3bfd772e354cbd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 1710
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be39c577d3ac28c4ea1429e7a55d7a7d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 1710
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41dd2d993fe5de840a879457f856312d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 1710
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b18442f288405ee429338c8f9b204e73
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 2080
+        y: 1710
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 544693dff3f19574a99da2f036ba58da
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1140
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee54ba4b78d0b274c887ef9371deef32
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 1140
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22a4ffcfca872b542b65a31a47af88df
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 1140
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd74ca3cc499eea4ab9d2b9537dd7e4a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 1140
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8733c85b15985a74394a2f9ef577a68c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 2080
+        y: 1140
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1fbc49bfc8456440af28cb26129a2a9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 570
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6557d4c834fb7624cb477850eae15ac3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_21
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 570
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3edeb1a73d7a1154986e1eacfc99b3ab
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_22
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 570
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fc4ae58c2c9fd54c8420552d44025c3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_23
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 570
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9403b87e932a4b042938a527abfbb390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_24
+      rect:
+        serializedVersion: 2
+        x: 2080
+        y: 570
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daacb077fef9c224db24ba6173671c30
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ecdafac08d4c3f47a0e9b84fd156b71
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_26
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 0
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a8c0cf49014a4e4ea3c4d57744771a6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_27
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 0
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c71272aa96209844b22f1ebc3be87a9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_28
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 0
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef2a0f54b1eed3f4da1935679dccb1d4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlaySpriteSheet_29
+      rect:
+        serializedVersion: 2
+        x: 2080
+        y: 0
+        width: 520
+        height: 570
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66ff0c5da7dfd684cad484a8996a6565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 045f4fdd38985b649bfe1153e485510a
     vertices: []
     indices: 
     edges: []
