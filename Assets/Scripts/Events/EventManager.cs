@@ -29,7 +29,6 @@ public class EventManager : MonoSingleton<EventManager>
 
 	public void CheckEvents()
 	{
-		print("CheckEvent");
 		for (int i = 0; i < EventList.Count; i++)
 		{
 			EventList[i].CheckEvent();

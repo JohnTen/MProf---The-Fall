@@ -24,6 +24,18 @@ MonoBehaviour:
     growingPeriod: 2
     dropSeedPossibility: 0.5
     dropSeedNumber: 2
+  - name: Potato
+    index: 2
+    foodValue: 5
+    growingPeriod: 3
+    dropSeedPossibility: 0.5
+    dropSeedNumber: 2
+  - name: Tomato
+    index: 3
+    foodValue: 8
+    growingPeriod: 4
+    dropSeedPossibility: 0.5
+    dropSeedNumber: 2
   animalList:
   - name: Chicken
     index: 0
@@ -59,6 +71,17 @@ MonoBehaviour:
     - {fileID: 1166154215026446, guid: d58a78de6a8dc0646b8d02d94d52726f, type: 2}
     - {fileID: 1458799794971660, guid: 40ccc907c4dff0148a0a06c463b35afb, type: 2}
     - {fileID: 1369337820829568, guid: 280b82556c5e553468cf8a3d8c6e1536, type: 2}
+  - models:
+    - {fileID: 1510979677881292, guid: 50180db981662654897b65441d3c03a1, type: 2}
+    - {fileID: 1761866523123790, guid: cc29a8a4a0f411745bfe84fd3d213396, type: 2}
+    - {fileID: 1601548429405334, guid: be82e58a325f820498aa2465166d0e63, type: 2}
+    - {fileID: 1077147837307192, guid: e61eafde481940a498210192040acbf6, type: 2}
+  - models:
+    - {fileID: 1204714591002782, guid: 89bf2e5ff820a204c99f2144c8996313, type: 2}
+    - {fileID: 1373390348322670, guid: c8e5f44fbd6727b4d8e6ab8e25cc0c5b, type: 2}
+    - {fileID: 1604271964642918, guid: c4c614591a50ba1448027ed76f915d01, type: 2}
+    - {fileID: 1935503630501040, guid: 86eeef19c4068fe498c7a8ba4caa210d, type: 2}
+    - {fileID: 1359092032756228, guid: 5f49ddf297c4b5641944c225aaba8c4d, type: 2}
   eventList:
   - name: Pregnant Wife
     ID: 0
@@ -394,7 +417,7 @@ MonoBehaviour:
     ID: 5
     useSubEventMessages: 0
     startingMessage:
-    - Your Wife just died
+    - Your Wife has died
     endingMessage: []
     scenario: -1
     oddsOfOccuring:
@@ -446,7 +469,7 @@ MonoBehaviour:
       Production rates and hunger are back to default'
     scenario: -1
     oddsOfOccuring:
-      constantValue: 1
+      constantValue: 0.2
       useGameValue: 0
       valueType: 15
       serializedtype: DyingRateOfWife
@@ -488,18 +511,18 @@ MonoBehaviour:
     Occurence: {x: 15, y: 30}
     Duration: {x: 5, y: 5}
     modifers:
-    - propertyType: 3
-      modificationType: 0
-      value_1: -0.5
-      value_2: 0
-      value_3: 0
-      serializedtype: SeedProduction
     - propertyType: 0
       modificationType: 0
       value_1: 1
       value_2: 0
       value_3: 0
       serializedtype: WheatConsumption
+    - propertyType: 2
+      modificationType: 0
+      value_1: -0.5
+      value_2: 0
+      value_3: 0
+      serializedtype: CropProduction
     subEvents: []
   - name: War!
     ID: 7
@@ -635,7 +658,7 @@ MonoBehaviour:
     subEvents: []
   - name: Son goes to War!
     ID: 9
-    useSubEventMessages: 1
+    useSubEventMessages: 0
     startingMessage:
     - 'The lord suggests Cob join the Army.
 
@@ -646,7 +669,7 @@ MonoBehaviour:
       but at least he is alive.'
     scenario: -1
     oddsOfOccuring:
-      constantValue: 0
+      constantValue: 0.3
       useGameValue: 0
       valueType: 15
       serializedtype: DyingRateOfWife
@@ -685,59 +708,16 @@ MonoBehaviour:
       useGameValue: 0
       valueType: 10
       serializedtype: NumberOfWife
-    Occurence: {x: 0, y: 3}
-    Duration: {x: 2, y: 2}
-    modifers: []
-    subEvents:
-    - label: Death!
-      occuringMethod: 2
-      chance:
-        constantValue: 1
-        useGameValue: 0
-        valueType: 2
-        serializedtype: CropProduction
-      Duration: {x: 0, y: 1}
-      modifers:
-      - propertyType: 12
-        modificationType: 0
-        value_1: 1
-        value_2: 0
-        value_3: 0
-        serializedtype: NumberOfSon
-      startingMessage:
-      - Go back from war
-      endingMessage:
-      - Kid died
-      StartingCondition:
-        operators: 
-        conditions: []
-      ContinualCondition:
-        operators: 
-        conditions: []
-    - label: Go War
-      occuringMethod: 0
-      chance:
-        constantValue: 1
-        useGameValue: 0
-        valueType: 2
-        serializedtype: CropProduction
-      Duration: {x: 0, y: 0}
-      modifers:
-      - propertyType: 12
-        modificationType: 0
-        value_1: -1
-        value_2: 0
-        value_3: 0
-        serializedtype: NumberOfSon
-      startingMessage:
-      - Go War
-      endingMessage: []
-      StartingCondition:
-        operators: 
-        conditions: []
-      ContinualCondition:
-        operators: 
-        conditions: []
+    Occurence: {x: 15, y: 30}
+    Duration: {x: 5, y: 6}
+    modifers:
+    - propertyType: 12
+      modificationType: 0
+      value_1: -1
+      value_2: 0
+      value_3: 0
+      serializedtype: NumberOfSon
+    subEvents: []
   - name: Bad Crops!
     ID: 10
     useSubEventMessages: 0
@@ -984,11 +964,16 @@ MonoBehaviour:
   - name: Hunting Accident!
     ID: 14
     useSubEventMessages: 0
-    startingMessage: []
+    startingMessage:
+    - 'The Lord was out hunting and shot an arrow at his prey,
+
+      he missed and hit Hal.
+
+      Hal is no more'
     endingMessage: []
     scenario: -1
     oddsOfOccuring:
-      constantValue: 0
+      constantValue: 0.1
       useGameValue: 0
       valueType: 15
       serializedtype: DyingRateOfWife
@@ -996,12 +981,12 @@ MonoBehaviour:
       operators: 
       conditions:
       - type: 0
-        operator: 0
+        operator: 1
         value_1:
           constantValue: 0
-          useGameValue: 0
-          valueType: 2
-          serializedtype: CropProduction
+          useGameValue: 1
+          valueType: 11
+          serializedtype: NumberOfDaughter
         value_2:
           constantValue: 0
           useGameValue: 0
@@ -1015,58 +1000,16 @@ MonoBehaviour:
       useGameValue: 0
       valueType: 10
       serializedtype: NumberOfWife
-    Occurence: {x: 0, y: 30}
+    Occurence: {x: 5, y: 25}
     Duration: {x: 0, y: 0}
     modifers:
-    - propertyType: 14
+    - propertyType: 11
       modificationType: 0
       value_1: -1
       value_2: 0
       value_3: 0
-      serializedtype: 
-    subEvents:
-    - label: Witch Hunt!
-      occuringMethod: 0
-      chance:
-        constantValue: 1
-        useGameValue: 0
-        valueType: 2
-        serializedtype: CropProduction
-      Duration: {x: 2, y: 2}
-      modifers: []
-      startingMessage:
-      - The neighbours suspect Jil of being a witch
-      endingMessage: []
-      StartingCondition:
-        operators: 
-        conditions: []
-      ContinualCondition:
-        operators: 
-        conditions: []
-    - label: Witch Hunt!
-      occuringMethod: 2
-      chance:
-        constantValue: 1
-        useGameValue: 0
-        valueType: 2
-        serializedtype: CropProduction
-      Duration: {x: 0, y: 0}
-      modifers:
-      - propertyType: 11
-        modificationType: 0
-        value_1: -1
-        value_2: 0
-        value_3: 0
-        serializedtype: NumberOfDaughter
-      startingMessage:
-      - Jil was burned at the stake
-      endingMessage: []
-      StartingCondition:
-        operators: 
-        conditions: []
-      ContinualCondition:
-        operators: 
-        conditions: []
+      serializedtype: NumberOfDaughter
+    subEvents: []
   - name: Small Pox!
     ID: 15
     useSubEventMessages: 0
@@ -1101,6 +1044,158 @@ MonoBehaviour:
       value_3: 0
       serializedtype: NumberOfOx
     subEvents: []
+  - name: Dragon!
+    ID: 16
+    useSubEventMessages: 0
+    startingMessage:
+    - 'A dragon swooped in and grabed Hob.
+
+      Hob is no more'
+    endingMessage: []
+    scenario: -1
+    oddsOfOccuring:
+      constantValue: 0.1
+      useGameValue: 0
+      valueType: 15
+      serializedtype: DyingRateOfWife
+    StartingCondition:
+      operators: 
+      conditions:
+      - type: 0
+        operator: 1
+        value_1:
+          constantValue: 0
+          useGameValue: 1
+          valueType: 12
+          serializedtype: NumberOfSon
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 2
+          serializedtype: CropProduction
+    ContinualCondition:
+      operators: 
+      conditions: []
+    MaxOccurencePerPlaythrough:
+      constantValue: 2
+      useGameValue: 0
+      valueType: 10
+      serializedtype: NumberOfWife
+    Occurence: {x: 10, y: 30}
+    Duration: {x: 0, y: 0}
+    modifers:
+    - propertyType: 12
+      modificationType: 0
+      value_1: -1
+      value_2: 0
+      value_3: 0
+      serializedtype: NumberOfSon
+    subEvents: []
+  - name: Heresy!
+    ID: 17
+    useSubEventMessages: 0
+    startingMessage:
+    - 'The Gods are furious and a sacrifice must be made.
+
+      Gal is no more. '
+    endingMessage: []
+    scenario: -1
+    oddsOfOccuring:
+      constantValue: 0.3
+      useGameValue: 0
+      valueType: 15
+      serializedtype: DyingRateOfWife
+    StartingCondition:
+      operators: 
+      conditions:
+      - type: 0
+        operator: 1
+        value_1:
+          constantValue: 0
+          useGameValue: 1
+          valueType: 11
+          serializedtype: NumberOfDaughter
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 2
+          serializedtype: CropProduction
+    ContinualCondition:
+      operators: 
+      conditions: []
+    MaxOccurencePerPlaythrough:
+      constantValue: 1
+      useGameValue: 0
+      valueType: 10
+      serializedtype: NumberOfWife
+    Occurence: {x: 5, y: 25}
+    Duration: {x: 0, y: 0}
+    modifers:
+    - propertyType: 11
+      modificationType: 0
+      value_1: -1
+      value_2: 0
+      value_3: 0
+      serializedtype: NumberOfDaughter
+    subEvents: []
+  - name: 'Magistrate Death! '
+    ID: 18
+    useSubEventMessages: 0
+    startingMessage:
+    - 'The local magistrate died.
+
+      Nobody arrived to collect the tax.'
+    endingMessage: []
+    scenario: -1
+    oddsOfOccuring:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 15
+      serializedtype: DyingRateOfWife
+    StartingCondition:
+      operators: 
+      conditions: []
+    ContinualCondition:
+      operators: 
+      conditions: []
+    MaxOccurencePerPlaythrough:
+      constantValue: 1
+      useGameValue: 0
+      valueType: 10
+      serializedtype: NumberOfWife
+    Occurence: {x: 2, y: 30}
+    Duration: {x: 0, y: 0}
+    modifers:
+    - propertyType: 18
+      modificationType: 0
+      value_1: -0.3
+      value_2: 0
+      value_3: 0
+      serializedtype: TaxRate
+    subEvents:
+    - label: Tax
+      occuringMethod: 2
+      chance:
+        constantValue: 1
+        useGameValue: 0
+        valueType: 2
+        serializedtype: CropProduction
+      Duration: {x: 0, y: 0}
+      modifers:
+      - propertyType: 18
+        modificationType: 0
+        value_1: 0.3
+        value_2: 0
+        value_3: 0
+        serializedtype: TaxRate
+      startingMessage: []
+      endingMessage: []
+      StartingCondition:
+        operators: 
+        conditions: []
+      ContinualCondition:
+        operators: 
+        conditions: []
   normalFertiliserModel: {fileID: 1839906539185826, guid: 5755f03a94ab8564d8dd95cff468c902,
     type: 2}
   corpseFertiliserModel: {fileID: 1915673026167930, guid: 570fc993815d63f40a74606acfc14826,

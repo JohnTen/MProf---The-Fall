@@ -33,7 +33,7 @@ namespace UnityUtility
 		[SerializeField]
 		protected List<V> vals = new List<V>();
 
-		public Type EnumType { get; private set; }
+		public virtual Type EnumType { get; private set; }
 
 		public EnumBasedCollection()
 		{
@@ -47,9 +47,9 @@ namespace UnityUtility
 
 			for (int i = 0; i < enumNum; i++)
 			{
-				dict.Add((E)eValues.GetValue(i), default(V));
 				keys.Add((E)eValues.GetValue(i));
 				vals.Add(default(V));
+				dict.Add(keys[i], vals[i]);
 			}
 		}
 
@@ -70,7 +70,7 @@ namespace UnityUtility
 		/// <summary>
 		/// Clear all contains
 		/// </summary>
-		public void Clear()
+		public virtual void Clear()
 		{
 			dict.Clear();
 			keys.Clear();
@@ -80,7 +80,7 @@ namespace UnityUtility
 		/// <summary>
 		/// Reset all the values to default values
 		/// </summary>
-		public void Reset()
+		public virtual void Reset()
 		{
 			var eValues = Enum.GetValues(EnumType);
 
@@ -117,7 +117,7 @@ namespace UnityUtility
 			}
 		}
 
-		public IEnumerator<V> GetEnumerator()
+		public virtual IEnumerator<V> GetEnumerator()
 		{
 			return ((IEnumerable<V>)vals).GetEnumerator();
 		}
@@ -144,7 +144,7 @@ namespace UnityUtility
 
 		////// Serialization //////
 		
-		public void OnBeforeSerialize()
+		public virtual void OnBeforeSerialize()
 		{
 			var values = Enum.GetValues(EnumType);
 			if (dict == null)
@@ -168,7 +168,7 @@ namespace UnityUtility
 			}
 		}
 		
-		public void OnAfterDeserialize()
+		public virtual void OnAfterDeserialize()
 		{
 			if (dict == null) dict = new Dictionary<E, V>();
 			for (int i = 0; i < keys.Count; i++)

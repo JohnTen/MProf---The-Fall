@@ -55,16 +55,16 @@ public class EventEditor : EditorWindow
 
 				if (!deleteFlags[i])
 				{
-					GUI.color = Color.red;
+					GUI.backgroundColor = Color.red;
 					if (GUILayout.Button("Delete", GUILayout.Width(60)))
 					{
 						deleteFlags[i] = true;
 					}
-					GUI.color = Color.white;
+					GUI.backgroundColor = Color.white;
 				}
 				else
 				{
-					GUI.color = Color.green;
+					GUI.backgroundColor = Color.green;
 					if (GUILayout.Button("Yes", GUILayout.Width(50)))
 					{
 						list.RemoveAt(i);
@@ -72,14 +72,14 @@ public class EventEditor : EditorWindow
 						EditorUtility.SetDirty(database);
 						i--;
 					}
-					GUI.color = Color.white;
+					GUI.backgroundColor = Color.white;
 
-					GUI.color = Color.red;
+					GUI.backgroundColor = Color.red;
 					if (GUILayout.Button("No", GUILayout.Width(50)))
 					{
 						deleteFlags[i] = false;
 					}
-					GUI.color = Color.white;
+					GUI.backgroundColor = Color.white;
 				}
 				GUILayout.EndHorizontal();
 
@@ -124,12 +124,12 @@ public class EventEditor : EditorWindow
 			}
 		}
 
-		GUI.color = Color.green;
+		GUI.backgroundColor = Color.green;
 		if (GUILayout.Button("+"))
 		{
 			list.Add(new GameEvent(list[list.Count - 1]));
 		}
-		GUI.color = Color.white;
+		GUI.backgroundColor = Color.white;
 
 		GUILayout.EndScrollView();
 		GUILayout.EndVertical();
@@ -160,7 +160,7 @@ public class EventEditor : EditorWindow
 		GUILayout.BeginHorizontal();
 		foldout = EditorGUILayout.Foldout(foldout, label);
 
-		GUI.color = Color.green;
+		GUI.backgroundColor = Color.green;
 		if (GUILayout.Button("+", GUILayout.MaxWidth(50)))
 		{
 			if (list.Count > 0)
@@ -168,7 +168,7 @@ public class EventEditor : EditorWindow
 			else
 				list.Add(new SubEvent());
 		}
-		GUI.color = Color.white;
+		GUI.backgroundColor = Color.white;
 		GUILayout.EndHorizontal();
 
 		if (!foldout)
@@ -188,13 +188,13 @@ public class EventEditor : EditorWindow
 			GUILayout.BeginHorizontal();
 			foldingFlag[i] = EditorGUILayout.Foldout(foldingFlag[i], list[i].label);
 
-			GUI.color = Color.red;
+			GUI.backgroundColor = Color.red;
 			if (GUILayout.Button("X", GUILayout.MaxWidth(50)))
 			{
 				list.RemoveAt(i);
 				continue;
 			}
-			GUI.color = Color.white;
+			GUI.backgroundColor = Color.white;
 			GUILayout.EndHorizontal();
 			if (foldingFlag[i])
 			{
@@ -236,7 +236,7 @@ public class EventEditor : EditorWindow
 		GUILayout.BeginHorizontal();
 		foldout = EditorGUILayout.Foldout(foldout, label);
 
-		GUI.color = Color.green;
+		GUI.backgroundColor = Color.green;
 		if (GUILayout.Button("+", GUILayout.MaxWidth(50)))
 		{
 			if (list.Count > 0)
@@ -247,7 +247,7 @@ public class EventEditor : EditorWindow
 			else
 				list.Add(new EventCondition());
 		}
-		GUI.color = Color.white;
+		GUI.backgroundColor = Color.white;
 		GUILayout.EndHorizontal();
 
 		if (!foldout)
@@ -285,7 +285,7 @@ public class EventEditor : EditorWindow
 			GUILayout.BeginHorizontal("box");
 
 			// Button for delete this condition
-			GUI.color = Color.red;
+			GUI.backgroundColor = Color.red;
 			if(GUILayout.Button("X", GUILayout.MaxWidth(50)))
 			{
 				list.RemoveAt(i);
@@ -297,7 +297,7 @@ public class EventEditor : EditorWindow
 
 				continue;
 			}
-			GUI.color = Color.white;
+			GUI.backgroundColor = Color.white;
 			GUILayout.Space(3);
 
 			// Toggle for switch between EventCondition and ValueCondition
@@ -313,14 +313,14 @@ public class EventEditor : EditorWindow
 
 			// Button for toggle Not
 			if (notList[i])
-				GUI.color = Color.green;
+				GUI.backgroundColor = Color.green;
 			else
-				GUI.color = Color.red;
+				GUI.backgroundColor = Color.red;
 			if (GUILayout.Button("Not", GUILayout.Width(45)))
 			{
 				notList[i] = !notList[i];
 			}
-			GUI.color = Color.white;
+			GUI.backgroundColor = Color.white;
 
 			if (list[i].type == ConditionType.GameValue)
 				ValueConditionField(list[i]);
@@ -385,7 +385,7 @@ public class EventEditor : EditorWindow
 		GUILayout.BeginHorizontal();
 		foldout = EditorGUILayout.Foldout(foldout, label);
 
-		GUI.color = Color.green;
+		GUI.backgroundColor = Color.green;
 		if (GUILayout.Button("+", GUILayout.MaxWidth(50)))
 		{
 			if (list.Count > 0)
@@ -393,7 +393,7 @@ public class EventEditor : EditorWindow
 			else
 				list.Add(new GameValueModifer());
 		}
-		GUI.color = Color.white;
+		GUI.backgroundColor = Color.white;
 		GUILayout.EndHorizontal();
 
 		if (!foldout)
@@ -416,13 +416,13 @@ public class EventEditor : EditorWindow
 			DeserialiseGameValueType(list[i]);
 			foldingFlag[i] = EditorGUILayout.Foldout(foldingFlag[i], list[i].serializedtype);
 
-			GUI.color = Color.red;
+			GUI.backgroundColor = Color.red;
 			if (GUILayout.Button("X", GUILayout.MaxWidth(50)))
 			{
 				list.RemoveAt(i);
 				continue;
 			}
-			GUI.color = Color.white;
+			GUI.backgroundColor = Color.white;
 			GUILayout.EndHorizontal();
 			if (foldingFlag[i])
 			{
@@ -452,7 +452,7 @@ public class EventEditor : EditorWindow
 		GUILayout.BeginHorizontal();
 		foldout = EditorGUILayout.Foldout(foldout, label);
 
-		GUI.color = Color.green;
+		GUI.backgroundColor = Color.green;
 		if (GUILayout.Button("+", GUILayout.MaxWidth(50)))
 		{
 			if (list.Count > 0)
@@ -460,7 +460,7 @@ public class EventEditor : EditorWindow
 			else
 				list.Add("");
 		}
-		GUI.color = Color.white;
+		GUI.backgroundColor = Color.white;
 		GUILayout.EndHorizontal();
 
 		if (!foldout)
@@ -475,13 +475,13 @@ public class EventEditor : EditorWindow
 		{
 			GUILayout.BeginHorizontal("box");
 
-			GUI.color = Color.red;
+			GUI.backgroundColor = Color.red;
 			if (GUILayout.Button("X", GUILayout.MaxWidth(50)))
 			{
 				list.RemoveAt(i);
 				continue;
 			}
-			GUI.color = Color.white;
+			GUI.backgroundColor = Color.white;
 
 			list[i] = EditorGUILayout.TextArea(list[i]);
 			GUILayout.EndHorizontal();
