@@ -41,6 +41,8 @@ public class GameEvent
 		useSubEventMessages = gEvent.useSubEventMessages;
 		scenario = gEvent.scenario;
 		oddsOfOccuring = new DynamicValue(gEvent.oddsOfOccuring);
+		StartingCondition = new EventConditionGroup(gEvent.StartingCondition);
+		ContinualCondition = new EventConditionGroup(gEvent.ContinualCondition);
 		MaxOccurencePerPlaythrough = new DynamicValue(gEvent.MaxOccurencePerPlaythrough);
 		Occurence = gEvent.Occurence;
 		Duration = gEvent.Duration;
@@ -101,6 +103,8 @@ public class SubEvent
 		occuringMethod = sEvent.occuringMethod;
 		chance = new DynamicValue(sEvent.chance);
 		Duration = sEvent.Duration;
+		StartingCondition = new EventConditionGroup(sEvent.StartingCondition);
+		ContinualCondition = new EventConditionGroup(sEvent.ContinualCondition);
 
 		startingMessage = new string[sEvent.startingMessage.Length];
 		for (int i = 0; i < startingMessage.Length; i++)

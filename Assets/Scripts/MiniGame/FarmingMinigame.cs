@@ -80,6 +80,7 @@ public class FarmingMinigame : BaseMinigame
 		IsPlaying = true;
 		canvas.enabled = true;
 		OnGameFinished = null;
+		maze.StartingPoint.gameObject.SetActive(false);
 		pc.position = maze.StartingPoint.position;
 
 		currentMovement = 0;
@@ -190,6 +191,7 @@ public class FarmingMinigame : BaseMinigame
 		maze = Instantiate(maze.gameObject).GetComponent<MinigameMaze>();
 		maze.transform.SetParent(mazeBase, false);
 		maze.transform.SetAsFirstSibling();
+		maze.StartingPoint.gameObject.SetActive(true);
 
 		return maze;
 	}
@@ -217,8 +219,6 @@ public class FarmingMinigame : BaseMinigame
 		var x = centerToPoint.x * Mathf.Cos(degree) - centerToPoint.y * Mathf.Sin(degree);
 		var y = centerToPoint.x * Mathf.Sin(degree) + centerToPoint.y * Mathf.Cos(degree);
 
-		//Debug.DrawLine(center, center + new Vector2(x, y));
-
 		return center + new Vector2(x, y);
 	}
 
@@ -229,10 +229,7 @@ public class FarmingMinigame : BaseMinigame
 
 	bool IsContained(RectTransform rect1, Vector2 point)
 	{
-		//print(rect1.anchoredPosition);
 		point = RotateAround(rect1.rect.center, point, rect1.eulerAngles.z);
-
-		//Debug.DrawLine(rect1.rect.center + rect1.anchoredPosition, point + rect1.anchoredPosition, Color.red);
 
 		return rect1.rect.Contains(point);
 	}

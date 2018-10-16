@@ -157,11 +157,13 @@ public class Conclusion : MonoSingleton<Conclusion>
 		if (familyConsumption > GameDataManager.CurrentWheat)
 		{
 			GameDataManager.CurrentFamilyHunger += Mathf.CeilToInt((familyConsumption - GameDataManager.CurrentWheat) * GameDataManager.GameValues[GameValueType.FamilyHungerRate]);
+			GameDataManager.GameValues[GameValueType.FamilyHungerDays] ++;
 			familyConsumption = GameDataManager.CurrentWheat;
 		}
 		else
 		{
 			GameDataManager.CurrentFamilyHunger = 0;
+			GameDataManager.GameValues[GameValueType.FamilyHungerDays] = 0;
 		}
 
 		familyConsumption *= -1;
@@ -180,21 +182,23 @@ public class Conclusion : MonoSingleton<Conclusion>
 		animalConsumption = 
 			Mathf.RoundToInt(
 				animalConsumption * 
-				GameDataManager.GameValues.GetMultiplicationModify(GameValueType.OatConsumption) + 
-				GameDataManager.GameValues.GetAdditionModify(GameValueType.OatConsumption));
-		if (animalConsumption > GameDataManager.CurrentOat)
+				GameDataManager.GameValues.GetMultiplicationModify(GameValueType.WheatConsumption) + 
+				GameDataManager.GameValues.GetAdditionModify(GameValueType.WheatConsumption));
+		if (animalConsumption > GameDataManager.CurrentWheat)
 		{
-			GameDataManager.CurrentAnimalHunger += Mathf.CeilToInt((animalConsumption - GameDataManager.CurrentOat) * GameDataManager.GameValues[GameValueType.AnimalHungerRate]);
-			animalConsumption = GameDataManager.CurrentOat;
+			GameDataManager.CurrentAnimalHunger += Mathf.CeilToInt((animalConsumption - GameDataManager.CurrentWheat) * GameDataManager.GameValues[GameValueType.AnimalHungerRate]);
+			GameDataManager.GameValues[GameValueType.AnimalHungerDays] ++;
+			animalConsumption = GameDataManager.CurrentWheat;
 		}
 		else
 		{
 			GameDataManager.CurrentAnimalHunger = 0;
+			GameDataManager.GameValues[GameValueType.AnimalHungerDays] = 0;
 		}
 		animalConsumption *= -1;
 		ChangeColor(tendAnimal, animalConsumption);
 		tendAnimal.text = animalConsumption.ToString();
-		GameDataManager.CurrentOat += animalConsumption;
+		GameDataManager.CurrentWheat += animalConsumption;
 
 		// Fertiliser
 		GameDataManager.CurrentFertiliser += 

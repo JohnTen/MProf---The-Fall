@@ -30,6 +30,8 @@ public enum GameValueType
 	AnimalHunger,
 	FamilyHungerRate,
 	AnimalHungerRate,
+	FamilyHungerDays,
+	AnimalHungerDays,
 }
 
 [System.Serializable]

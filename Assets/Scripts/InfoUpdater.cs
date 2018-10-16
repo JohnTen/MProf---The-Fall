@@ -58,6 +58,6 @@ public class InfoUpdater : MonoBehaviour
 
 	private void TimeManager_OnTimePassed(int date)
 	{
-		dateText.text = date.ToString();
+		dateText.text = (GameDataManager.MaxWeek - date).ToString();
 	}
 }

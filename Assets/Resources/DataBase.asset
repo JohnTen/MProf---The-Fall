@@ -1196,6 +1196,352 @@ MonoBehaviour:
       ContinualCondition:
         operators: 
         conditions: []
+  - name: 'Starving to Death! '
+    ID: 19
+    useSubEventMessages: 1
+    startingMessage:
+    - 'The local magistrate died.
+
+      Nobody arrived to collect the tax.'
+    endingMessage: []
+    scenario: -1
+    oddsOfOccuring:
+      constantValue: 1
+      useGameValue: 0
+      valueType: 15
+      serializedtype: DyingRateOfWife
+    StartingCondition:
+      operators: 00000000
+      conditions:
+      - type: 0
+        operator: 1
+        value_1:
+          constantValue: 0
+          useGameValue: 1
+          valueType: 20
+          serializedtype: FamilyHunger
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 2
+          serializedtype: CropProduction
+      - type: 0
+        operator: 1
+        value_1:
+          constantValue: 0
+          useGameValue: 1
+          valueType: 24
+          serializedtype: FamilyHungerDays
+        value_2:
+          constantValue: 1
+          useGameValue: 0
+          valueType: 2
+          serializedtype: CropProduction
+    ContinualCondition:
+      operators: 00000000
+      conditions:
+      - type: 0
+        operator: 1
+        value_1:
+          constantValue: 0
+          useGameValue: 1
+          valueType: 20
+          serializedtype: FamilyHunger
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 2
+          serializedtype: CropProduction
+      - type: 0
+        operator: 1
+        value_1:
+          constantValue: 0
+          useGameValue: 1
+          valueType: 24
+          serializedtype: FamilyHungerDays
+        value_2:
+          constantValue: 1
+          useGameValue: 0
+          valueType: 2
+          serializedtype: CropProduction
+    MaxOccurencePerPlaythrough:
+      constantValue: 99
+      useGameValue: 0
+      valueType: 10
+      serializedtype: NumberOfWife
+    Occurence: {x: 0, y: 30}
+    Duration: {x: 0, y: 0}
+    modifers:
+    - propertyType: 18
+      modificationType: 0
+      value_1: -0.3
+      value_2: 0
+      value_3: 0
+      serializedtype: 
+    subEvents:
+    - label: Death by starving
+      occuringMethod: 0
+      chance:
+        constantValue: 1
+        useGameValue: 0
+        valueType: 2
+        serializedtype: CropProduction
+      Duration: {x: 0, y: 0}
+      modifers:
+      - propertyType: 13
+        modificationType: 0
+        value_1: -1
+        value_2: 0
+        value_3: 0
+        serializedtype: NumberOfOx
+      startingMessage:
+      - Your wife is dead.
+      endingMessage: []
+      StartingCondition:
+        operators: 
+        conditions:
+        - type: 0
+          operator: 1
+          value_1:
+            constantValue: 0
+            useGameValue: 1
+            valueType: 10
+            serializedtype: NumberOfWife
+          value_2:
+            constantValue: 0
+            useGameValue: 0
+            valueType: 2
+            serializedtype: CropProduction
+      ContinualCondition:
+        operators: 
+        conditions: []
+    - label: Death by starving
+      occuringMethod: 0
+      chance:
+        constantValue: 1
+        useGameValue: 0
+        valueType: 2
+        serializedtype: CropProduction
+      Duration: {x: 0, y: 0}
+      modifers:
+      - propertyType: 11
+        modificationType: 0
+        value_1: -1
+        value_2: 0
+        value_3: 0
+        serializedtype: NumberOfDaughter
+      startingMessage:
+      - Your daughter is dead.
+      endingMessage: []
+      StartingCondition:
+        operators: 
+        conditions:
+        - type: 0
+          operator: 1
+          value_1:
+            constantValue: 0
+            useGameValue: 1
+            valueType: 11
+            serializedtype: NumberOfDaughter
+          value_2:
+            constantValue: 0
+            useGameValue: 0
+            valueType: 2
+            serializedtype: CropProduction
+      ContinualCondition:
+        operators: 
+        conditions: []
+    - label: Death by starving
+      occuringMethod: 0
+      chance:
+        constantValue: 1
+        useGameValue: 0
+        valueType: 2
+        serializedtype: CropProduction
+      Duration: {x: 0, y: 0}
+      modifers:
+      - propertyType: 12
+        modificationType: 0
+        value_1: -1
+        value_2: 0
+        value_3: 0
+        serializedtype: NumberOfSon
+      startingMessage:
+      - Your son is dead.
+      endingMessage: []
+      StartingCondition:
+        operators: 
+        conditions:
+        - type: 0
+          operator: 1
+          value_1:
+            constantValue: 0
+            useGameValue: 1
+            valueType: 12
+            serializedtype: NumberOfSon
+          value_2:
+            constantValue: 0
+            useGameValue: 0
+            valueType: 2
+            serializedtype: CropProduction
+      ContinualCondition:
+        operators: 
+        conditions: []
+  - name: 'Starving to Death! '
+    ID: 20
+    useSubEventMessages: 1
+    startingMessage:
+    - 'The local magistrate died.
+
+      Nobody arrived to collect the tax.'
+    endingMessage: []
+    scenario: -1
+    oddsOfOccuring:
+      constantValue: 1
+      useGameValue: 0
+      valueType: 15
+      serializedtype: DyingRateOfWife
+    StartingCondition:
+      operators: 00000000
+      conditions:
+      - type: 0
+        operator: 1
+        value_1:
+          constantValue: 0
+          useGameValue: 1
+          valueType: 21
+          serializedtype: AnimalHunger
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 2
+          serializedtype: CropProduction
+      - type: 0
+        operator: 1
+        value_1:
+          constantValue: 0
+          useGameValue: 1
+          valueType: 25
+          serializedtype: AnimalHungerDays
+        value_2:
+          constantValue: 1
+          useGameValue: 0
+          valueType: 2
+          serializedtype: CropProduction
+    ContinualCondition:
+      operators: 00000000
+      conditions:
+      - type: 0
+        operator: 1
+        value_1:
+          constantValue: 0
+          useGameValue: 1
+          valueType: 21
+          serializedtype: AnimalHunger
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 2
+          serializedtype: CropProduction
+      - type: 0
+        operator: 1
+        value_1:
+          constantValue: 0
+          useGameValue: 1
+          valueType: 25
+          serializedtype: AnimalHungerDays
+        value_2:
+          constantValue: 1
+          useGameValue: 0
+          valueType: 2
+          serializedtype: CropProduction
+    MaxOccurencePerPlaythrough:
+      constantValue: 99
+      useGameValue: 0
+      valueType: 10
+      serializedtype: NumberOfWife
+    Occurence: {x: 0, y: 30}
+    Duration: {x: 0, y: 0}
+    modifers:
+    - propertyType: 18
+      modificationType: 0
+      value_1: -0.3
+      value_2: 0
+      value_3: 0
+      serializedtype: 
+    subEvents:
+    - label: Death by starving
+      occuringMethod: 0
+      chance:
+        constantValue: 1
+        useGameValue: 0
+        valueType: 2
+        serializedtype: CropProduction
+      Duration: {x: 0, y: 0}
+      modifers:
+      - propertyType: 13
+        modificationType: 0
+        value_1: -1
+        value_2: 0
+        value_3: 0
+        serializedtype: NumberOfOx
+      startingMessage:
+      - Your ox is dead.
+      endingMessage: []
+      StartingCondition:
+        operators: 
+        conditions:
+        - type: 0
+          operator: 1
+          value_1:
+            constantValue: 0
+            useGameValue: 1
+            valueType: 13
+            serializedtype: NumberOfOx
+          value_2:
+            constantValue: 0
+            useGameValue: 0
+            valueType: 2
+            serializedtype: CropProduction
+      ContinualCondition:
+        operators: 
+        conditions: []
+    - label: Death by starving
+      occuringMethod: 0
+      chance:
+        constantValue: 1
+        useGameValue: 0
+        valueType: 2
+        serializedtype: CropProduction
+      Duration: {x: 0, y: 0}
+      modifers:
+      - propertyType: 14
+        modificationType: 0
+        value_1: -1
+        value_2: 0
+        value_3: 0
+        serializedtype: NumberOfChicken
+      startingMessage:
+      - Your chicken is dead.
+      endingMessage: []
+      StartingCondition:
+        operators: 
+        conditions:
+        - type: 0
+          operator: 1
+          value_1:
+            constantValue: 0
+            useGameValue: 1
+            valueType: 14
+            serializedtype: NumberOfChicken
+          value_2:
+            constantValue: 0
+            useGameValue: 0
+            valueType: 2
+            serializedtype: CropProduction
+      ContinualCondition:
+        operators: 
+        conditions: []
   normalFertiliserModel: {fileID: 1839906539185826, guid: 5755f03a94ab8564d8dd95cff468c902,
     type: 2}
   corpseFertiliserModel: {fileID: 1915673026167930, guid: 570fc993815d63f40a74606acfc14826,

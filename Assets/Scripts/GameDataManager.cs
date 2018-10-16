@@ -223,7 +223,9 @@ public class GameDataManager : GlobalSingleton<GameDataManager>
 		switch (id)
 		{
 			case 0: GameValues[GameValueType.NumberOfWheat] += value; break;
-			case 1: GameValues[GameValueType.NumberOfOat] += value; break;
+			case 1: GameValues[GameValueType.NumberOfWheat] += value; break;
+			case 2: GameValues[GameValueType.NumberOfWheat] += value; break;
+			case 3: GameValues[GameValueType.NumberOfWheat] += value; break;
 		}
 	}
 
