@@ -90,7 +90,7 @@ public class FieldBlock : MonoInteractable
 
 	public override void StopInteracting() { }
 
-	public void WaitForMinigame(bool result)
+	private void WaitForFarmingMinigame(bool result)
 	{
 		status.fouled = !result;
 		if (status.fouled)
@@ -108,6 +108,18 @@ public class FieldBlock : MonoInteractable
 		onActivated.Invoke();
 	}
 
+	private void WaitForHarvestingMinigame(bool result)
+	{
+		if (!result)
+			status.currentCrop.foodValue /= 2;
+
+		GameDataManager.ModifyCropNumber(status.currentCrop.index, Mathf.RoundToInt(status.currentCrop.foodValue * GameDataManager.GameValues[GameValueType.CropProduction]));
+		GameDataManager.UpdateValues();
+		SoundManager.Play(harvestingSoundLabel);
+
+		Clear();
+	}
+
 	public void Plant(Crop crop)
 	{
 		SoundManager.Play(plantingSoundLabel);
@@ -116,7 +128,7 @@ public class FieldBlock : MonoInteractable
 		status.currentCrop = new Crop(crop);
 		status.currentGrowingPeriod = 0;
 
-		FieldManager.Instance.StartPlantMinigame(crop.index, WaitForMinigame);
+		FieldManager.Instance.StartPlantMinigame(crop.index, WaitForFarmingMinigame);
 	}
 
 	public void ForcePlant(Crop crop, int growingPeriod)
@@ -140,14 +152,8 @@ public class FieldBlock : MonoInteractable
 		if (!status.plantedCrop ||
 			status.currentCrop.growingPeriod > status.currentGrowingPeriod)
 			return;
-		
-		if (Random.value < status.currentCrop.dropSeedPossibility * GameDataManager.GameValues[GameValueType.SeedDroppingRate])
-			GameDataManager.ModifyCropSeedNumbr(status.currentCrop.index, Mathf.RoundToInt(status.currentCrop.dropSeedNumber * GameDataManager.GameValues[GameValueType.SeedProduction]));
-		GameDataManager.ModifyCropNumber(status.currentCrop.index, Mathf.RoundToInt(status.currentCrop.foodValue * GameDataManager.GameValues[GameValueType.CropProduction]));
-		GameDataManager.UpdateValues();
-		SoundManager.Play(harvestingSoundLabel);
 
-		Clear();
+		FieldManager.Instance.StartHarvestMinigame(WaitForHarvestingMinigame);
 	}
 
 	public void Clear()

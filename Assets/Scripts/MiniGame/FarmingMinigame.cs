@@ -1,8 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityUtility;
 
 public class FarmingMinigame : BaseMinigame
@@ -367,8 +364,7 @@ public class FarmingMinigame : BaseMinigame
 
 	private void Update()
 	{
-		if (IsPlaying == false)
-			return;
+		if (!IsPlaying) return;
 
 		var origPos = pc.position;
 		Move();

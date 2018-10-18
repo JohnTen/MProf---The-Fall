@@ -7,7 +7,7 @@ using UnityUtility;
 public class MinigameManager : EditorWindow
 {
 	static FarmingMinigame farmingGame;
-	static StarvingMinigame starvingGame;
+	static HarvestingMinigame harvestingGame;
 
 	Vector2 scrollPosition;
 
@@ -35,7 +35,7 @@ public class MinigameManager : EditorWindow
 		GetWindow<MinigameManager>();
 
 		farmingGame = FindObjectOfType<FarmingMinigame>();
-		starvingGame = FindObjectOfType<StarvingMinigame>();
+		harvestingGame = FindObjectOfType<HarvestingMinigame>();
 	}
 
 	private void OnGUI()
@@ -52,7 +52,7 @@ public class MinigameManager : EditorWindow
 			editingStarvingGame = false;
 		}
 		
-		if (GUILayout.Button("Starving Game"))
+		if (GUILayout.Button("Harveting Game"))
 		{
 			savingAs = false;
 			overwriting = false;
@@ -71,7 +71,7 @@ public class MinigameManager : EditorWindow
 
 		if (editingStarvingGame)
 		{
-			DrawStarvingGame();
+			DrawHarvestingGame();
 		}
 		
 		GUILayout.EndScrollView();
@@ -378,21 +378,25 @@ public class MinigameManager : EditorWindow
 	}
 	#endregion
 
-	#region Starving
+	#region Haresting
 
-	private void DrawStarvingGame()
+	private void DrawHarvestingGame()
 	{
 		GUILayout.BeginVertical("box");
-		if (!starvingGame)
+		if (!harvestingGame)
 		{
-			starvingGame = FindObjectOfType<StarvingMinigame>();
-			if (!starvingGame)
+			harvestingGame = FindObjectOfType<HarvestingMinigame>();
+			if (!harvestingGame)
 			{
-				GUILayout.Label("You don't have a starving game instance in your scene!");
+				GUILayout.Label("You don't have a harvesting game instance in your scene!");
 				GUILayout.EndVertical();
 				return;
 			}
 		}
+
+		harvestingGame.MinHitZoneSize = EditorGUILayout.FloatField("Minimum size of hit zone", harvestingGame.MinHitZoneSize);
+		harvestingGame.MaxHitZoneSize = EditorGUILayout.FloatField("Maximum size of hit zone", harvestingGame.MaxHitZoneSize);
+		harvestingGame.PointerSpeed = EditorGUILayout.FloatField("Moving speed of pointer", harvestingGame.PointerSpeed);
 
 		GUILayout.EndVertical();
 	}

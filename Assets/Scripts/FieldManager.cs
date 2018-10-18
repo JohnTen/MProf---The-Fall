@@ -5,7 +5,8 @@ using UnityUtility;
 
 public class FieldManager : MonoSingleton<FieldManager>
 {
-	[SerializeField] FarmingMinigame minigame;
+	[SerializeField] FarmingMinigame farmingMinigame;
+	[SerializeField] HarvestingMinigame harvestingMinigame;
 	[SerializeField] List<FieldBlock> fieldBlocks = new List<FieldBlock>();
 
 	public List<FieldBlock> FieldBlocks
@@ -25,9 +26,18 @@ public class FieldManager : MonoSingleton<FieldManager>
 
 	public void StartPlantMinigame(int level, Action<bool> onGameFinished)
 	{
-		minigame.StartPlay(level);
-		if (minigame.IsPlaying)
-			minigame.OnGameFinished += onGameFinished;
+		farmingMinigame.StartPlay(level);
+		if (farmingMinigame.IsPlaying)
+			farmingMinigame.OnGameFinished += onGameFinished;
+		else
+			onGameFinished.Invoke(true);
+	}
+
+	public void StartHarvestMinigame(Action<bool> onGameFinished)
+	{
+		harvestingMinigame.StartPlay(0);
+		if (harvestingMinigame.IsPlaying)
+			harvestingMinigame.OnGameFinished += onGameFinished;
 		else
 			onGameFinished.Invoke(true);
 	}
