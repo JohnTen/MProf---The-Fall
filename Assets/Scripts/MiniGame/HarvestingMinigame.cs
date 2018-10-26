@@ -40,6 +40,7 @@ public class HarvestingMinigame : BaseMinigame
 		var pos = pointer.localPosition;
 		pos.y = -pointerMovingRange;
 		pointer.localPosition = pos;
+		movingDir = false;
 
 		Time.timeScale = 0;
 	}
