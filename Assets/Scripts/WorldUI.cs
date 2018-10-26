@@ -7,17 +7,11 @@ using UnityUtility;
 public class WorldUI : MonoSingleton<WorldUI>
 {
 	[SerializeField] ButtonMenu cropMenu;
-	[SerializeField] ButtonMenu fertiliserMenu;
 	[SerializeField] ButtonMenu enterHouseMenu;
 
 	public static ButtonMenu CropMenu
 	{
 		get { return Instance.cropMenu; }
-	}
-
-	public static ButtonMenu FertiliserMenu
-	{
-		get { return Instance.fertiliserMenu; }
 	}
 
 	public static ButtonMenu EnterHouseMenu
@@ -28,7 +22,6 @@ public class WorldUI : MonoSingleton<WorldUI>
 	public static void CloseAllMenu()
 	{
 		CropMenu.CloseMenu();
-		FertiliserMenu.CloseMenu();
 		EnterHouseMenu.CloseMenu();
 	}
 

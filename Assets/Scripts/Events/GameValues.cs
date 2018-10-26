@@ -6,32 +6,32 @@ using UnityUtility.MVS;
 
 public enum GameValueType
 {
-	WheatConsumption,
-	OatConsumption,
+	__Crops,
+	WheatConsumptionRate,
+	OatConsumptionRate,
 	CropProduction,
-	SeedProduction,
-	SeedDroppingRate,
 	NumberOfWheat,
 	NumberOfOat,
-	NumberOfWheatSeed,
-	NumberOfOatSeed,
-	NumberOfFertiliser,
+
+	__Family,
 	NumberOfWife,
 	NumberOfDaughter,
 	NumberOfSon,
-	NumberOfOx,
-	NumberOfChicken,
 	DyingRateOfWife,
 	DyingRateOfDaughter,
 	DyingRateOfSon,
+	FamilyHunger,
+	FamilyHungryDays,
+	FamilyMentalHealth,
+
+	__Animal,
+	NumberOfOx,
+	AnimalHunger,
+	AnimalHungryDays,
+
+	__Other,
 	TaxRate,
 	ForcedTaxRate,
-	FamilyHunger,
-	AnimalHunger,
-	FamilyHungerRate,
-	AnimalHungerRate,
-	FamilyHungerDays,
-	AnimalHungerDays,
 }
 
 [System.Serializable]

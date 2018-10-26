@@ -17,26 +17,7 @@ public class Cheat : MonoBehaviour
 		GameDataManager.GameValues[GameValueType.NumberOfOat] += int.Parse(input.text);
 		GameDataManager.UpdateValues();
 	}
-	public void ChangeWheatSeed()
-	{
-		GameDataManager.GameValues[GameValueType.NumberOfWheatSeed] += int.Parse(input.text);
-		GameDataManager.UpdateValues();
-	}
-	public void ChangeOatSeed()
-	{
-		GameDataManager.GameValues[GameValueType.NumberOfOatSeed] += int.Parse(input.text);
-		GameDataManager.UpdateValues();
-	}
-	public void ChangeFertiliser()
-	{
-		GameDataManager.GameValues[GameValueType.NumberOfFertiliser] += int.Parse(input.text);
-		GameDataManager.UpdateValues();
-	}
-	public void ChangeChicken()
-	{
-		GameDataManager.GameValues[GameValueType.NumberOfChicken] += int.Parse(input.text);
-		GameDataManager.UpdateValues();
-	}
+	
 	public void ChangeOx()
 	{
 		GameDataManager.GameValues[GameValueType.NumberOfOx] += int.Parse(input.text);

@@ -33,16 +33,6 @@ public class GameDataManager : GlobalSingleton<GameDataManager>
 		}
 	}
 
-	//public static GameValuesOld Values
-	//{
-	//	get { return Instance.values; }
-	//}
-
-	//public static GameValuesOld EventOffset
-	//{
-	//	get { return Instance.offset; }
-	//}
-
 	public static float MaxWeek
 	{
 		get { return Instance.maxWeek; }
@@ -73,36 +63,6 @@ public class GameDataManager : GlobalSingleton<GameDataManager>
 		}
 	}
 
-	public static int CurrentWheatSeed
-	{
-		get { return (int)GameValues[GameValueType.NumberOfWheatSeed]; }
-		set
-		{
-			GameValues[GameValueType.NumberOfWheatSeed] = value;
-			UpdateValues();
-		}
-	}
-
-	public static int CurrentOatSeed
-	{
-		get { return (int)GameValues[GameValueType.NumberOfOatSeed]; }
-		set
-		{
-			GameValues[GameValueType.NumberOfOatSeed] = value;
-			UpdateValues();
-		}
-	}
-
-	public static int CurrentFertiliser
-	{
-		get { return (int)GameValues[GameValueType.NumberOfFertiliser]; }
-		set
-		{
-			GameValues[GameValueType.NumberOfFertiliser] = value;
-			UpdateValues();
-		}
-	}
-
 	public static int CurrentWife
 	{
 		get { return (int)GameValues[GameValueType.NumberOfWife]; }
@@ -129,16 +89,6 @@ public class GameDataManager : GlobalSingleton<GameDataManager>
 		set
 		{
 			GameValues[GameValueType.NumberOfDaughter] = value;
-			UpdateValues();
-		}
-	}
-
-	public static int CurrentChicken
-	{
-		get { return (int)GameValues[GameValueType.NumberOfChicken]; }
-		set
-		{
-			GameValues[GameValueType.NumberOfChicken] = value;
 			UpdateValues();
 		}
 	}
@@ -184,23 +134,11 @@ public class GameDataManager : GlobalSingleton<GameDataManager>
 		return -1;
 	}
 
-	public static int GetCropSeedNumbr(int id)
-	{
-		switch (id)
-		{
-			case 0: return (int)GameValues[GameValueType.NumberOfWheatSeed];
-			case 1: return (int)GameValues[GameValueType.NumberOfOatSeed];
-		}
-
-		return -1;
-	}
-
 	public static int GetAnimalNumber(int id)
 	{
 		switch (id)
 		{
-			case 0: return (int)GameValues[GameValueType.NumberOfChicken];
-			case 1: return (int)GameValues[GameValueType.NumberOfOx];
+			case 0: return (int)GameValues[GameValueType.NumberOfOx];
 		}
 
 		return -1;
@@ -229,21 +167,11 @@ public class GameDataManager : GlobalSingleton<GameDataManager>
 		}
 	}
 
-	public static void ModifyCropSeedNumbr(int id, int value)
-	{
-		switch (id)
-		{
-			case 0: GameValues[GameValueType.NumberOfWheatSeed] += value; break;
-			case 1: GameValues[GameValueType.NumberOfOatSeed] += value; break;
-		}
-	}
-
 	public static void ModifyAnimalNumber(int id, int value)
 	{
 		switch (id)
 		{
-			case 0: GameValues[GameValueType.NumberOfChicken] += value; break;
-			case 1: GameValues[GameValueType.NumberOfOx] += value; break;
+			case 0: GameValues[GameValueType.NumberOfOx] += value; break;
 		}
 	}
 

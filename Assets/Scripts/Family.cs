@@ -2,12 +2,19 @@
 using System.Linq;
 using System.Text;
 
+public enum FamilyType
+{
+	Wife,
+	Daughter,
+	Son,
+}
+
 [System.Serializable]
-public class Family
+public class FamilyMember
 {
 	public string name;
-	public int index;
+	public FamilyType type;
 	public int requiredWheat;
-	public int ProvidedFood;
-	public int ProvidedFertiliser;
+	public int hunger;
+	public float mentalHealth;
 }

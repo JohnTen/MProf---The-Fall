@@ -40,12 +40,16 @@ public class HarvestingMinigame : BaseMinigame
 		var pos = pointer.localPosition;
 		pos.y = -pointerMovingRange;
 		pointer.localPosition = pos;
+
+		Time.timeScale = 0;
 	}
 
 	public override void StopPlay()
 	{
 		IsPlaying = false;
 		canvas.enabled = false;
+
+		Time.timeScale = 1;
 	}
 
 	private void Randomise()
@@ -75,7 +79,7 @@ public class HarvestingMinigame : BaseMinigame
 	{
 		if (!IsPlaying) return;
 
-		var dir = Vector3.up * Time.deltaTime * PointerSpeed;
+		var dir = Vector3.up * Time.unscaledDeltaTime * PointerSpeed;
 		dir = movingDir ? -dir : dir;
 
 		pointer.localPosition += dir;

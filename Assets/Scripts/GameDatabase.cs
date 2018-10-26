@@ -14,12 +14,10 @@ public class GameDatabase : ScriptableObject
 {
 	public List<Crop> cropList = new List<Crop>();
 	public List<Animal> animalList = new List<Animal>();
-	public List<Family> familyList = new List<Family>();
+	public List<FamilyMember> familyList = new List<FamilyMember>();
 	public List<CropModelList> cropGrowingModelList = new List<CropModelList>();
 
 	public List<GameEvent> eventList = new List<GameEvent>();
-	public GameObject normalFertiliserModel;
-	public GameObject corpseFertiliserModel;
 
 	static GameDatabase _instance;
 	public static GameDatabase Instance

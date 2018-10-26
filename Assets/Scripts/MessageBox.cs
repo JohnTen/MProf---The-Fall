@@ -37,6 +37,7 @@ public class MessageBox : MonoSingleton<MessageBox>
 		Instance.canvas.enabled = true;
 		Instance.titleText.text = title;
 		Instance.contentText.text = content;
+		Time.timeScale = 0;
 	}
 
 	public void NextMessage()
@@ -45,6 +46,7 @@ public class MessageBox : MonoSingleton<MessageBox>
 		{
 			IsShowingMessage = false;
 			Instance.canvas.enabled = false;
+			Time.timeScale = 1;
 			return;
 		}
 

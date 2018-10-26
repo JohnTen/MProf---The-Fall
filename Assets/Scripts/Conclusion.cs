@@ -72,6 +72,8 @@ public class Conclusion : MonoSingleton<Conclusion>
 		BasicCanvas.enabled = true;
 		TaxCanvas.enabled = true;
 
+		Time.timeScale = 0;
+
 		var taxRate = GameDataManager.GameValues[GameValueType.TaxRate];
 		taxRateText.text	= ((int)(taxRate * 100)).ToString() + "%";
 		paidWheat			= Mathf.CeilToInt(GameDataManager.CurrentWheat	* taxRate);
@@ -101,6 +103,8 @@ public class Conclusion : MonoSingleton<Conclusion>
 			OnConclusionStart.Invoke();
 		BasicCanvas.enabled = true;
 		ConclusionCanvas.enabled = true;
+
+		Time.timeScale = 0;
 
 		// The remain
 		if (OnCalculateRemainedCrops != null)
@@ -151,19 +155,18 @@ public class Conclusion : MonoSingleton<Conclusion>
 		familyConsumption = 
 			Mathf.RoundToInt(
 				familyConsumption * 
-				GameDataManager.GameValues.GetMultiplicationModify(GameValueType.WheatConsumption) + 
-				GameDataManager.GameValues.GetAdditionModify(GameValueType.WheatConsumption));
+				GameDataManager.GameValues[GameValueType.WheatConsumptionRate]);
 		
 		if (familyConsumption > GameDataManager.CurrentWheat)
 		{
-			GameDataManager.CurrentFamilyHunger += Mathf.CeilToInt((familyConsumption - GameDataManager.CurrentWheat) * GameDataManager.GameValues[GameValueType.FamilyHungerRate]);
-			GameDataManager.GameValues[GameValueType.FamilyHungerDays] ++;
+			GameDataManager.CurrentFamilyHunger += Mathf.CeilToInt((familyConsumption - GameDataManager.CurrentWheat));
+			GameDataManager.GameValues[GameValueType.FamilyHungryDays] ++;
 			familyConsumption = GameDataManager.CurrentWheat;
 		}
 		else
 		{
 			GameDataManager.CurrentFamilyHunger = 0;
-			GameDataManager.GameValues[GameValueType.FamilyHungerDays] = 0;
+			GameDataManager.GameValues[GameValueType.FamilyHungryDays] = 0;
 		}
 
 		familyConsumption *= -1;
@@ -182,28 +185,22 @@ public class Conclusion : MonoSingleton<Conclusion>
 		animalConsumption = 
 			Mathf.RoundToInt(
 				animalConsumption * 
-				GameDataManager.GameValues.GetMultiplicationModify(GameValueType.WheatConsumption) + 
-				GameDataManager.GameValues.GetAdditionModify(GameValueType.WheatConsumption));
-		if (animalConsumption > GameDataManager.CurrentWheat)
+				GameDataManager.GameValues[GameValueType.OatConsumptionRate]);
+		if (animalConsumption > GameDataManager.CurrentOat)
 		{
-			GameDataManager.CurrentAnimalHunger += Mathf.CeilToInt((animalConsumption - GameDataManager.CurrentWheat) * GameDataManager.GameValues[GameValueType.AnimalHungerRate]);
-			GameDataManager.GameValues[GameValueType.AnimalHungerDays] ++;
-			animalConsumption = GameDataManager.CurrentWheat;
+			GameDataManager.CurrentAnimalHunger += Mathf.CeilToInt((animalConsumption - GameDataManager.CurrentOat));
+			GameDataManager.GameValues[GameValueType.AnimalHungryDays] ++;
+			animalConsumption = GameDataManager.CurrentOat;
 		}
 		else
 		{
 			GameDataManager.CurrentAnimalHunger = 0;
-			GameDataManager.GameValues[GameValueType.AnimalHungerDays] = 0;
+			GameDataManager.GameValues[GameValueType.AnimalHungryDays] = 0;
 		}
 		animalConsumption *= -1;
 		ChangeColor(tendAnimal, animalConsumption);
 		tendAnimal.text = animalConsumption.ToString();
-		GameDataManager.CurrentWheat += animalConsumption;
-
-		// Fertiliser
-		GameDataManager.CurrentFertiliser += 
-			GameDataManager.CurrentChicken * GameDatabase.Instance.animalList[0].ProvidedFertiliser + 
-			GameDataManager.CurrentOx * GameDatabase.Instance.animalList[1].ProvidedFertiliser;
+		GameDataManager.CurrentOat += animalConsumption;
 
 		// Events
 		if (OnCalculateEvents != null)
@@ -239,6 +236,8 @@ public class Conclusion : MonoSingleton<Conclusion>
 		BasicCanvas.enabled = false;
 		TaxCanvas.enabled = false;
 		ConclusionCanvas.enabled = false;
+
+		Time.timeScale = 1;
 	}
 
 	void ChangeColor(Text text, int number)

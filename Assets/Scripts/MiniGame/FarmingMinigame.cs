@@ -79,6 +79,7 @@ public class FarmingMinigame : BaseMinigame
 		OnGameFinished = null;
 		maze.StartingPoint.gameObject.SetActive(false);
 		pc.position = maze.StartingPoint.position;
+		Time.timeScale = 0;
 
 		currentMovement = 0;
 	}
@@ -87,6 +88,7 @@ public class FarmingMinigame : BaseMinigame
 	{
 		IsPlaying = false;
 		canvas.enabled = false;
+		Time.timeScale = 1;
 	}
 
 	public void MoveUp()
@@ -233,7 +235,7 @@ public class FarmingMinigame : BaseMinigame
 
 	private void Move()
 	{
-		var movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+		var movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 		if (movement != Vector2.zero)
 			movingDir = CurrentController.ArrowKeys;
 		else if (movingDir == CurrentController.ArrowKeys)
@@ -261,8 +263,8 @@ public class FarmingMinigame : BaseMinigame
 				break;
 		}
 
-		currentMovement += maze.PCMovingSpeed * Time.deltaTime * 0.1f;
-		pc.transform.Translate(movement * maze.PCMovingSpeed * Time.deltaTime);
+		currentMovement += maze.PCMovingSpeed * Time.unscaledDeltaTime * 0.1f;
+		pc.transform.Translate(movement * maze.PCMovingSpeed * Time.unscaledDeltaTime);
 	}
 
 	private bool IsPCWithinBoundary()

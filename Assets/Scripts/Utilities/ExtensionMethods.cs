@@ -121,6 +121,16 @@ namespace UnityUtility
 			return new Vector3Int((int)vec.x, (int)vec.y, (int)vec.z);
 		}
 
+		public static Vector3 Rotate(this Vector3 vector, Vector3 angles)
+		{
+			return Quaternion.Euler(angles) * vector;
+		}
+
+		public static Vector3 Rotate(this Vector3 vector, float x, float y, float z)
+		{
+			return Quaternion.Euler(x, y, z) * vector;
+		}
+
 		public static bool IsIncluded(this Vector2 bound, float value)
 		{
 			return value >= bound.x && value <= bound.y;

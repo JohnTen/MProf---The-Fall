@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Name: DataBase
   m_EditorClassIdentifier: 
   cropList:
-  - name: Tomato
+  - name: Wheat
     index: 0
-    foodValue: 2
-    growingPeriod: 1
+    foodValue: 8
+    growingPeriod: 4
     dropSeedPossibility: 0.5
     dropSeedNumber: 2
   - name: Barley
@@ -24,64 +24,39 @@ MonoBehaviour:
     growingPeriod: 2
     dropSeedPossibility: 0.5
     dropSeedNumber: 2
-  - name: Potato
-    index: 2
-    foodValue: 5
-    growingPeriod: 3
-    dropSeedPossibility: 0.5
-    dropSeedNumber: 2
-  - name: Wheat
-    index: 3
-    foodValue: 8
-    growingPeriod: 4
-    dropSeedPossibility: 0.5
-    dropSeedNumber: 2
   animalList:
-  - name: Chicken
-    index: 0
-    requiredOat: 1
-    ProvidedFood: 2
-    ProvidedFertiliser: 1
   - name: Ox
-    index: 1
+    index: 0
     requiredOat: 2
     ProvidedFood: 5
     ProvidedFertiliser: 1
   familyList:
   - name: Wife
-    index: 0
+    type: 0
     requiredWheat: 1
-    ProvidedFood: 2
-    ProvidedFertiliser: 0
+    hunger: 0
+    mentalHealth: 0
   - name: Daughter
-    index: 1
+    type: 0
     requiredWheat: 1
-    ProvidedFood: 4
-    ProvidedFertiliser: 0
+    hunger: 0
+    mentalHealth: 0
   - name: Son
-    index: 2
+    type: 0
     requiredWheat: 1
-    ProvidedFood: 4
-    ProvidedFertiliser: 0
+    hunger: 0
+    mentalHealth: 0
   cropGrowingModelList:
-  - models:
-    - {fileID: 1204714591002782, guid: 89bf2e5ff820a204c99f2144c8996313, type: 2}
-    - {fileID: 1059141925665796, guid: 8e198bd335ec25a498bb7ee74d81b4f1, type: 2}
-  - models:
-    - {fileID: 1058307221275728, guid: d58a78de6a8dc0646b8d02d94d52726f, type: 2}
-    - {fileID: 1917212670735970, guid: 40ccc907c4dff0148a0a06c463b35afb, type: 2}
-    - {fileID: 1729838822356402, guid: 280b82556c5e553468cf8a3d8c6e1536, type: 2}
-  - models:
-    - {fileID: 1343763146523474, guid: 50180db981662654897b65441d3c03a1, type: 2}
-    - {fileID: 1582095214921378, guid: cc29a8a4a0f411745bfe84fd3d213396, type: 2}
-    - {fileID: 1233422323350716, guid: be82e58a325f820498aa2465166d0e63, type: 2}
-    - {fileID: 1095071080469500, guid: e61eafde481940a498210192040acbf6, type: 2}
   - models:
     - {fileID: 1819682924018166, guid: 00a7b07edde06794e891d860d91dfe68, type: 2}
     - {fileID: 1871793925196598, guid: 276950e0e39fb4e42b08f1ca377c8f8b, type: 2}
     - {fileID: 1605377519871296, guid: 5893179707f5fd8499f4fc9ce9430ff9, type: 2}
     - {fileID: 1681416428421222, guid: 6ca3870501ff1ed4fbb43db99892e8ef, type: 2}
     - {fileID: 1554864988235088, guid: 63a78ea299c784a4fb09c73c6f5fcefb, type: 2}
+  - models:
+    - {fileID: 1058307221275728, guid: d58a78de6a8dc0646b8d02d94d52726f, type: 2}
+    - {fileID: 1917212670735970, guid: 40ccc907c4dff0148a0a06c463b35afb, type: 2}
+    - {fileID: 1729838822356402, guid: 280b82556c5e553468cf8a3d8c6e1536, type: 2}
   eventList:
   - name: Pregnant Wife
     ID: 0
@@ -94,7 +69,7 @@ MonoBehaviour:
     oddsOfOccuring:
       constantValue: 0.1
       useGameValue: 0
-      valueType: 2
+      valueType: 3
       serializedtype: CropProduction
     StartingCondition:
       operators: 
@@ -104,12 +79,12 @@ MonoBehaviour:
         value_1:
           constantValue: 0
           useGameValue: 1
-          valueType: 10
+          valueType: 7
           serializedtype: NumberOfWife
         value_2:
           constantValue: 0
           useGameValue: 0
-          valueType: 2
+          valueType: 3
           serializedtype: CropProduction
     ContinualCondition:
       operators: 
@@ -119,17 +94,17 @@ MonoBehaviour:
         value_1:
           constantValue: 0
           useGameValue: 1
-          valueType: 10
+          valueType: 7
           serializedtype: NumberOfWife
         value_2:
           constantValue: 0
           useGameValue: 0
-          valueType: 2
+          valueType: 3
           serializedtype: CropProduction
     MaxOccurencePerPlaythrough:
       constantValue: 1
       useGameValue: 0
-      valueType: 2
+      valueType: 3
       serializedtype: CropProduction
     Occurence: {x: 5, y: 30}
     Duration: {x: 3, y: 5}
@@ -196,7 +171,7 @@ MonoBehaviour:
     oddsOfOccuring:
       constantValue: 0.2
       useGameValue: 0
-      valueType: 2
+      valueType: 3
       serializedtype: CropProduction
     StartingCondition:
       operators: 
@@ -219,7 +194,7 @@ MonoBehaviour:
     MaxOccurencePerPlaythrough:
       constantValue: 1
       useGameValue: 0
-      valueType: 2
+      valueType: 3
       serializedtype: CropProduction
     Occurence: {x: 10, y: 30}
     Duration: {x: 3, y: 4}
@@ -1208,7 +1183,7 @@ MonoBehaviour:
     oddsOfOccuring:
       constantValue: 1
       useGameValue: 0
-      valueType: 15
+      valueType: 10
       serializedtype: DyingRateOfWife
     StartingCondition:
       operators: 00000000
@@ -1218,24 +1193,24 @@ MonoBehaviour:
         value_1:
           constantValue: 0
           useGameValue: 1
-          valueType: 20
+          valueType: 13
           serializedtype: FamilyHunger
         value_2:
           constantValue: 0
           useGameValue: 0
-          valueType: 2
+          valueType: 3
           serializedtype: CropProduction
       - type: 0
         operator: 1
         value_1:
           constantValue: 0
           useGameValue: 1
-          valueType: 24
-          serializedtype: FamilyHungerDays
+          valueType: 14
+          serializedtype: FamilyHungryDays
         value_2:
           constantValue: 1
           useGameValue: 0
-          valueType: 2
+          valueType: 3
           serializedtype: CropProduction
     ContinualCondition:
       operators: 00000000
@@ -1245,46 +1220,46 @@ MonoBehaviour:
         value_1:
           constantValue: 0
           useGameValue: 1
-          valueType: 20
+          valueType: 13
           serializedtype: FamilyHunger
         value_2:
           constantValue: 0
           useGameValue: 0
-          valueType: 2
+          valueType: 3
           serializedtype: CropProduction
       - type: 0
         operator: 1
         value_1:
           constantValue: 0
           useGameValue: 1
-          valueType: 24
-          serializedtype: FamilyHungerDays
+          valueType: 14
+          serializedtype: FamilyHungryDays
         value_2:
           constantValue: 1
           useGameValue: 0
-          valueType: 2
+          valueType: 3
           serializedtype: CropProduction
     MaxOccurencePerPlaythrough:
       constantValue: 99
       useGameValue: 0
-      valueType: 10
+      valueType: 7
       serializedtype: NumberOfWife
     Occurence: {x: 0, y: 30}
     Duration: {x: 0, y: 0}
     modifers:
-    - propertyType: 18
+    - propertyType: 3
       modificationType: 0
       value_1: -0.3
       value_2: 0
       value_3: 0
-      serializedtype: 
+      serializedtype: CropProduction
     subEvents:
     - label: Death by starving
       occuringMethod: 0
       chance:
         constantValue: 1
         useGameValue: 0
-        valueType: 2
+        valueType: 3
         serializedtype: CropProduction
       Duration: {x: 0, y: 0}
       modifers:
@@ -1305,12 +1280,12 @@ MonoBehaviour:
           value_1:
             constantValue: 0
             useGameValue: 1
-            valueType: 10
+            valueType: 7
             serializedtype: NumberOfWife
           value_2:
             constantValue: 0
             useGameValue: 0
-            valueType: 2
+            valueType: 3
             serializedtype: CropProduction
       ContinualCondition:
         operators: 
@@ -1320,7 +1295,7 @@ MonoBehaviour:
       chance:
         constantValue: 1
         useGameValue: 0
-        valueType: 2
+        valueType: 3
         serializedtype: CropProduction
       Duration: {x: 0, y: 0}
       modifers:
@@ -1399,7 +1374,7 @@ MonoBehaviour:
     oddsOfOccuring:
       constantValue: 1
       useGameValue: 0
-      valueType: 15
+      valueType: 10
       serializedtype: DyingRateOfWife
     StartingCondition:
       operators: 00000000
@@ -1409,24 +1384,24 @@ MonoBehaviour:
         value_1:
           constantValue: 0
           useGameValue: 1
-          valueType: 21
+          valueType: 18
           serializedtype: AnimalHunger
         value_2:
           constantValue: 0
           useGameValue: 0
-          valueType: 2
+          valueType: 3
           serializedtype: CropProduction
       - type: 0
         operator: 1
         value_1:
           constantValue: 0
           useGameValue: 1
-          valueType: 25
-          serializedtype: AnimalHungerDays
+          valueType: 19
+          serializedtype: AnimalHungryDays
         value_2:
           constantValue: 1
           useGameValue: 0
-          valueType: 2
+          valueType: 3
           serializedtype: CropProduction
     ContinualCondition:
       operators: 00000000
@@ -1436,46 +1411,46 @@ MonoBehaviour:
         value_1:
           constantValue: 0
           useGameValue: 1
-          valueType: 21
+          valueType: 18
           serializedtype: AnimalHunger
         value_2:
           constantValue: 0
           useGameValue: 0
-          valueType: 2
+          valueType: 3
           serializedtype: CropProduction
       - type: 0
         operator: 1
         value_1:
           constantValue: 0
           useGameValue: 1
-          valueType: 25
-          serializedtype: AnimalHungerDays
+          valueType: 19
+          serializedtype: AnimalHungryDays
         value_2:
           constantValue: 1
           useGameValue: 0
-          valueType: 2
+          valueType: 3
           serializedtype: CropProduction
     MaxOccurencePerPlaythrough:
       constantValue: 99
       useGameValue: 0
-      valueType: 10
+      valueType: 7
       serializedtype: NumberOfWife
     Occurence: {x: 0, y: 30}
     Duration: {x: 0, y: 0}
     modifers:
-    - propertyType: 18
+    - propertyType: 3
       modificationType: 0
       value_1: -0.3
       value_2: 0
       value_3: 0
-      serializedtype: 
+      serializedtype: CropProduction
     subEvents:
     - label: Death by starving
       occuringMethod: 0
       chance:
         constantValue: 1
         useGameValue: 0
-        valueType: 2
+        valueType: 3
         serializedtype: CropProduction
       Duration: {x: 0, y: 0}
       modifers:
@@ -1511,16 +1486,16 @@ MonoBehaviour:
       chance:
         constantValue: 1
         useGameValue: 0
-        valueType: 2
+        valueType: 3
         serializedtype: CropProduction
       Duration: {x: 0, y: 0}
       modifers:
-      - propertyType: 14
+      - propertyType: 3
         modificationType: 0
         value_1: -1
         value_2: 0
         value_3: 0
-        serializedtype: NumberOfChicken
+        serializedtype: CropProduction
       startingMessage:
       - Your chicken is dead.
       endingMessage: []
@@ -1532,17 +1507,13 @@ MonoBehaviour:
           value_1:
             constantValue: 0
             useGameValue: 1
-            valueType: 14
-            serializedtype: NumberOfChicken
+            valueType: 3
+            serializedtype: CropProduction
           value_2:
             constantValue: 0
             useGameValue: 0
-            valueType: 2
+            valueType: 3
             serializedtype: CropProduction
       ContinualCondition:
         operators: 
         conditions: []
-  normalFertiliserModel: {fileID: 1839906539185826, guid: 5755f03a94ab8564d8dd95cff468c902,
-    type: 2}
-  corpseFertiliserModel: {fileID: 1915673026167930, guid: 570fc993815d63f40a74606acfc14826,
-    type: 2}
