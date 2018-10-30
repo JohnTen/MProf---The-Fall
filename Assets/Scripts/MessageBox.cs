@@ -12,10 +12,12 @@ public class MessageBox : MonoSingleton<MessageBox>
 
 	[SerializeField] GameObject block;
 
-	public static bool IsShowingMessage { get; private set; }
-
 	Queue<string> contentQueue = new Queue<string>();
 	Queue<string> titleQueue = new Queue<string>();
+
+	public static bool IsShowingMessage { get; private set; }
+	public static event Action OnContinue;
+	public static event Action OnFinished;
 
 	public static void DisplayMessage(string content)
 	{
@@ -42,11 +44,17 @@ public class MessageBox : MonoSingleton<MessageBox>
 
 	public void NextMessage()
 	{
+		if (OnContinue != null)
+			OnContinue.Invoke();
+
 		if (contentQueue.Count <= 0)
 		{
 			IsShowingMessage = false;
 			Instance.canvas.enabled = false;
 			Time.timeScale = 1;
+
+			if (OnFinished != null)
+				OnFinished.Invoke();
 			return;
 		}
 

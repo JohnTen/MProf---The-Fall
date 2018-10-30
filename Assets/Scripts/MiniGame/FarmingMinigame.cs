@@ -89,6 +89,7 @@ public class FarmingMinigame : BaseMinigame
 		IsPlaying = false;
 		canvas.enabled = false;
 		Time.timeScale = 1;
+		MessageBox.OnContinue -= StopPlay;
 	}
 
 	public void MoveUp()
@@ -377,7 +378,8 @@ public class FarmingMinigame : BaseMinigame
 		if (size.y == meterSize || Input.GetKeyDown(KeyCode.P))
 		{
 			MessageBox.DisplayMessage("Minigame failed!", "Your new planted crops is doomed and nothing can be plant here in this week!");
-			StopPlay();
+			IsPlaying = false;
+			MessageBox.OnContinue += StopPlay;
 			if (OnGameFinished != null)
 			{
 				OnGameFinished.Invoke(false);
@@ -388,7 +390,8 @@ public class FarmingMinigame : BaseMinigame
 		if (IsPCWithinEndPoint() || Input.GetKeyDown(KeyCode.O))
 		{
 			MessageBox.DisplayMessage("Minigame Won!", "Your crops is safely planted!");
-			StopPlay();
+			IsPlaying = false;
+			MessageBox.OnContinue += StopPlay;
 			if (OnGameFinished != null)
 			{
 				OnGameFinished.Invoke(true);

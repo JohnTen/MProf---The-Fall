@@ -2,12 +2,12 @@
 using UnityEngine;
 using UnityUtility;
 
-public class FamilyManager : MonoBehaviour
+public class FamilyManager : MonoSingleton<FamilyManager>
 {
-	[SerializeField] List<FamilyMember> familymembers = new List<FamilyMember>();
+	[SerializeField] List<FamilyMember> familyMembers = new List<FamilyMember>();
 
-	public List<FamilyMember> FamilyMembers
+	public static List<FamilyMember> FamilyMembers
 	{
-		get { return familymembers; }
+		get { return Instance.familyMembers; }
 	}
 }
