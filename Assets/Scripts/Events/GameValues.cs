@@ -23,6 +23,9 @@ public enum GameValueType
 	FamilyHunger,
 	FamilyHungryDays,
 	FamilyMentalHealth,
+	AllFamilyMentalHealth,
+	OtherFamilyMentalHealth,
+	AdditionalDyingRate,
 
 	__Animal,
 	NumberOfOx,
@@ -40,7 +43,10 @@ public class GameValueModifer : Modifier<GameValueType>
 	public string serializedtype;
 
 	public GameValueModifer() : base() { }
-	public GameValueModifer(Modifier<GameValueType> modifier) : base(modifier) { }
+	public GameValueModifer(Modifier<GameValueType> modifier) : base(modifier)
+	{
+		serializedtype = propertyType.ToString();
+	}
 }
 
 [System.Serializable]

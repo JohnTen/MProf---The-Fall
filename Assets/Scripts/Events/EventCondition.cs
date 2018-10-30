@@ -3,20 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityUtility;
-
-public enum LogicalOperator
-{
-	And,
-	Or,
-	Not,
-}
-
-public enum RelationalOperator
-{
-	Equal,
-	Greater,
-	Lesser,
-}
+using UnityUtility.Conditions;
 
 public enum ConditionType
 {
@@ -25,11 +12,8 @@ public enum ConditionType
 }
 
 [System.Serializable]
-public class EventConditionGroup
+public class EventConditionGroup : BaseConditionGroup<EventCondition>
 {
-	public List<LogicalOperator> operators = new List<LogicalOperator>();
-	public List<EventCondition> conditions = new List<EventCondition>();
-
 	public EventConditionGroup() { }
 	public EventConditionGroup(EventConditionGroup cond)
 	{
@@ -39,63 +23,11 @@ public class EventConditionGroup
 		}
 		operators.AddRange(cond.operators);
 	}
-
-	public bool IsSatisfied()
-	{
-		bool finalResult = true;
-		int operatorOffset = 0;
-
-		for (int i = 0; i < conditions.Count; i++)
-		{
-			var result = conditions[i].IsSatisfied();
-
-			if (i + operatorOffset >= operators.Count)
-			{
-				finalResult = result;
-				break;
-			}
-
-			while (
-				i + operatorOffset < operators.Count &&
-				operators[i + operatorOffset] == LogicalOperator.Not
-				)
-			{
-				result = !result;
-				operatorOffset++;
-			}
-
-			if (i + operatorOffset >= operators.Count)
-			{
-				finalResult = result;
-				break;
-			}
-
-			switch (operators[i + operatorOffset])
-			{
-				case LogicalOperator.And:
-					if (result == false)
-						return false;
-					break;
-				case LogicalOperator.Or:
-					if (result == true)
-						return true;
-					break;
-
-				default:
-					break;
-			}
-			finalResult = result;
-		}
-
-		return finalResult;
-	}
 }
 
 [System.Serializable]
-public class EventCondition
+public class EventCondition : BaseValueCondition<ConditionType>
 {
-	public ConditionType type;
-	public RelationalOperator @operator;
 	public DynamicValue value_1;
 	public DynamicValue value_2;
 
@@ -113,7 +45,18 @@ public class EventCondition
 		value_2 = new DynamicValue(condition.value_2);
 	}
 
-	public bool IsSatisfied()
+	public override object Clone()
+	{
+		var condition = new EventCondition();
+		condition.type = type;
+		condition.@operator = @operator;
+		condition.value_1 = new DynamicValue(value_1);
+		condition.value_2 = new DynamicValue(value_2);
+
+		return condition;
+	}
+
+	public override bool IsSatisfied()
 	{
 		switch (type)
 		{

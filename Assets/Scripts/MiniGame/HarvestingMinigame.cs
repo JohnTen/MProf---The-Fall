@@ -51,6 +51,7 @@ public class HarvestingMinigame : BaseMinigame
 		canvas.enabled = false;
 
 		Time.timeScale = 1;
+		MessageBox.OnContinue -= StopPlay;
 	}
 
 	private void Randomise()
@@ -112,7 +113,8 @@ public class HarvestingMinigame : BaseMinigame
 				}
 			}
 
-			StopPlay();
+			IsPlaying = false;
+			MessageBox.OnContinue += StopPlay;
 		}
 
 		if (Input.GetKeyDown(KeyCode.O))
@@ -122,7 +124,8 @@ public class HarvestingMinigame : BaseMinigame
 			{
 				OnGameFinished.Invoke(true);
 			}
-			StopPlay();
+			IsPlaying = false;
+			MessageBox.OnContinue += StopPlay;
 		}
 
 		if (Input.GetKeyDown(KeyCode.P))
@@ -132,7 +135,8 @@ public class HarvestingMinigame : BaseMinigame
 			{
 				OnGameFinished.Invoke(true);
 			}
-			StopPlay();
+			IsPlaying = false;
+			MessageBox.OnContinue += StopPlay;
 		}
 	}
 }

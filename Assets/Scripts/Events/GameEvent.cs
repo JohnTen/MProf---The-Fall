@@ -25,6 +25,7 @@ public class GameEvent
 	public DynamicValue oddsOfOccuring = new DynamicValue();
 	public EventConditionGroup StartingCondition = new EventConditionGroup();
 	public EventConditionGroup ContinualCondition = new EventConditionGroup();
+	public FamilyConditionGroup FamilyCondition = new FamilyConditionGroup();
 
 	public DynamicValue MaxOccurencePerPlaythrough = new DynamicValue();
 	[MinMaxSlider(0, 30)] public Vector2Int Occurence;
@@ -43,6 +44,7 @@ public class GameEvent
 		oddsOfOccuring = new DynamicValue(gEvent.oddsOfOccuring);
 		StartingCondition = new EventConditionGroup(gEvent.StartingCondition);
 		ContinualCondition = new EventConditionGroup(gEvent.ContinualCondition);
+		FamilyCondition = new FamilyConditionGroup(gEvent.FamilyCondition);
 		MaxOccurencePerPlaythrough = new DynamicValue(gEvent.MaxOccurencePerPlaythrough);
 		Occurence = gEvent.Occurence;
 		Duration = gEvent.Duration;
@@ -94,6 +96,7 @@ public class SubEvent
 
 	public EventConditionGroup StartingCondition = new EventConditionGroup();
 	public EventConditionGroup ContinualCondition = new EventConditionGroup();
+	public FamilyConditionGroup FamilyCondition = new FamilyConditionGroup();
 
 	public SubEvent() { }
 
@@ -105,6 +108,7 @@ public class SubEvent
 		Duration = sEvent.Duration;
 		StartingCondition = new EventConditionGroup(sEvent.StartingCondition);
 		ContinualCondition = new EventConditionGroup(sEvent.ContinualCondition);
+		FamilyCondition = new FamilyConditionGroup(sEvent.FamilyCondition);
 
 		startingMessage = new string[sEvent.startingMessage.Length];
 		for (int i = 0; i < startingMessage.Length; i++)

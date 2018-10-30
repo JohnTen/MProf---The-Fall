@@ -31,21 +31,34 @@ MonoBehaviour:
     ProvidedFood: 5
     ProvidedFertiliser: 1
   familyList:
+  - name: Bob
+    type: 1
+    requiredWheat: 1
+    dyingRate: 0.3
+    hunger: 0
+    mentalHealth: 0
+    mentalDyingRatio: 0.4
   - name: Wife
-    type: 0
+    type: 2
     requiredWheat: 1
+    dyingRate: 0.3
     hunger: 0
     mentalHealth: 0
+    mentalDyingRatio: 0.4
   - name: Daughter
-    type: 0
+    type: 3
     requiredWheat: 1
+    dyingRate: 0.3
     hunger: 0
     mentalHealth: 0
+    mentalDyingRatio: 0.4
   - name: Son
-    type: 0
+    type: 4
     requiredWheat: 1
+    dyingRate: 0.3
     hunger: 0
     mentalHealth: 0
+    mentalDyingRatio: 0.4
   cropGrowingModelList:
   - models:
     - {fileID: 1819682924018166, guid: 00a7b07edde06794e891d860d91dfe68, type: 2}
@@ -74,8 +87,8 @@ MonoBehaviour:
     StartingCondition:
       operators: 
       conditions:
-      - type: 0
-        operator: 1
+      - operator: 1
+        type: 0
         value_1:
           constantValue: 0
           useGameValue: 1
@@ -89,8 +102,8 @@ MonoBehaviour:
     ContinualCondition:
       operators: 
       conditions:
-      - type: 0
-        operator: 1
+      - operator: 1
+        type: 0
         value_1:
           constantValue: 0
           useGameValue: 1
@@ -101,6 +114,9 @@ MonoBehaviour:
           useGameValue: 0
           valueType: 3
           serializedtype: CropProduction
+    FamilyCondition:
+      operators: 
+      conditions: []
     MaxOccurencePerPlaythrough:
       constantValue: 1
       useGameValue: 0
@@ -109,13 +125,13 @@ MonoBehaviour:
     Occurence: {x: 5, y: 30}
     Duration: {x: 3, y: 5}
     modifers:
-    - propertyType: 0
+    - propertyType: 3
       modificationType: 0
       value_1: 1
       value_2: 0
       value_3: 0
-      serializedtype: WheatConsumption
-    - propertyType: 15
+      serializedtype: CropProduction
+    - propertyType: 10
       modificationType: 0
       value_1: 0.2
       value_2: 0
@@ -127,7 +143,7 @@ MonoBehaviour:
       chance:
         constantValue: 1
         useGameValue: 0
-        valueType: 2
+        valueType: 3
         serializedtype: CropProduction
       Duration: {x: 0, y: 0}
       modifers:
@@ -142,19 +158,22 @@ MonoBehaviour:
       StartingCondition:
         operators: 
         conditions:
-        - type: 0
-          operator: 1
+        - operator: 1
+          type: 0
           value_1:
             constantValue: 0
             useGameValue: 1
-            valueType: 10
+            valueType: 7
             serializedtype: NumberOfWife
           value_2:
             constantValue: 0
             useGameValue: 0
-            valueType: 2
+            valueType: 3
             serializedtype: CropProduction
       ContinualCondition:
+        operators: 
+        conditions: []
+      FamilyCondition:
         operators: 
         conditions: []
   - name: Kid Hunter
@@ -176,8 +195,8 @@ MonoBehaviour:
     StartingCondition:
       operators: 
       conditions:
-      - type: 0
-        operator: 1
+      - operator: 1
+        type: 0
         value_1:
           constantValue: 0
           useGameValue: 1
@@ -189,6 +208,9 @@ MonoBehaviour:
           valueType: 2
           serializedtype: CropProduction
     ContinualCondition:
+      operators: 
+      conditions: []
+    FamilyCondition:
       operators: 
       conditions: []
     MaxOccurencePerPlaythrough:
@@ -211,16 +233,16 @@ MonoBehaviour:
       chance:
         constantValue: 1
         useGameValue: 0
-        valueType: 2
+        valueType: 3
         serializedtype: CropProduction
       Duration: {x: 0, y: 0}
       modifers:
-      - propertyType: 5
+      - propertyType: 13
         modificationType: 0
         value_1: 15
         value_2: 0
         value_3: 0
-        serializedtype: NumberOfWheat
+        serializedtype: FamilyHunger
       startingMessage: []
       endingMessage: []
       StartingCondition:
@@ -229,6 +251,31 @@ MonoBehaviour:
       ContinualCondition:
         operators: 
         conditions: []
+      FamilyCondition:
+        operators: 00000000
+        conditions:
+        - operator: 0
+          type: 0
+          value: 2
+          member:
+            name: 
+            type: 0
+            requiredWheat: 1
+            dyingRate: 0.3
+            hunger: 0
+            mentalHealth: 100
+            mentalDyingRatio: 0.4
+        - operator: 0
+          type: 2
+          value: 0
+          member:
+            name: 
+            type: 0
+            requiredWheat: 1
+            dyingRate: 0.3
+            hunger: 0
+            mentalHealth: 100
+            mentalDyingRatio: 0.4
   - name: Lord's Request
     ID: 2
     useSubEventMessages: 0
@@ -242,30 +289,33 @@ MonoBehaviour:
     oddsOfOccuring:
       constantValue: 0.1
       useGameValue: 0
-      valueType: 2
+      valueType: 3
       serializedtype: CropProduction
     StartingCondition:
       operators: 
       conditions:
-      - type: 0
-        operator: 1
+      - operator: 1
+        type: 0
         value_1:
           constantValue: 0
           useGameValue: 1
-          valueType: 6
+          valueType: 5
           serializedtype: NumberOfOat
         value_2:
           constantValue: 10
           useGameValue: 0
-          valueType: 2
+          valueType: 3
           serializedtype: CropProduction
     ContinualCondition:
+      operators: 
+      conditions: []
+    FamilyCondition:
       operators: 
       conditions: []
     MaxOccurencePerPlaythrough:
       constantValue: 3
       useGameValue: 0
-      valueType: 2
+      valueType: 3
       serializedtype: CropProduction
     Occurence: {x: 3, y: 30}
     Duration: {x: 0, y: 0}
@@ -276,11 +326,11 @@ MonoBehaviour:
       chance:
         constantValue: 0
         useGameValue: 0
-        valueType: 2
+        valueType: 3
         serializedtype: CropProduction
       Duration: {x: 0, y: 0}
       modifers:
-      - propertyType: 6
+      - propertyType: 5
         modificationType: 0
         value_1: -10
         value_2: 0
@@ -292,6 +342,9 @@ MonoBehaviour:
         operators: 
         conditions: []
       ContinualCondition:
+        operators: 
+        conditions: []
+      FamilyCondition:
         operators: 
         conditions: []
   - name: Death!
@@ -311,8 +364,8 @@ MonoBehaviour:
     StartingCondition:
       operators: 
       conditions:
-      - type: 0
-        operator: 1
+      - operator: 1
+        type: 0
         value_1:
           constantValue: 0
           useGameValue: 1
@@ -324,6 +377,9 @@ MonoBehaviour:
           valueType: 2
           serializedtype: CropProduction
     ContinualCondition:
+      operators: 
+      conditions: []
+    FamilyCondition:
       operators: 
       conditions: []
     MaxOccurencePerPlaythrough:
@@ -358,8 +414,8 @@ MonoBehaviour:
     StartingCondition:
       operators: 
       conditions:
-      - type: 0
-        operator: 1
+      - operator: 1
+        type: 0
         value_1:
           constantValue: 0
           useGameValue: 1
@@ -371,6 +427,9 @@ MonoBehaviour:
           valueType: 2
           serializedtype: CropProduction
     ContinualCondition:
+      operators: 
+      conditions: []
+    FamilyCondition:
       operators: 
       conditions: []
     MaxOccurencePerPlaythrough:
@@ -403,8 +462,8 @@ MonoBehaviour:
     StartingCondition:
       operators: 
       conditions:
-      - type: 0
-        operator: 1
+      - operator: 1
+        type: 0
         value_1:
           constantValue: 0
           useGameValue: 1
@@ -416,6 +475,9 @@ MonoBehaviour:
           valueType: 2
           serializedtype: CropProduction
     ContinualCondition:
+      operators: 
+      conditions: []
+    FamilyCondition:
       operators: 
       conditions: []
     MaxOccurencePerPlaythrough:
@@ -446,13 +508,13 @@ MonoBehaviour:
     oddsOfOccuring:
       constantValue: 0.2
       useGameValue: 0
-      valueType: 15
+      valueType: 10
       serializedtype: DyingRateOfWife
     StartingCondition:
       operators: 020000000000000002000000
       conditions:
-      - type: 1
-        operator: 0
+      - operator: 0
+        type: 1
         value_1:
           constantValue: 7
           useGameValue: 0
@@ -463,8 +525,8 @@ MonoBehaviour:
           useGameValue: 0
           valueType: 0
           serializedtype: 
-      - type: 1
-        operator: 0
+      - operator: 0
+        type: 1
         value_1:
           constantValue: 8
           useGameValue: 0
@@ -478,10 +540,13 @@ MonoBehaviour:
     ContinualCondition:
       operators: 
       conditions: []
+    FamilyCondition:
+      operators: 
+      conditions: []
     MaxOccurencePerPlaythrough:
       constantValue: 1
       useGameValue: 0
-      valueType: 10
+      valueType: 7
       serializedtype: NumberOfWife
     Occurence: {x: 15, y: 30}
     Duration: {x: 5, y: 5}
@@ -512,13 +577,13 @@ MonoBehaviour:
     oddsOfOccuring:
       constantValue: 0.2
       useGameValue: 0
-      valueType: 15
+      valueType: 10
       serializedtype: DyingRateOfWife
     StartingCondition:
       operators: 020000000000000002000000
       conditions:
-      - type: 1
-        operator: 0
+      - operator: 0
+        type: 1
         value_1:
           constantValue: 6
           useGameValue: 0
@@ -529,8 +594,8 @@ MonoBehaviour:
           useGameValue: 0
           valueType: 0
           serializedtype: 
-      - type: 1
-        operator: 0
+      - operator: 0
+        type: 1
         value_1:
           constantValue: 8
           useGameValue: 0
@@ -544,10 +609,13 @@ MonoBehaviour:
     ContinualCondition:
       operators: 
       conditions: []
+    FamilyCondition:
+      operators: 
+      conditions: []
     MaxOccurencePerPlaythrough:
       constantValue: 1
       useGameValue: 0
-      valueType: 10
+      valueType: 7
       serializedtype: NumberOfWife
     Occurence: {x: 15, y: 30}
     Duration: {x: 10, y: 10}
@@ -577,8 +645,8 @@ MonoBehaviour:
     StartingCondition:
       operators: 020000000000000002000000
       conditions:
-      - type: 1
-        operator: 0
+      - operator: 0
+        type: 1
         value_1:
           constantValue: 6
           useGameValue: 0
@@ -589,8 +657,8 @@ MonoBehaviour:
           useGameValue: 0
           valueType: 0
           serializedtype: 
-      - type: 1
-        operator: 0
+      - operator: 0
+        type: 1
         value_1:
           constantValue: 7
           useGameValue: 0
@@ -602,6 +670,9 @@ MonoBehaviour:
           valueType: 0
           serializedtype: 
     ContinualCondition:
+      operators: 
+      conditions: []
+    FamilyCondition:
       operators: 
       conditions: []
     MaxOccurencePerPlaythrough:
@@ -651,8 +722,8 @@ MonoBehaviour:
     StartingCondition:
       operators: 00000000
       conditions:
-      - type: 0
-        operator: 1
+      - operator: 1
+        type: 0
         value_1:
           constantValue: 0
           useGameValue: 1
@@ -666,8 +737,8 @@ MonoBehaviour:
     ContinualCondition:
       operators: 
       conditions:
-      - type: 0
-        operator: 1
+      - operator: 1
+        type: 0
         value_1:
           constantValue: 0
           useGameValue: 1
@@ -678,6 +749,9 @@ MonoBehaviour:
           useGameValue: 0
           valueType: 2
           serializedtype: CropProduction
+    FamilyCondition:
+      operators: 
+      conditions: []
     MaxOccurencePerPlaythrough:
       constantValue: 1
       useGameValue: 0
@@ -709,6 +783,9 @@ MonoBehaviour:
       operators: 
       conditions: []
     ContinualCondition:
+      operators: 
+      conditions: []
+    FamilyCondition:
       operators: 
       conditions: []
     MaxOccurencePerPlaythrough:
@@ -751,8 +828,8 @@ MonoBehaviour:
     StartingCondition:
       operators: 
       conditions:
-      - type: 0
-        operator: 1
+      - operator: 1
+        type: 0
         value_1:
           constantValue: 0
           useGameValue: 1
@@ -764,6 +841,9 @@ MonoBehaviour:
           valueType: 2
           serializedtype: CropProduction
     ContinualCondition:
+      operators: 
+      conditions: []
+    FamilyCondition:
       operators: 
       conditions: []
     MaxOccurencePerPlaythrough:
@@ -804,6 +884,9 @@ MonoBehaviour:
       ContinualCondition:
         operators: 
         conditions: []
+      FamilyCondition:
+        operators: 
+        conditions: []
   - name: Offering!
     ID: 12
     useSubEventMessages: 0
@@ -820,8 +903,8 @@ MonoBehaviour:
     StartingCondition:
       operators: 
       conditions:
-      - type: 0
-        operator: 1
+      - operator: 1
+        type: 0
         value_1:
           constantValue: 0
           useGameValue: 1
@@ -833,6 +916,9 @@ MonoBehaviour:
           valueType: 2
           serializedtype: CropProduction
     ContinualCondition:
+      operators: 
+      conditions: []
+    FamilyCondition:
       operators: 
       conditions: []
     MaxOccurencePerPlaythrough:
@@ -864,8 +950,8 @@ MonoBehaviour:
     StartingCondition:
       operators: 
       conditions:
-      - type: 0
-        operator: 1
+      - operator: 1
+        type: 0
         value_1:
           constantValue: 0
           useGameValue: 1
@@ -877,6 +963,9 @@ MonoBehaviour:
           valueType: 2
           serializedtype: CropProduction
     ContinualCondition:
+      operators: 
+      conditions: []
+    FamilyCondition:
       operators: 
       conditions: []
     MaxOccurencePerPlaythrough:
@@ -912,6 +1001,9 @@ MonoBehaviour:
       ContinualCondition:
         operators: 
         conditions: []
+      FamilyCondition:
+        operators: 
+        conditions: []
     - label: Witch Hunt!
       occuringMethod: 2
       chance:
@@ -936,6 +1028,9 @@ MonoBehaviour:
       ContinualCondition:
         operators: 
         conditions: []
+      FamilyCondition:
+        operators: 
+        conditions: []
   - name: Hunting Accident!
     ID: 14
     useSubEventMessages: 0
@@ -955,8 +1050,8 @@ MonoBehaviour:
     StartingCondition:
       operators: 
       conditions:
-      - type: 0
-        operator: 1
+      - operator: 1
+        type: 0
         value_1:
           constantValue: 0
           useGameValue: 1
@@ -968,6 +1063,9 @@ MonoBehaviour:
           valueType: 2
           serializedtype: CropProduction
     ContinualCondition:
+      operators: 
+      conditions: []
+    FamilyCondition:
       operators: 
       conditions: []
     MaxOccurencePerPlaythrough:
@@ -1004,6 +1102,9 @@ MonoBehaviour:
     ContinualCondition:
       operators: 
       conditions: []
+    FamilyCondition:
+      operators: 
+      conditions: []
     MaxOccurencePerPlaythrough:
       constantValue: 2
       useGameValue: 0
@@ -1036,8 +1137,8 @@ MonoBehaviour:
     StartingCondition:
       operators: 
       conditions:
-      - type: 0
-        operator: 1
+      - operator: 1
+        type: 0
         value_1:
           constantValue: 0
           useGameValue: 1
@@ -1049,6 +1150,9 @@ MonoBehaviour:
           valueType: 2
           serializedtype: CropProduction
     ContinualCondition:
+      operators: 
+      conditions: []
+    FamilyCondition:
       operators: 
       conditions: []
     MaxOccurencePerPlaythrough:
@@ -1083,8 +1187,8 @@ MonoBehaviour:
     StartingCondition:
       operators: 
       conditions:
-      - type: 0
-        operator: 1
+      - operator: 1
+        type: 0
         value_1:
           constantValue: 0
           useGameValue: 1
@@ -1096,6 +1200,9 @@ MonoBehaviour:
           valueType: 2
           serializedtype: CropProduction
     ContinualCondition:
+      operators: 
+      conditions: []
+    FamilyCondition:
       operators: 
       conditions: []
     MaxOccurencePerPlaythrough:
@@ -1131,6 +1238,9 @@ MonoBehaviour:
       operators: 
       conditions: []
     ContinualCondition:
+      operators: 
+      conditions: []
+    FamilyCondition:
       operators: 
       conditions: []
     MaxOccurencePerPlaythrough:
@@ -1171,6 +1281,9 @@ MonoBehaviour:
       ContinualCondition:
         operators: 
         conditions: []
+      FamilyCondition:
+        operators: 
+        conditions: []
   - name: 'Starving to Death! '
     ID: 19
     useSubEventMessages: 1
@@ -1188,8 +1301,8 @@ MonoBehaviour:
     StartingCondition:
       operators: 00000000
       conditions:
-      - type: 0
-        operator: 1
+      - operator: 1
+        type: 0
         value_1:
           constantValue: 0
           useGameValue: 1
@@ -1200,8 +1313,8 @@ MonoBehaviour:
           useGameValue: 0
           valueType: 3
           serializedtype: CropProduction
-      - type: 0
-        operator: 1
+      - operator: 1
+        type: 0
         value_1:
           constantValue: 0
           useGameValue: 1
@@ -1215,8 +1328,8 @@ MonoBehaviour:
     ContinualCondition:
       operators: 00000000
       conditions:
-      - type: 0
-        operator: 1
+      - operator: 1
+        type: 0
         value_1:
           constantValue: 0
           useGameValue: 1
@@ -1227,8 +1340,8 @@ MonoBehaviour:
           useGameValue: 0
           valueType: 3
           serializedtype: CropProduction
-      - type: 0
-        operator: 1
+      - operator: 1
+        type: 0
         value_1:
           constantValue: 0
           useGameValue: 1
@@ -1239,6 +1352,9 @@ MonoBehaviour:
           useGameValue: 0
           valueType: 3
           serializedtype: CropProduction
+    FamilyCondition:
+      operators: 
+      conditions: []
     MaxOccurencePerPlaythrough:
       constantValue: 99
       useGameValue: 0
@@ -1275,8 +1391,8 @@ MonoBehaviour:
       StartingCondition:
         operators: 
         conditions:
-        - type: 0
-          operator: 1
+        - operator: 1
+          type: 0
           value_1:
             constantValue: 0
             useGameValue: 1
@@ -1288,6 +1404,9 @@ MonoBehaviour:
             valueType: 3
             serializedtype: CropProduction
       ContinualCondition:
+        operators: 
+        conditions: []
+      FamilyCondition:
         operators: 
         conditions: []
     - label: Death by starving
@@ -1311,19 +1430,22 @@ MonoBehaviour:
       StartingCondition:
         operators: 
         conditions:
-        - type: 0
-          operator: 1
+        - operator: 1
+          type: 0
           value_1:
             constantValue: 0
             useGameValue: 1
-            valueType: 11
+            valueType: 8
             serializedtype: NumberOfDaughter
           value_2:
             constantValue: 0
             useGameValue: 0
-            valueType: 2
+            valueType: 3
             serializedtype: CropProduction
       ContinualCondition:
+        operators: 
+        conditions: []
+      FamilyCondition:
         operators: 
         conditions: []
     - label: Death by starving
@@ -1331,11 +1453,11 @@ MonoBehaviour:
       chance:
         constantValue: 1
         useGameValue: 0
-        valueType: 2
+        valueType: 3
         serializedtype: CropProduction
       Duration: {x: 0, y: 0}
       modifers:
-      - propertyType: 12
+      - propertyType: 9
         modificationType: 0
         value_1: -1
         value_2: 0
@@ -1347,19 +1469,22 @@ MonoBehaviour:
       StartingCondition:
         operators: 
         conditions:
-        - type: 0
-          operator: 1
+        - operator: 1
+          type: 0
           value_1:
             constantValue: 0
             useGameValue: 1
-            valueType: 12
+            valueType: 9
             serializedtype: NumberOfSon
           value_2:
             constantValue: 0
             useGameValue: 0
-            valueType: 2
+            valueType: 3
             serializedtype: CropProduction
       ContinualCondition:
+        operators: 
+        conditions: []
+      FamilyCondition:
         operators: 
         conditions: []
   - name: 'Starving to Death! '
@@ -1379,8 +1504,8 @@ MonoBehaviour:
     StartingCondition:
       operators: 00000000
       conditions:
-      - type: 0
-        operator: 1
+      - operator: 1
+        type: 0
         value_1:
           constantValue: 0
           useGameValue: 1
@@ -1391,8 +1516,8 @@ MonoBehaviour:
           useGameValue: 0
           valueType: 3
           serializedtype: CropProduction
-      - type: 0
-        operator: 1
+      - operator: 1
+        type: 0
         value_1:
           constantValue: 0
           useGameValue: 1
@@ -1406,8 +1531,8 @@ MonoBehaviour:
     ContinualCondition:
       operators: 00000000
       conditions:
-      - type: 0
-        operator: 1
+      - operator: 1
+        type: 0
         value_1:
           constantValue: 0
           useGameValue: 1
@@ -1418,8 +1543,8 @@ MonoBehaviour:
           useGameValue: 0
           valueType: 3
           serializedtype: CropProduction
-      - type: 0
-        operator: 1
+      - operator: 1
+        type: 0
         value_1:
           constantValue: 0
           useGameValue: 1
@@ -1430,6 +1555,9 @@ MonoBehaviour:
           useGameValue: 0
           valueType: 3
           serializedtype: CropProduction
+    FamilyCondition:
+      operators: 
+      conditions: []
     MaxOccurencePerPlaythrough:
       constantValue: 99
       useGameValue: 0
@@ -1466,19 +1594,22 @@ MonoBehaviour:
       StartingCondition:
         operators: 
         conditions:
-        - type: 0
-          operator: 1
+        - operator: 1
+          type: 0
           value_1:
             constantValue: 0
             useGameValue: 1
-            valueType: 13
+            valueType: 19
             serializedtype: NumberOfOx
           value_2:
             constantValue: 0
             useGameValue: 0
-            valueType: 2
+            valueType: 3
             serializedtype: CropProduction
       ContinualCondition:
+        operators: 
+        conditions: []
+      FamilyCondition:
         operators: 
         conditions: []
     - label: Death by starving
@@ -1502,8 +1633,8 @@ MonoBehaviour:
       StartingCondition:
         operators: 
         conditions:
-        - type: 0
-          operator: 1
+        - operator: 1
+          type: 0
           value_1:
             constantValue: 0
             useGameValue: 1
@@ -1515,5 +1646,8 @@ MonoBehaviour:
             valueType: 3
             serializedtype: CropProduction
       ContinualCondition:
+        operators: 
+        conditions: []
+      FamilyCondition:
         operators: 
         conditions: []
