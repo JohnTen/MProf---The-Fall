@@ -23,19 +23,4 @@ public class Cheat : MonoBehaviour
 		GameDataManager.GameValues[GameValueType.NumberOfOx] += int.Parse(input.text);
 		GameDataManager.UpdateValues();
 	}
-	public void ChangeWife()
-	{
-		GameDataManager.GameValues[GameValueType.NumberOfWife] += int.Parse(input.text);
-		GameDataManager.UpdateValues();
-	}
-	public void ChangeSon()
-	{
-		GameDataManager.GameValues[GameValueType.NumberOfSon] += int.Parse(input.text);
-		GameDataManager.UpdateValues();
-	}
-	public void ChangeDaugther()
-	{
-		GameDataManager.GameValues[GameValueType.NumberOfDaughter] += int.Parse(input.text);
-		GameDataManager.UpdateValues();
-	}
 }

@@ -7,22 +7,15 @@ using UnityUtility;
 public class WorldUI : MonoSingleton<WorldUI>
 {
 	[SerializeField] ButtonMenu cropMenu;
-	[SerializeField] ButtonMenu enterHouseMenu;
 
 	public static ButtonMenu CropMenu
 	{
 		get { return Instance.cropMenu; }
 	}
 
-	public static ButtonMenu EnterHouseMenu
-	{
-		get { return Instance.enterHouseMenu; }
-	}
-
 	public static void CloseAllMenu()
 	{
 		CropMenu.CloseMenu();
-		EnterHouseMenu.CloseMenu();
 	}
 
 	public static void MoveUIByPixelPosition(Transform ui, Vector3 pixelPosition)

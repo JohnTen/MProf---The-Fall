@@ -63,36 +63,6 @@ public class GameDataManager : GlobalSingleton<GameDataManager>
 		}
 	}
 
-	public static int CurrentWife
-	{
-		get { return (int)GameValues[GameValueType.NumberOfWife]; }
-		set
-		{
-			GameValues[GameValueType.NumberOfWife] = value;
-			UpdateValues();
-		}
-	}
-
-	public static int CurrentSon
-	{
-		get { return (int)GameValues[GameValueType.NumberOfSon]; }
-		set
-		{
-			GameValues[GameValueType.NumberOfSon] = value;
-			UpdateValues();
-		}
-	}
-
-	public static int CurrentDaughter
-	{
-		get { return (int)GameValues[GameValueType.NumberOfDaughter]; }
-		set
-		{
-			GameValues[GameValueType.NumberOfDaughter] = value;
-			UpdateValues();
-		}
-	}
-
 	public static int CurrentOx
 	{
 		get { return (int)GameValues[GameValueType.NumberOfOx]; }
@@ -144,26 +114,12 @@ public class GameDataManager : GlobalSingleton<GameDataManager>
 		return -1;
 	}
 
-	public static int GetFamilyNumber(int id)
-	{
-		switch (id)
-		{
-			case 0: return (int)GameValues[GameValueType.NumberOfWife];
-			case 1: return (int)GameValues[GameValueType.NumberOfDaughter];
-			case 2: return (int)GameValues[GameValueType.NumberOfSon];
-		}
-
-		return -1;
-	}
-
 	public static void ModifyCropNumber(int id, int value)
 	{
 		switch (id)
 		{
 			case 0: GameValues[GameValueType.NumberOfWheat] += value; break;
-			case 1: GameValues[GameValueType.NumberOfWheat] += value; break;
-			case 2: GameValues[GameValueType.NumberOfWheat] += value; break;
-			case 3: GameValues[GameValueType.NumberOfWheat] += value; break;
+			case 1: GameValues[GameValueType.NumberOfOat] += value; break;
 		}
 	}
 
@@ -172,15 +128,6 @@ public class GameDataManager : GlobalSingleton<GameDataManager>
 		switch (id)
 		{
 			case 0: GameValues[GameValueType.NumberOfOx] += value; break;
-		}
-	}
-
-	public static void ModifyFamilyNumber(int id, int value)
-	{
-		switch (id)
-		{
-			case 0: GameValues[GameValueType.NumberOfWife] += value; break;
-			case 1: GameValues[GameValueType.NumberOfSon] += value; break;
 		}
 	}
 

@@ -148,9 +148,9 @@ public class Conclusion : MonoSingleton<Conclusion>
 		if (OnCalculateFamilyConsumption != null)
 			OnCalculateFamilyConsumption.Invoke();
 		var familyConsumption = 0;
-		for (int i = 0; i < GameDatabase.Instance.familyList.Count; i++)
+		for (int i = 0; i < FamilyManager.FamilyMembers.Count; i++)
 		{
-			familyConsumption += Mathf.CeilToInt(GameDatabase.Instance.familyList[i].requiredWheat * GameDataManager.GetFamilyNumber(i));
+			familyConsumption += Mathf.CeilToInt(FamilyManager.FamilyMembers[i].requiredWheat);
 		}
 		familyConsumption = 
 			Mathf.RoundToInt(
@@ -160,13 +160,13 @@ public class Conclusion : MonoSingleton<Conclusion>
 		if (familyConsumption > GameDataManager.CurrentWheat)
 		{
 			GameDataManager.CurrentFamilyHunger += Mathf.CeilToInt((familyConsumption - GameDataManager.CurrentWheat));
-			GameDataManager.GameValues[GameValueType.FamilyHungryDays] ++;
+			//GameDataManager.GameValues[GameValueType.FamilyHungryDays] ++;
 			familyConsumption = GameDataManager.CurrentWheat;
 		}
 		else
 		{
 			GameDataManager.CurrentFamilyHunger = 0;
-			GameDataManager.GameValues[GameValueType.FamilyHungryDays] = 0;
+			//GameDataManager.GameValues[GameValueType.FamilyHungryDays] = 0;
 		}
 
 		familyConsumption *= -1;

@@ -77,4 +77,20 @@ public class FamilyConditionGroup : BaseConditionGroup<FamilyCondition>
 		}
 		operators.AddRange(cond.operators);
 	}
+
+	public void GetSatisfiedFamilies(ref List<FamilyMember> families)
+	{
+		var list = new List<FamilyMember>(FamilyManager.FamilyMembers);
+		
+		foreach (var f in list)
+		{
+			foreach (var c in conditions)
+			{
+				c.member = f;
+			}
+
+			if (IsSatisfied())
+				families.Add(f);
+		}
+	}
 }

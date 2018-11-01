@@ -14,11 +14,11 @@ public struct FieldBlockStatus
 
 	public FieldBlockStatus(FieldBlockStatus status)
 	{
-		fouled					= status.fouled;
-		plantedCrop				= status.plantedCrop;
-		currentCrop				= new Crop(status.currentCrop);
-		lastPlantedCrop			= new Crop(status.lastPlantedCrop);
-		currentGrowingPeriod	= status.currentGrowingPeriod;
+		fouled = status.fouled;
+		plantedCrop = status.plantedCrop;
+		currentCrop = new Crop(status.currentCrop);
+		lastPlantedCrop = new Crop(status.lastPlantedCrop);
+		currentGrowingPeriod = status.currentGrowingPeriod;
 	}
 }
 
@@ -136,7 +136,7 @@ public class FieldBlock : MonoInteractable
 		status.plantedCrop = true;
 		status.currentCrop = new Crop(crop);
 		status.currentGrowingPeriod = growingPeriod;
-		
+
 		CreateCropModel();
 
 		if (status.currentGrowingPeriod >= status.currentCrop.growingPeriod)
@@ -170,8 +170,8 @@ public class FieldBlock : MonoInteractable
 				Destroy(fertiliserModels[i]);
 		}
 
-		status.plantedCrop			= false;
-		status.currentCrop			= null;
+		status.plantedCrop = false;
+		status.currentCrop = null;
 		status.currentGrowingPeriod = 0;
 	}
 

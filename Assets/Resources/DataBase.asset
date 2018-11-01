@@ -38,6 +38,7 @@ MonoBehaviour:
     hunger: 0
     mentalHealth: 0
     mentalDyingRatio: 0.4
+    died: 0
   - name: Wife
     type: 2
     requiredWheat: 1
@@ -45,6 +46,7 @@ MonoBehaviour:
     hunger: 0
     mentalHealth: 0
     mentalDyingRatio: 0.4
+    died: 0
   - name: Daughter
     type: 3
     requiredWheat: 1
@@ -52,6 +54,7 @@ MonoBehaviour:
     hunger: 0
     mentalHealth: 0
     mentalDyingRatio: 0.4
+    died: 0
   - name: Son
     type: 4
     requiredWheat: 1
@@ -59,6 +62,7 @@ MonoBehaviour:
     hunger: 0
     mentalHealth: 0
     mentalDyingRatio: 0.4
+    died: 0
   cropGrowingModelList:
   - models:
     - {fileID: 1819682924018166, guid: 00a7b07edde06794e891d860d91dfe68, type: 2}
@@ -86,37 +90,25 @@ MonoBehaviour:
       serializedtype: CropProduction
     StartingCondition:
       operators: 
-      conditions:
-      - operator: 1
-        type: 0
-        value_1:
-          constantValue: 0
-          useGameValue: 1
-          valueType: 7
-          serializedtype: NumberOfWife
-        value_2:
-          constantValue: 0
-          useGameValue: 0
-          valueType: 3
-          serializedtype: CropProduction
+      conditions: []
     ContinualCondition:
       operators: 
-      conditions:
-      - operator: 1
-        type: 0
-        value_1:
-          constantValue: 0
-          useGameValue: 1
-          valueType: 7
-          serializedtype: NumberOfWife
-        value_2:
-          constantValue: 0
-          useGameValue: 0
-          valueType: 3
-          serializedtype: CropProduction
+      conditions: []
     FamilyCondition:
       operators: 
-      conditions: []
+      conditions:
+      - operator: 0
+        type: 0
+        value: 2
+        member:
+          name: Son
+          type: 4
+          requiredWheat: 1
+          dyingRate: 0.3
+          hunger: 0
+          mentalHealth: 100
+          mentalDyingRatio: 0.4
+          died: 0
     MaxOccurencePerPlaythrough:
       constantValue: 1
       useGameValue: 0
@@ -125,18 +117,18 @@ MonoBehaviour:
     Occurence: {x: 5, y: 30}
     Duration: {x: 3, y: 5}
     modifers:
-    - propertyType: 3
+    - propertyType: 8
       modificationType: 0
       value_1: 1
       value_2: 0
       value_3: 0
-      serializedtype: CropProduction
+      serializedtype: FamilyCropConsumption
     - propertyType: 10
       modificationType: 0
-      value_1: 0.2
+      value_1: -20
       value_2: 0
       value_3: 0
-      serializedtype: DyingRateOfWife
+      serializedtype: FamilyMentalHealth
     subEvents:
     - label: Give Birth
       occuringMethod: 2
@@ -147,12 +139,12 @@ MonoBehaviour:
         serializedtype: CropProduction
       Duration: {x: 0, y: 0}
       modifers:
-      - propertyType: 12
+      - propertyType: 3
         modificationType: 0
         value_1: 1
         value_2: 0
         value_3: 0
-        serializedtype: NumberOfSon
+        serializedtype: CropProduction
       startingMessage: []
       endingMessage: []
       StartingCondition:
@@ -163,8 +155,8 @@ MonoBehaviour:
           value_1:
             constantValue: 0
             useGameValue: 1
-            valueType: 7
-            serializedtype: NumberOfWife
+            valueType: 3
+            serializedtype: CropProduction
           value_2:
             constantValue: 0
             useGameValue: 0
@@ -176,327 +168,8 @@ MonoBehaviour:
       FamilyCondition:
         operators: 
         conditions: []
-  - name: Kid Hunter
-    ID: 1
-    useSubEventMessages: 0
-    startingMessage:
-    - 'Hob left the farm to hunt for food '
-    endingMessage:
-    - 'Hob has returned.
-
-
-      +15 Wheat'
-    scenario: -1
-    oddsOfOccuring:
-      constantValue: 0.2
-      useGameValue: 0
-      valueType: 3
-      serializedtype: CropProduction
-    StartingCondition:
-      operators: 
-      conditions:
-      - operator: 1
-        type: 0
-        value_1:
-          constantValue: 0
-          useGameValue: 1
-          valueType: 12
-          serializedtype: NumberOfSon
-        value_2:
-          constantValue: 0
-          useGameValue: 0
-          valueType: 2
-          serializedtype: CropProduction
-    ContinualCondition:
-      operators: 
-      conditions: []
-    FamilyCondition:
-      operators: 
-      conditions: []
-    MaxOccurencePerPlaythrough:
-      constantValue: 1
-      useGameValue: 0
-      valueType: 3
-      serializedtype: CropProduction
-    Occurence: {x: 10, y: 30}
-    Duration: {x: 3, y: 4}
-    modifers:
-    - propertyType: 12
-      modificationType: 0
-      value_1: -1
-      value_2: 0
-      value_3: 0
-      serializedtype: NumberOfSon
-    subEvents:
-    - label: Crops
-      occuringMethod: 2
-      chance:
-        constantValue: 1
-        useGameValue: 0
-        valueType: 3
-        serializedtype: CropProduction
-      Duration: {x: 0, y: 0}
-      modifers:
-      - propertyType: 13
-        modificationType: 0
-        value_1: 15
-        value_2: 0
-        value_3: 0
-        serializedtype: FamilyHunger
-      startingMessage: []
-      endingMessage: []
-      StartingCondition:
-        operators: 
-        conditions: []
-      ContinualCondition:
-        operators: 
-        conditions: []
-      FamilyCondition:
-        operators: 00000000
-        conditions:
-        - operator: 0
-          type: 0
-          value: 2
-          member:
-            name: 
-            type: 0
-            requiredWheat: 1
-            dyingRate: 0.3
-            hunger: 0
-            mentalHealth: 100
-            mentalDyingRatio: 0.4
-        - operator: 0
-          type: 2
-          value: 0
-          member:
-            name: 
-            type: 0
-            requiredWheat: 1
-            dyingRate: 0.3
-            hunger: 0
-            mentalHealth: 100
-            mentalDyingRatio: 0.4
-  - name: Lord's Request
-    ID: 2
-    useSubEventMessages: 0
-    startingMessage:
-    - 'Lord requests (demands) Oats.
-
-
-      -10 Oats'
-    endingMessage: []
-    scenario: -1
-    oddsOfOccuring:
-      constantValue: 0.1
-      useGameValue: 0
-      valueType: 3
-      serializedtype: CropProduction
-    StartingCondition:
-      operators: 
-      conditions:
-      - operator: 1
-        type: 0
-        value_1:
-          constantValue: 0
-          useGameValue: 1
-          valueType: 5
-          serializedtype: NumberOfOat
-        value_2:
-          constantValue: 10
-          useGameValue: 0
-          valueType: 3
-          serializedtype: CropProduction
-    ContinualCondition:
-      operators: 
-      conditions: []
-    FamilyCondition:
-      operators: 
-      conditions: []
-    MaxOccurencePerPlaythrough:
-      constantValue: 3
-      useGameValue: 0
-      valueType: 3
-      serializedtype: CropProduction
-    Occurence: {x: 3, y: 30}
-    Duration: {x: 0, y: 0}
-    modifers: []
-    subEvents:
-    - label: Sub event
-      occuringMethod: 2
-      chance:
-        constantValue: 0
-        useGameValue: 0
-        valueType: 3
-        serializedtype: CropProduction
-      Duration: {x: 0, y: 0}
-      modifers:
-      - propertyType: 5
-        modificationType: 0
-        value_1: -10
-        value_2: 0
-        value_3: 0
-        serializedtype: NumberOfOat
-      startingMessage: []
-      endingMessage: []
-      StartingCondition:
-        operators: 
-        conditions: []
-      ContinualCondition:
-        operators: 
-        conditions: []
-      FamilyCondition:
-        operators: 
-        conditions: []
-  - name: Death!
-    ID: 3
-    useSubEventMessages: 0
-    startingMessage:
-    - 'Nob tripped and fell into the fireplace
-
-      He is no more'
-    endingMessage: []
-    scenario: -1
-    oddsOfOccuring:
-      constantValue: 0
-      useGameValue: 1
-      valueType: 17
-      serializedtype: DyingRateOfSon
-    StartingCondition:
-      operators: 
-      conditions:
-      - operator: 1
-        type: 0
-        value_1:
-          constantValue: 0
-          useGameValue: 1
-          valueType: 12
-          serializedtype: NumberOfSon
-        value_2:
-          constantValue: 0
-          useGameValue: 0
-          valueType: 2
-          serializedtype: CropProduction
-    ContinualCondition:
-      operators: 
-      conditions: []
-    FamilyCondition:
-      operators: 
-      conditions: []
-    MaxOccurencePerPlaythrough:
-      constantValue: 999
-      useGameValue: 0
-      valueType: 12
-      serializedtype: NumberOfSon
-    Occurence: {x: 3, y: 30}
-    Duration: {x: 0, y: 0}
-    modifers:
-    - propertyType: 12
-      modificationType: 0
-      value_1: -1
-      value_2: 0
-      value_3: 0
-      serializedtype: NumberOfSon
-    subEvents: []
-  - name: Death!
-    ID: 4
-    useSubEventMessages: 0
-    startingMessage:
-    - 'Sal poked the Ox, Ox poked Sal back, in the face, with its leg.
-
-      Sal is no more. '
-    endingMessage: []
-    scenario: -1
-    oddsOfOccuring:
-      constantValue: 0
-      useGameValue: 1
-      valueType: 16
-      serializedtype: DyingRateOfDaughter
-    StartingCondition:
-      operators: 
-      conditions:
-      - operator: 1
-        type: 0
-        value_1:
-          constantValue: 0
-          useGameValue: 1
-          valueType: 11
-          serializedtype: NumberOfDaughter
-        value_2:
-          constantValue: 0
-          useGameValue: 0
-          valueType: 2
-          serializedtype: CropProduction
-    ContinualCondition:
-      operators: 
-      conditions: []
-    FamilyCondition:
-      operators: 
-      conditions: []
-    MaxOccurencePerPlaythrough:
-      constantValue: 999
-      useGameValue: 0
-      valueType: 11
-      serializedtype: NumberOfDaughter
-    Occurence: {x: 3, y: 30}
-    Duration: {x: 0, y: 0}
-    modifers:
-    - propertyType: 11
-      modificationType: 0
-      value_1: -1
-      value_2: 0
-      value_3: 0
-      serializedtype: NumberOfDaughter
-    subEvents: []
-  - name: Death!
-    ID: 5
-    useSubEventMessages: 0
-    startingMessage:
-    - Your Wife has died
-    endingMessage: []
-    scenario: -1
-    oddsOfOccuring:
-      constantValue: 0
-      useGameValue: 1
-      valueType: 15
-      serializedtype: DyingRateOfWife
-    StartingCondition:
-      operators: 
-      conditions:
-      - operator: 1
-        type: 0
-        value_1:
-          constantValue: 0
-          useGameValue: 1
-          valueType: 10
-          serializedtype: NumberOfWife
-        value_2:
-          constantValue: 0
-          useGameValue: 0
-          valueType: 2
-          serializedtype: CropProduction
-    ContinualCondition:
-      operators: 
-      conditions: []
-    FamilyCondition:
-      operators: 
-      conditions: []
-    MaxOccurencePerPlaythrough:
-      constantValue: 999
-      useGameValue: 0
-      valueType: 10
-      serializedtype: NumberOfWife
-    Occurence: {x: 3, y: 30}
-    Duration: {x: 0, y: 0}
-    modifers:
-    - propertyType: 10
-      modificationType: 0
-      value_1: -1
-      value_2: 0
-      value_3: 0
-      serializedtype: NumberOfWife
-    subEvents: []
   - name: Famine!
-    ID: 6
+    ID: 1
     useSubEventMessages: 0
     startingMessage:
     - Production rates for seeds is reduced and the family is hungrier.
@@ -508,35 +181,11 @@ MonoBehaviour:
     oddsOfOccuring:
       constantValue: 0.2
       useGameValue: 0
-      valueType: 10
-      serializedtype: DyingRateOfWife
+      valueType: 3
+      serializedtype: CropProduction
     StartingCondition:
-      operators: 020000000000000002000000
-      conditions:
-      - operator: 0
-        type: 1
-        value_1:
-          constantValue: 7
-          useGameValue: 0
-          valueType: 0
-          serializedtype: 
-        value_2:
-          constantValue: 0
-          useGameValue: 0
-          valueType: 0
-          serializedtype: 
-      - operator: 0
-        type: 1
-        value_1:
-          constantValue: 8
-          useGameValue: 0
-          valueType: 0
-          serializedtype: 
-        value_2:
-          constantValue: 0
-          useGameValue: 0
-          valueType: 0
-          serializedtype: 
+      operators: 
+      conditions: []
     ContinualCondition:
       operators: 
       conditions: []
@@ -546,18 +195,18 @@ MonoBehaviour:
     MaxOccurencePerPlaythrough:
       constantValue: 1
       useGameValue: 0
-      valueType: 7
-      serializedtype: NumberOfWife
+      valueType: 3
+      serializedtype: CropProduction
     Occurence: {x: 15, y: 30}
     Duration: {x: 5, y: 5}
     modifers:
-    - propertyType: 0
+    - propertyType: 3
       modificationType: 0
       value_1: 1
       value_2: 0
       value_3: 0
-      serializedtype: WheatConsumption
-    - propertyType: 2
+      serializedtype: CropProduction
+    - propertyType: 3
       modificationType: 0
       value_1: -0.5
       value_2: 0
@@ -565,7 +214,7 @@ MonoBehaviour:
       serializedtype: CropProduction
     subEvents: []
   - name: War!
-    ID: 7
+    ID: 2
     useSubEventMessages: 0
     startingMessage:
     - 'The army needs more food.
@@ -577,35 +226,11 @@ MonoBehaviour:
     oddsOfOccuring:
       constantValue: 0.2
       useGameValue: 0
-      valueType: 10
-      serializedtype: DyingRateOfWife
+      valueType: 3
+      serializedtype: CropProduction
     StartingCondition:
-      operators: 020000000000000002000000
-      conditions:
-      - operator: 0
-        type: 1
-        value_1:
-          constantValue: 6
-          useGameValue: 0
-          valueType: 0
-          serializedtype: 
-        value_2:
-          constantValue: 0
-          useGameValue: 0
-          valueType: 0
-          serializedtype: 
-      - operator: 0
-        type: 1
-        value_1:
-          constantValue: 8
-          useGameValue: 0
-          valueType: 0
-          serializedtype: 
-        value_2:
-          constantValue: 0
-          useGameValue: 0
-          valueType: 0
-          serializedtype: 
+      operators: 
+      conditions: []
     ContinualCondition:
       operators: 
       conditions: []
@@ -615,12 +240,12 @@ MonoBehaviour:
     MaxOccurencePerPlaythrough:
       constantValue: 1
       useGameValue: 0
-      valueType: 7
-      serializedtype: NumberOfWife
+      valueType: 3
+      serializedtype: CropProduction
     Occurence: {x: 15, y: 30}
     Duration: {x: 10, y: 10}
     modifers:
-    - propertyType: 19
+    - propertyType: 17
       modificationType: 0
       value_1: 0.1
       value_2: 0
@@ -628,7 +253,7 @@ MonoBehaviour:
       serializedtype: ForcedTaxRate
     subEvents: []
   - name: Plague!
-    ID: 8
+    ID: 3
     useSubEventMessages: 0
     startingMessage:
     - 'Its the Plague.
@@ -640,35 +265,11 @@ MonoBehaviour:
     oddsOfOccuring:
       constantValue: 0.2
       useGameValue: 0
-      valueType: 15
-      serializedtype: DyingRateOfWife
+      valueType: 3
+      serializedtype: CropProduction
     StartingCondition:
-      operators: 020000000000000002000000
-      conditions:
-      - operator: 0
-        type: 1
-        value_1:
-          constantValue: 6
-          useGameValue: 0
-          valueType: 0
-          serializedtype: 
-        value_2:
-          constantValue: 0
-          useGameValue: 0
-          valueType: 0
-          serializedtype: 
-      - operator: 0
-        type: 1
-        value_1:
-          constantValue: 7
-          useGameValue: 0
-          valueType: 0
-          serializedtype: 
-        value_2:
-          constantValue: 0
-          useGameValue: 0
-          valueType: 0
-          serializedtype: 
+      operators: 
+      conditions: []
     ContinualCondition:
       operators: 
       conditions: []
@@ -678,32 +279,32 @@ MonoBehaviour:
     MaxOccurencePerPlaythrough:
       constantValue: 1
       useGameValue: 0
-      valueType: 10
-      serializedtype: NumberOfWife
+      valueType: 3
+      serializedtype: CropProduction
     Occurence: {x: 15, y: 30}
     Duration: {x: 10, y: 10}
     modifers:
-    - propertyType: 15
+    - propertyType: 3
       modificationType: 0
       value_1: 0.2
       value_2: 0
       value_3: 0
-      serializedtype: DyingRateOfWife
-    - propertyType: 16
+      serializedtype: CropProduction
+    - propertyType: 3
       modificationType: 0
       value_1: 0.2
       value_2: 0
       value_3: 0
-      serializedtype: DyingRateOfDaughter
-    - propertyType: 17
+      serializedtype: CropProduction
+    - propertyType: 3
       modificationType: 0
       value_1: 0.2
       value_2: 0
       value_3: 0
-      serializedtype: DyingRateOfSon
+      serializedtype: CropProduction
     subEvents: []
   - name: Son goes to War!
-    ID: 9
+    ID: 4
     useSubEventMessages: 0
     startingMessage:
     - 'The lord suggests Cob join the Army.
@@ -717,8 +318,8 @@ MonoBehaviour:
     oddsOfOccuring:
       constantValue: 0.3
       useGameValue: 0
-      valueType: 15
-      serializedtype: DyingRateOfWife
+      valueType: 3
+      serializedtype: CropProduction
     StartingCondition:
       operators: 00000000
       conditions:
@@ -727,12 +328,12 @@ MonoBehaviour:
         value_1:
           constantValue: 0
           useGameValue: 1
-          valueType: 12
-          serializedtype: NumberOfSon
+          valueType: 3
+          serializedtype: CropProduction
         value_2:
           constantValue: 0
           useGameValue: 0
-          valueType: 2
+          valueType: 3
           serializedtype: CropProduction
     ContinualCondition:
       operators: 
@@ -742,12 +343,12 @@ MonoBehaviour:
         value_1:
           constantValue: 0
           useGameValue: 1
-          valueType: 12
-          serializedtype: NumberOfSon
+          valueType: 3
+          serializedtype: CropProduction
         value_2:
           constantValue: 0
           useGameValue: 0
-          valueType: 2
+          valueType: 3
           serializedtype: CropProduction
     FamilyCondition:
       operators: 
@@ -755,899 +356,68 @@ MonoBehaviour:
     MaxOccurencePerPlaythrough:
       constantValue: 1
       useGameValue: 0
-      valueType: 10
-      serializedtype: NumberOfWife
+      valueType: 3
+      serializedtype: CropProduction
     Occurence: {x: 15, y: 30}
     Duration: {x: 5, y: 6}
     modifers:
-    - propertyType: 12
+    - propertyType: 3
       modificationType: 0
       value_1: -1
       value_2: 0
       value_3: 0
-      serializedtype: NumberOfSon
-    subEvents: []
-  - name: Bad Crops!
-    ID: 10
-    useSubEventMessages: 0
-    startingMessage:
-    - Its a bad harvest. All produce for this week is lost.
-    endingMessage: []
-    scenario: -1
-    oddsOfOccuring:
-      constantValue: 0.1
-      useGameValue: 0
-      valueType: 15
-      serializedtype: DyingRateOfWife
-    StartingCondition:
-      operators: 
-      conditions: []
-    ContinualCondition:
-      operators: 
-      conditions: []
-    FamilyCondition:
-      operators: 
-      conditions: []
-    MaxOccurencePerPlaythrough:
-      constantValue: 3
-      useGameValue: 0
-      valueType: 10
-      serializedtype: NumberOfWife
-    Occurence: {x: 10, y: 30}
-    Duration: {x: 0, y: 0}
-    modifers:
-    - propertyType: 2
-      modificationType: 2
-      value_1: 0
-      value_2: 0
-      value_3: 0
       serializedtype: CropProduction
-    - propertyType: 3
-      modificationType: 2
-      value_1: 0
-      value_2: 0
-      value_3: 0
-      serializedtype: SeedProduction
     subEvents: []
-  - name: Helper Son!
-    ID: 11
+  - name: Death
+    ID: 5
     useSubEventMessages: 0
     startingMessage:
-    - Fob has left to help a neighbouring farm.
+    - 'The lord suggests Cob join the Army.
+
+      Cob picks up his favourite stick and leaves to fight in the war.'
     endingMessage:
-    - 'Fob is back and brought some crop with him.
+    - 'Cob is back from war, he''s missing an arm and an ear
 
-
-      +10 Wheat'
-    scenario: -1
-    oddsOfOccuring:
-      constantValue: 0.2
-      useGameValue: 0
-      valueType: 15
-      serializedtype: DyingRateOfWife
-    StartingCondition:
-      operators: 
-      conditions:
-      - operator: 1
-        type: 0
-        value_1:
-          constantValue: 0
-          useGameValue: 1
-          valueType: 12
-          serializedtype: NumberOfSon
-        value_2:
-          constantValue: 0
-          useGameValue: 0
-          valueType: 2
-          serializedtype: CropProduction
-    ContinualCondition:
-      operators: 
-      conditions: []
-    FamilyCondition:
-      operators: 
-      conditions: []
-    MaxOccurencePerPlaythrough:
-      constantValue: 1
-      useGameValue: 0
-      valueType: 10
-      serializedtype: NumberOfWife
-    Occurence: {x: 10, y: 30}
-    Duration: {x: 6, y: 8}
-    modifers:
-    - propertyType: 12
-      modificationType: 0
-      value_1: -1
-      value_2: 0
-      value_3: 0
-      serializedtype: NumberOfSon
-    subEvents:
-    - label: Crops
-      occuringMethod: 2
-      chance:
-        constantValue: 1
-        useGameValue: 0
-        valueType: 2
-        serializedtype: CropProduction
-      Duration: {x: 0, y: 0}
-      modifers:
-      - propertyType: 12
-        modificationType: 0
-        value_1: 10
-        value_2: 0
-        value_3: 0
-        serializedtype: NumberOfSon
-      startingMessage: []
-      endingMessage: []
-      StartingCondition:
-        operators: 
-        conditions: []
-      ContinualCondition:
-        operators: 
-        conditions: []
-      FamilyCondition:
-        operators: 
-        conditions: []
-  - name: Offering!
-    ID: 12
-    useSubEventMessages: 0
-    startingMessage:
-    - "The Lord is expecting an offering from all his serfs,\nfor his birthday. \n\n-1
-      Chicken"
-    endingMessage: []
-    scenario: -1
-    oddsOfOccuring:
-      constantValue: 0.3
-      useGameValue: 0
-      valueType: 15
-      serializedtype: DyingRateOfWife
-    StartingCondition:
-      operators: 
-      conditions:
-      - operator: 1
-        type: 0
-        value_1:
-          constantValue: 0
-          useGameValue: 1
-          valueType: 14
-          serializedtype: NumberOfChicken
-        value_2:
-          constantValue: 0
-          useGameValue: 0
-          valueType: 2
-          serializedtype: CropProduction
-    ContinualCondition:
-      operators: 
-      conditions: []
-    FamilyCondition:
-      operators: 
-      conditions: []
-    MaxOccurencePerPlaythrough:
-      constantValue: 1
-      useGameValue: 0
-      valueType: 10
-      serializedtype: NumberOfWife
-    Occurence: {x: 15, y: 17}
-    Duration: {x: 0, y: 0}
-    modifers:
-    - propertyType: 14
-      modificationType: 0
-      value_1: -1
-      value_2: 0
-      value_3: 0
-      serializedtype: NumberOfChicken
-    subEvents: []
-  - name: Witch Burning!
-    ID: 13
-    useSubEventMessages: 1
-    startingMessage: []
-    endingMessage: []
-    scenario: -1
-    oddsOfOccuring:
-      constantValue: 0.2
-      useGameValue: 0
-      valueType: 15
-      serializedtype: DyingRateOfWife
-    StartingCondition:
-      operators: 
-      conditions:
-      - operator: 1
-        type: 0
-        value_1:
-          constantValue: 0
-          useGameValue: 1
-          valueType: 11
-          serializedtype: NumberOfDaughter
-        value_2:
-          constantValue: 0
-          useGameValue: 0
-          valueType: 2
-          serializedtype: CropProduction
-    ContinualCondition:
-      operators: 
-      conditions: []
-    FamilyCondition:
-      operators: 
-      conditions: []
-    MaxOccurencePerPlaythrough:
-      constantValue: 1
-      useGameValue: 0
-      valueType: 10
-      serializedtype: NumberOfWife
-    Occurence: {x: 7, y: 30}
-    Duration: {x: 0, y: 0}
-    modifers:
-    - propertyType: 14
-      modificationType: 0
-      value_1: -1
-      value_2: 0
-      value_3: 0
-      serializedtype: 
-    subEvents:
-    - label: Witch Hunt!
-      occuringMethod: 0
-      chance:
-        constantValue: 1
-        useGameValue: 0
-        valueType: 2
-        serializedtype: CropProduction
-      Duration: {x: 2, y: 2}
-      modifers: []
-      startingMessage:
-      - The neighbours suspect Jil of being a witch
-      endingMessage: []
-      StartingCondition:
-        operators: 
-        conditions: []
-      ContinualCondition:
-        operators: 
-        conditions: []
-      FamilyCondition:
-        operators: 
-        conditions: []
-    - label: Witch Hunt!
-      occuringMethod: 2
-      chance:
-        constantValue: 1
-        useGameValue: 0
-        valueType: 2
-        serializedtype: CropProduction
-      Duration: {x: 0, y: 0}
-      modifers:
-      - propertyType: 11
-        modificationType: 0
-        value_1: -1
-        value_2: 0
-        value_3: 0
-        serializedtype: NumberOfDaughter
-      startingMessage:
-      - Jil was burned at the stake
-      endingMessage: []
-      StartingCondition:
-        operators: 
-        conditions: []
-      ContinualCondition:
-        operators: 
-        conditions: []
-      FamilyCondition:
-        operators: 
-        conditions: []
-  - name: Hunting Accident!
-    ID: 14
-    useSubEventMessages: 0
-    startingMessage:
-    - 'The Lord was out hunting and shot an arrow at his prey,
-
-      he missed and hit Hal.
-
-      Hal is no more'
-    endingMessage: []
-    scenario: -1
-    oddsOfOccuring:
-      constantValue: 0.1
-      useGameValue: 0
-      valueType: 15
-      serializedtype: DyingRateOfWife
-    StartingCondition:
-      operators: 
-      conditions:
-      - operator: 1
-        type: 0
-        value_1:
-          constantValue: 0
-          useGameValue: 1
-          valueType: 11
-          serializedtype: NumberOfDaughter
-        value_2:
-          constantValue: 0
-          useGameValue: 0
-          valueType: 2
-          serializedtype: CropProduction
-    ContinualCondition:
-      operators: 
-      conditions: []
-    FamilyCondition:
-      operators: 
-      conditions: []
-    MaxOccurencePerPlaythrough:
-      constantValue: 1
-      useGameValue: 0
-      valueType: 10
-      serializedtype: NumberOfWife
-    Occurence: {x: 5, y: 25}
-    Duration: {x: 0, y: 0}
-    modifers:
-    - propertyType: 11
-      modificationType: 0
-      value_1: -1
-      value_2: 0
-      value_3: 0
-      serializedtype: NumberOfDaughter
-    subEvents: []
-  - name: Small Pox!
-    ID: 15
-    useSubEventMessages: 0
-    startingMessage:
-    - "Everyone in the neighbouring \nfarm died to diseases.\nLob \"borrowed\" the
-      dead's Ox\n\n+1 Ox"
-    endingMessage: []
-    scenario: -1
-    oddsOfOccuring:
-      constantValue: 0.2
-      useGameValue: 0
-      valueType: 15
-      serializedtype: DyingRateOfWife
-    StartingCondition:
-      operators: 
-      conditions: []
-    ContinualCondition:
-      operators: 
-      conditions: []
-    FamilyCondition:
-      operators: 
-      conditions: []
-    MaxOccurencePerPlaythrough:
-      constantValue: 2
-      useGameValue: 0
-      valueType: 10
-      serializedtype: NumberOfWife
-    Occurence: {x: 10, y: 20}
-    Duration: {x: 0, y: 0}
-    modifers:
-    - propertyType: 13
-      modificationType: 0
-      value_1: 1
-      value_2: 0
-      value_3: 0
-      serializedtype: NumberOfOx
-    subEvents: []
-  - name: Dragon!
-    ID: 16
-    useSubEventMessages: 0
-    startingMessage:
-    - 'A dragon swooped in and grabed Hob.
-
-      Hob is no more'
-    endingMessage: []
-    scenario: -1
-    oddsOfOccuring:
-      constantValue: 0.1
-      useGameValue: 0
-      valueType: 15
-      serializedtype: DyingRateOfWife
-    StartingCondition:
-      operators: 
-      conditions:
-      - operator: 1
-        type: 0
-        value_1:
-          constantValue: 0
-          useGameValue: 1
-          valueType: 12
-          serializedtype: NumberOfSon
-        value_2:
-          constantValue: 0
-          useGameValue: 0
-          valueType: 2
-          serializedtype: CropProduction
-    ContinualCondition:
-      operators: 
-      conditions: []
-    FamilyCondition:
-      operators: 
-      conditions: []
-    MaxOccurencePerPlaythrough:
-      constantValue: 2
-      useGameValue: 0
-      valueType: 10
-      serializedtype: NumberOfWife
-    Occurence: {x: 10, y: 30}
-    Duration: {x: 0, y: 0}
-    modifers:
-    - propertyType: 12
-      modificationType: 0
-      value_1: -1
-      value_2: 0
-      value_3: 0
-      serializedtype: NumberOfSon
-    subEvents: []
-  - name: Heresy!
-    ID: 17
-    useSubEventMessages: 0
-    startingMessage:
-    - 'The Gods are furious and a sacrifice must be made.
-
-      Gal is no more. '
-    endingMessage: []
-    scenario: -1
-    oddsOfOccuring:
-      constantValue: 0.3
-      useGameValue: 0
-      valueType: 15
-      serializedtype: DyingRateOfWife
-    StartingCondition:
-      operators: 
-      conditions:
-      - operator: 1
-        type: 0
-        value_1:
-          constantValue: 0
-          useGameValue: 1
-          valueType: 11
-          serializedtype: NumberOfDaughter
-        value_2:
-          constantValue: 0
-          useGameValue: 0
-          valueType: 2
-          serializedtype: CropProduction
-    ContinualCondition:
-      operators: 
-      conditions: []
-    FamilyCondition:
-      operators: 
-      conditions: []
-    MaxOccurencePerPlaythrough:
-      constantValue: 1
-      useGameValue: 0
-      valueType: 10
-      serializedtype: NumberOfWife
-    Occurence: {x: 5, y: 25}
-    Duration: {x: 0, y: 0}
-    modifers:
-    - propertyType: 11
-      modificationType: 0
-      value_1: -1
-      value_2: 0
-      value_3: 0
-      serializedtype: NumberOfDaughter
-    subEvents: []
-  - name: 'Magistrate Death! '
-    ID: 18
-    useSubEventMessages: 0
-    startingMessage:
-    - 'The local magistrate died.
-
-      Nobody arrived to collect the tax.'
-    endingMessage: []
-    scenario: -1
-    oddsOfOccuring:
-      constantValue: 0
-      useGameValue: 0
-      valueType: 15
-      serializedtype: DyingRateOfWife
-    StartingCondition:
-      operators: 
-      conditions: []
-    ContinualCondition:
-      operators: 
-      conditions: []
-    FamilyCondition:
-      operators: 
-      conditions: []
-    MaxOccurencePerPlaythrough:
-      constantValue: 1
-      useGameValue: 0
-      valueType: 10
-      serializedtype: NumberOfWife
-    Occurence: {x: 2, y: 30}
-    Duration: {x: 0, y: 0}
-    modifers:
-    - propertyType: 18
-      modificationType: 0
-      value_1: -0.3
-      value_2: 0
-      value_3: 0
-      serializedtype: TaxRate
-    subEvents:
-    - label: Tax
-      occuringMethod: 2
-      chance:
-        constantValue: 1
-        useGameValue: 0
-        valueType: 2
-        serializedtype: CropProduction
-      Duration: {x: 0, y: 0}
-      modifers:
-      - propertyType: 18
-        modificationType: 0
-        value_1: 0.3
-        value_2: 0
-        value_3: 0
-        serializedtype: TaxRate
-      startingMessage: []
-      endingMessage: []
-      StartingCondition:
-        operators: 
-        conditions: []
-      ContinualCondition:
-        operators: 
-        conditions: []
-      FamilyCondition:
-        operators: 
-        conditions: []
-  - name: 'Starving to Death! '
-    ID: 19
-    useSubEventMessages: 1
-    startingMessage:
-    - 'The local magistrate died.
-
-      Nobody arrived to collect the tax.'
-    endingMessage: []
+      but at least he is alive.'
     scenario: -1
     oddsOfOccuring:
       constantValue: 1
-      useGameValue: 0
-      valueType: 10
-      serializedtype: DyingRateOfWife
+      useGameValue: 1
+      valueType: 11
+      serializedtype: FamilyDyingRate
     StartingCondition:
-      operators: 00000000
-      conditions:
-      - operator: 1
-        type: 0
-        value_1:
-          constantValue: 0
-          useGameValue: 1
-          valueType: 13
-          serializedtype: FamilyHunger
-        value_2:
-          constantValue: 0
-          useGameValue: 0
-          valueType: 3
-          serializedtype: CropProduction
-      - operator: 1
-        type: 0
-        value_1:
-          constantValue: 0
-          useGameValue: 1
-          valueType: 14
-          serializedtype: FamilyHungryDays
-        value_2:
-          constantValue: 1
-          useGameValue: 0
-          valueType: 3
-          serializedtype: CropProduction
-    ContinualCondition:
-      operators: 00000000
-      conditions:
-      - operator: 1
-        type: 0
-        value_1:
-          constantValue: 0
-          useGameValue: 1
-          valueType: 13
-          serializedtype: FamilyHunger
-        value_2:
-          constantValue: 0
-          useGameValue: 0
-          valueType: 3
-          serializedtype: CropProduction
-      - operator: 1
-        type: 0
-        value_1:
-          constantValue: 0
-          useGameValue: 1
-          valueType: 14
-          serializedtype: FamilyHungryDays
-        value_2:
-          constantValue: 1
-          useGameValue: 0
-          valueType: 3
-          serializedtype: CropProduction
-    FamilyCondition:
       operators: 
       conditions: []
+    ContinualCondition:
+      operators: 
+      conditions: []
+    FamilyCondition:
+      operators: 
+      conditions:
+      - operator: 0
+        type: 0
+        value: 4
+        member:
+          name: Son
+          type: 4
+          requiredWheat: 1
+          dyingRate: 0.3
+          hunger: 0
+          mentalHealth: 100
+          mentalDyingRatio: 0.4
+          died: 0
     MaxOccurencePerPlaythrough:
-      constantValue: 99
+      constantValue: 1
       useGameValue: 0
-      valueType: 7
-      serializedtype: NumberOfWife
-    Occurence: {x: 0, y: 30}
-    Duration: {x: 0, y: 0}
-    modifers:
-    - propertyType: 3
-      modificationType: 0
-      value_1: -0.3
-      value_2: 0
-      value_3: 0
+      valueType: 3
       serializedtype: CropProduction
-    subEvents:
-    - label: Death by starving
-      occuringMethod: 0
-      chance:
-        constantValue: 1
-        useGameValue: 0
-        valueType: 3
-        serializedtype: CropProduction
-      Duration: {x: 0, y: 0}
-      modifers:
-      - propertyType: 13
-        modificationType: 0
-        value_1: -1
-        value_2: 0
-        value_3: 0
-        serializedtype: NumberOfOx
-      startingMessage:
-      - Your wife is dead.
-      endingMessage: []
-      StartingCondition:
-        operators: 
-        conditions:
-        - operator: 1
-          type: 0
-          value_1:
-            constantValue: 0
-            useGameValue: 1
-            valueType: 7
-            serializedtype: NumberOfWife
-          value_2:
-            constantValue: 0
-            useGameValue: 0
-            valueType: 3
-            serializedtype: CropProduction
-      ContinualCondition:
-        operators: 
-        conditions: []
-      FamilyCondition:
-        operators: 
-        conditions: []
-    - label: Death by starving
-      occuringMethod: 0
-      chance:
-        constantValue: 1
-        useGameValue: 0
-        valueType: 3
-        serializedtype: CropProduction
-      Duration: {x: 0, y: 0}
-      modifers:
-      - propertyType: 11
-        modificationType: 0
-        value_1: -1
-        value_2: 0
-        value_3: 0
-        serializedtype: NumberOfDaughter
-      startingMessage:
-      - Your daughter is dead.
-      endingMessage: []
-      StartingCondition:
-        operators: 
-        conditions:
-        - operator: 1
-          type: 0
-          value_1:
-            constantValue: 0
-            useGameValue: 1
-            valueType: 8
-            serializedtype: NumberOfDaughter
-          value_2:
-            constantValue: 0
-            useGameValue: 0
-            valueType: 3
-            serializedtype: CropProduction
-      ContinualCondition:
-        operators: 
-        conditions: []
-      FamilyCondition:
-        operators: 
-        conditions: []
-    - label: Death by starving
-      occuringMethod: 0
-      chance:
-        constantValue: 1
-        useGameValue: 0
-        valueType: 3
-        serializedtype: CropProduction
-      Duration: {x: 0, y: 0}
-      modifers:
-      - propertyType: 9
-        modificationType: 0
-        value_1: -1
-        value_2: 0
-        value_3: 0
-        serializedtype: NumberOfSon
-      startingMessage:
-      - Your son is dead.
-      endingMessage: []
-      StartingCondition:
-        operators: 
-        conditions:
-        - operator: 1
-          type: 0
-          value_1:
-            constantValue: 0
-            useGameValue: 1
-            valueType: 9
-            serializedtype: NumberOfSon
-          value_2:
-            constantValue: 0
-            useGameValue: 0
-            valueType: 3
-            serializedtype: CropProduction
-      ContinualCondition:
-        operators: 
-        conditions: []
-      FamilyCondition:
-        operators: 
-        conditions: []
-  - name: 'Starving to Death! '
-    ID: 20
-    useSubEventMessages: 1
-    startingMessage:
-    - 'The local magistrate died.
-
-      Nobody arrived to collect the tax.'
-    endingMessage: []
-    scenario: -1
-    oddsOfOccuring:
-      constantValue: 1
-      useGameValue: 0
-      valueType: 10
-      serializedtype: DyingRateOfWife
-    StartingCondition:
-      operators: 00000000
-      conditions:
-      - operator: 1
-        type: 0
-        value_1:
-          constantValue: 0
-          useGameValue: 1
-          valueType: 18
-          serializedtype: AnimalHunger
-        value_2:
-          constantValue: 0
-          useGameValue: 0
-          valueType: 3
-          serializedtype: CropProduction
-      - operator: 1
-        type: 0
-        value_1:
-          constantValue: 0
-          useGameValue: 1
-          valueType: 19
-          serializedtype: AnimalHungryDays
-        value_2:
-          constantValue: 1
-          useGameValue: 0
-          valueType: 3
-          serializedtype: CropProduction
-    ContinualCondition:
-      operators: 00000000
-      conditions:
-      - operator: 1
-        type: 0
-        value_1:
-          constantValue: 0
-          useGameValue: 1
-          valueType: 18
-          serializedtype: AnimalHunger
-        value_2:
-          constantValue: 0
-          useGameValue: 0
-          valueType: 3
-          serializedtype: CropProduction
-      - operator: 1
-        type: 0
-        value_1:
-          constantValue: 0
-          useGameValue: 1
-          valueType: 19
-          serializedtype: AnimalHungryDays
-        value_2:
-          constantValue: 1
-          useGameValue: 0
-          valueType: 3
-          serializedtype: CropProduction
-    FamilyCondition:
-      operators: 
-      conditions: []
-    MaxOccurencePerPlaythrough:
-      constantValue: 99
-      useGameValue: 0
-      valueType: 7
-      serializedtype: NumberOfWife
-    Occurence: {x: 0, y: 30}
-    Duration: {x: 0, y: 0}
+    Occurence: {x: 1, y: 30}
+    Duration: {x: 1, y: 4}
     modifers:
-    - propertyType: 3
+    - propertyType: 7
       modificationType: 0
-      value_1: -0.3
+      value_1: -1
       value_2: 0
       value_3: 0
-      serializedtype: CropProduction
-    subEvents:
-    - label: Death by starving
-      occuringMethod: 0
-      chance:
-        constantValue: 1
-        useGameValue: 0
-        valueType: 3
-        serializedtype: CropProduction
-      Duration: {x: 0, y: 0}
-      modifers:
-      - propertyType: 13
-        modificationType: 0
-        value_1: -1
-        value_2: 0
-        value_3: 0
-        serializedtype: NumberOfOx
-      startingMessage:
-      - Your ox is dead.
-      endingMessage: []
-      StartingCondition:
-        operators: 
-        conditions:
-        - operator: 1
-          type: 0
-          value_1:
-            constantValue: 0
-            useGameValue: 1
-            valueType: 19
-            serializedtype: NumberOfOx
-          value_2:
-            constantValue: 0
-            useGameValue: 0
-            valueType: 3
-            serializedtype: CropProduction
-      ContinualCondition:
-        operators: 
-        conditions: []
-      FamilyCondition:
-        operators: 
-        conditions: []
-    - label: Death by starving
-      occuringMethod: 0
-      chance:
-        constantValue: 1
-        useGameValue: 0
-        valueType: 3
-        serializedtype: CropProduction
-      Duration: {x: 0, y: 0}
-      modifers:
-      - propertyType: 3
-        modificationType: 0
-        value_1: -1
-        value_2: 0
-        value_3: 0
-        serializedtype: CropProduction
-      startingMessage:
-      - Your chicken is dead.
-      endingMessage: []
-      StartingCondition:
-        operators: 
-        conditions:
-        - operator: 1
-          type: 0
-          value_1:
-            constantValue: 0
-            useGameValue: 1
-            valueType: 3
-            serializedtype: CropProduction
-          value_2:
-            constantValue: 0
-            useGameValue: 0
-            valueType: 3
-            serializedtype: CropProduction
-      ContinualCondition:
-        operators: 
-        conditions: []
-      FamilyCondition:
-        operators: 
-        conditions: []
+      serializedtype: FamilyDeath
+    subEvents: []

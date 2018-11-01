@@ -9,12 +9,6 @@ public class InfoUpdater : MonoBehaviour
 	[SerializeField] Text dateText;
 	[SerializeField] Text wheatText;
 	[SerializeField] Text oatText;
-	[SerializeField] Text sonText;
-	[SerializeField] Text daughterText;
-	[SerializeField] Text wifeText;
-	[SerializeField] Text oxText;
-	[SerializeField] Text fHungerText;
-	[SerializeField] Text aHungerText;
 
 	private void Awake()
 	{
@@ -35,12 +29,6 @@ public class InfoUpdater : MonoBehaviour
 		dateText.text			= (GameDataManager.MaxWeek - TimeManager.Date).ToString();
 		wheatText.text			= GameDataManager.CurrentWheat.ToString();
 		oatText.text			= GameDataManager.CurrentOat.ToString();
-		sonText.text			= GameDataManager.CurrentSon.ToString();
-		daughterText.text		= GameDataManager.CurrentDaughter.ToString();
-		wifeText.text			= GameDataManager.CurrentWife.ToString();
-		oxText.text				= GameDataManager.CurrentOx.ToString();
-		fHungerText.text		= GameDataManager.CurrentFamilyHunger.ToString();
-		aHungerText.text		= GameDataManager.CurrentAnimalHunger.ToString();
 	}
 
 	private void GlobalValues_OnvalueChanged()

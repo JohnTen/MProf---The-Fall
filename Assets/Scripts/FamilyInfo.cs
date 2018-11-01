@@ -14,13 +14,18 @@ public class FamilyInfo : MonoBehaviour
 	[SerializeField] Text hungerText;
 	[SerializeField] Text sanityText;
 	[SerializeField] Text dRateText;
+	[SerializeField] Button[] buttons;
 	
 	// Update is called once per frame
 	void Update ()
 	{
+		for (int i = 0; i < FamilyManager.FamilyMembers.Count; i++)
+		{
+			buttons[i].interactable = !FamilyManager.FamilyMembers[i].died;
+		}
+
 		if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
 		{
-			this.enabled = false;
 			Close();
 		}
 	}
@@ -28,7 +33,6 @@ public class FamilyInfo : MonoBehaviour
 	public void Display(int i)
 	{
 		Open();
-		this.enabled = true;
 		var list = FamilyManager.FamilyMembers;
 		nameText.text = list[i].name;
 		hungerText.text = list[i].hunger.ToString();

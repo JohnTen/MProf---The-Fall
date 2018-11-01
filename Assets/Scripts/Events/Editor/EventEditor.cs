@@ -132,6 +132,30 @@ public class EventEditor : EditorWindow
 			list.Add(new GameEvent(list[list.Count - 1]));
 		}
 		GUI.backgroundColor = Color.white;
+		
+		if (GUILayout.Button("Check list"))
+		{
+			for (int i = 0; i < foldOutFlags.Count; i++)
+			{
+				foldOutFlags[i] = true;
+			}
+			for (int i = 0; i < secFoldOutFlags.Count; i ++)
+			{
+				secFoldOutFlags[i] = true;
+			}
+			for (int i = 0; i < thdFoldOutFlags.Count; i++)
+			{
+				thdFoldOutFlags[i] = true;
+			}
+			for (int i = 0; i < forFoldOutFlags.Count; i++)
+			{
+				forFoldOutFlags[i] = true;
+			}
+			for (int i = 0; i < fifFoldOutFlags.Count; i++)
+			{
+				fifFoldOutFlags[i] = true;
+			}
+		}
 
 		GUILayout.EndScrollView();
 		GUILayout.EndVertical();

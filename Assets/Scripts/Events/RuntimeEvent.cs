@@ -22,6 +22,8 @@ public class RuntimeEvent
 	public event Action<RuntimeEvent, RuntimeSubEvent> OnSubEventOccuring;
 	public event Action<RuntimeEvent, RuntimeSubEvent> OnSubEventStoping;
 
+	List<FamilyMember> members = new List<FamilyMember>();
+
 	public bool IsReachedEndingDate
 	{
 		get { return occurationEndDate <= TimeManager.Date; }
@@ -44,7 +46,8 @@ public class RuntimeEvent
 
 	public void CheckEvent()
 	{
-		if (!occuring && eventRef.StartingCondition.IsSatisfied())
+		eventRef.FamilyCondition.GetSatisfiedFamilies(ref members);
+		if (!occuring && eventRef.StartingCondition.IsSatisfied() && members.Count > 0)
 		{
 			occuring = TryInvoke();
 			if (occuring && CanStop())
@@ -90,11 +93,52 @@ public class RuntimeEvent
 		// Apply modifiers
 		for (int i = 0; i < eventRef.modifers.Length; i++)
 		{
-			// If this is a event that has no duration(forever), merge modifiers into the basic game values
-			if (eventRef.Duration == Vector2Int.zero)
-				GameDataManager.GameValues.MergeModifier(eventRef.modifers[i]);
+			// If this is a family related modifer...
+			if (eventRef.modifers[i].propertyType > GameValueType.__Family && 
+				eventRef.modifers[i].propertyType < GameValueType.__Animal)
+			{
+				switch (eventRef.modifers[i].propertyType)
+				{
+					case GameValueType.FamilyCropConsumption:
+						foreach (var f in members)
+						{
+							f.requiredWheat += (int)eventRef.modifers[i].value_1;
+						}
+						break;
+					case GameValueType.FamilyDeath:
+						foreach (var f in members)
+						{
+							f.died = true;
+						}
+						break;
+					case GameValueType.FamilyDyingRate:
+						foreach (var f in members)
+						{
+							f.dyingRate += eventRef.modifers[i].value_1;
+						}
+						break;
+					case GameValueType.FamilyHunger:
+						foreach (var f in members)
+						{
+							f.hunger += (int)eventRef.modifers[i].value_1;
+						}
+						break;
+					case GameValueType.FamilyMentalHealth:
+						foreach (var f in members)
+						{
+							f.mentalHealth += (int)eventRef.modifers[i].value_1;
+						}
+						break;
+				}
+			}
 			else
-				GameDataManager.GameValues.AddModifier(eventRef.modifers[i]);
+			{
+				// If this is a event that has no duration(forever), merge modifiers into the basic game values
+				if (eventRef.Duration == Vector2Int.zero)
+					GameDataManager.GameValues.MergeModifier(eventRef.modifers[i]);
+				else
+					GameDataManager.GameValues.AddModifier(eventRef.modifers[i]);
+			}
 		}
 
 		// Calculate occuring chance of sub events with occuring method of chose one
@@ -184,7 +228,46 @@ public class RuntimeEvent
 		// Stop the event itself
 		for (int i = 0; i < eventRef.modifers.Length; i ++)
 		{
-			GameDataManager.GameValues.RemoveModifier(eventRef.modifers[i]);
+			// If this is a family related modifer...
+			if (eventRef.modifers[i].propertyType > GameValueType.__Family &&
+				eventRef.modifers[i].propertyType < GameValueType.__Animal)
+			{
+				switch (eventRef.modifers[i].propertyType)
+				{
+					case GameValueType.FamilyCropConsumption:
+					foreach (var f in members)
+						{
+							f.requiredWheat -= (int)eventRef.modifers[i].value_1;
+						}
+						break;
+					case GameValueType.FamilyDeath:
+						foreach (var f in members)
+						{
+							f.died = false;
+						}
+						break;
+					case GameValueType.FamilyDyingRate:
+						foreach (var f in members)
+						{
+							f.dyingRate -= eventRef.modifers[i].value_1;
+						}
+						break;
+					case GameValueType.FamilyHunger:
+						foreach (var f in members)
+						{
+							f.hunger -= (int)eventRef.modifers[i].value_1;
+						}
+						break;
+					case GameValueType.FamilyMentalHealth:
+						foreach (var f in members)
+						{
+							f.mentalHealth -= (int)eventRef.modifers[i].value_1;
+						}
+						break;
+				}
+			}
+			else
+				GameDataManager.GameValues.RemoveModifier(eventRef.modifers[i]);
 		}
 
 		// Calculate occuring chance of sub events with occuring method of AtTheEnd_One
@@ -301,6 +384,8 @@ public class RuntimeSubEvent
 	public int occurationEndDate = -1;
 	public bool isExecuting;
 
+	public List<FamilyMember> members = new List<FamilyMember>();
+
 	public bool IsReachedEndingDate
 	{
 		get { return occurationEndDate <= TimeManager.Date; }
@@ -317,7 +402,9 @@ public class RuntimeSubEvent
 	public void Execute()
 	{
 		Debug.Log(eventRef.label + " is executing");
-		
+
+		eventRef.FamilyCondition.GetSatisfiedFamilies(ref members);
+
 		occurationStartDate = TimeManager.Date;
 		occurationEndDate = eventRef.Duration.RandomBetweenIncluded() + occurationStartDate;
 		if (eventRef.Duration != Vector2Int.zero)
@@ -325,14 +412,55 @@ public class RuntimeSubEvent
 
 		for (int i = 0; i < eventRef.modifers.Length; i++)
 		{
-			// If this is a event that has no duration(forever), merge modifiers into the basic game values
-			if (!isExecuting)
+			// If this is a family related modifer...
+			if (eventRef.modifers[i].propertyType > GameValueType.__Family &&
+				eventRef.modifers[i].propertyType < GameValueType.__Animal)
 			{
-				GameDataManager.GameValues.MergeModifier(eventRef.modifers[i]);
+				switch (eventRef.modifers[i].propertyType)
+				{
+					case GameValueType.FamilyCropConsumption:
+						foreach (var f in members)
+						{
+							f.requiredWheat += (int)eventRef.modifers[i].value_1;
+						}
+						break;
+					case GameValueType.FamilyDeath:
+						foreach (var f in members)
+						{
+							f.died = true;
+						}
+						break;
+					case GameValueType.FamilyDyingRate:
+						foreach (var f in members)
+						{
+							f.dyingRate += eventRef.modifers[i].value_1;
+						}
+						break;
+					case GameValueType.FamilyHunger:
+						foreach (var f in members)
+						{
+							f.hunger += (int)eventRef.modifers[i].value_1;
+						}
+						break;
+					case GameValueType.FamilyMentalHealth:
+						foreach (var f in members)
+						{
+							f.mentalHealth += (int)eventRef.modifers[i].value_1;
+						}
+						break;
+				}
 			}
 			else
 			{
-				GameDataManager.GameValues.AddModifier(eventRef.modifers[i]);
+				// If this is a event that has no duration(forever), merge modifiers into the basic game values
+				if (!isExecuting)
+				{
+					GameDataManager.GameValues.MergeModifier(eventRef.modifers[i]);
+				}
+				else
+				{
+					GameDataManager.GameValues.AddModifier(eventRef.modifers[i]);
+				}
 			}
 		}
 	}
@@ -351,7 +479,46 @@ public class RuntimeSubEvent
 
 		for (int i = 0; i < eventRef.modifers.Length; i++)
 		{
-			GameDataManager.GameValues.RemoveModifier(eventRef.modifers[i]);
+			// If this is a family related modifer...
+			if (eventRef.modifers[i].propertyType > GameValueType.__Family &&
+				eventRef.modifers[i].propertyType < GameValueType.__Animal)
+			{
+				switch (eventRef.modifers[i].propertyType)
+				{
+					case GameValueType.FamilyCropConsumption:
+						foreach (var f in members)
+						{
+							f.requiredWheat -= (int)eventRef.modifers[i].value_1;
+						}
+						break;
+					case GameValueType.FamilyDeath:
+						foreach (var f in members)
+						{
+							f.died = false;
+						}
+						break;
+					case GameValueType.FamilyDyingRate:
+						foreach (var f in members)
+						{
+							f.dyingRate -= eventRef.modifers[i].value_1;
+						}
+						break;
+					case GameValueType.FamilyHunger:
+						foreach (var f in members)
+						{
+							f.hunger -= (int)eventRef.modifers[i].value_1;
+						}
+						break;
+					case GameValueType.FamilyMentalHealth:
+						foreach (var f in members)
+						{
+							f.mentalHealth -= (int)eventRef.modifers[i].value_1;
+						}
+						break;
+				}
+			}
+			else
+				GameDataManager.GameValues.RemoveModifier(eventRef.modifers[i]);
 		}
 		isExecuting = false;
 	}

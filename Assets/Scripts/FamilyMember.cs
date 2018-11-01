@@ -21,4 +21,5 @@ public class FamilyMember
 	public int hunger = 0;
 	public int mentalHealth = 100;
 	public float mentalDyingRatio = 0.4f;
+	public bool died;
 }
