@@ -81,7 +81,7 @@ public class FieldBlock : MonoInteractable
 			status.lastPlantedCrop.index == index &&
 			status.lastPlantedCrop.index != 0)
 		{
-			MessageBox.DisplayMessage("You cannot plant the same crop except wheat twice in a row.");
+			MessageBox.DisplayMessage("You cannot plant the same crop twice in a row.");
 			return;
 		}
 
@@ -128,7 +128,24 @@ public class FieldBlock : MonoInteractable
 		status.currentCrop = new Crop(crop);
 		status.currentGrowingPeriod = 0;
 
-		FieldManager.Instance.StartPlantMinigame(crop.index, WaitForFarmingMinigame);
+		if (GameDataManager.GameValues[GameValueType.Fertiliser] > 0f)
+		{
+			MessageBox.DisplayMessage(
+				"", 
+				"Do you want to skip the minigame by using one fertiliser?", 
+				() => 
+				{
+					GameDataManager.GameValues[GameValueType.Fertiliser]--;
+					GameDataManager.UpdateValues();
+					WaitForFarmingMinigame(true);
+				}, 
+				() => FieldManager.Instance.StartPlantMinigame(crop.index, WaitForFarmingMinigame)
+			);
+		}
+		else
+		{
+			FieldManager.Instance.StartPlantMinigame(crop.index, WaitForFarmingMinigame);
+		}
 	}
 
 	public void ForcePlant(Crop crop, int growingPeriod)

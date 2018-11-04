@@ -79,7 +79,7 @@ public class FarmingMinigame : BaseMinigame
 		OnGameFinished = null;
 		maze.StartingPoint.gameObject.SetActive(false);
 		pc.position = maze.StartingPoint.position;
-		Time.timeScale = 0;
+		TimeManager.FreezeTime();
 
 		currentMovement = 0;
 	}
@@ -88,7 +88,7 @@ public class FarmingMinigame : BaseMinigame
 	{
 		IsPlaying = false;
 		canvas.enabled = false;
-		Time.timeScale = 1;
+		TimeManager.UnfreezeTime();
 		MessageBox.OnContinue -= StopPlay;
 	}
 

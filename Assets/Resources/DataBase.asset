@@ -28,41 +28,65 @@ MonoBehaviour:
   - name: Ox
     index: 0
     requiredOat: 2
-    ProvidedFood: 5
+    ProvidedFood: 2
     ProvidedFertiliser: 1
-  familyList:
-  - name: Bob
-    type: 1
+  merchandiseList:
+  - name: Blankets
+    pic: {fileID: 0}
+    requiredWheat: 8
+    requiredOat: 8
+    requiredMilk: 4
+    sanityBoost: 0
+    familyMember: 0
+  - name: Clay Jars
+    pic: {fileID: 0}
+    requiredWheat: 3
+    requiredOat: 4
+    requiredMilk: 2
+    sanityBoost: 0
+    familyMember: 0
+  - name: Warm Coats
+    pic: {fileID: 0}
+    requiredWheat: 4
+    requiredOat: 4
+    requiredMilk: 2
+    sanityBoost: 0
+    familyMember: 0
+  - name: Warm Pants
+    pic: {fileID: 0}
+    requiredWheat: 3
+    requiredOat: 3
+    requiredMilk: 2
+    sanityBoost: 0
+    familyMember: 0
+  - name: Toys
+    pic: {fileID: 0}
+    requiredWheat: 2
+    requiredOat: 2
+    requiredMilk: 1
+    sanityBoost: 10
+    familyMember: 4
+  - name: Dress
+    pic: {fileID: 0}
     requiredWheat: 1
-    dyingRate: 0.3
-    hunger: 0
-    mentalHealth: 0
-    mentalDyingRatio: 0.4
-    died: 0
-  - name: Wife
-    type: 2
-    requiredWheat: 1
-    dyingRate: 0.3
-    hunger: 0
-    mentalHealth: 0
-    mentalDyingRatio: 0.4
-    died: 0
-  - name: Daughter
-    type: 3
-    requiredWheat: 1
-    dyingRate: 0.3
-    hunger: 0
-    mentalHealth: 0
-    mentalDyingRatio: 0.4
-    died: 0
-  - name: Son
-    type: 4
-    requiredWheat: 1
-    dyingRate: 0.3
-    hunger: 0
-    mentalHealth: 0
-    mentalDyingRatio: 0.4
-    died: 0
+    requiredOat: 1
+    requiredMilk: 1
+    sanityBoost: 10
+    familyMember: 3
+  - name: Metal Bracelet
+    pic: {fileID: 0}
+    requiredWheat: 3
+    requiredOat: 2
+    requiredMilk: 1
+    sanityBoost: 10
+    familyMember: 2
+  - name: Metal Ring
+    pic: {fileID: 0}
+    requiredWheat: 2
+    requiredOat: 3
+    requiredMilk: 1
+    sanityBoost: 10
+    familyMember: 1
   cropGrowingModelList:
   - models:
     - {fileID: 1819682924018166, guid: 00a7b07edde06794e891d860d91dfe68, type: 2}
@@ -105,17 +129,18 @@ MonoBehaviour:
           type: 4
           requiredWheat: 1
           dyingRate: 0.3
-          hunger: 0
+          hunger: 5
           mentalHealth: 100
           mentalDyingRatio: 0.4
-          died: 0
+          gone: 0
+          portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:
       constantValue: 1
       useGameValue: 0
       valueType: 3
       serializedtype: CropProduction
     Occurence: {x: 5, y: 30}
-    Duration: {x: 3, y: 5}
+    Duration: {x: 10, y: 10}
     modifers:
     - propertyType: 8
       modificationType: 0
@@ -368,21 +393,19 @@ MonoBehaviour:
       value_3: 0
       serializedtype: CropProduction
     subEvents: []
-  - name: Death
+  - name: Starvation
     ID: 5
     useSubEventMessages: 0
     startingMessage:
-    - 'The lord suggests Cob join the Army.
-
-      Cob picks up his favourite stick and leaves to fight in the war.'
+    - PC died by starvation.
     endingMessage:
     - 'Cob is back from war, he''s missing an arm and an ear
 
       but at least he is alive.'
     scenario: -1
     oddsOfOccuring:
-      constantValue: 1
-      useGameValue: 1
+      constantValue: 0
+      useGameValue: 0
       valueType: 11
       serializedtype: FamilyDyingRate
     StartingCondition:
@@ -402,17 +425,174 @@ MonoBehaviour:
           type: 4
           requiredWheat: 1
           dyingRate: 0.3
-          hunger: 0
+          hunger: 5
           mentalHealth: 100
           mentalDyingRatio: 0.4
-          died: 0
+          gone: 0
+          portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:
-      constantValue: 1
+      constantValue: 0
       useGameValue: 0
       valueType: 3
       serializedtype: CropProduction
-    Occurence: {x: 1, y: 30}
-    Duration: {x: 1, y: 4}
+    Occurence: {x: 0, y: 30}
+    Duration: {x: 0, y: 10}
+    modifers:
+    - propertyType: 7
+      modificationType: 0
+      value_1: -1
+      value_2: 0
+      value_3: 0
+      serializedtype: FamilyDeath
+    subEvents: []
+  - name: Starvation
+    ID: 6
+    useSubEventMessages: 0
+    startingMessage:
+    - Wife died by starvation.
+    endingMessage:
+    - 'Cob is back from war, he''s missing an arm and an ear
+
+      but at least he is alive.'
+    scenario: -1
+    oddsOfOccuring:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 11
+      serializedtype: FamilyDyingRate
+    StartingCondition:
+      operators: 
+      conditions: []
+    ContinualCondition:
+      operators: 
+      conditions: []
+    FamilyCondition:
+      operators: 
+      conditions:
+      - operator: 0
+        type: 0
+        value: 4
+        member:
+          name: 
+          type: 0
+          requiredWheat: 1
+          dyingRate: 0.3
+          hunger: 0
+          mentalHealth: 100
+          mentalDyingRatio: 0.4
+          gone: 0
+          portrait: {fileID: 0}
+    MaxOccurencePerPlaythrough:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 3
+      serializedtype: CropProduction
+    Occurence: {x: 0, y: 30}
+    Duration: {x: 0, y: 10}
+    modifers:
+    - propertyType: 7
+      modificationType: 0
+      value_1: -1
+      value_2: 0
+      value_3: 0
+      serializedtype: FamilyDeath
+    subEvents: []
+  - name: Starvation
+    ID: 7
+    useSubEventMessages: 0
+    startingMessage:
+    - Daughter died by starvation.
+    endingMessage:
+    - 'Cob is back from war, he''s missing an arm and an ear
+
+      but at least he is alive.'
+    scenario: -1
+    oddsOfOccuring:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 11
+      serializedtype: FamilyDyingRate
+    StartingCondition:
+      operators: 
+      conditions: []
+    ContinualCondition:
+      operators: 
+      conditions: []
+    FamilyCondition:
+      operators: 
+      conditions:
+      - operator: 0
+        type: 0
+        value: 4
+        member:
+          name: 
+          type: 0
+          requiredWheat: 1
+          dyingRate: 0.3
+          hunger: 0
+          mentalHealth: 100
+          mentalDyingRatio: 0.4
+          gone: 0
+          portrait: {fileID: 0}
+    MaxOccurencePerPlaythrough:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 3
+      serializedtype: CropProduction
+    Occurence: {x: 0, y: 30}
+    Duration: {x: 0, y: 10}
+    modifers:
+    - propertyType: 7
+      modificationType: 0
+      value_1: -1
+      value_2: 0
+      value_3: 0
+      serializedtype: FamilyDeath
+    subEvents: []
+  - name: Starvation
+    ID: 8
+    useSubEventMessages: 0
+    startingMessage:
+    - Son died by starvation.
+    endingMessage:
+    - 'Cob is back from war, he''s missing an arm and an ear
+
+      but at least he is alive.'
+    scenario: -1
+    oddsOfOccuring:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 11
+      serializedtype: FamilyDyingRate
+    StartingCondition:
+      operators: 
+      conditions: []
+    ContinualCondition:
+      operators: 
+      conditions: []
+    FamilyCondition:
+      operators: 
+      conditions:
+      - operator: 0
+        type: 0
+        value: 4
+        member:
+          name: 
+          type: 0
+          requiredWheat: 1
+          dyingRate: 0.3
+          hunger: 0
+          mentalHealth: 100
+          mentalDyingRatio: 0.4
+          gone: 0
+          portrait: {fileID: 0}
+    MaxOccurencePerPlaythrough:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 3
+      serializedtype: CropProduction
+    Occurence: {x: 0, y: 30}
+    Duration: {x: 0, y: 10}
     modifers:
     - propertyType: 7
       modificationType: 0

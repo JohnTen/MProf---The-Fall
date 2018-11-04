@@ -14,7 +14,7 @@ public class GameDatabase : ScriptableObject
 {
 	public List<Crop> cropList = new List<Crop>();
 	public List<Animal> animalList = new List<Animal>();
-	public List<FamilyMember> familyList = new List<FamilyMember>();
+	public List<Merchandise> merchandiseList = new List<Merchandise>();
 	public List<CropModelList> cropGrowingModelList = new List<CropModelList>();
 
 	public List<GameEvent> eventList = new List<GameEvent>();

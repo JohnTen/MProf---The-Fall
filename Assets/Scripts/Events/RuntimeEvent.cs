@@ -102,13 +102,14 @@ public class RuntimeEvent
 					case GameValueType.FamilyCropConsumption:
 						foreach (var f in members)
 						{
+							Debug.Log(eventRef.modifers[i].value_1);
 							f.requiredWheat += (int)eventRef.modifers[i].value_1;
 						}
 						break;
 					case GameValueType.FamilyDeath:
 						foreach (var f in members)
 						{
-							f.died = true;
+							f.gone = true;
 						}
 						break;
 					case GameValueType.FamilyDyingRate:
@@ -243,7 +244,7 @@ public class RuntimeEvent
 					case GameValueType.FamilyDeath:
 						foreach (var f in members)
 						{
-							f.died = false;
+							f.gone = false;
 						}
 						break;
 					case GameValueType.FamilyDyingRate:
@@ -427,7 +428,7 @@ public class RuntimeSubEvent
 					case GameValueType.FamilyDeath:
 						foreach (var f in members)
 						{
-							f.died = true;
+							f.gone = true;
 						}
 						break;
 					case GameValueType.FamilyDyingRate:
@@ -494,7 +495,7 @@ public class RuntimeSubEvent
 					case GameValueType.FamilyDeath:
 						foreach (var f in members)
 						{
-							f.died = false;
+							f.gone = false;
 						}
 						break;
 					case GameValueType.FamilyDyingRate:

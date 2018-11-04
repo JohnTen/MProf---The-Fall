@@ -29,4 +29,9 @@ public class Tiredness : MonoBehaviour
 	{
 		timer.Start(time);
 	}
+
+	public void StopTiming()
+	{
+		timer.Abort();
+	}
 }

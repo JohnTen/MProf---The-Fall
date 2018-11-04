@@ -19,6 +19,10 @@ public class GameDataManager : GlobalSingleton<GameDataManager>
 	[SerializeField] int maxWeek;
 	[SerializeField] Camera mainCamera;
 	[SerializeField] GameValues gameValues;
+	[SerializeField] bool boughtBlankets;
+	[SerializeField] bool boughtClayJars;
+	[SerializeField] bool boughtWarmCoats;
+	[SerializeField] bool boughtWarmPants;
 
 	public static event Action OnValueChanged;
 

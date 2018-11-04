@@ -15,6 +15,7 @@ public class Conclusion : MonoSingleton<Conclusion>
 	[Header("Canvas of Windows")]
 	[SerializeField] Canvas BasicCanvas;
 	[SerializeField] Canvas TaxCanvas;
+	[SerializeField] Canvas FamilyFeedCanvas;
 	[SerializeField] Canvas ConclusionCanvas;
 
 	[Header("Tax Texts")]
@@ -27,11 +28,16 @@ public class Conclusion : MonoSingleton<Conclusion>
 	[SerializeField] Slider wheatSlider;
 	[SerializeField] Slider oatSlider;
 
+	[Header("Family Feed")]
+	[SerializeField] string remainedFood = @"You have <i>{0}</i> {1} left...";
+	[SerializeField] Text remainedFoodText;
+	[SerializeField] Text[] NeededFoodTexts;
+	[SerializeField] Text[] GaveFoodTexts;
+	[SerializeField] Button ContinueButton;
+
 	[Header("Conclusion Texts")]
 	[SerializeField] Text remainedWheat;
 	[SerializeField] Text remainedOat;
-	[SerializeField] Text harvestedWheat;
-	[SerializeField] Text harvestedOat;
 	[SerializeField] Text wheatTax;
 	[SerializeField] Text oatTax;
 	[SerializeField] Text tendFamily;
@@ -45,17 +51,11 @@ public class Conclusion : MonoSingleton<Conclusion>
 	int paidOat;
 	int forcedPaidWheat;
 	int forcedPaidOat;
+	int wheatForFamily;
+	int wheatAfterTax;
 
-	// When those event raised, the handlers can access to all the values they needed
-	// so it is not necessary to use parameters
-	public event Action OnConclusionStart;
-	public event Action OnCalculateRemainedCrops;
-	public event Action OnCalculateHarvcetedCrops;
-	public event Action OnCalculateTaxes;
-	public event Action OnCalculateFamilyConsumption;
-	public event Action OnCalculateAnimalConsumption;
-	public event Action OnCalculateEvents;
-	public event Action OnConclusionEnd;
+	int[] requiredFoods;
+	int[] gavedFoods;
 
 	public static void Conclude()
 	{
@@ -71,8 +71,10 @@ public class Conclusion : MonoSingleton<Conclusion>
 	{
 		BasicCanvas.enabled = true;
 		TaxCanvas.enabled = true;
+		FamilyFeedCanvas.enabled = false;
+		ConclusionCanvas.enabled = false;
 
-		Time.timeScale = 0;
+		TimeManager.FreezeTime();
 
 		var taxRate = GameDataManager.GameValues[GameValueType.TaxRate];
 		taxRateText.text	= ((int)(taxRate * 100)).ToString() + "%";
@@ -95,44 +97,107 @@ public class Conclusion : MonoSingleton<Conclusion>
 		oatSlider.value			= paidOat;
 		paidWheatText.text		= paidWheat.ToString();
 		paidOatText.text		= paidOat.ToString();
+
+		wheatAfterTax = GameDataManager.CurrentWheat - paidWheat;
+	}
+
+	public void _FeedFamily()
+	{
+		var list = FamilyManager.FamilyMembers;
+		var neededFood = 0;
+
+		foreach (var f in list)
+		{
+			neededFood += f.requiredWheat;
+		}
+
+		//if (neededFood <= GameDataManager.CurrentWheat)
+		//{
+		//	wheatForFamily = neededFood;
+		//	ContinueButton.onClick.Invoke();
+		//	return;
+		//}
+
+		BasicCanvas.enabled = true;
+		TaxCanvas.enabled = false;
+		FamilyFeedCanvas.enabled = true;
+		ConclusionCanvas.enabled = false;
+
+		wheatForFamily = 0;
+		var totalFood = wheatAfterTax;
+		for (int i = 0; i < list.Count; i ++)
+		{
+			requiredFoods[i] = list[i].gone? 0 : list[i].hunger + list[i].requiredWheat;
+
+			if (requiredFoods[i] <= totalFood)
+			{
+				gavedFoods[i] = requiredFoods[i];
+			}
+			else
+			{
+				gavedFoods[i] = totalFood;
+			}
+
+			totalFood -= gavedFoods[i];
+			wheatForFamily += gavedFoods[i];
+		}
+
+		UpdateFamilyFeedTexts();
+	}
+
+	void UpdateFamilyFeedTexts()
+	{
+		var remainedFood = wheatAfterTax - wheatForFamily;
+
+		StringBuilder sb = new StringBuilder(this.remainedFood);
+		sb.Replace("{0}", remainedFood > 0 ? remainedFood.ToString() : "no");
+		sb.Replace("{1}", remainedFood > 1? "foods": "food");
+
+		remainedFoodText.text = sb.ToString();
+
+		for (int i = 0; i < requiredFoods.Length; i ++)
+		{
+			NeededFoodTexts[i].text = requiredFoods[i].ToString();
+			GaveFoodTexts[i].text = gavedFoods[i].ToString();
+		}
+	}
+
+	public void RaiseFeed(int index)
+	{
+		if (gavedFoods[index] < requiredFoods[index] && wheatAfterTax > wheatForFamily)
+		{
+			gavedFoods[index]++;
+			wheatForFamily++;
+			UpdateFamilyFeedTexts();
+			print("I: " + index.ToString() + " G:" + gavedFoods[index] + " W: " + wheatForFamily);
+		}
+	}
+
+	public void LowerFeed(int index)
+	{
+		if (gavedFoods[index] > 0)
+		{
+			gavedFoods[index]--;
+			wheatForFamily--;
+			UpdateFamilyFeedTexts();
+			print("I: " + index.ToString() + " G:" + gavedFoods[index] + " W: " + wheatForFamily);
+		}
 	}
 
 	public void _Conclude()
 	{
-		if (OnConclusionStart != null)
-			OnConclusionStart.Invoke();
 		BasicCanvas.enabled = true;
+		TaxCanvas.enabled = false;
+		FamilyFeedCanvas.enabled = false;
 		ConclusionCanvas.enabled = true;
 
-		Time.timeScale = 0;
+		TimeManager.FreezeTime();
 
 		// The remain
-		if (OnCalculateRemainedCrops != null)
-			OnCalculateRemainedCrops.Invoke();
 		remainedWheat.text = GameDataManager.CurrentWheat.ToString();
 		remainedOat.text = GameDataManager.CurrentOat.ToString();
-		
-		// Harvested
-		if (OnCalculateHarvcetedCrops != null)
-			OnCalculateHarvcetedCrops.Invoke();
-		var hWheat = 0;
-		var hOat = 0;
-		if (autoHarvest)
-		{
-			var wheat	= GameDataManager.CurrentWheat;
-			var oat		= GameDataManager.CurrentOat;
-			FieldManager.Instance.Harvest();
-			hWheat		= GameDataManager.CurrentWheat - wheat;
-			hOat		= GameDataManager.CurrentOat - oat;
-		}
-		ChangeColor(harvestedWheat, hWheat);
-		ChangeColor(harvestedOat, hOat);
-		harvestedWheat.text = hWheat.ToString();
-		harvestedOat.text	= hOat.ToString();
 
 		// Taxes
-		if (OnCalculateTaxes != null)
-			OnCalculateTaxes.Invoke();
 		paidWheat *= -1;
 		paidOat *= -1;
 		ChangeColor(wheatTax, paidWheat);
@@ -145,38 +210,18 @@ public class Conclusion : MonoSingleton<Conclusion>
 		GameDataManager.CurrentOat += forcedPaidOat;
 
 		// Family consumption
-		if (OnCalculateFamilyConsumption != null)
-			OnCalculateFamilyConsumption.Invoke();
-		var familyConsumption = 0;
-		for (int i = 0; i < FamilyManager.FamilyMembers.Count; i++)
+		var list = FamilyManager.FamilyMembers;
+		for (int i = 0; i < list.Count; i++)
 		{
-			familyConsumption += Mathf.CeilToInt(FamilyManager.FamilyMembers[i].requiredWheat);
-		}
-		familyConsumption = 
-			Mathf.RoundToInt(
-				familyConsumption * 
-				GameDataManager.GameValues[GameValueType.WheatConsumptionRate]);
-		
-		if (familyConsumption > GameDataManager.CurrentWheat)
-		{
-			GameDataManager.CurrentFamilyHunger += Mathf.CeilToInt((familyConsumption - GameDataManager.CurrentWheat));
-			//GameDataManager.GameValues[GameValueType.FamilyHungryDays] ++;
-			familyConsumption = GameDataManager.CurrentWheat;
-		}
-		else
-		{
-			GameDataManager.CurrentFamilyHunger = 0;
-			//GameDataManager.GameValues[GameValueType.FamilyHungryDays] = 0;
+			list[i].hunger = requiredFoods[i] - gavedFoods[i];
 		}
 
-		familyConsumption *= -1;
-		ChangeColor(tendFamily, familyConsumption);
-		tendFamily.text = familyConsumption.ToString();
-		GameDataManager.CurrentWheat += familyConsumption;
+		wheatForFamily *= -1;
+		ChangeColor(tendFamily, wheatForFamily);
+		tendFamily.text = wheatForFamily.ToString();
+		GameDataManager.CurrentWheat += wheatForFamily;
 
 		// Animal consumption
-		if (OnCalculateAnimalConsumption != null)
-			OnCalculateAnimalConsumption.Invoke();
 		var animalConsumption = 0;
 		for (int i = 0; i < GameDatabase.Instance.animalList.Count; i++)
 		{
@@ -202,9 +247,10 @@ public class Conclusion : MonoSingleton<Conclusion>
 		tendAnimal.text = animalConsumption.ToString();
 		GameDataManager.CurrentOat += animalConsumption;
 
+		// Milk
+		GameDataManager.GameValues[GameValueType.Milks] += GameDataManager.GameValues[GameValueType.NumberOfOx] * GameDatabase.Instance.animalList[0].ProvidedFood;
+
 		// Events
-		if (OnCalculateEvents != null)
-			OnCalculateEvents.Invoke();
 		var wDiff = forcedPaidWheat;
 		var oDiff = forcedPaidOat;
 		ChangeColor(eventWheat, wDiff);
@@ -214,9 +260,6 @@ public class Conclusion : MonoSingleton<Conclusion>
 
 		finalWheat.text = GameDataManager.CurrentWheat.ToString();
 		finalOat.text	= GameDataManager.CurrentOat.ToString();
-
-		if (OnConclusionEnd != null)
-			OnConclusionEnd.Invoke();
 	}
 
 	public void OnPaidWheatChange(float value)
@@ -235,9 +278,11 @@ public class Conclusion : MonoSingleton<Conclusion>
 	{
 		BasicCanvas.enabled = false;
 		TaxCanvas.enabled = false;
+		FamilyFeedCanvas.enabled = false;
 		ConclusionCanvas.enabled = false;
 
-		Time.timeScale = 1;
+		TimeManager.UnfreezeTime();
+		TimeManager.UnfreezeTime();
 	}
 
 	void ChangeColor(Text text, int number)
@@ -248,5 +293,14 @@ public class Conclusion : MonoSingleton<Conclusion>
 			text.color = negativeColor;
 		else
 			text.color = neutralColor;
+	}
+
+	protected override void Awake()
+	{
+		base.Awake();
+
+		var list = FamilyManager.FamilyMembers;
+		requiredFoods = new int[list.Count];
+		gavedFoods = new int[list.Count];
 	}
 }

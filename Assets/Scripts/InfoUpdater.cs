@@ -9,6 +9,7 @@ public class InfoUpdater : MonoBehaviour
 	[SerializeField] Text dateText;
 	[SerializeField] Text wheatText;
 	[SerializeField] Text oatText;
+	[SerializeField] Text milkText;
 
 	private void Awake()
 	{
@@ -29,6 +30,7 @@ public class InfoUpdater : MonoBehaviour
 		dateText.text			= (GameDataManager.MaxWeek - TimeManager.Date).ToString();
 		wheatText.text			= GameDataManager.CurrentWheat.ToString();
 		oatText.text			= GameDataManager.CurrentOat.ToString();
+		milkText.text = GameDataManager.GameValues[GameValueType.Milks].ToString();
 	}
 
 	private void GlobalValues_OnvalueChanged()

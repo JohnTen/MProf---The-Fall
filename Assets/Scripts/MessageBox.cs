@@ -9,29 +9,43 @@ public class MessageBox : MonoSingleton<MessageBox>
 	[SerializeField] Canvas canvas;
 	[SerializeField] Text titleText;
 	[SerializeField] Text contentText;
+	[SerializeField] Canvas continueButton;
+	[SerializeField] Canvas yesButton;
+	[SerializeField] Canvas noButton;
 
 	[SerializeField] GameObject block;
 
 	Queue<string> contentQueue = new Queue<string>();
 	Queue<string> titleQueue = new Queue<string>();
+	Queue<Action> yesQueue = new Queue<Action>();
+	Queue<Action> noQueue = new Queue<Action>();
 
 	public static bool IsShowingMessage { get; private set; }
 	public static event Action OnContinue;
 	public static event Action OnFinished;
 
+	Action yesAction;
+	Action noAction;
+
 	public static void DisplayMessage(string content)
 	{
-		DisplayMessage("", content);
+		DisplayMessage("", content, null, null);
 	}
 
 	public static void DisplayMessage(string title, string content)
 	{
-		Instance.block.SetActive(false);
-		Instance.block.SetActive(true);
+		DisplayMessage(title, content, null, null);
+	}
+
+	public static void DisplayMessage(string title, string content, Action onYes, Action onNo)
+	{
+		Canvas.ForceUpdateCanvases();
 		if (IsShowingMessage)
 		{
 			Instance.titleQueue.Enqueue(title);
 			Instance.contentQueue.Enqueue(content);
+			Instance.yesQueue.Enqueue(onYes);
+			Instance.noQueue.Enqueue(onNo);
 			return;
 		}
 
@@ -39,7 +53,38 @@ public class MessageBox : MonoSingleton<MessageBox>
 		Instance.canvas.enabled = true;
 		Instance.titleText.text = title;
 		Instance.contentText.text = content;
-		Time.timeScale = 0;
+		Instance.yesAction = onYes;
+		Instance.noAction = onNo;
+
+		if (onYes == null && onNo == null)
+		{
+			Instance.continueButton.enabled = true;
+			Instance.yesButton.enabled = false;
+			Instance.noButton.enabled = false;
+		}
+		else
+		{
+			Instance.continueButton.enabled = false;
+			Instance.yesButton.enabled = true;
+			Instance.noButton.enabled = true;
+		}
+
+		TimeManager.FreezeTime();
+	}
+
+	public void Choice(bool yes)
+	{
+		if (yes)
+		{
+			if (yesAction != null)
+				yesAction.Invoke();
+		}
+		else
+		{
+			if (noAction != null)
+				noAction.Invoke();
+		}
+		NextMessage();
 	}
 
 	public void NextMessage()
@@ -51,7 +96,7 @@ public class MessageBox : MonoSingleton<MessageBox>
 		{
 			IsShowingMessage = false;
 			Instance.canvas.enabled = false;
-			Time.timeScale = 1;
+			TimeManager.UnfreezeTime();
 
 			if (OnFinished != null)
 				OnFinished.Invoke();
@@ -60,5 +105,7 @@ public class MessageBox : MonoSingleton<MessageBox>
 
 		titleText.text = titleQueue.Dequeue();
 		contentText.text = contentQueue.Dequeue();
+		yesAction = yesQueue.Dequeue();
+		noAction = noQueue.Dequeue();
 	}
 }

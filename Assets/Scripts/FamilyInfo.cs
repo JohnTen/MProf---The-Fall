@@ -10,6 +10,7 @@ public class FamilyInfo : MonoBehaviour
 	[SerializeField] float openedHeight;
 	[SerializeField] float closedHeight;
 	[SerializeField] RectTransform infoPanel;
+	[SerializeField] Image portraint;
 	[SerializeField] Text nameText;
 	[SerializeField] Text hungerText;
 	[SerializeField] Text sanityText;
@@ -21,7 +22,7 @@ public class FamilyInfo : MonoBehaviour
 	{
 		for (int i = 0; i < FamilyManager.FamilyMembers.Count; i++)
 		{
-			buttons[i].interactable = !FamilyManager.FamilyMembers[i].died;
+			buttons[i].interactable = !FamilyManager.FamilyMembers[i].gone;
 		}
 
 		if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
@@ -38,6 +39,8 @@ public class FamilyInfo : MonoBehaviour
 		hungerText.text = list[i].hunger.ToString();
 		sanityText.text = list[i].mentalHealth.ToString();
 		dRateText.text = (list[i].dyingRate + list[i].mentalDyingRatio * list[i].mentalHealth).ToString();
+		portraint.sprite = list[i].portrait;
+		portraint.rectTransform.sizeDelta = buttons[i].image.rectTransform.sizeDelta * 1.4f;
 	}
 
 	void Open()

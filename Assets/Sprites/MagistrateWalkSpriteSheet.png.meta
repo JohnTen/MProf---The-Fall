@@ -34,6 +34,24 @@ TextureImporter:
     21300058: MagistrateWalkSpriteSheet_29
     21300060: MagistrateWalkSpriteSheet_30
     21300062: MagistrateWalkSpriteSheet_31
+    21300064: MagistrateWalkSpriteSheet_32
+    21300066: MagistrateWalkSpriteSheet_33
+    21300068: MagistrateWalkSpriteSheet_34
+    21300070: MagistrateWalkSpriteSheet_35
+    21300072: MagistrateWalkSpriteSheet_36
+    21300074: MagistrateWalkSpriteSheet_37
+    21300076: MagistrateWalkSpriteSheet_38
+    21300078: MagistrateWalkSpriteSheet_39
+    21300080: MagistrateWalkSpriteSheet_40
+    21300082: MagistrateWalkSpriteSheet_41
+    21300084: MagistrateWalkSpriteSheet_42
+    21300086: MagistrateWalkSpriteSheet_43
+    21300088: MagistrateWalkSpriteSheet_44
+    21300090: MagistrateWalkSpriteSheet_45
+    21300092: MagistrateWalkSpriteSheet_46
+    21300094: MagistrateWalkSpriteSheet_47
+    21300096: MagistrateWalkSpriteSheet_48
+    21300098: MagistrateWalkSpriteSheet_49
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -72,7 +90,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -90,7 +108,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -101,7 +119,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -123,7 +141,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: Android
-    maxTextureSize: 2048
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -150,18 +168,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_0
       rect:
         serializedVersion: 2
-        x: 169
-        y: 2277
-        width: 297
-        height: 572
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 2280
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26373e1eeb20ccc4fa68886633a6bbb4
+      spriteID: a0f14eed2b00c23429b96d2c768c8140
       vertices: []
       indices: 
       edges: []
@@ -170,18 +188,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 687
-        y: 2277
-        width: 299
-        height: 572
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 520
+        y: 2280
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a12b469ae075ac042bbb3f6ff9f643da
+      spriteID: d74a92ce3862faa40a812a8614b19846
       vertices: []
       indices: 
       edges: []
@@ -190,18 +208,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_2
       rect:
         serializedVersion: 2
-        x: 1207
+        x: 1040
         y: 2280
-        width: 300
-        height: 569
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c843a9ab5060c294c8c2b6408c7b3c21
+      spriteID: 84ee8c16e136ca645ab494f20a645124
       vertices: []
       indices: 
       edges: []
@@ -210,18 +228,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_3
       rect:
         serializedVersion: 2
-        x: 1728
+        x: 1560
         y: 2280
-        width: 299
-        height: 569
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af734c2ecd7302b43bea9fca70421a8a
+      spriteID: c6037ec7da091fd43959a1390ea0b103
       vertices: []
       indices: 
       edges: []
@@ -230,18 +248,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_4
       rect:
         serializedVersion: 2
-        x: 2248
+        x: 2080
         y: 2280
-        width: 300
-        height: 569
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de11fcb24dc97b64dae430de1bf766e6
+      spriteID: 81d30eb04e8a02d438bb43066b887b73
       vertices: []
       indices: 
       edges: []
@@ -250,18 +268,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_5
       rect:
         serializedVersion: 2
-        x: 2767
-        y: 2282
-        width: 299
-        height: 567
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2600
+        y: 2280
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 13b86942ee5fce743b4051e61b18fcb7
+      spriteID: c6d80dcaa72cecf49b76d569503e8bef
       vertices: []
       indices: 
       edges: []
@@ -270,18 +288,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_6
       rect:
         serializedVersion: 2
-        x: 3287
-        y: 2282
-        width: 299
-        height: 567
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3120
+        y: 2280
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9ce2475cf460f9418579f2131a4d783
+      spriteID: b8c5d4fffa358dc408c7a35960562e28
       vertices: []
       indices: 
       edges: []
@@ -290,18 +308,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_7
       rect:
         serializedVersion: 2
-        x: 3807
-        y: 2285
-        width: 300
-        height: 564
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3640
+        y: 2280
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1e34c0cd94aec5459dce5006a88ce77
+      spriteID: ec7112e2e5a05e54186e15c42219c11f
       vertices: []
       indices: 
       edges: []
@@ -310,18 +328,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_8
       rect:
         serializedVersion: 2
-        x: 4328
-        y: 2285
-        width: 299
-        height: 564
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4160
+        y: 2280
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b90b15fa47c8e41419a6101e474991f6
+      spriteID: 2512dcb363617bb489886edb885a2001
       vertices: []
       indices: 
       edges: []
@@ -330,18 +348,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_9
       rect:
         serializedVersion: 2
-        x: 4848
-        y: 2282
-        width: 300
-        height: 567
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4680
+        y: 2280
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e9ba9babf03fd154a9aa1bc55d0de2ed
+      spriteID: b569616dd19047341a4274ff578d5fcd
       vertices: []
       indices: 
       edges: []
@@ -350,18 +368,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_10
       rect:
         serializedVersion: 2
-        x: 167
-        y: 1711
-        width: 299
-        height: 566
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 1710
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb691907f7589c94d9912aa57d5ed4e8
+      spriteID: 57db85a6990e51446ac2aabe63b475e0
       vertices: []
       indices: 
       edges: []
@@ -370,18 +388,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_11
       rect:
         serializedVersion: 2
-        x: 687
-        y: 1711
-        width: 299
-        height: 566
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 520
+        y: 1710
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e62faa7397013149892a4340dd86a6a
+      spriteID: 9e00d6cdb0d6d274b8e323f99b08fcdc
       vertices: []
       indices: 
       edges: []
@@ -390,18 +408,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_12
       rect:
         serializedVersion: 2
-        x: 1207
-        y: 1711
-        width: 300
-        height: 566
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1040
+        y: 1710
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f998e10ff8dc5c4d9f6dc86970efbff
+      spriteID: f3e42d5a4209bfa4f929d515a7b8541f
       vertices: []
       indices: 
       edges: []
@@ -410,18 +428,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_13
       rect:
         serializedVersion: 2
-        x: 1728
-        y: 1711
-        width: 299
-        height: 566
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1560
+        y: 1710
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c689bc48bacacab40a62b16cb5aeecdf
+      spriteID: d74760df41e09f64f95890f8c2817264
       vertices: []
       indices: 
       edges: []
@@ -430,18 +448,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_14
       rect:
         serializedVersion: 2
-        x: 2248
-        y: 1708
-        width: 300
-        height: 569
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2080
+        y: 1710
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d31ecf67d3f8e94c8a1003c8c24399e
+      spriteID: 4c40c5486dbf82741bd3a555bd845e6e
       vertices: []
       indices: 
       edges: []
@@ -450,18 +468,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_15
       rect:
         serializedVersion: 2
-        x: 2767
-        y: 1708
-        width: 299
-        height: 569
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2600
+        y: 1710
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0e78ea55a4807849bf72d1a2def8f4c
+      spriteID: b8e1670bcc0fc9340bee921db89b7d7a
       vertices: []
       indices: 
       edges: []
@@ -470,18 +488,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_16
       rect:
         serializedVersion: 2
-        x: 3287
-        y: 570
-        width: 299
-        height: 1707
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3120
+        y: 1710
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f3e6b8abef66d04f84f166bbc21f164
+      spriteID: 97a721dc22af2564ba53a7fb18609244
       vertices: []
       indices: 
       edges: []
@@ -490,18 +508,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_17
       rect:
         serializedVersion: 2
-        x: 3807
-        y: 570
-        width: 300
-        height: 1707
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3640
+        y: 1710
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8ea9e1c8a270814ebdac99176bcfbed
+      spriteID: f1ea81b2353faa44694ff759b532cb72
       vertices: []
       indices: 
       edges: []
@@ -510,18 +528,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_18
       rect:
         serializedVersion: 2
-        x: 4328
-        y: 573
-        width: 299
-        height: 1704
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4160
+        y: 1710
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8886c7c72be735c4f8ed96f7d3e53a44
+      spriteID: 9b3e5686705b39b4794f77c0b1ccb7c8
       vertices: []
       indices: 
       edges: []
@@ -530,18 +548,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_19
       rect:
         serializedVersion: 2
-        x: 4848
-        y: 570
-        width: 300
-        height: 1707
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4680
+        y: 1710
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c1e099cf8ef3ee84d98f988929f91145
+      spriteID: 220774d0a553b5049a0867c67e84cdc5
       vertices: []
       indices: 
       edges: []
@@ -550,18 +568,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_20
       rect:
         serializedVersion: 2
-        x: 167
-        y: 1
-        width: 299
-        height: 1707
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 1140
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 746ac3a5a4aee664cbef0514a0bbce06
+      spriteID: 2df58ef360a7df348896191846e492d0
       vertices: []
       indices: 
       edges: []
@@ -570,18 +588,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_21
       rect:
         serializedVersion: 2
-        x: 687
-        y: 1
-        width: 299
-        height: 1707
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 520
+        y: 1140
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d392a23571a1dbf4094872f24f2a5dcf
+      spriteID: 5fab90813c2c4d14a9b2356ca4d9feab
       vertices: []
       indices: 
       edges: []
@@ -590,18 +608,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_22
       rect:
         serializedVersion: 2
-        x: 1207
-        y: 0
-        width: 300
-        height: 1708
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1040
+        y: 1140
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75a7ade3d1ec85e468ef614cc4b3e0a9
+      spriteID: a920eb0965fc6d8428d6fea50c685764
       vertices: []
       indices: 
       edges: []
@@ -610,18 +628,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_23
       rect:
         serializedVersion: 2
-        x: 1728
-        y: 0
-        width: 299
-        height: 1708
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1560
+        y: 1140
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d809f7c0b6268874abee960dd478aa27
+      spriteID: 446d90b998f8a94449f70ebb378bbc38
       vertices: []
       indices: 
       edges: []
@@ -630,18 +648,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_24
       rect:
         serializedVersion: 2
-        x: 2248
-        y: 570
-        width: 300
-        height: 1138
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2080
+        y: 1140
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac861819e779b254da3c72c332358628
+      spriteID: 293e9e85224af004199bcaa3f1b6dfdf
       vertices: []
       indices: 
       edges: []
@@ -650,18 +668,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_25
       rect:
         serializedVersion: 2
-        x: 2767
-        y: 570
-        width: 299
-        height: 1138
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2600
+        y: 1140
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c4a3e0a80335e74eb81d7ee070722db
+      spriteID: cd68cadc977fbac4aaf2bc95b6ca94ba
       vertices: []
       indices: 
       edges: []
@@ -670,18 +688,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_26
       rect:
         serializedVersion: 2
-        x: 2248
-        y: 0
-        width: 300
-        height: 568
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3120
+        y: 1140
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7bc813e45ecdd4b49a6a4fab644f0740
+      spriteID: 7fea031aca86d3c428fa88e047d52220
       vertices: []
       indices: 
       edges: []
@@ -690,18 +708,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_27
       rect:
         serializedVersion: 2
-        x: 2767
-        y: 0
-        width: 299
-        height: 568
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 3640
+        y: 1140
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 597b43b2aee01de4a80cda24c3737ff7
+      spriteID: a54c46175c17fa04d8d1c5644100a195
       vertices: []
       indices: 
       edges: []
@@ -710,18 +728,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_28
       rect:
         serializedVersion: 2
-        x: 3287
-        y: 0
-        width: 299
-        height: 568
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4160
+        y: 1140
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8099b35a99da7c440bafb46ddb7508e8
+      spriteID: 5aeae9f50eac8524c9f92b963d4924b0
       vertices: []
       indices: 
       edges: []
@@ -730,18 +748,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_29
       rect:
         serializedVersion: 2
-        x: 3807
-        y: 0
-        width: 300
-        height: 568
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 4680
+        y: 1140
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 244139df92d803e46b12f0a201db1923
+      spriteID: 629dcaf00966aca4baccfc3ea55c05c4
       vertices: []
       indices: 
       edges: []
@@ -750,18 +768,18 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_30
       rect:
         serializedVersion: 2
-        x: 4328
-        y: 0
-        width: 299
-        height: 568
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 0
+        y: 570
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07900303a83dc114bb17f1614280a505
+      spriteID: e27626fce6d4a4a4ea51db701c7059b3
       vertices: []
       indices: 
       edges: []
@@ -770,18 +788,378 @@ TextureImporter:
       name: MagistrateWalkSpriteSheet_31
       rect:
         serializedVersion: 2
-        x: 4848
-        y: 0
-        width: 300
-        height: 568
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 520
+        y: 570
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 99a9d7655a4224c469e1e523c06a79d7
+      spriteID: 6e5ebd2115e3b7d43885f4d1435354a3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagistrateWalkSpriteSheet_32
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 570
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d41266bc3584f2c4b8d7d3ea5e2cffc7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagistrateWalkSpriteSheet_33
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 570
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d90597fe6721fae4ebeea10aa3e7f2e8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagistrateWalkSpriteSheet_34
+      rect:
+        serializedVersion: 2
+        x: 2080
+        y: 570
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0035b40f1386d52429558f147b08c1cc
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagistrateWalkSpriteSheet_35
+      rect:
+        serializedVersion: 2
+        x: 2600
+        y: 570
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 861b143b230fa4c4a92f7f878f98a245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagistrateWalkSpriteSheet_36
+      rect:
+        serializedVersion: 2
+        x: 3120
+        y: 570
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b39c52c9ba73474419b2480e232e31af
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagistrateWalkSpriteSheet_37
+      rect:
+        serializedVersion: 2
+        x: 3640
+        y: 570
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01614b7a2a2d5c34fb45da6bf0380e0d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagistrateWalkSpriteSheet_38
+      rect:
+        serializedVersion: 2
+        x: 4160
+        y: 570
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab3fa6ffe193d4d4c98a2e92fd633be8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagistrateWalkSpriteSheet_39
+      rect:
+        serializedVersion: 2
+        x: 4680
+        y: 570
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbb809ea231203c4da3ca0505e7eb2bf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagistrateWalkSpriteSheet_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2528f1db7f7a1bd46af61b65666e599f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagistrateWalkSpriteSheet_41
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 0
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd0e8eb6256ed654bbd316d38ac7068d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagistrateWalkSpriteSheet_42
+      rect:
+        serializedVersion: 2
+        x: 1040
+        y: 0
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a557f0671ed8ce84680ae82f5886ed2c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagistrateWalkSpriteSheet_43
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 0
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 616893571be149349a7dd2138f7c9abb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagistrateWalkSpriteSheet_44
+      rect:
+        serializedVersion: 2
+        x: 2080
+        y: 0
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bba514e022ffc941b9319d3649972f8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagistrateWalkSpriteSheet_45
+      rect:
+        serializedVersion: 2
+        x: 2600
+        y: 0
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30d20964e7b4b6444b055eb76bd22dfd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagistrateWalkSpriteSheet_46
+      rect:
+        serializedVersion: 2
+        x: 3120
+        y: 0
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13582caad7937bc48b52618824ae589a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagistrateWalkSpriteSheet_47
+      rect:
+        serializedVersion: 2
+        x: 3640
+        y: 0
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6e4ac39a6fafe846b3e00ef28907273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagistrateWalkSpriteSheet_48
+      rect:
+        serializedVersion: 2
+        x: 4160
+        y: 0
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae77bf7d3d1301b4d87f0f30c500e4e6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagistrateWalkSpriteSheet_49
+      rect:
+        serializedVersion: 2
+        x: 4680
+        y: 0
+        width: 520
+        height: 570
+      alignment: 9
+      pivot: {x: 0.6442477, y: 0.4942783}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1fb8e406949fd145a952aafe9c397e9
       vertices: []
       indices: 
       edges: []

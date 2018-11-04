@@ -5,6 +5,7 @@ using UnityUtility;
 
 public class EventManager : MonoSingleton<EventManager>
 {
+	public int starvationEventIndexOffset = 5;
 	public List<RuntimeEvent> EventList;
 
 	protected override void Awake()
@@ -34,6 +35,23 @@ public class EventManager : MonoSingleton<EventManager>
 			EventList[i].CheckEvent();
 		}
 		GameDataManager.UpdateValues();
+
+		StarvationCheck();
+	}
+
+	private void StarvationCheck()
+	{
+		var list = FamilyManager.FamilyMembers;
+		for (int i = 0; i < list.Count; i++)
+		{
+			if (list[i].hunger < 2) continue;
+
+			list[i].gone = true;
+			var title = EventList[i + starvationEventIndexOffset].eventRef.name;
+			var message = EventList[i + starvationEventIndexOffset].eventRef.startingMessage[
+				Random.Range(0, EventList[i + starvationEventIndexOffset].eventRef.startingMessage.Length)];
+			MessageBox.DisplayMessage(title, message);
+		}
 	}
 
 	private void EventManager_OnSubEventStoping(RuntimeEvent ge, RuntimeSubEvent se)

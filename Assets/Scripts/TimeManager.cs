@@ -7,6 +7,7 @@ public class TimeManager : GlobalSingleton<TimeManager>
 {
 	[Tooltip("Current date")]
 	[SerializeField] int date;
+	[SerializeField] int timeFreezeCount;
 
 	public static event Action<int> OnTimePassed;
 
@@ -14,6 +15,19 @@ public class TimeManager : GlobalSingleton<TimeManager>
 	{
 		get { return Instance.date; }
 		set { Instance.date = value; }
+	}
+
+	public static void FreezeTime()
+	{
+		Instance.timeFreezeCount++;
+		Time.timeScale = 0;
+	}
+
+	public static void UnfreezeTime()
+	{
+		Instance.timeFreezeCount--;
+		if (Instance.timeFreezeCount <= 0)
+			Time.timeScale = 1;
 	}
 
 	public void ToNextTimePeriod()

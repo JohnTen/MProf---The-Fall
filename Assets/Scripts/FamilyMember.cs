@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 public enum FamilyType
 {
@@ -21,5 +22,6 @@ public class FamilyMember
 	public int hunger = 0;
 	public int mentalHealth = 100;
 	public float mentalDyingRatio = 0.4f;
-	public bool died;
+	public bool gone;
+	public Sprite portrait;
 }

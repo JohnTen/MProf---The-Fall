@@ -24,10 +24,12 @@ public enum GameValueType
 	NumberOfOx,
 	AnimalHunger,
 	AnimalHungryDays,
+	Milks,
 
 	__Other,
 	TaxRate,
 	ForcedTaxRate,
+	Fertiliser,
 }
 
 [System.Serializable]

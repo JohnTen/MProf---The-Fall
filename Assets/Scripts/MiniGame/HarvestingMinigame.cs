@@ -42,7 +42,7 @@ public class HarvestingMinigame : BaseMinigame
 		pointer.localPosition = pos;
 		movingDir = false;
 
-		Time.timeScale = 0;
+		TimeManager.FreezeTime();
 	}
 
 	public override void StopPlay()
@@ -50,7 +50,7 @@ public class HarvestingMinigame : BaseMinigame
 		IsPlaying = false;
 		canvas.enabled = false;
 
-		Time.timeScale = 1;
+		TimeManager.UnfreezeTime();
 		MessageBox.OnContinue -= StopPlay;
 	}
 
