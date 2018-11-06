@@ -18,16 +18,14 @@ public class SplashVideoPlayer : MonoBehaviour {
     IEnumerator PlayVideo()
     {
        videoPlayer.Prepare();
-        WaitForSeconds waitForSeconds = new WaitForSeconds(1);
         while (!videoPlayer.isPrepared)
         {
-            yield return waitForSeconds;
-            break;
-        }
+			rawImage.color = Color.black;
+			yield return null;
+		}
+		rawImage.color = Color.white;
 
-        rawImage.texture = videoPlayer.texture;
+		rawImage.texture = videoPlayer.texture;
         videoPlayer.Play();
     }
-	
-
 }
