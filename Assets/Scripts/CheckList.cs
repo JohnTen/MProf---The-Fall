@@ -24,6 +24,7 @@ public class CheckList : MonoSingleton<CheckList>
 		barleyTexts.text = gather[5].ToString() + "x Barley";
 		milkTexts.text = gather[6].ToString() + "x Milk";
 		UpdateCheckList();
+		GameDataManager.OnValueChanged += UpdateCheckList;
 	}
 
 	public void UpdateCheckList()

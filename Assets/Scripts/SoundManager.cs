@@ -54,7 +54,7 @@ public class SoundClips
 	}
 }
 
-public class SoundManager : GlobalSingleton<SoundManager>
+public class SoundManager : MonoSingleton<SoundManager>
 {
 	[SerializeField] GameObject soundObject;
 	[SerializeField] SoundClips[] clips;
@@ -65,7 +65,7 @@ public class SoundManager : GlobalSingleton<SoundManager>
 		base.Awake();
 
 		soundObject = new GameObject("Sound Object");
-		soundObject.transform.SetParent(GlobalObject.Instance.transform);
+		soundObject.transform.SetParent(transform);
 		sources = new List<AudioSource>();
 
 		for (int i = 0; i < clips.Length; i ++)
@@ -94,8 +94,8 @@ public class SoundManager : GlobalSingleton<SoundManager>
 		if (foundNull)
 		{
 			soundObject = new GameObject("Sound Object");
-			soundObject.transform.SetParent(GlobalObject.Instance.transform);
-			print(GlobalObject.Instance.transform);
+			soundObject.transform.SetParent(transform);
+			print(transform);
 
 			foreach (var s in clips)
 			{

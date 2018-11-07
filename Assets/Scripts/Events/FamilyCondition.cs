@@ -6,6 +6,7 @@ using UnityUtility.Conditions;
 public enum FamilyValueType
 {
 	MemberType,
+	Gone,
 	DyingRate,
 	Hunger,
 	MentalHealth,
@@ -38,6 +39,8 @@ public class FamilyCondition : BaseValueCondition<FamilyValueType>
 		{
 			case FamilyValueType.MemberType:
 				return CheckMember((int)member.type, value);
+			case FamilyValueType.Gone:
+				return CheckMember(member.gone? 1:0, value);
 			case FamilyValueType.Hunger:
 				return CheckMember(member.hunger, value);
 			case FamilyValueType.MentalHealth:
