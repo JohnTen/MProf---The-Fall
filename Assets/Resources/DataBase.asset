@@ -129,7 +129,7 @@ MonoBehaviour:
           type: 4
           requiredWheat: 1
           dyingRate: 0.3
-          hunger: 5
+          hunger: 0
           mentalHealth: 100
           mentalDyingRatio: 0.4
           gone: 0
@@ -425,7 +425,7 @@ MonoBehaviour:
           type: 4
           requiredWheat: 1
           dyingRate: 0.3
-          hunger: 5
+          hunger: 0
           mentalHealth: 100
           mentalDyingRatio: 0.4
           gone: 0
@@ -473,15 +473,15 @@ MonoBehaviour:
         type: 0
         value: 4
         member:
-          name: 
-          type: 0
+          name: Son
+          type: 4
           requiredWheat: 1
           dyingRate: 0.3
           hunger: 0
           mentalHealth: 100
           mentalDyingRatio: 0.4
           gone: 0
-          portrait: {fileID: 0}
+          portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:
       constantValue: 0
       useGameValue: 0
@@ -525,15 +525,15 @@ MonoBehaviour:
         type: 0
         value: 4
         member:
-          name: 
-          type: 0
+          name: Son
+          type: 4
           requiredWheat: 1
           dyingRate: 0.3
           hunger: 0
           mentalHealth: 100
           mentalDyingRatio: 0.4
           gone: 0
-          portrait: {fileID: 0}
+          portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:
       constantValue: 0
       useGameValue: 0
@@ -554,6 +554,267 @@ MonoBehaviour:
     useSubEventMessages: 0
     startingMessage:
     - Son died by starvation.
+    endingMessage:
+    - 'Cob is back from war, he''s missing an arm and an ear
+
+      but at least he is alive.'
+    scenario: -1
+    oddsOfOccuring:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 11
+      serializedtype: FamilyDyingRate
+    StartingCondition:
+      operators: 
+      conditions: []
+    ContinualCondition:
+      operators: 
+      conditions: []
+    FamilyCondition:
+      operators: 
+      conditions:
+      - operator: 0
+        type: 0
+        value: 4
+        member:
+          name: Son
+          type: 4
+          requiredWheat: 1
+          dyingRate: 0.3
+          hunger: 0
+          mentalHealth: 100
+          mentalDyingRatio: 0.4
+          gone: 0
+          portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
+    MaxOccurencePerPlaythrough:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 3
+      serializedtype: CropProduction
+    Occurence: {x: 0, y: 30}
+    Duration: {x: 0, y: 10}
+    modifers:
+    - propertyType: 7
+      modificationType: 0
+      value_1: -1
+      value_2: 0
+      value_3: 0
+      serializedtype: FamilyDeath
+    subEvents: []
+  - name: Random Death
+    ID: 9
+    useSubEventMessages: 0
+    startingMessage:
+    - PC died by fate.
+    endingMessage:
+    - 'Cob is back from war, he''s missing an arm and an ear
+
+      but at least he is alive.'
+    scenario: -1
+    oddsOfOccuring:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 11
+      serializedtype: FamilyDyingRate
+    StartingCondition:
+      operators: 
+      conditions: []
+    ContinualCondition:
+      operators: 
+      conditions: []
+    FamilyCondition:
+      operators: 
+      conditions:
+      - operator: 0
+        type: 0
+        value: 4
+        member:
+          name: Son
+          type: 4
+          requiredWheat: 1
+          dyingRate: 0.3
+          hunger: 0
+          mentalHealth: 100
+          mentalDyingRatio: 0.4
+          gone: 0
+          portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
+    MaxOccurencePerPlaythrough:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 3
+      serializedtype: CropProduction
+    Occurence: {x: 0, y: 30}
+    Duration: {x: 0, y: 10}
+    modifers:
+    - propertyType: 7
+      modificationType: 0
+      value_1: -1
+      value_2: 0
+      value_3: 0
+      serializedtype: FamilyDeath
+    subEvents: []
+  - name: Random Death
+    ID: 10
+    useSubEventMessages: 0
+    startingMessage:
+    - Wife died by fate.
+    endingMessage:
+    - 'Cob is back from war, he''s missing an arm and an ear
+
+      but at least he is alive.'
+    scenario: -1
+    oddsOfOccuring:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 11
+      serializedtype: FamilyDyingRate
+    StartingCondition:
+      operators: 
+      conditions: []
+    ContinualCondition:
+      operators: 
+      conditions: []
+    FamilyCondition:
+      operators: 
+      conditions:
+      - operator: 0
+        type: 0
+        value: 4
+        member:
+          name: Son
+          type: 4
+          requiredWheat: 1
+          dyingRate: 0.3
+          hunger: 0
+          mentalHealth: 100
+          mentalDyingRatio: 0.4
+          gone: 0
+          portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
+    MaxOccurencePerPlaythrough:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 3
+      serializedtype: CropProduction
+    Occurence: {x: 0, y: 30}
+    Duration: {x: 0, y: 10}
+    modifers:
+    - propertyType: 7
+      modificationType: 0
+      value_1: -1
+      value_2: 0
+      value_3: 0
+      serializedtype: FamilyDeath
+    subEvents: []
+  - name: Random Death
+    ID: 11
+    useSubEventMessages: 0
+    startingMessage:
+    - Daughter died by fate.
+    endingMessage:
+    - 'Cob is back from war, he''s missing an arm and an ear
+
+      but at least he is alive.'
+    scenario: -1
+    oddsOfOccuring:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 11
+      serializedtype: FamilyDyingRate
+    StartingCondition:
+      operators: 
+      conditions: []
+    ContinualCondition:
+      operators: 
+      conditions: []
+    FamilyCondition:
+      operators: 
+      conditions:
+      - operator: 0
+        type: 0
+        value: 4
+        member:
+          name: Son
+          type: 4
+          requiredWheat: 1
+          dyingRate: 0.3
+          hunger: 0
+          mentalHealth: 100
+          mentalDyingRatio: 0.4
+          gone: 0
+          portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
+    MaxOccurencePerPlaythrough:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 3
+      serializedtype: CropProduction
+    Occurence: {x: 0, y: 30}
+    Duration: {x: 0, y: 10}
+    modifers:
+    - propertyType: 7
+      modificationType: 0
+      value_1: -1
+      value_2: 0
+      value_3: 0
+      serializedtype: FamilyDeath
+    subEvents: []
+  - name: Random Death
+    ID: 12
+    useSubEventMessages: 0
+    startingMessage:
+    - Son died by fate.
+    endingMessage:
+    - 'Cob is back from war, he''s missing an arm and an ear
+
+      but at least he is alive.'
+    scenario: -1
+    oddsOfOccuring:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 11
+      serializedtype: FamilyDyingRate
+    StartingCondition:
+      operators: 
+      conditions: []
+    ContinualCondition:
+      operators: 
+      conditions: []
+    FamilyCondition:
+      operators: 
+      conditions:
+      - operator: 0
+        type: 0
+        value: 4
+        member:
+          name: Son
+          type: 4
+          requiredWheat: 1
+          dyingRate: 0.3
+          hunger: 0
+          mentalHealth: 100
+          mentalDyingRatio: 0.4
+          gone: 0
+          portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
+    MaxOccurencePerPlaythrough:
+      constantValue: 0
+      useGameValue: 0
+      valueType: 3
+      serializedtype: CropProduction
+    Occurence: {x: 0, y: 30}
+    Duration: {x: 0, y: 10}
+    modifers:
+    - propertyType: 7
+      modificationType: 0
+      value_1: -1
+      value_2: 0
+      value_3: 0
+      serializedtype: FamilyDeath
+    subEvents: []
+  - name: Executed by lord!
+    ID: 13
+    useSubEventMessages: 0
+    startingMessage:
+    - You evade too many tax that the lord decided to execute your whole family as
+      an example.
     endingMessage:
     - 'Cob is back from war, he''s missing an arm and an ear
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class MinigameMaze : MonoBehaviour
 {
 	[SerializeField] float pcMovingSpeed;
-	[SerializeField] float maxMovement;
+	[SerializeField] float timeLimit = 60;
 	[SerializeField] Transform startingPoint;
 
 	public float PCMovingSpeed
@@ -13,9 +13,9 @@ public class MinigameMaze : MonoBehaviour
 		get { return pcMovingSpeed; }
 	}
 
-	public float MaxMovement
+	public float TimeLimit
 	{
-		get { return maxMovement; }
+		get { return timeLimit; }
 	}
 
 	public Transform StartingPoint
