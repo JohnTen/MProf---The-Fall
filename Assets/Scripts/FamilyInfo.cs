@@ -16,8 +16,14 @@ public class FamilyInfo : MonoBehaviour
 	[SerializeField] Text sanityText;
 	[SerializeField] Text dRateText;
 	[SerializeField] Button[] buttons;
-	
-	// Update is called once per frame
+
+	int currentDisplayedIndex;
+
+	private void Start()
+	{
+		GameDataManager.OnValueChanged += Refresh;
+	}
+
 	void Update ()
 	{
 		for (int i = 0; i < FamilyManager.FamilyMembers.Count; i++)
@@ -31,9 +37,16 @@ public class FamilyInfo : MonoBehaviour
 		}
 	}
 
-	public void Display(int i)
+	public void Display(int index)
 	{
 		Open();
+		currentDisplayedIndex = index;
+		Refresh();
+	}
+
+	void Refresh()
+	{
+		var i = currentDisplayedIndex;
 		var list = FamilyManager.FamilyMembers;
 		nameText.text = list[i].name;
 		hungerText.text = list[i].hunger.ToString();
