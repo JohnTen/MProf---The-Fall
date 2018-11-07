@@ -623,11 +623,24 @@ MonoBehaviour:
       operators: 
       conditions: []
     FamilyCondition:
-      operators: 
+      operators: 00000000
       conditions:
       - operator: 0
         type: 0
-        value: 4
+        value: 1
+        member:
+          name: Son
+          type: 4
+          requiredWheat: 1
+          dyingRate: 0.3
+          hunger: 0
+          mentalHealth: 100
+          mentalDyingRatio: 0.4
+          gone: 0
+          portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
+      - operator: 0
+        type: 1
+        value: 1
         member:
           name: Son
           type: 4
@@ -838,15 +851,15 @@ MonoBehaviour:
         type: 0
         value: 4
         member:
-          name: 
-          type: 0
+          name: Son
+          type: 4
           requiredWheat: 1
           dyingRate: 0.3
           hunger: 0
           mentalHealth: 100
           mentalDyingRatio: 0.4
           gone: 0
-          portrait: {fileID: 0}
+          portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:
       constantValue: 0
       useGameValue: 0

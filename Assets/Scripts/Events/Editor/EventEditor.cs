@@ -417,6 +417,9 @@ public class EventEditor : EditorWindow
 			case FamilyValueType.MemberType:
 				condition.value = (int)(FamilyType)EditorGUILayout.EnumPopup((FamilyType)((int)condition.value));
 				break;
+			case FamilyValueType.Gone:
+				condition.value = EditorGUILayout.Toggle(condition.value == 1) ? 1 : 0;
+				break;
 			case FamilyValueType.Hunger:
 				condition.value = EditorGUILayout.IntField((int)condition.value);
 				break;

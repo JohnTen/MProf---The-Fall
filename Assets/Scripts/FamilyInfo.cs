@@ -38,7 +38,7 @@ public class FamilyInfo : MonoBehaviour
 		nameText.text = list[i].name;
 		hungerText.text = list[i].hunger.ToString();
 		sanityText.text = list[i].mentalHealth.ToString();
-		dRateText.text = (list[i].dyingRate + list[i].mentalDyingRatio * list[i].mentalHealth).ToString();
+		dRateText.text = (list[i].dyingRate + list[i].mentalDyingRatio * (100 - list[i].mentalHealth)).ToString();
 		portraint.sprite = list[i].portrait;
 		portraint.rectTransform.sizeDelta = buttons[i].image.rectTransform.sizeDelta * 1.4f;
 	}
