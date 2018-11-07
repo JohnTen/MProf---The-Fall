@@ -198,6 +198,11 @@ public class Conclusion : MonoSingleton<Conclusion>
 		remainedOat.text = GameDataManager.CurrentOat.ToString();
 
 		// Taxes
+		var wholeTax = wheatSlider.maxValue + oatSlider.maxValue;
+		var paidTax = paidWheat + paidOat;
+		if (wholeTax * 0.5f > paidTax)
+			EventManager.Instance.taxEvasionTimes++;
+
 		paidWheat *= -1;
 		paidOat *= -1;
 		ChangeColor(wheatTax, paidWheat);
@@ -208,6 +213,7 @@ public class Conclusion : MonoSingleton<Conclusion>
 		GameDataManager.CurrentOat		+= paidOat;
 		GameDataManager.CurrentWheat += forcedPaidWheat;
 		GameDataManager.CurrentOat += forcedPaidOat;
+
 
 		// Family consumption
 		var list = FamilyManager.FamilyMembers;

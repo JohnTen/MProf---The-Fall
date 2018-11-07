@@ -15,7 +15,8 @@ public class FarmingMinigame : BaseMinigame
 	}
 
 	[SerializeField] RectTransform pc;
-	[SerializeField] RectTransform meter;
+	[SerializeField] RectTransform timeMeter;
+	[SerializeField] RectTransform growMeter;
 	[SerializeField] RectTransform mazeBase;
 	[SerializeField] List<MinigameMaze> level1Mazes;
 	[SerializeField] List<MinigameMaze> level2Mazes;
@@ -24,7 +25,8 @@ public class FarmingMinigame : BaseMinigame
 
 	[Header("Debug")]
 	[SerializeField] float currentMovement;
-	[SerializeField] float meterSize;
+	[SerializeField] float timeMeterSize;
+	[SerializeField] float growMeterSize;
 	[SerializeField] Canvas canvas;
 	[SerializeField] MinigameMaze maze;
 	[SerializeField] List<RectTransform> pathes = new List<RectTransform>();
@@ -73,6 +75,10 @@ public class FarmingMinigame : BaseMinigame
 		if (maze == null)
 			return;
 
+		var size = timeMeter.sizeDelta;
+		size.y = timeMeterSize;
+		timeMeter.sizeDelta = size;
+		
 		CollectPathes();
 		IsPlaying = true;
 		canvas.enabled = true;
@@ -352,7 +358,8 @@ public class FarmingMinigame : BaseMinigame
 
 	private void Awake()
 	{
-		meterSize = meter.rect.height;
+		timeMeterSize = timeMeter.rect.height;
+		growMeterSize = growMeter.rect.height;
 
 		if (canvas == null)
 			canvas = GetComponent<Canvas>();
@@ -361,7 +368,8 @@ public class FarmingMinigame : BaseMinigame
 
 	private void Start()
 	{
-		meterSize = meter.rect.height;
+		timeMeterSize = timeMeter.rect.height;
+		growMeterSize = growMeter.rect.height;
 		CollectPathes();
 	}
 
@@ -371,11 +379,11 @@ public class FarmingMinigame : BaseMinigame
 
 		var origPos = pc.position;
 		Move();
-		var size = meter.sizeDelta;
-		size.y = Mathf.Lerp(0, meterSize, currentMovement / maze.MaxMovement);
-		meter.sizeDelta = size;
+		var size = timeMeter.sizeDelta;
+		size.y -= (Time.unscaledDeltaTime / maze.TimeLimit) * timeMeterSize;
+		timeMeter.sizeDelta = size;
 
-		if (size.y == meterSize || Input.GetKeyDown(KeyCode.P))
+		if (size.y <= 0 || Input.GetKeyDown(KeyCode.P))
 		{
 			MessageBox.DisplayMessage("Minigame failed!", "Your new planted crops is doomed and nothing can be plant here in this week!");
 			IsPlaying = false;

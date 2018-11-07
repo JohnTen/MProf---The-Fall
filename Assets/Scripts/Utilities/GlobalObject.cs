@@ -1,9 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 
@@ -34,13 +35,31 @@ namespace UnityUtility
 			get
 			{
 				if (_instance != null) return _instance;
-				_instance = FindObjectOfType<GlobalObject>();
-
-				if (_instance != null) return _instance;
-
-				_instance = new GameObject("GlobalObject").AddComponent<GlobalObject>();
 				
-				return _instance;
+#if UNITY_EDITOR
+				var go = Resources.Load("GlobalObject") as GameObject;
+				if (go != null)
+				{
+					_instance = Instantiate(go).GetComponent<GlobalObject>();
+				}
+				else
+				{
+					_instance = FindObjectOfType<GlobalObject>();
+					if (_instance == null)
+						_instance = new GameObject("GlobalObject").AddComponent<GlobalObject>();
+
+					var path = "Assets/Resources/GlobalObject.prefab";
+					var prefab = PrefabUtility.CreateEmptyPrefab(path);
+					PrefabUtility.ReplacePrefab(_instance.gameObject, prefab, ReplacePrefabOptions.ConnectToPrefab);
+				}
+#else
+				var prefab = Resources.Load("GlobalObject") as GameObject;
+				_instance = Instantiate(prefab).GetComponent<GlobalObject>();
+#endif
+				if (_instance == null)
+					throw new Exception("Cannot find Global Object!");
+				else
+					return _instance;
 			}
 		}
 
@@ -175,9 +194,21 @@ namespace UnityUtility
 			saveFile.Close();
 		}
 
+		public static void Recreate()
+		{
+			DestroyImmediate(Instance);
+			var prefab = Resources.Load("GlobalObject") as GameObject;
+			_instance = Instantiate(prefab).GetComponent<GlobalObject>();
+			print(_instance);
+			_instance.transform.SetParent(null);
+		}
+
 		private void Awake()
 		{
-            if (Instance != null && Instance != this)
+			if (_instance == null)
+				_instance = this;
+
+            if (_instance != null && _instance != this)
             {
                 Destroy(this.gameObject);
                 return;

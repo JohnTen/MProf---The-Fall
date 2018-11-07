@@ -60,7 +60,7 @@ public class SoundManager : GlobalSingleton<SoundManager>
 	[SerializeField] SoundClips[] clips;
 	[SerializeField] List<AudioSource> sources;
 
-	protected override void Awake()
+	protected void Start()
 	{
 		base.Awake();
 
@@ -82,6 +82,30 @@ public class SoundManager : GlobalSingleton<SoundManager>
 
 	protected void Update()
 	{
+		var foundNull = false;
+		for (int i = 0; i < sources.Count; i++)
+		{
+			if (sources[i] != null) continue;
+			foundNull = true;
+			sources.RemoveAt(i);
+			i--;
+		}
+
+		if (foundNull)
+		{
+			soundObject = new GameObject("Sound Object");
+			soundObject.transform.SetParent(GlobalObject.Instance.transform);
+			print(GlobalObject.Instance.transform);
+
+			foreach (var s in clips)
+			{
+				s.SetSource(soundObject.AddComponent<AudioSource>());
+				if (s.playOnAwake)
+					s.Play();
+				sources.Add(s.source);
+			}
+		}
+
 		foreach (var s in clips)
 		{
 			s.SetSource(s.source);
