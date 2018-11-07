@@ -70,6 +70,25 @@ public class RuntimeEvent
 		}
 	}
 
+	public void ForceActiveEvent()
+	{
+		foreach (var se in subEvents)
+		{
+			if (se.isExecuting)
+				se.Stop();
+		}
+
+		if (occuring && CanStop())
+		{
+			TryStop();
+		}
+
+		eventRef.FamilyCondition.GetSatisfiedFamilies(ref members);
+
+		if (members.Count > 0)
+			RunEvent();
+	}
+
 	bool TryInvoke()
 	{
 		// If this event is invoked enough times, or out of proper invoking date range, 
@@ -81,6 +100,13 @@ public class RuntimeEvent
 
 		Debug.Log(eventRef.name + " Occuring, Start date " + TimeManager.Date);
 
+		RunEvent();
+
+		return true;
+	}
+
+	void RunEvent()
+	{
 		// Invoke occuring event
 		if (OnEventOccuring != null)
 			OnEventOccuring.Invoke(this);
@@ -94,7 +120,7 @@ public class RuntimeEvent
 		for (int i = 0; i < eventRef.modifers.Length; i++)
 		{
 			// If this is a family related modifer...
-			if (eventRef.modifers[i].propertyType > GameValueType.__Family && 
+			if (eventRef.modifers[i].propertyType > GameValueType.__Family &&
 				eventRef.modifers[i].propertyType < GameValueType.__Animal)
 			{
 				switch (eventRef.modifers[i].propertyType)
@@ -148,13 +174,13 @@ public class RuntimeEvent
 
 		for (int i = 0; i < subEvents.Length; i++)
 		{
-			if (subEvents[i].eventRef.occuringMethod != SubEvent.OccuringMethod.Chose_One || 
+			if (subEvents[i].eventRef.occuringMethod != SubEvent.OccuringMethod.Chose_One ||
 				subEvents[i].isExecuting ||
 				!subEvents[i].eventRef.StartingCondition.IsSatisfied())
 				continue;
 			chanceSum += subEvents[i].eventRef.chance;
 		}
-		
+
 		chanceNum = Random.value * chanceSum;
 		chanceSum = 0;
 
@@ -179,7 +205,7 @@ public class RuntimeEvent
 						OnSubEventOccuring.Invoke(this, subEvents[i]);
 				}
 			}
-			else 
+			else
 			if (Random.value < subEvents[i].eventRef.chance &&
 				subEvents[i].eventRef.StartingCondition.IsSatisfied())
 			{
@@ -188,8 +214,6 @@ public class RuntimeEvent
 					OnSubEventOccuring.Invoke(this, subEvents[i]);
 			}
 		}
-
-		return true;
 	}
 
 	bool CanStop()

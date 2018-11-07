@@ -55,6 +55,7 @@ public class EventManager : MonoSingleton<EventManager>
 		RandomDeathCheck();
 		TaxEvasionEventCheck();
 		CheckGameOver();
+		GameDataManager.UpdateValues();
 	}
 
 	private void CheckGameOver()
@@ -89,6 +90,8 @@ public class EventManager : MonoSingleton<EventManager>
 
 			list[i].gone = true;
 			GameDataManager.GameValues[GameValueType.Fertiliser]++;
+			GameDataManager.GameValues.CalculateModifiedValue();
+			print(GameDataManager.GameValues[GameValueType.Fertiliser]);
 			var title = EventList[i + randomDeathEventIndexOffset].eventRef.name;
 			var message = EventList[i + randomDeathEventIndexOffset].eventRef.startingMessage[
 				Random.Range(0, EventList[i + randomDeathEventIndexOffset].eventRef.startingMessage.Length)];
@@ -107,6 +110,8 @@ public class EventManager : MonoSingleton<EventManager>
 
 			list[i].gone = true;
 			GameDataManager.GameValues[GameValueType.Fertiliser]++;
+			GameDataManager.GameValues.CalculateModifiedValue();
+			print(GameDataManager.GameValues[GameValueType.Fertiliser]);
 		}
 
 		var title = EventList[taxEvasionEventIndex].eventRef.name;
@@ -131,6 +136,8 @@ public class EventManager : MonoSingleton<EventManager>
 
 			list[i].gone = true;
 			GameDataManager.GameValues[GameValueType.Fertiliser]++;
+			GameDataManager.GameValues.CalculateModifiedValue();
+			print(GameDataManager.GameValues[GameValueType.Fertiliser]);
 			var title = EventList[i + starvationEventIndexOffset].eventRef.name;
 			var message = EventList[i + starvationEventIndexOffset].eventRef.startingMessage[
 				Random.Range(0, EventList[i + starvationEventIndexOffset].eventRef.startingMessage.Length)];
