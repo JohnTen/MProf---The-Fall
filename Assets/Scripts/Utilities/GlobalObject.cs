@@ -196,10 +196,9 @@ namespace UnityUtility
 
 		public static void Recreate()
 		{
-			DestroyImmediate(Instance);
+			DestroyImmediate(Instance.gameObject);
 			var prefab = Resources.Load("GlobalObject") as GameObject;
 			_instance = Instantiate(prefab).GetComponent<GlobalObject>();
-			print(_instance);
 			_instance.transform.SetParent(null);
 		}
 

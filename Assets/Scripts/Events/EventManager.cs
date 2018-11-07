@@ -40,7 +40,7 @@ public class EventManager : MonoSingleton<EventManager>
 
 	private void Start()
 	{
-		GlobalObject.Recreate();
+		//GlobalObject.Recreate();
 	}
 
 	public void CheckEvents()
@@ -91,7 +91,6 @@ public class EventManager : MonoSingleton<EventManager>
 			list[i].gone = true;
 			GameDataManager.GameValues[GameValueType.Fertiliser]++;
 			GameDataManager.GameValues.CalculateModifiedValue();
-			print(GameDataManager.GameValues[GameValueType.Fertiliser]);
 			var title = EventList[i + randomDeathEventIndexOffset].eventRef.name;
 			var message = EventList[i + randomDeathEventIndexOffset].eventRef.startingMessage[
 				Random.Range(0, EventList[i + randomDeathEventIndexOffset].eventRef.startingMessage.Length)];
