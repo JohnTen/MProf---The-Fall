@@ -27,7 +27,10 @@ public class PlayerMover : MonoBehaviour
 		{
 			var ray = GameDataManager.MainCamera.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
-			if (Physics.Raycast(ray, out hit, 40))
+
+			var layer = Physics.DefaultRaycastLayers & ~(1 << 10);
+
+			if (Physics.Raycast(ray, out hit, 40, layer))
 			{
 				MoveTowards(hit.point);
 			}
