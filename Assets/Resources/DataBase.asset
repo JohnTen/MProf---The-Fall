@@ -103,9 +103,8 @@ MonoBehaviour:
     ID: 0
     useSubEventMessages: 0
     startingMessage:
-    - Wife is due to give birth in a few weeks
-    endingMessage:
-    - Wife gave birth to a boy, his name is Sob
+    - Wife is pregnant and hence requires more food.
+    endingMessage: []
     scenario: -1
     oddsOfOccuring:
       constantValue: 0.1
@@ -128,10 +127,10 @@ MonoBehaviour:
           name: Son
           type: 4
           requiredWheat: 1
-          dyingRate: 0.3
+          dyingRate: 0.05
           hunger: 0
           mentalHealth: 100
-          mentalDyingRatio: 0.4
+          mentalDyingRatio: 0.004
           gone: 0
           portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:
@@ -139,7 +138,7 @@ MonoBehaviour:
       useGameValue: 0
       valueType: 3
       serializedtype: CropProduction
-    Occurence: {x: 5, y: 30}
+    Occurence: {x: 5, y: 15}
     Duration: {x: 10, y: 10}
     modifers:
     - propertyType: 8
@@ -154,45 +153,7 @@ MonoBehaviour:
       value_2: 0
       value_3: 0
       serializedtype: FamilyMentalHealth
-    subEvents:
-    - label: Give Birth
-      occuringMethod: 2
-      chance:
-        constantValue: 1
-        useGameValue: 0
-        valueType: 3
-        serializedtype: CropProduction
-      Duration: {x: 0, y: 0}
-      modifers:
-      - propertyType: 3
-        modificationType: 0
-        value_1: 1
-        value_2: 0
-        value_3: 0
-        serializedtype: CropProduction
-      startingMessage: []
-      endingMessage: []
-      StartingCondition:
-        operators: 
-        conditions:
-        - operator: 1
-          type: 0
-          value_1:
-            constantValue: 0
-            useGameValue: 1
-            valueType: 3
-            serializedtype: CropProduction
-          value_2:
-            constantValue: 0
-            useGameValue: 0
-            valueType: 3
-            serializedtype: CropProduction
-      ContinualCondition:
-        operators: 
-        conditions: []
-      FamilyCondition:
-        operators: 
-        conditions: []
+    subEvents: []
   - name: Famine!
     ID: 1
     useSubEventMessages: 0
@@ -209,8 +170,32 @@ MonoBehaviour:
       valueType: 3
       serializedtype: CropProduction
     StartingCondition:
-      operators: 
-      conditions: []
+      operators: 020000000000000002000000
+      conditions:
+      - operator: 0
+        type: 1
+        value_1:
+          constantValue: 2
+          useGameValue: 0
+          valueType: 0
+          serializedtype: 
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 0
+          serializedtype: 
+      - operator: 0
+        type: 1
+        value_1:
+          constantValue: 3
+          useGameValue: 0
+          valueType: 0
+          serializedtype: 
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 0
+          serializedtype: 
     ContinualCondition:
       operators: 
       conditions: []
@@ -222,21 +207,21 @@ MonoBehaviour:
       useGameValue: 0
       valueType: 3
       serializedtype: CropProduction
-    Occurence: {x: 15, y: 30}
+    Occurence: {x: 7, y: 15}
     Duration: {x: 5, y: 5}
     modifers:
-    - propertyType: 3
-      modificationType: 0
-      value_1: 1
-      value_2: 0
-      value_3: 0
-      serializedtype: CropProduction
     - propertyType: 3
       modificationType: 0
       value_1: -0.5
       value_2: 0
       value_3: 0
       serializedtype: CropProduction
+    - propertyType: 8
+      modificationType: 0
+      value_1: 1
+      value_2: 0
+      value_3: 0
+      serializedtype: FamilyCropConsumption
     subEvents: []
   - name: War!
     ID: 2
@@ -254,8 +239,32 @@ MonoBehaviour:
       valueType: 3
       serializedtype: CropProduction
     StartingCondition:
-      operators: 
-      conditions: []
+      operators: 020000000000000002000000
+      conditions:
+      - operator: 0
+        type: 1
+        value_1:
+          constantValue: 1
+          useGameValue: 0
+          valueType: 0
+          serializedtype: 
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 0
+          serializedtype: 
+      - operator: 0
+        type: 1
+        value_1:
+          constantValue: 3
+          useGameValue: 0
+          valueType: 0
+          serializedtype: 
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 0
+          serializedtype: 
     ContinualCondition:
       operators: 
       conditions: []
@@ -267,15 +276,9 @@ MonoBehaviour:
       useGameValue: 0
       valueType: 3
       serializedtype: CropProduction
-    Occurence: {x: 15, y: 30}
-    Duration: {x: 10, y: 10}
-    modifers:
-    - propertyType: 17
-      modificationType: 0
-      value_1: 0.1
-      value_2: 0
-      value_3: 0
-      serializedtype: ForcedTaxRate
+    Occurence: {x: 7, y: 15}
+    Duration: {x: 5, y: 5}
+    modifers: []
     subEvents: []
   - name: Plague!
     ID: 3
@@ -293,8 +296,32 @@ MonoBehaviour:
       valueType: 3
       serializedtype: CropProduction
     StartingCondition:
-      operators: 
-      conditions: []
+      operators: 020000000000000002000000
+      conditions:
+      - operator: 0
+        type: 1
+        value_1:
+          constantValue: 1
+          useGameValue: 0
+          valueType: 0
+          serializedtype: 
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 0
+          serializedtype: 
+      - operator: 0
+        type: 1
+        value_1:
+          constantValue: 2
+          useGameValue: 0
+          valueType: 0
+          serializedtype: 
+        value_2:
+          constantValue: 0
+          useGameValue: 0
+          valueType: 0
+          serializedtype: 
     ContinualCondition:
       operators: 
       conditions: []
@@ -306,27 +333,15 @@ MonoBehaviour:
       useGameValue: 0
       valueType: 3
       serializedtype: CropProduction
-    Occurence: {x: 15, y: 30}
-    Duration: {x: 10, y: 10}
+    Occurence: {x: 7, y: 15}
+    Duration: {x: 5, y: 5}
     modifers:
-    - propertyType: 3
+    - propertyType: 11
       modificationType: 0
       value_1: 0.2
       value_2: 0
       value_3: 0
-      serializedtype: CropProduction
-    - propertyType: 3
-      modificationType: 0
-      value_1: 0.2
-      value_2: 0
-      value_3: 0
-      serializedtype: CropProduction
-    - propertyType: 3
-      modificationType: 0
-      value_1: 0.2
-      value_2: 0
-      value_3: 0
-      serializedtype: CropProduction
+      serializedtype: FamilyDyingRate
     subEvents: []
   - name: Son goes to War!
     ID: 4
@@ -348,18 +363,18 @@ MonoBehaviour:
     StartingCondition:
       operators: 00000000
       conditions:
-      - operator: 1
-        type: 0
+      - operator: 0
+        type: 1
         value_1:
-          constantValue: 0
-          useGameValue: 1
-          valueType: 3
-          serializedtype: CropProduction
+          constantValue: 2
+          useGameValue: 0
+          valueType: 0
+          serializedtype: 
         value_2:
           constantValue: 0
           useGameValue: 0
-          valueType: 3
-          serializedtype: CropProduction
+          valueType: 0
+          serializedtype: 
     ContinualCondition:
       operators: 
       conditions:
@@ -379,19 +394,13 @@ MonoBehaviour:
       operators: 
       conditions: []
     MaxOccurencePerPlaythrough:
-      constantValue: 1
+      constantValue: 0
       useGameValue: 0
       valueType: 3
       serializedtype: CropProduction
-    Occurence: {x: 15, y: 30}
-    Duration: {x: 5, y: 6}
-    modifers:
-    - propertyType: 3
-      modificationType: 0
-      value_1: -1
-      value_2: 0
-      value_3: 0
-      serializedtype: CropProduction
+    Occurence: {x: 7, y: 15}
+    Duration: {x: 5, y: 5}
+    modifers: []
     subEvents: []
   - name: Starvation
     ID: 5
@@ -424,10 +433,10 @@ MonoBehaviour:
           name: Son
           type: 4
           requiredWheat: 1
-          dyingRate: 0.3
+          dyingRate: 0.05
           hunger: 0
           mentalHealth: 100
-          mentalDyingRatio: 0.4
+          mentalDyingRatio: 0.004
           gone: 0
           portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:
@@ -476,10 +485,10 @@ MonoBehaviour:
           name: Son
           type: 4
           requiredWheat: 1
-          dyingRate: 0.3
+          dyingRate: 0.05
           hunger: 0
           mentalHealth: 100
-          mentalDyingRatio: 0.4
+          mentalDyingRatio: 0.004
           gone: 0
           portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:
@@ -528,10 +537,10 @@ MonoBehaviour:
           name: Son
           type: 4
           requiredWheat: 1
-          dyingRate: 0.3
+          dyingRate: 0.05
           hunger: 0
           mentalHealth: 100
-          mentalDyingRatio: 0.4
+          mentalDyingRatio: 0.004
           gone: 0
           portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:
@@ -580,10 +589,10 @@ MonoBehaviour:
           name: Son
           type: 4
           requiredWheat: 1
-          dyingRate: 0.3
+          dyingRate: 0.05
           hunger: 0
           mentalHealth: 100
-          mentalDyingRatio: 0.4
+          mentalDyingRatio: 0.004
           gone: 0
           portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:
@@ -632,10 +641,10 @@ MonoBehaviour:
           name: Son
           type: 4
           requiredWheat: 1
-          dyingRate: 0.3
+          dyingRate: 0.05
           hunger: 0
           mentalHealth: 100
-          mentalDyingRatio: 0.4
+          mentalDyingRatio: 0.004
           gone: 0
           portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
       - operator: 0
@@ -645,10 +654,10 @@ MonoBehaviour:
           name: Son
           type: 4
           requiredWheat: 1
-          dyingRate: 0.3
+          dyingRate: 0.05
           hunger: 0
           mentalHealth: 100
-          mentalDyingRatio: 0.4
+          mentalDyingRatio: 0.004
           gone: 0
           portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:
@@ -697,10 +706,10 @@ MonoBehaviour:
           name: Son
           type: 4
           requiredWheat: 1
-          dyingRate: 0.3
+          dyingRate: 0.05
           hunger: 0
           mentalHealth: 100
-          mentalDyingRatio: 0.4
+          mentalDyingRatio: 0.004
           gone: 0
           portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:
@@ -749,10 +758,10 @@ MonoBehaviour:
           name: Son
           type: 4
           requiredWheat: 1
-          dyingRate: 0.3
+          dyingRate: 0.05
           hunger: 0
           mentalHealth: 100
-          mentalDyingRatio: 0.4
+          mentalDyingRatio: 0.004
           gone: 0
           portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:
@@ -801,10 +810,10 @@ MonoBehaviour:
           name: Son
           type: 4
           requiredWheat: 1
-          dyingRate: 0.3
+          dyingRate: 0.05
           hunger: 0
           mentalHealth: 100
-          mentalDyingRatio: 0.4
+          mentalDyingRatio: 0.004
           gone: 0
           portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:
@@ -854,10 +863,10 @@ MonoBehaviour:
           name: Son
           type: 4
           requiredWheat: 1
-          dyingRate: 0.3
+          dyingRate: 0.05
           hunger: 0
           mentalHealth: 100
-          mentalDyingRatio: 0.4
+          mentalDyingRatio: 0.004
           gone: 0
           portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:

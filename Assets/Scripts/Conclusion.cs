@@ -98,7 +98,7 @@ public class Conclusion : MonoSingleton<Conclusion>
 		paidWheatText.text		= paidWheat.ToString();
 		paidOatText.text		= paidOat.ToString();
 
-		wheatAfterTax = GameDataManager.CurrentWheat - paidWheat;
+		wheatAfterTax = GameDataManager.CurrentWheat - paidWheat - forcedPaidWheat;
 	}
 
 	public void _FeedFamily()
@@ -169,7 +169,6 @@ public class Conclusion : MonoSingleton<Conclusion>
 			gavedFoods[index]++;
 			wheatForFamily++;
 			UpdateFamilyFeedTexts();
-			print("I: " + index.ToString() + " G:" + gavedFoods[index] + " W: " + wheatForFamily);
 		}
 	}
 
@@ -180,7 +179,6 @@ public class Conclusion : MonoSingleton<Conclusion>
 			gavedFoods[index]--;
 			wheatForFamily--;
 			UpdateFamilyFeedTexts();
-			print("I: " + index.ToString() + " G:" + gavedFoods[index] + " W: " + wheatForFamily);
 		}
 	}
 
