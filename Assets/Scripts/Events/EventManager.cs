@@ -21,7 +21,6 @@ public class EventManager : MonoSingleton<EventManager>
 	protected override void Awake()
 	{
 		base.Awake();
-		//TimeManager.OnTimePassed += TimeManager_OnTimePassed;
 		EventList = new List<RuntimeEvent>();
 		foreach (var e in GameDatabase.Instance.eventList)
 		{
@@ -36,11 +35,6 @@ public class EventManager : MonoSingleton<EventManager>
 			EventList[i].OnSubEventStoping += EventManager_OnSubEventStoping;
 		}
 		CheckEvents();
-	}
-
-	private void Start()
-	{
-		//GlobalObject.Recreate();
 	}
 
 	public void CheckEvents()
