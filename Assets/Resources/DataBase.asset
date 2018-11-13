@@ -155,11 +155,11 @@ MonoBehaviour:
     ID: 1
     useSubEventMessages: 0
     startingMessage:
-    - Production rates for seeds is reduced and the family is hungrier.
+    - Crop producton is reduced and the family consumes more food.
     endingMessage:
     - 'Famine is over
 
-      Production rates and hunger are back to default'
+      Production rates and hunger are back to default.'
     scenario: -1
     oddsOfOccuring:
       constantValue: 0.2
@@ -209,7 +209,7 @@ MonoBehaviour:
     modifers:
     - propertyType: 3
       modificationType: 0
-      value_1: -0.5
+      value_1: -0.3
       value_2: 0
       value_3: 0
       serializedtype: CropProduction
@@ -224,11 +224,11 @@ MonoBehaviour:
     ID: 2
     useSubEventMessages: 0
     startingMessage:
-    - 'The army needs more food.
+    - 'The army needs food.
 
       10% of produce.'
     endingMessage:
-    - The War has ended
+    - The War is over.
     scenario: -1
     oddsOfOccuring:
       constantValue: 0.2
@@ -269,13 +269,19 @@ MonoBehaviour:
       operators: 
       conditions: []
     MaxOccurencePerPlaythrough:
-      constantValue: 1
+      constantValue: 0
       useGameValue: 0
       valueType: 3
       serializedtype: CropProduction
     Occurence: {x: 7, y: 15}
     Duration: {x: 5, y: 5}
-    modifers: []
+    modifers:
+    - propertyType: 19
+      modificationType: 0
+      value_1: 0.1
+      value_2: 0
+      value_3: 0
+      serializedtype: ForcedTaxRate
     subEvents: []
   - name: Plague!
     ID: 3
@@ -283,7 +289,7 @@ MonoBehaviour:
     startingMessage:
     - 'Its the Plague.
 
-      All family members are more likely to die'
+      All family members are more susceptible to death.'
     endingMessage:
     - The Plague is over.
     scenario: -1
@@ -375,18 +381,18 @@ MonoBehaviour:
     ContinualCondition:
       operators: 
       conditions:
-      - operator: 1
-        type: 0
+      - operator: 0
+        type: 1
         value_1:
-          constantValue: 0
-          useGameValue: 1
-          valueType: 3
-          serializedtype: CropProduction
+          constantValue: 2
+          useGameValue: 0
+          valueType: 0
+          serializedtype: 
         value_2:
           constantValue: 0
           useGameValue: 0
-          valueType: 3
-          serializedtype: CropProduction
+          valueType: 0
+          serializedtype: 
     FamilyCondition:
       operators: 
       conditions: []
