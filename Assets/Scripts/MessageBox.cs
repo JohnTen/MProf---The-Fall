@@ -39,7 +39,6 @@ public class MessageBox : MonoSingleton<MessageBox>
 
 	public static void DisplayMessage(string title, string content, Action onYes, Action onNo)
 	{
-		Canvas.ForceUpdateCanvases();
 		if (IsShowingMessage)
 		{
 			Instance.titleQueue.Enqueue(title);
@@ -50,11 +49,14 @@ public class MessageBox : MonoSingleton<MessageBox>
 		}
 
 		IsShowingMessage = true;
+		Instance.block.SetActive(false);
 		Instance.canvas.enabled = true;
 		Instance.titleText.text = title;
 		Instance.contentText.text = content;
 		Instance.yesAction = onYes;
 		Instance.noAction = onNo;
+		Instance.block.SetActive(true);
+		Canvas.ForceUpdateCanvases();
 
 		if (onYes == null && onNo == null)
 		{
@@ -68,6 +70,7 @@ public class MessageBox : MonoSingleton<MessageBox>
 			Instance.yesButton.enabled = true;
 			Instance.noButton.enabled = true;
 		}
+		Canvas.ForceUpdateCanvases();
 
 		TimeManager.FreezeTime();
 	}
