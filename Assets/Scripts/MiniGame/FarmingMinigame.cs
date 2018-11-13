@@ -280,11 +280,19 @@ public class FarmingMinigame : BaseMinigame
 		bool upperRightContained = false;
 		bool bottomLeftContained = false;
 		bool bottomRightContained = false;
+		bool upperMiddleContained = false;
+		bool middleRightContained = false;
+		bool middleLeftContained = false;
+		bool bottomMiddleContained = false;
 
 		Vector2 upperLeftCorner = new Vector2(pc.rect.yMax, pc.rect.xMin);
 		Vector2 upperRightCorner = new Vector2(pc.rect.yMax, pc.rect.xMax);
 		Vector2 bottomLeftCorner = new Vector2(pc.rect.yMin, pc.rect.xMin);
 		Vector2 bottomRightCorner = new Vector2(pc.rect.yMin, pc.rect.xMax);
+		Vector2 upperMiddleCorner = new Vector2(pc.rect.yMax, (pc.rect.xMax + pc.rect.xMin)*0.5f);
+		Vector2 middleRightCorner = new Vector2((pc.rect.yMax + pc.rect.yMin) * 0.5f, pc.rect.xMax);
+		Vector2 middleLeftCorner = new Vector2((pc.rect.yMax + pc.rect.yMin) * 0.5f, pc.rect.xMin);
+		Vector2 bottomMiddleCorner = new Vector2(pc.rect.yMin, (pc.rect.xMax + pc.rect.xMin) * 0.5f);
 
 		foreach (var p in pathes)
 		{
@@ -315,10 +323,38 @@ public class FarmingMinigame : BaseMinigame
 				bottomRightContained = IsContained(p, point);
 			}
 
+			if (!upperMiddleContained)
+			{
+				point = upperMiddleCorner + offset;
+				upperMiddleContained = IsContained(p, point);
+			}
+
+			if (!bottomMiddleContained)
+			{
+				point = bottomMiddleCorner + offset;
+				bottomMiddleContained = IsContained(p, point);
+			}
+
+			if (!middleLeftContained)
+			{
+				point = middleLeftCorner + offset;
+				middleLeftContained = IsContained(p, point);
+			}
+
+			if (!middleRightContained)
+			{
+				point = middleRightCorner + offset;
+				middleRightContained = IsContained(p, point);
+			}
+
 			if (upperLeftContained &&
 				upperRightContained &&
 				bottomLeftContained &&
-				bottomRightContained)
+				bottomRightContained &&
+				middleLeftContained &&
+				middleRightContained &&
+				upperMiddleContained &&
+				bottomMiddleContained)
 				return true;
 		}
 

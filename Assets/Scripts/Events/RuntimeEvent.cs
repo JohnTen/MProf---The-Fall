@@ -128,7 +128,6 @@ public class RuntimeEvent
 					case GameValueType.FamilyCropConsumption:
 						foreach (var f in members)
 						{
-							Debug.Log(eventRef.modifers[i].value_1);
 							f.requiredWheat += (int)eventRef.modifers[i].value_1;
 						}
 						break;

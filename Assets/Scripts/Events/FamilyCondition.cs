@@ -84,7 +84,8 @@ public class FamilyConditionGroup : BaseConditionGroup<FamilyCondition>
 	public void GetSatisfiedFamilies(ref List<FamilyMember> families)
 	{
 		var list = new List<FamilyMember>(FamilyManager.FamilyMembers);
-		
+
+		families.Clear();
 		foreach (var f in list)
 		{
 			foreach (var c in conditions)
