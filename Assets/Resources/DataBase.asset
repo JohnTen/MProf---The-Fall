@@ -104,7 +104,7 @@ MonoBehaviour:
     endingMessage: []
     scenario: -1
     oddsOfOccuring:
-      constantValue: 0.1
+      constantValue: 0.2
       useGameValue: 0
       valueType: 3
       serializedtype: CropProduction
@@ -204,7 +204,7 @@ MonoBehaviour:
       useGameValue: 0
       valueType: 3
       serializedtype: CropProduction
-    Occurence: {x: 7, y: 15}
+    Occurence: {x: 7, y: 10}
     Duration: {x: 5, y: 5}
     modifers:
     - propertyType: 3
@@ -231,7 +231,7 @@ MonoBehaviour:
     - The War is over.
     scenario: -1
     oddsOfOccuring:
-      constantValue: 0.2
+      constantValue: 1
       useGameValue: 0
       valueType: 3
       serializedtype: CropProduction
@@ -273,7 +273,7 @@ MonoBehaviour:
       useGameValue: 0
       valueType: 3
       serializedtype: CropProduction
-    Occurence: {x: 7, y: 15}
+    Occurence: {x: 1, y: 15}
     Duration: {x: 5, y: 5}
     modifers:
     - propertyType: 19
@@ -294,7 +294,7 @@ MonoBehaviour:
     - The Plague is over.
     scenario: -1
     oddsOfOccuring:
-      constantValue: 0.2
+      constantValue: 0.1
       useGameValue: 0
       valueType: 3
       serializedtype: CropProduction
@@ -336,12 +336,12 @@ MonoBehaviour:
       useGameValue: 0
       valueType: 3
       serializedtype: CropProduction
-    Occurence: {x: 7, y: 15}
+    Occurence: {x: 7, y: 10}
     Duration: {x: 5, y: 5}
     modifers:
     - propertyType: 11
       modificationType: 0
-      value_1: 0.2
+      value_1: 0.1
       value_2: 0
       value_3: 0
       serializedtype: FamilyDyingRate
