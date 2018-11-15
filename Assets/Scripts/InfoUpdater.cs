@@ -13,6 +13,7 @@ public class InfoUpdater : MonoBehaviour
 	[SerializeField] Text wheatText;
 	[SerializeField] Text oatText;
 	[SerializeField] Text milkText;
+	[SerializeField] GameObject[] mechanRefs;
 
 	private void Awake()
 	{
@@ -38,6 +39,11 @@ public class InfoUpdater : MonoBehaviour
 		else
 		{
 			forcedTaxObject.SetActive(false);
+		}
+
+		for (int i = 0; i < mechanRefs.Length; i++)
+		{
+			mechanRefs[i].SetActive(CheckList.Instance.gather[i] > 0);
 		}
 
 		dateText.text			= (GameDataManager.MaxWeek - TimeManager.Date).ToString();
