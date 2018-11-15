@@ -7,6 +7,7 @@ public class InfoUpdater : MonoBehaviour
 {
 	[SerializeField] bool autoUpdate;
 	[SerializeField] Text dateText;
+	[SerializeField] Text taxText;
 	[SerializeField] Text wheatText;
 	[SerializeField] Text oatText;
 	[SerializeField] Text milkText;
@@ -28,6 +29,7 @@ public class InfoUpdater : MonoBehaviour
 	{
 		GameDataManager.GameValues.CalculateModifiedValue();
 		dateText.text			= (GameDataManager.MaxWeek - TimeManager.Date).ToString();
+		taxText.text			= (GameDataManager.GameValues[GameValueType.TaxRate] * 100).ToString() + "%";
 		wheatText.text			= GameDataManager.CurrentWheat.ToString();
 		oatText.text			= GameDataManager.CurrentOat.ToString();
 		milkText.text = GameDataManager.GameValues[GameValueType.Milks].ToString();
