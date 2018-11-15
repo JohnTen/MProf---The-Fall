@@ -23,7 +23,22 @@ ModelImporter:
     4300000: pCylinder1
     4300002: pSphere2
     4300004: pSphere1
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: potbody_diff
+    second: {fileID: 2100000, guid: d16a96919dc6f2342bf37f26647ca97a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: potlid_diff
+    second: {fileID: 2100000, guid: cbba40f67240a414cabddbada19c45c7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: potlidhandle_diff
+    second: {fileID: 2100000, guid: b97cbde6a35606d43a66b0fcaa8079c4, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
