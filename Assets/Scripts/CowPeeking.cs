@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class CowPeeking : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class CowPeeking : MonoBehaviour
 
 	private void OnMouseDown()
 	{
-        if (mooing) return;
+        if (mooing || EventSystem.current.IsPointerOverGameObject()) return;
         mooing = true;
         OnClick.Invoke();
         animator.SetBool("Peek", true);
