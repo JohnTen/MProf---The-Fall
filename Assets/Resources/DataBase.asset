@@ -32,65 +32,58 @@ MonoBehaviour:
     ProvidedFertiliser: 1
   merchandiseList:
   - name: Blankets
-    pic: {fileID: 0}
+    pic: {fileID: 21300000, guid: 692658d78f6d824499b47fbe8aca432f, type: 3}
     requiredWheat: 8
     requiredOat: 8
     requiredMilk: 4
     sanityBoost: 0
     familyMember: 0
   - name: Clay Jars
-    pic: {fileID: 0}
+    pic: {fileID: 21300000, guid: 69db3d64566fae247a006e16b17ae6fd, type: 3}
     requiredWheat: 3
     requiredOat: 4
     requiredMilk: 2
     sanityBoost: 0
     familyMember: 0
   - name: New Blades
-    pic: {fileID: 0}
+    pic: {fileID: 21300000, guid: 0b40d1872e6005a40a9d6957f94f2074, type: 3}
     requiredWheat: 4
     requiredOat: 4
     requiredMilk: 2
     sanityBoost: 0
     familyMember: 0
   - name: Box of Salt
-    pic: {fileID: 0}
+    pic: {fileID: 21300000, guid: afd8841681ecd4241b0307e29a348336, type: 3}
     requiredWheat: 3
     requiredOat: 3
     requiredMilk: 2
     sanityBoost: 0
     familyMember: 0
   - name: Toys
-    pic: {fileID: 0}
+    pic: {fileID: 21300000, guid: 28ef50fce0c18e5409a585e29d50dd7d, type: 3}
     requiredWheat: 2
     requiredOat: 2
     requiredMilk: 1
     sanityBoost: 10
     familyMember: 4
-  - name: Dress
-    pic: {fileID: 0}
+  - name: Wood Ring
+    pic: {fileID: 21300000, guid: 7c91b9517999f9d4f904f0293fdadd0c, type: 3}
     requiredWheat: 1
     requiredOat: 1
     requiredMilk: 1
     sanityBoost: 10
     familyMember: 3
-  - name: Metal Bracelet
-    pic: {fileID: 0}
+  - name: Wood Necklace
+    pic: {fileID: 21300000, guid: 258e06f72d573f646b826b93565b84dd, type: 3}
     requiredWheat: 3
     requiredOat: 2
     requiredMilk: 1
     sanityBoost: 10
     familyMember: 2
-  - name: Metal Ring
-    pic: {fileID: 0}
-    requiredWheat: 2
-    requiredOat: 3
-    requiredMilk: 1
-    sanityBoost: 10
-    familyMember: 1
   cropGrowingModelList:
   - models:
-    - {fileID: 1819682924018166, guid: 00a7b07edde06794e891d860d91dfe68, type: 2}
-    - {fileID: 1446566781652150, guid: 276950e0e39fb4e42b08f1ca377c8f8b, type: 2}
+    - {fileID: 1018639833451914, guid: 5893179707f5fd8499f4fc9ce9430ff9, type: 2}
+    - {fileID: 1423520485618872, guid: 63a78ea299c784a4fb09c73c6f5fcefb, type: 2}
   - models:
     - {fileID: 1058307221275728, guid: d58a78de6a8dc0646b8d02d94d52726f, type: 2}
     - {fileID: 1329856424403402, guid: 591c862c779e6984e83238cd98f795ec, type: 2}
@@ -126,9 +119,9 @@ MonoBehaviour:
           requiredWheat: 1
           dyingRate: 0.05
           hunger: 0
-          mentalHealth: 100
+          mentalHealth: 110
           mentalDyingRatio: 0.004
-          gone: 0
+          gone: 1
           portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:
       constantValue: 1
@@ -438,9 +431,9 @@ MonoBehaviour:
           requiredWheat: 1
           dyingRate: 0.05
           hunger: 0
-          mentalHealth: 100
+          mentalHealth: 110
           mentalDyingRatio: 0.004
-          gone: 0
+          gone: 1
           portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:
       constantValue: 0
@@ -490,9 +483,9 @@ MonoBehaviour:
           requiredWheat: 1
           dyingRate: 0.05
           hunger: 0
-          mentalHealth: 100
+          mentalHealth: 110
           mentalDyingRatio: 0.004
-          gone: 0
+          gone: 1
           portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:
       constantValue: 0
@@ -542,9 +535,9 @@ MonoBehaviour:
           requiredWheat: 1
           dyingRate: 0.05
           hunger: 0
-          mentalHealth: 100
+          mentalHealth: 110
           mentalDyingRatio: 0.004
-          gone: 0
+          gone: 1
           portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:
       constantValue: 0
@@ -594,9 +587,9 @@ MonoBehaviour:
           requiredWheat: 1
           dyingRate: 0.05
           hunger: 0
-          mentalHealth: 100
+          mentalHealth: 110
           mentalDyingRatio: 0.004
-          gone: 0
+          gone: 1
           portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:
       constantValue: 0
@@ -646,9 +639,9 @@ MonoBehaviour:
           requiredWheat: 1
           dyingRate: 0.05
           hunger: 0
-          mentalHealth: 100
+          mentalHealth: 110
           mentalDyingRatio: 0.004
-          gone: 0
+          gone: 1
           portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
       - operator: 0
         type: 1
@@ -659,9 +652,9 @@ MonoBehaviour:
           requiredWheat: 1
           dyingRate: 0.05
           hunger: 0
-          mentalHealth: 100
+          mentalHealth: 110
           mentalDyingRatio: 0.004
-          gone: 0
+          gone: 1
           portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:
       constantValue: 0
@@ -711,9 +704,9 @@ MonoBehaviour:
           requiredWheat: 1
           dyingRate: 0.05
           hunger: 0
-          mentalHealth: 100
+          mentalHealth: 110
           mentalDyingRatio: 0.004
-          gone: 0
+          gone: 1
           portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:
       constantValue: 0
@@ -763,9 +756,9 @@ MonoBehaviour:
           requiredWheat: 1
           dyingRate: 0.05
           hunger: 0
-          mentalHealth: 100
+          mentalHealth: 110
           mentalDyingRatio: 0.004
-          gone: 0
+          gone: 1
           portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:
       constantValue: 0
@@ -815,9 +808,9 @@ MonoBehaviour:
           requiredWheat: 1
           dyingRate: 0.05
           hunger: 0
-          mentalHealth: 100
+          mentalHealth: 110
           mentalDyingRatio: 0.004
-          gone: 0
+          gone: 1
           portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:
       constantValue: 0
@@ -868,9 +861,9 @@ MonoBehaviour:
           requiredWheat: 1
           dyingRate: 0.05
           hunger: 0
-          mentalHealth: 100
+          mentalHealth: 110
           mentalDyingRatio: 0.004
-          gone: 0
+          gone: 1
           portrait: {fileID: 21300000, guid: fd9104a615a679a47b5cac2d317abdc5, type: 3}
     MaxOccurencePerPlaythrough:
       constantValue: 0
