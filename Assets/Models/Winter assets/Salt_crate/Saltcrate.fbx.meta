@@ -1,0 +1,168 @@
+fileFormatVersion: 2
+guid: c331851ea1271bc4d9e7ddcb10264b39
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: group1
+    100002: group2
+    100004: group3
+    100006: group4
+    100008: group5
+    100010: group6
+    100012: pCube4
+    100014: polySurface1
+    100016: polySurface3
+    100018: polySurface4
+    100020: polySurface5
+    100022: polySurface6
+    100024: polySurface7
+    100026: polySurface8
+    100028: pPlane1
+    100030: //RootNode
+    100032: transform1
+    400000: group1
+    400002: group2
+    400004: group3
+    400006: group4
+    400008: group5
+    400010: group6
+    400012: pCube4
+    400014: polySurface1
+    400016: polySurface3
+    400018: polySurface4
+    400020: polySurface5
+    400022: polySurface6
+    400024: polySurface7
+    400026: polySurface8
+    400028: pPlane1
+    400030: //RootNode
+    400032: transform1
+    2100000: blinn2
+    2100002: blinn4
+    2100004: blinn1
+    2100006: salt_blinn2
+    2300000: polySurface1
+    2300002: polySurface3
+    2300004: polySurface4
+    2300006: polySurface5
+    2300008: polySurface6
+    2300010: polySurface7
+    2300012: polySurface8
+    2300014: pPlane1
+    3300000: polySurface1
+    3300002: polySurface3
+    3300004: polySurface4
+    3300006: polySurface5
+    3300008: polySurface6
+    3300010: polySurface7
+    3300012: polySurface8
+    3300014: pPlane1
+    4300000: polySurface1
+    4300002: polySurface4
+    4300004: polySurface3
+    4300006: polySurface5
+    4300008: pPlane1
+    4300010: polySurface6
+    4300012: polySurface7
+    4300014: polySurface8
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn1
+    second: {fileID: 2100000, guid: 49922bd8c0ab0b148b7a623647917d7c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn2
+    second: {fileID: 2100000, guid: 49922bd8c0ab0b148b7a623647917d7c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blinn4
+    second: {fileID: 2100000, guid: 1b2b0a2982d47ab43a5f7bb05df511ad, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: salt_blinn2
+    second: {fileID: 2100000, guid: e5000672551827a43983ed3e76171442, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

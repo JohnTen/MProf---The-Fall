@@ -97,14 +97,14 @@ public class Conclusion : MonoSingleton<Conclusion>
 		oatSlider.value			= paidOat;
 		paidWheatText.text		= paidWheat.ToString();
 		paidOatText.text		= paidOat.ToString();
-
-		wheatAfterTax = GameDataManager.CurrentWheat - paidWheat - forcedPaidWheat;
 	}
 
 	public void _FeedFamily()
 	{
 		var list = FamilyManager.FamilyMembers;
 		var neededFood = 0;
+
+		wheatAfterTax = GameDataManager.CurrentWheat - paidWheat - forcedPaidWheat;
 
 		foreach (var f in list)
 		{

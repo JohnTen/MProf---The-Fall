@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class CowPeeking : MonoBehaviour
 {
+    bool mooing;
 	Animator animator;
+    [SerializeField] UnityEvent OnClick;
 
 	private void Awake()
 	{
@@ -13,12 +17,17 @@ public class CowPeeking : MonoBehaviour
 
 	private void OnMouseDown()
 	{
-		animator.SetBool("Peek", true);
+        if (mooing || EventSystem.current.IsPointerOverGameObject()) return;
+        mooing = true;
+        OnClick.Invoke();
+        animator.SetBool("Peek", true);
 		Invoke("DisablePeek", 1);
 	}
 
 	private void DisablePeek()
 	{
-		animator.SetBool("Peek", false);
+        mooing = false;
+
+        animator.SetBool("Peek", false);
 	}
 }

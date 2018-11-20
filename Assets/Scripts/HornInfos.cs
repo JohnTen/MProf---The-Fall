@@ -32,6 +32,8 @@ public class HornInfos : MonoBehaviour
 	{
 		if (locked)
 		{
+			if (shopCanvas.enabled)
+				Close();
 			if (generalInfoCanvas.enabled)
 				Close();
 			return;
@@ -49,6 +51,8 @@ public class HornInfos : MonoBehaviour
 	{
 		if (locked)
 		{
+			if (shopCanvas.enabled)
+				Close();
 			if (nextWeekCanvas.enabled)
 				Close();
 			return;
