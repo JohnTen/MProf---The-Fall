@@ -99,8 +99,17 @@ public class FieldBlock : MonoInteractable
 			Clear();
 			return;
 		}
+		
+		var value = result * 1.2f;
+		if (value > 1)
+			Popup.Pop("+ " + (value - 1) * 100 + "%", transform.position + Vector3.up * 3, Color.green);
+		else if (value < 1)
+			Popup.Pop("- " + (1 - value) * 100 + "%", transform.position + Vector3.up * 3, Color.red);
+		else
+			Popup.Pop("100 %", transform.position + Vector3.up * 3);
+
 		status.lastPlantedCrop = status.currentCrop;
-		status.lastPlantedCrop.foodValue = (int)(status.lastPlantedCrop.foodValue * result * 1.2f);
+		status.lastPlantedCrop.foodValue = (int)(status.lastPlantedCrop.foodValue * value);
 
 		CreateCropModel();
 
@@ -117,6 +126,7 @@ public class FieldBlock : MonoInteractable
 		GameDataManager.ModifyCropNumber(status.currentCrop.index, Mathf.RoundToInt(status.currentCrop.foodValue * GameDataManager.GameValues[GameValueType.CropProduction]));
 		GameDataManager.UpdateValues();
 		SoundManager.Play(harvestingSoundLabel);
+		Popup.Pop("+ " + status.currentCrop.foodValue, transform.position + Vector3.up * 3, Color.green);
 
 		Clear();
 	}
