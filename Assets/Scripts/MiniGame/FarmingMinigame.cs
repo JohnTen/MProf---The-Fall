@@ -59,7 +59,7 @@ public class FarmingMinigame : BaseMinigame
 		get { return level4Mazes; }
 	}
 
-	public override event Action<bool> OnGameFinished;
+	public override event Action<float> OnGameFinished;
 
 	public void Display(bool display)
 	{
@@ -426,7 +426,7 @@ public class FarmingMinigame : BaseMinigame
 			MessageBox.OnContinue += StopPlay;
 			if (OnGameFinished != null)
 			{
-				OnGameFinished.Invoke(false);
+				OnGameFinished.Invoke(0);
 			}
 			return;
 		}
@@ -438,7 +438,7 @@ public class FarmingMinigame : BaseMinigame
 			MessageBox.OnContinue += StopPlay;
 			if (OnGameFinished != null)
 			{
-				OnGameFinished.Invoke(true);
+				OnGameFinished.Invoke(1);
 			}
 			return;
 		}
