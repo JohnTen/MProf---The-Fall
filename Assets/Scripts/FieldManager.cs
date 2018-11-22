@@ -5,7 +5,7 @@ using UnityUtility;
 
 public class FieldManager : MonoSingleton<FieldManager>
 {
-	[SerializeField] FarmingMinigame farmingMinigame;
+	[SerializeField] PloughingMinigame ploughingMinigame;
 	[SerializeField] HarvestingMinigame harvestingMinigame;
 	[SerializeField] List<FieldBlock> fieldBlocks = new List<FieldBlock>();
 
@@ -24,22 +24,22 @@ public class FieldManager : MonoSingleton<FieldManager>
 		GameDataManager.UpdateValues();
 	}
 
-	public void StartPlantMinigame(int level, Action<bool> onGameFinished)
+	public void StartPlantMinigame(int level, Action<float> onGameFinished)
 	{
-		farmingMinigame.StartPlay(level);
-		if (farmingMinigame.IsPlaying)
-			farmingMinigame.OnGameFinished += onGameFinished;
+		ploughingMinigame.StartPlay(level);
+		if (ploughingMinigame.IsPlaying)
+			ploughingMinigame.OnGameFinished += onGameFinished;
 		else
-			onGameFinished.Invoke(true);
+			onGameFinished.Invoke(1);
 	}
 
-	public void StartHarvestMinigame(Action<bool> onGameFinished)
+	public void StartHarvestMinigame(Action<float> onGameFinished)
 	{
 		harvestingMinigame.StartPlay(0);
 		if (harvestingMinigame.IsPlaying)
 			harvestingMinigame.OnGameFinished += onGameFinished;
 		else
-			onGameFinished.Invoke(true);
+			onGameFinished.Invoke(1);
 	}
 
 	protected override void Awake()

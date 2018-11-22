@@ -18,6 +18,13 @@ public class WorldUI : MonoSingleton<WorldUI>
 		CropMenu.CloseMenu();
 	}
 
+	public static void AddedUIElement(RectTransform obj)
+	{
+		obj.SetParent(Instance.transform);
+		obj.localScale = Vector3.one;
+		obj.localRotation = Quaternion.identity;
+	}
+
 	public static void MoveUIByPixelPosition(Transform ui, Vector3 pixelPosition)
 	{
 		pixelPosition.z = (Instance.transform.position - GameDataManager.MainCamera.transform.position).z;

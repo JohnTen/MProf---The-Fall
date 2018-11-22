@@ -25,7 +25,7 @@ public class HarvestingMinigame : BaseMinigame
 		protected set { playing = value; }
 	}
 
-	public override event Action<bool> OnGameFinished;
+	public override event Action<float> OnGameFinished;
 
 	public override void StartPlay(int choice)
 	{
@@ -101,7 +101,7 @@ public class HarvestingMinigame : BaseMinigame
 				MessageBox.DisplayMessage("Minigame won!", "You successfully harvest the crop!");
 				if (OnGameFinished != null)
 				{
-					OnGameFinished.Invoke(true);
+					OnGameFinished.Invoke(1);
 				}
 			}
 			else
@@ -109,7 +109,7 @@ public class HarvestingMinigame : BaseMinigame
 				MessageBox.DisplayMessage("Minigame failed!", "Half of the crops you harvested are lost!");
 				if (OnGameFinished != null)
 				{
-					OnGameFinished.Invoke(false);
+					OnGameFinished.Invoke(0);
 				}
 			}
 
@@ -122,7 +122,7 @@ public class HarvestingMinigame : BaseMinigame
 			MessageBox.DisplayMessage("Minigame won!", "You successfully harvest the crop!");
 			if (OnGameFinished != null)
 			{
-				OnGameFinished.Invoke(true);
+				OnGameFinished.Invoke(1);
 			}
 			IsPlaying = false;
 			MessageBox.OnContinue += StopPlay;
@@ -133,7 +133,7 @@ public class HarvestingMinigame : BaseMinigame
 			MessageBox.DisplayMessage("Minigame failed!", "Half of the crops you harvested are lost!");
 			if (OnGameFinished != null)
 			{
-				OnGameFinished.Invoke(true);
+				OnGameFinished.Invoke(1);
 			}
 			IsPlaying = false;
 			MessageBox.OnContinue += StopPlay;

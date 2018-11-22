@@ -90,16 +90,26 @@ public class FieldBlock : MonoInteractable
 
 	public override void StopInteracting() { }
 
-	private void WaitForFarmingMinigame(bool result)
+	private void WaitForPloughingMinigame(float result)
 	{
-		status.fouled = !result;
+		status.fouled = result == 0;
 		if (status.fouled)
 		{
 			status.lastPlantedCrop = null;
 			Clear();
 			return;
 		}
+		
+		var value = result * 1.2f;
+		if (value > 1)
+			Popup.Pop("+ " + (value - 1) * 100 + "%", transform.position + Vector3.up * 3, Color.green);
+		else if (value < 1)
+			Popup.Pop("- " + (1 - value) * 100 + "%", transform.position + Vector3.up * 3, Color.red);
+		else
+			Popup.Pop("100 %", transform.position + Vector3.up * 3);
+
 		status.lastPlantedCrop = status.currentCrop;
+		status.lastPlantedCrop.foodValue = (int)(status.lastPlantedCrop.foodValue * value);
 
 		CreateCropModel();
 
@@ -108,14 +118,15 @@ public class FieldBlock : MonoInteractable
 		onActivated.Invoke();
 	}
 
-	private void WaitForHarvestingMinigame(bool result)
+	private void WaitForHarvestingMinigame(float result)
 	{
-		if (!result)
+		if (result == 0)
 			status.currentCrop.foodValue /= 2;
 
 		GameDataManager.ModifyCropNumber(status.currentCrop.index, Mathf.RoundToInt(status.currentCrop.foodValue * GameDataManager.GameValues[GameValueType.CropProduction]));
 		GameDataManager.UpdateValues();
 		SoundManager.Play(harvestingSoundLabel);
+		Popup.Pop("+ " + status.currentCrop.foodValue, transform.position + Vector3.up * 3, Color.green);
 
 		Clear();
 	}
@@ -137,14 +148,14 @@ public class FieldBlock : MonoInteractable
 				{
 					GameDataManager.GameValues[GameValueType.Fertiliser]--;
 					GameDataManager.UpdateValues();
-					WaitForFarmingMinigame(true);
+					WaitForPloughingMinigame(1);
 				}, 
-				() => FieldManager.Instance.StartPlantMinigame(crop.index, WaitForFarmingMinigame)
+				() => FieldManager.Instance.StartPlantMinigame(crop.index, WaitForPloughingMinigame)
 			);
 		}
 		else
 		{
-			FieldManager.Instance.StartPlantMinigame(crop.index, WaitForFarmingMinigame);
+			FieldManager.Instance.StartPlantMinigame(crop.index, WaitForPloughingMinigame);
 		}
 	}
 
