@@ -47,14 +47,14 @@ MonoBehaviour:
     familyMember: 0
   - name: New Blades
     pic: {fileID: 21300000, guid: 0b40d1872e6005a40a9d6957f94f2074, type: 3}
-    requiredWheat: 4
-    requiredOat: 4
+    requiredWheat: 3
+    requiredOat: 3
     requiredMilk: 2
     sanityBoost: 0
     familyMember: 0
   - name: Box of Salt
     pic: {fileID: 21300000, guid: afd8841681ecd4241b0307e29a348336, type: 3}
-    requiredWheat: 3
+    requiredWheat: 5
     requiredOat: 3
     requiredMilk: 2
     sanityBoost: 0
@@ -345,7 +345,7 @@ MonoBehaviour:
     startingMessage:
     - 'The lord suggests Cob join the Army.
 
-      Cob picks up his favourite stick and leaves to fight in the war.'
+      Cob picks up his favourite rock and leaves to fight in the war.'
     endingMessage:
     - 'Cob is back from war, he''s missing an arm and an ear
 
@@ -713,7 +713,7 @@ MonoBehaviour:
       useGameValue: 0
       valueType: 3
       serializedtype: CropProduction
-    Occurence: {x: 0, y: 30}
+    Occurence: {x: 0, y: 0}
     Duration: {x: 0, y: 10}
     modifers:
     - propertyType: 7
@@ -765,8 +765,8 @@ MonoBehaviour:
       useGameValue: 0
       valueType: 3
       serializedtype: CropProduction
-    Occurence: {x: 0, y: 30}
-    Duration: {x: 0, y: 10}
+    Occurence: {x: 0, y: 0}
+    Duration: {x: 0, y: 0}
     modifers:
     - propertyType: 7
       modificationType: 0
@@ -817,8 +817,8 @@ MonoBehaviour:
       useGameValue: 0
       valueType: 3
       serializedtype: CropProduction
-    Occurence: {x: 0, y: 30}
-    Duration: {x: 0, y: 10}
+    Occurence: {x: 0, y: 0}
+    Duration: {x: 0, y: 0}
     modifers:
     - propertyType: 7
       modificationType: 0
