@@ -81,7 +81,7 @@ public class HarvestingMinigame : BaseMinigame
 	{
 		if (!IsPlaying) return;
 
-		var dir = Vector3.up * Time.unscaledDeltaTime * PointerSpeed;
+		var dir = Vector3.up * TimeManager.UnscaleDeltaTime * PointerSpeed;
 		dir = movingDir ? -dir : dir;
 
 		pointer.localPosition += dir;

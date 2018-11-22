@@ -17,7 +17,20 @@ public class TutScript : MonoBehaviour {
     GameObject TutHarvest;
     [SerializeField]
     GameObject TutHarvestMinigame;
-
+    /*
+    [SerializeField]
+    GameObject TutTax;
+    [SerializeField]
+    GameObject TutFeed;
+    [SerializeField]
+    GameObject TutChecklist;
+    [SerializeField]
+    GameObject TutCow;
+    [SerializeField]
+    GameObject TutMerchant1;
+    [SerializeField]
+    GameObject TutMerchant2;
+    */
 
     // Use this for initialization
     void Start() {

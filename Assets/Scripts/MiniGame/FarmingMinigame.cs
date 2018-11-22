@@ -270,8 +270,8 @@ public class FarmingMinigame : BaseMinigame
 				break;
 		}
 
-		currentMovement += maze.PCMovingSpeed * Time.unscaledDeltaTime * 0.1f;
-		pc.transform.Translate(movement * maze.PCMovingSpeed * Time.unscaledDeltaTime);
+		currentMovement += maze.PCMovingSpeed * TimeManager.UnscaleDeltaTime * 0.1f;
+		pc.transform.Translate(movement * maze.PCMovingSpeed * TimeManager.UnscaleDeltaTime);
 	}
 
 	private bool IsPCWithinBoundary()
@@ -416,7 +416,7 @@ public class FarmingMinigame : BaseMinigame
 		var origPos = pc.position;
 		Move();
 		var size = timeMeter.sizeDelta;
-		size.y -= (Time.unscaledDeltaTime / maze.TimeLimit) * timeMeterSize;
+		size.y -= (TimeManager.UnscaleDeltaTime / maze.TimeLimit) * timeMeterSize;
 		timeMeter.sizeDelta = size;
 
 		if (size.y <= 0 || Input.GetKeyDown(KeyCode.P))
