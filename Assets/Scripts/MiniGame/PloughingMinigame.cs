@@ -148,7 +148,7 @@ public class PloughingMinigame : BaseMinigame
 			finalZones.Add(hitZones[i]);
 			hitSigns[i].localPosition = new Vector3(randomX, 0);
 			hitZones[i].localPosition = new Vector3(randomX, 0);
-			finalZones[i].sizeDelta = new Vector2(finalZones[i].sizeDelta.x, 0);
+			finalZones[i].sizeDelta = new Vector2(hitZoneWidth, 0);
 			finalZones[i].GetComponent<Image>().color = initialHitZoneColor;
 			hitZoneSuccess.Add(false);
 
@@ -185,8 +185,8 @@ public class PloughingMinigame : BaseMinigame
 	{
 		if (!IsPlaying) return;
 
-		plow.transform.localPosition += Vector3.right * pointerMoveSpeed * Time.unscaledDeltaTime;
-		plowMask.sizeDelta += Vector2.right * pointerMoveSpeed * Time.unscaledDeltaTime;
+		plow.transform.localPosition += Vector3.right * pointerMoveSpeed * TimeManager.UnscaleDeltaTime;
+		plowMask.sizeDelta += Vector2.right * pointerMoveSpeed * TimeManager.UnscaleDeltaTime;
 
 		if (plow.transform.localPosition.x >= ground.rect.xMax)
 		{

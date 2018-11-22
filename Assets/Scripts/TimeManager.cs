@@ -10,12 +10,26 @@ public class TimeManager : GlobalSingleton<TimeManager>
 	[SerializeField] int date;
 	[SerializeField] int timeFreezeCount;
 
+	float pausedTime;
+	bool paused;
+
 	public static event Action<int> OnTimePassed;
 
 	public static int Date
 	{
 		get { return Instance.date; }
 		set { Instance.date = value; }
+	}
+
+	public static float UnscaleDeltaTime
+	{
+		get
+		{
+			if (Instance.paused)
+				return 0;
+
+			return Time.unscaledDeltaTime;
+		}
 	}
 
 	public static void FreezeTime()
@@ -36,5 +50,10 @@ public class TimeManager : GlobalSingleton<TimeManager>
 		date++;
 		if (OnTimePassed != null)
 			OnTimePassed.Invoke(date);
+	}
+
+	private void OnApplicationFocus(bool focus)
+	{
+		paused = !focus;
 	}
 }
