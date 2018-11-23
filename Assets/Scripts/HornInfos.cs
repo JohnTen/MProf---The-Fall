@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityUtility;
 
 public class HornInfos : MonoBehaviour
@@ -79,5 +80,15 @@ public class HornInfos : MonoBehaviour
 		generalInfoCanvas.enabled = false;
 		nextWeekCanvas.enabled = false;
 		shopCanvas.enabled = true;
+	}
+
+	private void Update()
+	{
+		if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())
+		{
+			if (nextWeekCanvas.enabled) return;
+			
+			Close();
+		}
 	}
 }

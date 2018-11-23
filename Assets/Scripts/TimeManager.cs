@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityUtility;
 
-public class TimeManager : GlobalSingleton<TimeManager>
+public class TimeManager : MonoSingleton<TimeManager>
 {
 	[Tooltip("Current date")]
 	[SerializeField] int date;
@@ -32,6 +32,21 @@ public class TimeManager : GlobalSingleton<TimeManager>
 		}
 	}
 
+	public static void FreezeGameTime()
+	{
+		Instance.timeFreezeCount++;
+		Time.timeScale = 0;
+		Instance.paused = true;
+	}
+
+	public static void UnfreezeGameTime()
+	{
+		Instance.timeFreezeCount--;
+		if (Instance.timeFreezeCount <= 0)
+			Time.timeScale = 1;
+		Instance.paused = false;
+	}
+
 	public static void FreezeTime()
 	{
 		Instance.timeFreezeCount++;
@@ -54,6 +69,8 @@ public class TimeManager : GlobalSingleton<TimeManager>
 
 	private void OnApplicationFocus(bool focus)
 	{
+		if (Instance.timeFreezeCount <= 0)
+			Time.timeScale = 1;
 		paused = !focus;
 	}
 }

@@ -14,7 +14,7 @@ public class GameData
 	public List<RuntimeEvent> events;
 }
 
-public class GameDataManager : GlobalSingleton<GameDataManager>
+public class GameDataManager : MonoSingleton<GameDataManager>
 {
 	[SerializeField] int maxWeek;
 	[SerializeField] Camera mainCamera;

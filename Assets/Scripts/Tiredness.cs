@@ -31,6 +31,11 @@ public class Tiredness : MonoBehaviour
 		}
 	}
 
+	private void OnDestroy()
+	{
+		timer.Dispose();
+	}
+
 	public void StartTiming()
 	{
 		timer.Start(time);

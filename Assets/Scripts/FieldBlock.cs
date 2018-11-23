@@ -120,13 +120,16 @@ public class FieldBlock : MonoInteractable
 
 	private void WaitForHarvestingMinigame(float result)
 	{
-		if (result == 0)
-			status.currentCrop.foodValue /= 2;
+		status.currentCrop.foodValue = Mathf.RoundToInt(status.currentCrop.foodValue * (0.5f + 0.5f * result));
 
 		GameDataManager.ModifyCropNumber(status.currentCrop.index, Mathf.RoundToInt(status.currentCrop.foodValue * GameDataManager.GameValues[GameValueType.CropProduction]));
 		GameDataManager.UpdateValues();
 		SoundManager.Play(harvestingSoundLabel);
-		Popup.Pop("+ " + status.currentCrop.foodValue, transform.position + Vector3.up * 3, Color.green);
+
+		if (status.currentCrop.foodValue == 0)
+			Popup.Pop("+ " + status.currentCrop.foodValue, transform.position + Vector3.up * 3);
+		else
+			Popup.Pop("+ " + status.currentCrop.foodValue, transform.position + Vector3.up * 3, Color.green);
 
 		Clear();
 	}

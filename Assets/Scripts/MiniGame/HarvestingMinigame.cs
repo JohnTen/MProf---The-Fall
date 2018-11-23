@@ -7,10 +7,11 @@ public class HarvestingMinigame : BaseMinigame
 {
 	[SerializeField] RectTransform meter;
 	[SerializeField] RectTransform pointer;
-	[SerializeField] RectTransform hitZone;
+	[SerializeField] RectTransform hitZone1;
+	[SerializeField] RectTransform hitZone2;
 
-	public float MinHitZoneSize;
-	public float MaxHitZoneSize;
+	[SerializeField] Vector2 hitZone1Size;
+	[SerializeField] Vector2 hitZone2Size;
 	public float PointerSpeed;
 
 	[Header("Debug")]
@@ -56,19 +57,25 @@ public class HarvestingMinigame : BaseMinigame
 
 	private void Randomise()
 	{
-		var height = Random.Range(MinHitZoneSize, MaxHitZoneSize);
+		var height1 = Random.Range(hitZone1Size.x, hitZone1Size.y);
+		var height2 = Random.Range(hitZone2Size.x, hitZone2Size.y);
 
-		var size = hitZone.sizeDelta;
-		size.y = height;
-		hitZone.sizeDelta = size;
+		var size = hitZone1.sizeDelta;
+		size.y = height1;
+		hitZone1.sizeDelta = size;
 
-		var maxY = (meter.sizeDelta.y - height) / 2;
+		size = hitZone2.sizeDelta;
+		size.y = height2;
+		hitZone2.sizeDelta = size;
+
+		var maxY = (meter.sizeDelta.y - height2) / 2;
 		var minY = -maxY;
 
 		var yPos = Random.Range(minY, maxY);
-		var pos = hitZone.localPosition;
+		var pos = hitZone1.localPosition;
 		pos.y = yPos;
-		hitZone.localPosition = pos;
+		hitZone1.localPosition = pos;
+		hitZone2.localPosition = pos;
 	}
 
 	private void Start()
@@ -90,13 +97,15 @@ public class HarvestingMinigame : BaseMinigame
 			movingDir = !movingDir;
 		}
 
-		if (Input.GetButtonDown("Fire1"))
+		if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space))
 		{
-			var maxHitZone = hitZone.localPosition.y + hitZone.sizeDelta.y * 0.5f;
-			var minHitZone = hitZone.localPosition.y - hitZone.sizeDelta.y * 0.5f;
+			var maxHitZone1 = hitZone1.localPosition.y + hitZone1.sizeDelta.y * 0.5f;
+			var minHitZone1 = hitZone1.localPosition.y - hitZone1.sizeDelta.y * 0.5f;
+			var maxHitZone2 = hitZone2.localPosition.y + hitZone2.sizeDelta.y * 0.5f;
+			var minHitZone2 = hitZone2.localPosition.y - hitZone2.sizeDelta.y * 0.5f;
 
-			if (pointer.localPosition.y > minHitZone &&
-				pointer.localPosition.y < maxHitZone)
+			if (pointer.localPosition.y > minHitZone1 &&
+				pointer.localPosition.y < maxHitZone1)
 			{
 				MessageBox.DisplayMessage("Minigame won!", "You successfully harvest the crop!");
 				if (OnGameFinished != null)
@@ -104,12 +113,14 @@ public class HarvestingMinigame : BaseMinigame
 					OnGameFinished.Invoke(1);
 				}
 			}
-			else
+			else if (
+				pointer.localPosition.y > minHitZone2 &&
+				pointer.localPosition.y < maxHitZone2)
 			{
-				MessageBox.DisplayMessage("Minigame failed!", "Half of the crops you harvested are lost!");
+				MessageBox.DisplayMessage("Minigame Passed!", "A quarter of the crops you harvested are lost!");
 				if (OnGameFinished != null)
 				{
-					OnGameFinished.Invoke(0);
+					OnGameFinished.Invoke(0.5f);
 				}
 			}
 

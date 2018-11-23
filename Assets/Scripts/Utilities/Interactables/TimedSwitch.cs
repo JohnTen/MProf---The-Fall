@@ -44,6 +44,11 @@ namespace UnityUtility.Interactables
 			timer.OnTimeOut += Timer_OnTimeOut;
 		}
 
+		protected void OnDestroy()
+		{
+			timer.Dispose();
+		}
+
 		protected void Timer_OnTimeOut()
 		{
 			InvokeDeactivated();
