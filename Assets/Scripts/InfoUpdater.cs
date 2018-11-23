@@ -28,6 +28,12 @@ public class InfoUpdater : MonoBehaviour
 		if (autoUpdate) UpdateInfo();
 	}
 
+	private void OnDestroy()
+	{
+		GameDataManager.OnValueChanged -= GlobalValues_OnvalueChanged;
+		TimeManager.OnTimePassed -= TimeManager_OnTimePassed;
+	}
+
 	public void UpdateInfo()
 	{
 		GameDataManager.GameValues.CalculateModifiedValue();

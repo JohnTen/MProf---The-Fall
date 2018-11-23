@@ -37,6 +37,11 @@ public class FamilyInfo : MonoBehaviour
 		}
 	}
 
+	private void OnDestroy()
+	{
+		GameDataManager.OnValueChanged -= Refresh;
+	}
+
 	public void Display(int index)
 	{
 		Open();

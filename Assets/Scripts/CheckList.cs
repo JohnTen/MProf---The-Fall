@@ -53,6 +53,11 @@ public class CheckList : MonoSingleton<CheckList>
 		}
 	}
 
+	private void OnDestroy()
+	{
+		GameDataManager.OnValueChanged -= UpdateCheckList;
+	}
+
 	public bool IsCheckListFinished()
 	{
 		return

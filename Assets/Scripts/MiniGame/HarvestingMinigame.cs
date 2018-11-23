@@ -123,6 +123,14 @@ public class HarvestingMinigame : BaseMinigame
 					OnGameFinished.Invoke(0.5f);
 				}
 			}
+			else
+			{
+				MessageBox.DisplayMessage("Minigame Failed!", "Half of the crops you harvested are lost!");
+				if (OnGameFinished != null)
+				{
+					OnGameFinished.Invoke(0);
+				}
+			}
 
 			IsPlaying = false;
 			MessageBox.OnContinue += StopPlay;

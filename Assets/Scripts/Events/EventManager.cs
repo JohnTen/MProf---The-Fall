@@ -130,7 +130,6 @@ public class EventManager : MonoSingleton<EventManager>
 			list[i].gone = true;
 			GameDataManager.GameValues[GameValueType.Fertiliser]++;
 			GameDataManager.GameValues.CalculateModifiedValue();
-			print(GameDataManager.GameValues[GameValueType.Fertiliser]);
 			var title = EventList[i + starvationEventIndexOffset].eventRef.name;
 			var message = EventList[i + starvationEventIndexOffset].eventRef.startingMessage[
 				Random.Range(0, EventList[i + starvationEventIndexOffset].eventRef.startingMessage.Length)];

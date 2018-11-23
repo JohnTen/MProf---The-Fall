@@ -27,5 +27,13 @@ namespace UnityUtility
 				return;
 			}
 		}
+
+		protected virtual void OnDestroy()
+		{
+			if (Instance == null) return;
+
+			Destroy(_instance);
+			_instance = null;
+		}
 	}
 }
