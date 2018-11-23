@@ -393,9 +393,7 @@ public class MinigameManager : EditorWindow
 				return;
 			}
 		}
-
-		harvestingGame.MinHitZoneSize = EditorGUILayout.FloatField("Minimum size of hit zone", harvestingGame.MinHitZoneSize);
-		harvestingGame.MaxHitZoneSize = EditorGUILayout.FloatField("Maximum size of hit zone", harvestingGame.MaxHitZoneSize);
+		
 		harvestingGame.PointerSpeed = EditorGUILayout.FloatField("Moving speed of pointer", harvestingGame.PointerSpeed);
 
 		GUILayout.EndVertical();
