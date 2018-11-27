@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityUtility;
 
 public class EventManager : MonoSingleton<EventManager>
@@ -13,6 +14,8 @@ public class EventManager : MonoSingleton<EventManager>
 	public int taxEvasionTimes = 0;
 
 	public List<RuntimeEvent> EventList;
+	public List<UnityEvent> onEventStarts;
+	public List<UnityEvent> onEventStops;
 
 	[SerializeField] FadeIn GoodEnding;
 	[SerializeField] FadeIn BadEnding;
@@ -171,6 +174,11 @@ public class EventManager : MonoSingleton<EventManager>
 
 		Debug.Log(ge.eventRef.name + " Ending");
 		
+		if (ge.ID < onEventStops.Count)
+		{
+			onEventStops[ge.ID].Invoke();
+		}
+
 		index = Random.Range(0, ge.eventRef.endingMessage.Length);
 		message = ge.eventRef.endingMessage[index];
 		MessageBox.DisplayMessage(ge.eventRef.name, message);
@@ -183,7 +191,12 @@ public class EventManager : MonoSingleton<EventManager>
 		string message;
 
 		Debug.Log(ge.eventRef.name + " Starting");
-		
+
+		if (ge.ID < onEventStarts.Count)
+		{
+			onEventStarts[ge.ID].Invoke();
+		}
+
 		index = Random.Range(0, ge.eventRef.startingMessage.Length);
 		message = ge.eventRef.startingMessage[index];
 		MessageBox.DisplayMessage(ge.eventRef.name, message);
