@@ -46,7 +46,7 @@ public class EventManager : MonoSingleton<EventManager>
 		GameDataManager.UpdateValues();
 
 		StarvationCheck();
-		RandomDeathCheck();
+		//RandomDeathCheck();
 		TaxEvasionEventCheck();
 		CheckGameOver();
 		GameDataManager.UpdateValues();
