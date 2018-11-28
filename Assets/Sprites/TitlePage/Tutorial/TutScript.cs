@@ -6,31 +6,38 @@ using UnityEngine.UI;
 public class TutScript : MonoBehaviour {
 
     [SerializeField]
-    GameObject TutPlant1;
+    GameObject TutPlant;
     [SerializeField]
-    GameObject TutPlant2;
+    GameObject TutPlanted;
     [SerializeField]
-    GameObject TutPlantMinigame1;
+    GameObject TutPloughMinigameStart;
     [SerializeField]
-    GameObject TutPlantMinigame2;
+    GameObject TutPloughMinigame1;
+    [SerializeField]
+    GameObject TutPloughMinigame2;
+    [SerializeField]
+    GameObject TutPloughMinigame3;
+    [SerializeField]
+    GameObject TutPloughMinigameFinish;
     [SerializeField]
     GameObject TutHarvest;
     [SerializeField]
     GameObject TutHarvestMinigame;
-    /*
     [SerializeField]
     GameObject TutTax;
     [SerializeField]
-    GameObject TutFeed;
-    [SerializeField]
-    GameObject TutChecklist;
+    GameObject TutFeedFamily;
     [SerializeField]
     GameObject TutCow;
     [SerializeField]
     GameObject TutMerchant1;
     [SerializeField]
     GameObject TutMerchant2;
-    */
+    [SerializeField]
+    GameObject TutChecklist;
+    [SerializeField]
+    GameObject TutDetails;
+
 
     // Use this for initialization
     void Start() {
@@ -44,66 +51,326 @@ public class TutScript : MonoBehaviour {
 
     public void OnHowToPlay()
     {
-    TutPlant1.SetActive(true);
-    TutPlant2.SetActive(false);
-    TutPlantMinigame1.SetActive(false);
-    TutPlantMinigame2.SetActive(false);
-    TutHarvest.SetActive(false);
-    TutHarvestMinigame.SetActive(false);
+        TutPlant.SetActive(true);
+        TutPlanted.SetActive(false);
+        TutPloughMinigameStart.SetActive(false);
+        TutPloughMinigame1.SetActive(false);
+        TutPloughMinigame2.SetActive(false);
+        TutPloughMinigame3.SetActive(false);
+        TutPloughMinigameFinish.SetActive(false);
+        TutHarvest.SetActive(false);
+        TutHarvestMinigame.SetActive(false);
+        TutTax.SetActive(false);
+        TutFeedFamily.SetActive(false);
+        TutCow.SetActive(false);
+        TutMerchant1.SetActive(false);
+        TutMerchant2.SetActive(false);
+        TutChecklist.SetActive(false);
+        TutDetails.SetActive(false);
     }
 
     public void OnNext1()
     {
-        TutPlant1.SetActive(false);
-        TutPlant2.SetActive(true);
-        TutPlantMinigame1.SetActive(false);
-        TutPlantMinigame2.SetActive(false);
+        TutPlant.SetActive(false);
+        TutPlanted.SetActive(true);
+        TutPloughMinigameStart.SetActive(false);
+        TutPloughMinigame1.SetActive(false);
+        TutPloughMinigame2.SetActive(false);
+        TutPloughMinigame3.SetActive(false);
+        TutPloughMinigameFinish.SetActive(false);
         TutHarvest.SetActive(false);
         TutHarvestMinigame.SetActive(false);
+        TutTax.SetActive(false);
+        TutFeedFamily.SetActive(false);
+        TutCow.SetActive(false);
+        TutMerchant1.SetActive(false);
+        TutMerchant2.SetActive(false);
+        TutChecklist.SetActive(false);
+        TutDetails.SetActive(false);
     }
     public void OnNext2()
     {
-        TutPlant1.SetActive(false);
-        TutPlant2.SetActive(false);
-        TutPlantMinigame1.SetActive(true);
-        TutPlantMinigame2.SetActive(false);
+        TutPlant.SetActive(false);
+        TutPlanted.SetActive(false);
+        TutPloughMinigameStart.SetActive(true);
+        TutPloughMinigame1.SetActive(false);
+        TutPloughMinigame2.SetActive(false);
+        TutPloughMinigame3.SetActive(false);
+        TutPloughMinigameFinish.SetActive(false);
         TutHarvest.SetActive(false);
         TutHarvestMinigame.SetActive(false);
+        TutTax.SetActive(false);
+        TutFeedFamily.SetActive(false);
+        TutCow.SetActive(false);
+        TutMerchant1.SetActive(false);
+        TutMerchant2.SetActive(false);
+        TutChecklist.SetActive(false);
+        TutDetails.SetActive(false);
     }
     public void OnNext3()
     {
-        TutPlant1.SetActive(false);
-        TutPlant2.SetActive(false);
-        TutPlantMinigame1.SetActive(false);
-        TutPlantMinigame2.SetActive(true);
+        TutPlant.SetActive(false);
+        TutPlanted.SetActive(false);
+        TutPloughMinigameStart.SetActive(false);
+        TutPloughMinigame1.SetActive(true);
+        TutPloughMinigame2.SetActive(false);
+        TutPloughMinigame3.SetActive(false);
+        TutPloughMinigameFinish.SetActive(false);
         TutHarvest.SetActive(false);
         TutHarvestMinigame.SetActive(false);
+        TutTax.SetActive(false);
+        TutFeedFamily.SetActive(false);
+        TutCow.SetActive(false);
+        TutMerchant1.SetActive(false);
+        TutMerchant2.SetActive(false);
+        TutChecklist.SetActive(false);
+        TutDetails.SetActive(false);
     }
     public void OnNext4()
     {
-        TutPlant1.SetActive(false);
-        TutPlant2.SetActive(false);
-        TutPlantMinigame1.SetActive(false);
-        TutPlantMinigame2.SetActive(false);
-        TutHarvest.SetActive(true);
+        TutPlant.SetActive(false);
+        TutPlanted.SetActive(false);
+        TutPloughMinigameStart.SetActive(false);
+        TutPloughMinigame1.SetActive(false);
+        TutPloughMinigame2.SetActive(true);
+        TutPloughMinigame3.SetActive(false);
+        TutPloughMinigameFinish.SetActive(false);
+        TutHarvest.SetActive(false);
         TutHarvestMinigame.SetActive(false);
+        TutTax.SetActive(false);
+        TutFeedFamily.SetActive(false);
+        TutCow.SetActive(false);
+        TutMerchant1.SetActive(false);
+        TutMerchant2.SetActive(false);
+        TutChecklist.SetActive(false);
+        TutDetails.SetActive(false);
     }
     public void OnNext5()
     {
-        TutPlant1.SetActive(false);
-        TutPlant2.SetActive(false);
-        TutPlantMinigame1.SetActive(false);
-        TutPlantMinigame2.SetActive(false);
+        TutPlant.SetActive(false);
+        TutPlanted.SetActive(false);
+        TutPloughMinigameStart.SetActive(false);
+        TutPloughMinigame1.SetActive(false);
+        TutPloughMinigame2.SetActive(false);
+        TutPloughMinigame3.SetActive(true);
+        TutPloughMinigameFinish.SetActive(false);
+        TutHarvest.SetActive(false);
+        TutHarvestMinigame.SetActive(false);
+        TutTax.SetActive(false);
+        TutFeedFamily.SetActive(false);
+        TutCow.SetActive(false);
+        TutMerchant1.SetActive(false);
+        TutMerchant2.SetActive(false);
+        TutChecklist.SetActive(false);
+        TutDetails.SetActive(false);
+    }
+    public void OnNext6()
+    {
+        TutPlant.SetActive(false);
+        TutPlanted.SetActive(false);
+        TutPloughMinigameStart.SetActive(false);
+        TutPloughMinigame1.SetActive(false);
+        TutPloughMinigame2.SetActive(false);
+        TutPloughMinigame3.SetActive(false);
+        TutPloughMinigameFinish.SetActive(true);
+        TutHarvest.SetActive(false);
+        TutHarvestMinigame.SetActive(false);
+        TutTax.SetActive(false);
+        TutFeedFamily.SetActive(false);
+        TutCow.SetActive(false);
+        TutMerchant1.SetActive(false);
+        TutMerchant2.SetActive(false);
+        TutChecklist.SetActive(false);
+        TutDetails.SetActive(false);
+    }
+    public void OnNext7()
+    {
+        TutPlant.SetActive(false);
+        TutPlanted.SetActive(false);
+        TutPloughMinigameStart.SetActive(false);
+        TutPloughMinigame1.SetActive(false);
+        TutPloughMinigame2.SetActive(false);
+        TutPloughMinigame3.SetActive(false);
+        TutPloughMinigameFinish.SetActive(false);
+        TutHarvest.SetActive(true);
+        TutHarvestMinigame.SetActive(false);
+        TutTax.SetActive(false);
+        TutFeedFamily.SetActive(false);
+        TutCow.SetActive(false);
+        TutMerchant1.SetActive(false);
+        TutMerchant2.SetActive(false);
+        TutChecklist.SetActive(false);
+        TutDetails.SetActive(false);
+    }
+    public void OnNext8()
+    {
+        TutPlant.SetActive(false);
+        TutPlanted.SetActive(false);
+        TutPloughMinigameStart.SetActive(false);
+        TutPloughMinigame1.SetActive(false);
+        TutPloughMinigame2.SetActive(false);
+        TutPloughMinigame3.SetActive(false);
+        TutPloughMinigameFinish.SetActive(false);
         TutHarvest.SetActive(false);
         TutHarvestMinigame.SetActive(true);
+        TutTax.SetActive(false);
+        TutFeedFamily.SetActive(false);
+        TutCow.SetActive(false);
+        TutMerchant1.SetActive(false);
+        TutMerchant2.SetActive(false);
+        TutChecklist.SetActive(false);
+        TutDetails.SetActive(false);
+    }
+    public void OnNext9()
+    {
+        TutPlant.SetActive(false);
+        TutPlanted.SetActive(false);
+        TutPloughMinigameStart.SetActive(false);
+        TutPloughMinigame1.SetActive(false);
+        TutPloughMinigame2.SetActive(false);
+        TutPloughMinigame3.SetActive(false);
+        TutPloughMinigameFinish.SetActive(false);
+        TutHarvest.SetActive(false);
+        TutHarvestMinigame.SetActive(false);
+        TutTax.SetActive(true);
+        TutFeedFamily.SetActive(false);
+        TutCow.SetActive(false);
+        TutMerchant1.SetActive(false);
+        TutMerchant2.SetActive(false);
+        TutChecklist.SetActive(false);
+        TutDetails.SetActive(false);
+    }
+    public void OnNext10()
+    {
+        TutPlant.SetActive(false);
+        TutPlanted.SetActive(false);
+        TutPloughMinigameStart.SetActive(false);
+        TutPloughMinigame1.SetActive(false);
+        TutPloughMinigame2.SetActive(false);
+        TutPloughMinigame3.SetActive(false);
+        TutPloughMinigameFinish.SetActive(false);
+        TutHarvest.SetActive(false);
+        TutHarvestMinigame.SetActive(false);
+        TutTax.SetActive(false);
+        TutFeedFamily.SetActive(true);
+        TutCow.SetActive(false);
+        TutMerchant1.SetActive(false);
+        TutMerchant2.SetActive(false);
+        TutChecklist.SetActive(false);
+        TutDetails.SetActive(false);
+    }
+    public void OnNext11()
+    {
+        TutPlant.SetActive(false);
+        TutPlanted.SetActive(false);
+        TutPloughMinigameStart.SetActive(false);
+        TutPloughMinigame1.SetActive(false);
+        TutPloughMinigame2.SetActive(false);
+        TutPloughMinigame3.SetActive(false);
+        TutPloughMinigameFinish.SetActive(false);
+        TutHarvest.SetActive(false);
+        TutHarvestMinigame.SetActive(false);
+        TutTax.SetActive(false);
+        TutFeedFamily.SetActive(false);
+        TutCow.SetActive(true);
+        TutMerchant1.SetActive(false);
+        TutMerchant2.SetActive(false);
+        TutChecklist.SetActive(false);
+        TutDetails.SetActive(false);
+    }
+    public void OnNext12()
+    {
+        TutPlant.SetActive(false);
+        TutPlanted.SetActive(false);
+        TutPloughMinigameStart.SetActive(false);
+        TutPloughMinigame1.SetActive(false);
+        TutPloughMinigame2.SetActive(false);
+        TutPloughMinigame3.SetActive(false);
+        TutPloughMinigameFinish.SetActive(false);
+        TutHarvest.SetActive(false);
+        TutHarvestMinigame.SetActive(false);
+        TutTax.SetActive(false);
+        TutFeedFamily.SetActive(false);
+        TutCow.SetActive(false);
+        TutMerchant1.SetActive(true);
+        TutMerchant2.SetActive(false);
+        TutChecklist.SetActive(false);
+        TutDetails.SetActive(false);
+    }
+    public void OnNext13()
+    {
+        TutPlant.SetActive(false);
+        TutPlanted.SetActive(false);
+        TutPloughMinigameStart.SetActive(false);
+        TutPloughMinigame1.SetActive(false);
+        TutPloughMinigame2.SetActive(false);
+        TutPloughMinigame3.SetActive(false);
+        TutPloughMinigameFinish.SetActive(false);
+        TutHarvest.SetActive(false);
+        TutHarvestMinigame.SetActive(false);
+        TutTax.SetActive(false);
+        TutFeedFamily.SetActive(false);
+        TutCow.SetActive(false);
+        TutMerchant1.SetActive(false);
+        TutMerchant2.SetActive(true);
+        TutChecklist.SetActive(false);
+        TutDetails.SetActive(false);
+    }
+    public void OnNext14()
+    {
+        TutPlant.SetActive(false);
+        TutPlanted.SetActive(false);
+        TutPloughMinigameStart.SetActive(false);
+        TutPloughMinigame1.SetActive(false);
+        TutPloughMinigame2.SetActive(false);
+        TutPloughMinigame3.SetActive(false);
+        TutPloughMinigameFinish.SetActive(false);
+        TutHarvest.SetActive(false);
+        TutHarvestMinigame.SetActive(false);
+        TutTax.SetActive(false);
+        TutFeedFamily.SetActive(false);
+        TutCow.SetActive(false);
+        TutMerchant1.SetActive(false);
+        TutMerchant2.SetActive(false);
+        TutChecklist.SetActive(true);
+        TutDetails.SetActive(false);
+    }
+    public void OnNext15()
+    {
+        TutPlant.SetActive(false);
+        TutPlanted.SetActive(false);
+        TutPloughMinigameStart.SetActive(false);
+        TutPloughMinigame1.SetActive(false);
+        TutPloughMinigame2.SetActive(false);
+        TutPloughMinigame3.SetActive(false);
+        TutPloughMinigameFinish.SetActive(false);
+        TutHarvest.SetActive(false);
+        TutHarvestMinigame.SetActive(false);
+        TutTax.SetActive(false);
+        TutFeedFamily.SetActive(false);
+        TutCow.SetActive(false);
+        TutMerchant1.SetActive(false);
+        TutMerchant2.SetActive(false);
+        TutChecklist.SetActive(false);
+        TutDetails.SetActive(true);
     }
     public void OnMenu()
     {
-        TutPlant1.SetActive(false);
-        TutPlant2.SetActive(false);
-        TutPlantMinigame1.SetActive(false);
-        TutPlantMinigame2.SetActive(false);
+        TutPlant.SetActive(false);
+        TutPlanted.SetActive(false);
+        TutPloughMinigameStart.SetActive(false);
+        TutPloughMinigame1.SetActive(false);
+        TutPloughMinigame2.SetActive(false);
+        TutPloughMinigame3.SetActive(false);
+        TutPloughMinigameFinish.SetActive(false);
         TutHarvest.SetActive(false);
         TutHarvestMinigame.SetActive(false);
+        TutTax.SetActive(false);
+        TutFeedFamily.SetActive(false);
+        TutCow.SetActive(false);
+        TutMerchant1.SetActive(false);
+        TutMerchant2.SetActive(false);
+        TutChecklist.SetActive(false);
+        TutDetails.SetActive(false);
     }
 }
