@@ -37,6 +37,10 @@ public class TutScript : MonoBehaviour {
     GameObject TutChecklist;
     [SerializeField]
     GameObject TutDetails;
+    [SerializeField]
+    GameObject TutEvent;
+    [SerializeField]
+    GameObject TutClock;
 
 
     // Use this for initialization
@@ -67,6 +71,8 @@ public class TutScript : MonoBehaviour {
         TutMerchant2.SetActive(false);
         TutChecklist.SetActive(false);
         TutDetails.SetActive(false);
+        TutEvent.SetActive(false);
+        TutClock.SetActive(false);
     }
 
     public void OnNext1()
@@ -87,6 +93,8 @@ public class TutScript : MonoBehaviour {
         TutMerchant2.SetActive(false);
         TutChecklist.SetActive(false);
         TutDetails.SetActive(false);
+        TutEvent.SetActive(false);
+        TutClock.SetActive(false);
     }
     public void OnNext2()
     {
@@ -106,6 +114,8 @@ public class TutScript : MonoBehaviour {
         TutMerchant2.SetActive(false);
         TutChecklist.SetActive(false);
         TutDetails.SetActive(false);
+        TutEvent.SetActive(false);
+        TutClock.SetActive(false);
     }
     public void OnNext3()
     {
@@ -125,6 +135,8 @@ public class TutScript : MonoBehaviour {
         TutMerchant2.SetActive(false);
         TutChecklist.SetActive(false);
         TutDetails.SetActive(false);
+        TutEvent.SetActive(false);
+        TutClock.SetActive(false);
     }
     public void OnNext4()
     {
@@ -144,6 +156,8 @@ public class TutScript : MonoBehaviour {
         TutMerchant2.SetActive(false);
         TutChecklist.SetActive(false);
         TutDetails.SetActive(false);
+        TutEvent.SetActive(false);
+        TutClock.SetActive(false);
     }
     public void OnNext5()
     {
@@ -163,6 +177,8 @@ public class TutScript : MonoBehaviour {
         TutMerchant2.SetActive(false);
         TutChecklist.SetActive(false);
         TutDetails.SetActive(false);
+        TutEvent.SetActive(false);
+        TutClock.SetActive(false);
     }
     public void OnNext6()
     {
@@ -182,6 +198,8 @@ public class TutScript : MonoBehaviour {
         TutMerchant2.SetActive(false);
         TutChecklist.SetActive(false);
         TutDetails.SetActive(false);
+        TutEvent.SetActive(false);
+        TutClock.SetActive(false);
     }
     public void OnNext7()
     {
@@ -201,6 +219,8 @@ public class TutScript : MonoBehaviour {
         TutMerchant2.SetActive(false);
         TutChecklist.SetActive(false);
         TutDetails.SetActive(false);
+        TutEvent.SetActive(false);
+        TutClock.SetActive(false);
     }
     public void OnNext8()
     {
@@ -220,6 +240,8 @@ public class TutScript : MonoBehaviour {
         TutMerchant2.SetActive(false);
         TutChecklist.SetActive(false);
         TutDetails.SetActive(false);
+        TutEvent.SetActive(false);
+        TutClock.SetActive(false);
     }
     public void OnNext9()
     {
@@ -239,6 +261,8 @@ public class TutScript : MonoBehaviour {
         TutMerchant2.SetActive(false);
         TutChecklist.SetActive(false);
         TutDetails.SetActive(false);
+        TutEvent.SetActive(false);
+        TutClock.SetActive(false);
     }
     public void OnNext10()
     {
@@ -258,6 +282,8 @@ public class TutScript : MonoBehaviour {
         TutMerchant2.SetActive(false);
         TutChecklist.SetActive(false);
         TutDetails.SetActive(false);
+        TutEvent.SetActive(false);
+        TutClock.SetActive(false);
     }
     public void OnNext11()
     {
@@ -277,6 +303,8 @@ public class TutScript : MonoBehaviour {
         TutMerchant2.SetActive(false);
         TutChecklist.SetActive(false);
         TutDetails.SetActive(false);
+        TutEvent.SetActive(false);
+        TutClock.SetActive(false);
     }
     public void OnNext12()
     {
@@ -296,6 +324,8 @@ public class TutScript : MonoBehaviour {
         TutMerchant2.SetActive(false);
         TutChecklist.SetActive(false);
         TutDetails.SetActive(false);
+        TutEvent.SetActive(false);
+        TutClock.SetActive(false);
     }
     public void OnNext13()
     {
@@ -315,6 +345,8 @@ public class TutScript : MonoBehaviour {
         TutMerchant2.SetActive(true);
         TutChecklist.SetActive(false);
         TutDetails.SetActive(false);
+        TutEvent.SetActive(false);
+        TutClock.SetActive(false);
     }
     public void OnNext14()
     {
@@ -334,6 +366,8 @@ public class TutScript : MonoBehaviour {
         TutMerchant2.SetActive(false);
         TutChecklist.SetActive(true);
         TutDetails.SetActive(false);
+        TutEvent.SetActive(false);
+        TutClock.SetActive(false);
     }
     public void OnNext15()
     {
@@ -353,6 +387,50 @@ public class TutScript : MonoBehaviour {
         TutMerchant2.SetActive(false);
         TutChecklist.SetActive(false);
         TutDetails.SetActive(true);
+        TutEvent.SetActive(false);
+        TutClock.SetActive(false);
+    }
+    public void OnNext16()
+    {
+        TutPlant.SetActive(false);
+        TutPlanted.SetActive(false);
+        TutPloughMinigameStart.SetActive(false);
+        TutPloughMinigame1.SetActive(false);
+        TutPloughMinigame2.SetActive(false);
+        TutPloughMinigame3.SetActive(false);
+        TutPloughMinigameFinish.SetActive(false);
+        TutHarvest.SetActive(false);
+        TutHarvestMinigame.SetActive(false);
+        TutTax.SetActive(false);
+        TutFeedFamily.SetActive(false);
+        TutCow.SetActive(false);
+        TutMerchant1.SetActive(false);
+        TutMerchant2.SetActive(false);
+        TutChecklist.SetActive(false);
+        TutDetails.SetActive(false);
+        TutEvent.SetActive(true);
+        TutClock.SetActive(false);
+    }
+    public void OnNext17()
+    {
+        TutPlant.SetActive(false);
+        TutPlanted.SetActive(false);
+        TutPloughMinigameStart.SetActive(false);
+        TutPloughMinigame1.SetActive(false);
+        TutPloughMinigame2.SetActive(false);
+        TutPloughMinigame3.SetActive(false);
+        TutPloughMinigameFinish.SetActive(false);
+        TutHarvest.SetActive(false);
+        TutHarvestMinigame.SetActive(false);
+        TutTax.SetActive(false);
+        TutFeedFamily.SetActive(false);
+        TutCow.SetActive(false);
+        TutMerchant1.SetActive(false);
+        TutMerchant2.SetActive(false);
+        TutChecklist.SetActive(false);
+        TutDetails.SetActive(false);
+        TutEvent.SetActive(false);
+        TutClock.SetActive(true);
     }
     public void OnMenu()
     {
@@ -372,5 +450,8 @@ public class TutScript : MonoBehaviour {
         TutMerchant2.SetActive(false);
         TutChecklist.SetActive(false);
         TutDetails.SetActive(false);
+        TutEvent.SetActive(false);
+        TutClock.SetActive(false);
+
     }
 }
