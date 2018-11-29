@@ -76,7 +76,7 @@ public class PlayerMover : MonoBehaviour
 			
 			pcRender.flipX = dir.x > 0;
 
-			if (!SoundManager.IsPlaying(walkingSoundLabel))
+			if (!SoundManager.IsPlaying(walkingSoundLabel) && Time.timeScale != 0)
 				SoundManager.Play(walkingSoundLabel);
 
 			yield return null;

@@ -38,6 +38,7 @@ public class Shop : MonoBehaviour
 		picture.sprite = good.pic;
 
 		purchaseButton.interactable =
+			(good.familyMember != FamilyType.None || CheckList.Instance.gather[currentIndex] <= 0) &&
 			GameDataManager.GameValues[GameValueType.NumberOfWheat] >= good.requiredWheat &&
 			GameDataManager.GameValues[GameValueType.NumberOfOat] >= good.requiredOat &&
 			GameDataManager.GameValues[GameValueType.Milks] >= good.requiredMilk;
@@ -63,35 +64,41 @@ public class Shop : MonoBehaviour
 
 	public void Buying()
 	{
-		var list = GameDatabase.Instance.merchandiseList;
-		GameDataManager.GameValues[GameValueType.NumberOfWheat] -= list[currentIndex].requiredWheat;
-		GameDataManager.GameValues[GameValueType.NumberOfOat] -= list[currentIndex].requiredOat;
-		GameDataManager.GameValues[GameValueType.Milks] -= list[currentIndex].requiredMilk;
+		var good = GameDatabase.Instance.merchandiseList[currentIndex];
+		GameDataManager.GameValues[GameValueType.NumberOfWheat] -= good.requiredWheat;
+		GameDataManager.GameValues[GameValueType.NumberOfOat] -= good.requiredOat;
+		GameDataManager.GameValues[GameValueType.Milks] -= good.requiredMilk;
 		GameDataManager.GameValues.CalculateModifiedValue();
 		GameDataManager.UpdateValues();
 		UpdateStock();
 
-		if (list[currentIndex].familyMember == FamilyType.None)
+		if (good.familyMember == FamilyType.None)
 		{
 			CheckList.Instance.gather[currentIndex]++;
 			GameDataManager.UpdateValues();
 		}
-		else switch (list[currentIndex].familyMember)
+		else switch (good.familyMember)
 		{
 			case FamilyType.None: break;
 			case FamilyType.PC:
-				FamilyManager.FamilyMembers[0].mentalHealth += list[currentIndex].sanityBoost;
+				FamilyManager.FamilyMembers[0].mentalHealth += good.sanityBoost;
 				break;
 			case FamilyType.Wife:
-				FamilyManager.FamilyMembers[1].mentalHealth += list[currentIndex].sanityBoost;
+				FamilyManager.FamilyMembers[1].mentalHealth += good.sanityBoost;
 				break;
 			case FamilyType.Daughter:
-				FamilyManager.FamilyMembers[2].mentalHealth += list[currentIndex].sanityBoost;
+				FamilyManager.FamilyMembers[2].mentalHealth += good.sanityBoost;
 				break;
 			case FamilyType.Son:
-				FamilyManager.FamilyMembers[3].mentalHealth += list[currentIndex].sanityBoost;
+				FamilyManager.FamilyMembers[3].mentalHealth += good.sanityBoost;
 				break;
 		}
+		
+		purchaseButton.interactable =
+			(good.familyMember != FamilyType.None || CheckList.Instance.gather[currentIndex] <= 0) &&
+			GameDataManager.GameValues[GameValueType.NumberOfWheat] >= good.requiredWheat &&
+			GameDataManager.GameValues[GameValueType.NumberOfOat] >= good.requiredOat &&
+			GameDataManager.GameValues[GameValueType.Milks] >= good.requiredMilk;
 	}
 
 	private void Start()

@@ -24,6 +24,14 @@ public class PloughingMinigame : BaseMinigame
 	[SerializeField] Color failedHitZoneColor = new Color(1, 0, 0, 0.2f);
 	[SerializeField] Color successedHitZoneColor = new Color(0, 1, 0, 0.2f);
 
+	[Header("Sound")]
+	[SerializeField] string gameStartLabel;
+	[SerializeField] string gameEndLabel;
+	[SerializeField] string hitRightSpotLabel;
+	[SerializeField] string hitWrongSpotLabel;
+	[SerializeField] string hitEmptySpotLabel;
+	[SerializeField] string missSpotLabel;
+
 	[Header("Debug")]
 	[SerializeField] int lastHitZone;
 	[SerializeField] List<RectTransform> hitZones = new List<RectTransform>();
@@ -44,6 +52,7 @@ public class PloughingMinigame : BaseMinigame
 		OnGameFinished = null;
 
 		TimeManager.FreezeTime();
+		SoundManager.Play(gameStartLabel);
 
 		plow.localPosition -= Vector3.right * plow.localPosition.x;
 		plowMask.sizeDelta = Vector2.zero;
@@ -60,6 +69,7 @@ public class PloughingMinigame : BaseMinigame
 		IsPlaying = false;
 		canvas.enabled = false;
 
+		SoundManager.Play(gameEndLabel);
 		TimeManager.UnfreezeTime();
 		MessageBox.OnContinue -= StopPlay;
 	}
@@ -188,6 +198,28 @@ public class PloughingMinigame : BaseMinigame
 		plow.transform.localPosition += Vector3.right * pointerMoveSpeed * TimeManager.UnscaleDeltaTime;
 		plowMask.sizeDelta += Vector2.right * pointerMoveSpeed * TimeManager.UnscaleDeltaTime;
 
+		if (Input.GetKeyDown(KeyCode.O))
+		{
+			IsPlaying = false;
+			MessageBox.OnContinue += StopPlay;
+
+			MessageBox.DisplayMessage("Minigame Successed!", "You plouged the field perfectly!");
+			if (OnGameFinished != null)
+				OnGameFinished(1);
+			return;
+		}
+
+		if (Input.GetKeyDown(KeyCode.P))
+		{
+			IsPlaying = false;
+			MessageBox.OnContinue += StopPlay;
+
+			MessageBox.DisplayMessage("Minigame Failed!", "You failed to plouge the field!");
+			if (OnGameFinished != null)
+				OnGameFinished(0);
+			return;
+		}
+
 		if (plow.transform.localPosition.x >= ground.rect.xMax)
 		{
 			float successCount = 0;
@@ -221,15 +253,30 @@ public class PloughingMinigame : BaseMinigame
 			{
 				if (Input.GetKeyDown(hitCodes[lastHitZone]))
 				{
+					print("hitRightSpotLabel");
+					SoundManager.Play(hitRightSpotLabel);
 					hitZoneSuccess[lastHitZone] = true;
 					image.color = successedHitZoneColor;
 					lastHitZone = -1;
+				}
+				else
+				{
+					if (Input.GetKeyDown(KeyCode.A) ||
+						Input.GetKeyDown(KeyCode.S) ||
+						Input.GetKeyDown(KeyCode.D) ||
+						Input.GetKeyDown(KeyCode.F))
+					{
+						print("hitWrongSpotLabel");
+						SoundManager.Play(hitWrongSpotLabel);
+					}
 				}
 			}
 			else
 			{
 				if (!hitZoneSuccess[lastHitZone])
 				{
+					print("missSpotLabel");
+					SoundManager.Play(missSpotLabel);
 					image.color = failedHitZoneColor;
 				}
 				lastHitZone = -1;
@@ -237,6 +284,15 @@ public class PloughingMinigame : BaseMinigame
 		}
 		else
 		{
+			if (Input.GetKeyDown(KeyCode.A) ||
+				Input.GetKeyDown(KeyCode.S) ||
+				Input.GetKeyDown(KeyCode.D) ||
+				Input.GetKeyDown(KeyCode.F))
+			{
+				print("hitEmptySpotLabel");
+				SoundManager.Play(hitEmptySpotLabel);
+			}
+
 			for (int i = 0; i < finalZones.Count; i++)
 			{
 				if (IsWithinZone(finalZones[i], plow.localPosition.x) && !hitZoneSuccess[i])
