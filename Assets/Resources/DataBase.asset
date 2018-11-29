@@ -116,7 +116,7 @@ MonoBehaviour:
         member:
           name: Son
           type: 4
-          requiredWheat: 1
+          requiredWheat: 2
           dyingRate: 0.05
           hunger: 0
           mentalHealth: 100
@@ -155,7 +155,7 @@ MonoBehaviour:
       Production rates and hunger are back to default.'
     scenario: -1
     oddsOfOccuring:
-      constantValue: 0.3
+      constantValue: 0.9
       useGameValue: 0
       valueType: 3
       serializedtype: CropProduction
@@ -197,7 +197,7 @@ MonoBehaviour:
       useGameValue: 0
       valueType: 3
       serializedtype: CropProduction
-    Occurence: {x: 8, y: 13}
+    Occurence: {x: 1, y: 6}
     Duration: {x: 5, y: 5}
     modifers:
     - propertyType: 3
@@ -224,7 +224,7 @@ MonoBehaviour:
     - The War is over.
     scenario: -1
     oddsOfOccuring:
-      constantValue: 0.3
+      constantValue: 1
       useGameValue: 0
       valueType: 3
       serializedtype: CropProduction
@@ -262,11 +262,11 @@ MonoBehaviour:
       operators: 
       conditions: []
     MaxOccurencePerPlaythrough:
-      constantValue: 1
+      constantValue: 0.3
       useGameValue: 0
       valueType: 3
       serializedtype: CropProduction
-    Occurence: {x: 8, y: 13}
+    Occurence: {x: 10, y: 15}
     Duration: {x: 5, y: 5}
     modifers:
     - propertyType: 19
@@ -381,7 +381,7 @@ MonoBehaviour:
         member:
           name: Son
           type: 4
-          requiredWheat: 1
+          requiredWheat: 2
           dyingRate: 0.05
           hunger: 0
           mentalHealth: 100
@@ -433,7 +433,7 @@ MonoBehaviour:
         member:
           name: Son
           type: 4
-          requiredWheat: 1
+          requiredWheat: 2
           dyingRate: 0.05
           hunger: 0
           mentalHealth: 100
@@ -485,7 +485,7 @@ MonoBehaviour:
         member:
           name: Son
           type: 4
-          requiredWheat: 1
+          requiredWheat: 2
           dyingRate: 0.05
           hunger: 0
           mentalHealth: 100
@@ -537,7 +537,7 @@ MonoBehaviour:
         member:
           name: Son
           type: 4
-          requiredWheat: 1
+          requiredWheat: 2
           dyingRate: 0.05
           hunger: 0
           mentalHealth: 100
@@ -589,7 +589,7 @@ MonoBehaviour:
         member:
           name: Son
           type: 4
-          requiredWheat: 1
+          requiredWheat: 2
           dyingRate: 0.05
           hunger: 0
           mentalHealth: 100
@@ -641,7 +641,7 @@ MonoBehaviour:
         member:
           name: Son
           type: 4
-          requiredWheat: 1
+          requiredWheat: 2
           dyingRate: 0.05
           hunger: 0
           mentalHealth: 100
@@ -654,7 +654,7 @@ MonoBehaviour:
         member:
           name: Son
           type: 4
-          requiredWheat: 1
+          requiredWheat: 2
           dyingRate: 0.05
           hunger: 0
           mentalHealth: 100
@@ -706,7 +706,7 @@ MonoBehaviour:
         member:
           name: Son
           type: 4
-          requiredWheat: 1
+          requiredWheat: 2
           dyingRate: 0.05
           hunger: 0
           mentalHealth: 100
@@ -758,7 +758,7 @@ MonoBehaviour:
         member:
           name: Son
           type: 4
-          requiredWheat: 1
+          requiredWheat: 2
           dyingRate: 0.05
           hunger: 0
           mentalHealth: 100
@@ -810,7 +810,7 @@ MonoBehaviour:
         member:
           name: Son
           type: 4
-          requiredWheat: 1
+          requiredWheat: 2
           dyingRate: 0.05
           hunger: 0
           mentalHealth: 100
@@ -863,7 +863,7 @@ MonoBehaviour:
         member:
           name: Son
           type: 4
-          requiredWheat: 1
+          requiredWheat: 2
           dyingRate: 0.05
           hunger: 0
           mentalHealth: 100
