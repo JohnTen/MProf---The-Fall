@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityUtility;
 
 public class HarvestingMinigame : BaseMinigame
@@ -9,6 +10,8 @@ public class HarvestingMinigame : BaseMinigame
 	[SerializeField] RectTransform pointer;
 	[SerializeField] RectTransform hitZone1;
 	[SerializeField] RectTransform hitZone2;
+	[SerializeField] Animator sickleAnimator;
+	[SerializeField] Sprite[] cropSprites;
 
 	[SerializeField] Vector2 hitZone1Size;
 	[SerializeField] Vector2 hitZone2Size;
@@ -19,6 +22,7 @@ public class HarvestingMinigame : BaseMinigame
 	bool movingDir;
 	float pointerMovingRange;
 	[SerializeField] Canvas canvas;
+	[SerializeField] float animationDelay = 0.8f;
 
 	public override bool IsPlaying
 	{
@@ -36,6 +40,10 @@ public class HarvestingMinigame : BaseMinigame
 
 		Randomise();
 
+		print(choice);
+
+		meter.GetComponent<Image>().sprite = cropSprites[choice];
+
 		pointerMovingRange = (meter.sizeDelta.y - pointer.sizeDelta.y) / 2;
 
 		var pos = pointer.localPosition;
@@ -50,6 +58,8 @@ public class HarvestingMinigame : BaseMinigame
 	{
 		IsPlaying = false;
 		canvas.enabled = false;
+
+		sickleAnimator.SetBool("Slice", false);
 
 		TimeManager.UnfreezeTime();
 		MessageBox.OnContinue -= StopPlay;
@@ -78,6 +88,43 @@ public class HarvestingMinigame : BaseMinigame
 		hitZone2.localPosition = pos;
 	}
 
+	private void AfterSlice()
+	{
+		var maxHitZone1 = hitZone1.localPosition.y + hitZone1.sizeDelta.y * 0.5f;
+		var minHitZone1 = hitZone1.localPosition.y - hitZone1.sizeDelta.y * 0.5f;
+		var maxHitZone2 = hitZone2.localPosition.y + hitZone2.sizeDelta.y * 0.5f;
+		var minHitZone2 = hitZone2.localPosition.y - hitZone2.sizeDelta.y * 0.5f;
+
+		MessageBox.OnContinue += StopPlay;
+		if (pointer.localPosition.y > minHitZone1 &&
+			pointer.localPosition.y < maxHitZone1)
+		{
+			MessageBox.DisplayMessage("Minigame won!", "You successfully harvest the crop!");
+			if (OnGameFinished != null)
+			{
+				OnGameFinished.Invoke(1);
+			}
+		}
+		else if (
+			pointer.localPosition.y > minHitZone2 &&
+			pointer.localPosition.y < maxHitZone2)
+		{
+			MessageBox.DisplayMessage("Minigame Passed!", "A quarter of the crops you harvested are lost!");
+			if (OnGameFinished != null)
+			{
+				OnGameFinished.Invoke(0.5f);
+			}
+		}
+		else
+		{
+			MessageBox.DisplayMessage("Minigame Failed!", "Half of the crops you harvested are lost!");
+			if (OnGameFinished != null)
+			{
+				OnGameFinished.Invoke(0);
+			}
+		}
+	}
+
 	private void Start()
 	{
 		if (canvas == null)
@@ -99,41 +146,8 @@ public class HarvestingMinigame : BaseMinigame
 
 		if (Input.GetButtonDown("Fire1") || Input.GetKeyDown(KeyCode.Space))
 		{
-			var maxHitZone1 = hitZone1.localPosition.y + hitZone1.sizeDelta.y * 0.5f;
-			var minHitZone1 = hitZone1.localPosition.y - hitZone1.sizeDelta.y * 0.5f;
-			var maxHitZone2 = hitZone2.localPosition.y + hitZone2.sizeDelta.y * 0.5f;
-			var minHitZone2 = hitZone2.localPosition.y - hitZone2.sizeDelta.y * 0.5f;
-
-			if (pointer.localPosition.y > minHitZone1 &&
-				pointer.localPosition.y < maxHitZone1)
-			{
-				MessageBox.DisplayMessage("Minigame won!", "You successfully harvest the crop!");
-				if (OnGameFinished != null)
-				{
-					OnGameFinished.Invoke(1);
-				}
-			}
-			else if (
-				pointer.localPosition.y > minHitZone2 &&
-				pointer.localPosition.y < maxHitZone2)
-			{
-				MessageBox.DisplayMessage("Minigame Passed!", "A quarter of the crops you harvested are lost!");
-				if (OnGameFinished != null)
-				{
-					OnGameFinished.Invoke(0.5f);
-				}
-			}
-			else
-			{
-				MessageBox.DisplayMessage("Minigame Failed!", "Half of the crops you harvested are lost!");
-				if (OnGameFinished != null)
-				{
-					OnGameFinished.Invoke(0);
-				}
-			}
-
 			IsPlaying = false;
-			MessageBox.OnContinue += StopPlay;
+			StartCoroutine(StartAnimation());
 		}
 
 		if (Input.GetKeyDown(KeyCode.O))
@@ -157,5 +171,19 @@ public class HarvestingMinigame : BaseMinigame
 			IsPlaying = false;
 			MessageBox.OnContinue += StopPlay;
 		}
+	}
+
+	IEnumerator StartAnimation()
+	{
+		sickleAnimator.SetBool("Slice", true);
+
+		float timer = 0;
+		while (timer < animationDelay)
+		{
+			timer += Time.unscaledDeltaTime;
+			sickleAnimator.Update(Time.unscaledDeltaTime);
+			yield return null;
+		}
+		AfterSlice();
 	}
 }

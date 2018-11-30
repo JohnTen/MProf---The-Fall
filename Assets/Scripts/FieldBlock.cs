@@ -184,7 +184,7 @@ public class FieldBlock : MonoInteractable
 			status.currentCrop.growingPeriod > status.currentGrowingPeriod)
 			return;
 
-		FieldManager.Instance.StartHarvestMinigame(WaitForHarvestingMinigame);
+		FieldManager.Instance.StartHarvestMinigame(status.currentCrop.index, WaitForHarvestingMinigame);
 	}
 
 	public void Clear()

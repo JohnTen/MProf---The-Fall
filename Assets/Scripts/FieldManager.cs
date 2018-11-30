@@ -33,9 +33,9 @@ public class FieldManager : MonoSingleton<FieldManager>
 			onGameFinished.Invoke(1);
 	}
 
-	public void StartHarvestMinigame(Action<float> onGameFinished)
+	public void StartHarvestMinigame(int index, Action<float> onGameFinished)
 	{
-		harvestingMinigame.StartPlay(0);
+		harvestingMinigame.StartPlay(index);
 		if (harvestingMinigame.IsPlaying)
 			harvestingMinigame.OnGameFinished += onGameFinished;
 		else
