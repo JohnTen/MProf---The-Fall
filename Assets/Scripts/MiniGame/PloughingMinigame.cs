@@ -60,8 +60,8 @@ public class PloughingMinigame : BaseMinigame
 
 		Randomise();
 
-		plowMask.SetAsFirstSibling();
-		plow.SetAsFirstSibling();
+		plowMask.SetAsLastSibling();
+		plow.SetAsLastSibling();
 	}
 
 	public override void StopPlay()
@@ -96,20 +96,13 @@ public class PloughingMinigame : BaseMinigame
 			hitSigns.Add(newSign);
 			hitZones.Add(newZone);
 		}
-		
+
 		// Enable the zones/signs we needed and disable the rest
 		for (int i = 0; i < hitZones.Count; i ++)
 		{
-			if (i < createdSignNumber)
-			{
-				hitZones[i].gameObject.SetActive(true);
-				hitSigns[i].gameObject.SetActive(true);
-			}
-			else
-			{
-				hitZones[i].gameObject.SetActive(false);
-				hitSigns[i].gameObject.SetActive(false);
-			}
+			var enable = i < createdSignNumber;
+			hitZones[i].gameObject.SetActive(enable);
+			hitSigns[i].gameObject.SetActive(enable);
 		}
 
 		hitCodes.Clear();
@@ -155,9 +148,10 @@ public class PloughingMinigame : BaseMinigame
 			}
 
 			// Set the new position for hitzone/hitsign
-			finalZones.Add(hitZones[i]);
 			hitSigns[i].localPosition = new Vector3(randomX, 0);
 			hitZones[i].localPosition = new Vector3(randomX, 0);
+
+			finalZones.Add(hitZones[i]);
 			finalZones[i].sizeDelta = new Vector2(hitZoneWidth, 0);
 			finalZones[i].GetComponent<Image>().color = initialHitZoneColor;
 			hitZoneSuccess.Add(false);
@@ -176,6 +170,12 @@ public class PloughingMinigame : BaseMinigame
 		}
 	}
 
+	/// <summary>
+	/// Determine is a zone too close to a position
+	/// </summary>
+	/// <param name="zone"></param>
+	/// <param name="position"></param>
+	/// <returns></returns>
 	private bool IsWithinMinDistance(RectTransform zone, float position)
 	{
 		var zonePos = zone.localPosition.x;
@@ -185,10 +185,25 @@ public class PloughingMinigame : BaseMinigame
 			(position > zonePos && position - minSignDistance <= zonePos);
 	}
 
+	/// <summary>
+	/// Determine is a position within a zone
+	/// </summary>
+	/// <param name="zone"></param>
+	/// <param name="pos"></param>
+	/// <returns></returns>
 	private bool IsWithinZone(RectTransform zone, float pos)
 	{
 		Vector2 point = new Vector2(pos-zone.localPosition.x, zone.localPosition.y);
 		return zone.rect.Contains(point);
+	}
+
+	private bool IsAnyKeyDown()
+	{
+		return
+			Input.GetKeyDown(KeyCode.A) ||
+			Input.GetKeyDown(KeyCode.S) ||
+			Input.GetKeyDown(KeyCode.D) ||
+			Input.GetKeyDown(KeyCode.F);
 	}
 
 	private void Update()
@@ -198,6 +213,7 @@ public class PloughingMinigame : BaseMinigame
 		plow.transform.localPosition += Vector3.right * pointerMoveSpeed * TimeManager.UnscaleDeltaTime;
 		plowMask.sizeDelta += Vector2.right * pointerMoveSpeed * TimeManager.UnscaleDeltaTime;
 
+		// Fast cheat - success
 		if (Input.GetKeyDown(KeyCode.O))
 		{
 			IsPlaying = false;
@@ -209,6 +225,7 @@ public class PloughingMinigame : BaseMinigame
 			return;
 		}
 
+		// Fast cheat - fail
 		if (Input.GetKeyDown(KeyCode.P))
 		{
 			IsPlaying = false;
@@ -220,14 +237,11 @@ public class PloughingMinigame : BaseMinigame
 			return;
 		}
 
+		// If reached the end
 		if (plow.transform.localPosition.x >= ground.rect.xMax)
 		{
 			float successCount = 0;
-			for (int i = 0; i < hitZoneSuccess.Count; i++)
-			{
-				if (hitZoneSuccess[i])
-					successCount++;
-			}
+			hitZoneSuccess.ForEach((x) => successCount += x ? 1 : 0);
 			float successRate = successCount / hitZoneSuccess.Count;
 			
 			IsPlaying = false;
@@ -246,6 +260,7 @@ public class PloughingMinigame : BaseMinigame
 			return;
 		}
 
+		// If pointer is within a zone
 		if (lastHitZone >= 0)
 		{
 			var image = finalZones[lastHitZone].GetComponent<Image>();
@@ -261,10 +276,7 @@ public class PloughingMinigame : BaseMinigame
 				}
 				else
 				{
-					if (Input.GetKeyDown(KeyCode.A) ||
-						Input.GetKeyDown(KeyCode.S) ||
-						Input.GetKeyDown(KeyCode.D) ||
-						Input.GetKeyDown(KeyCode.F))
+					if (IsAnyKeyDown())
 					{
 						print("hitWrongSpotLabel");
 						SoundManager.Play(hitWrongSpotLabel);
@@ -284,10 +296,7 @@ public class PloughingMinigame : BaseMinigame
 		}
 		else
 		{
-			if (Input.GetKeyDown(KeyCode.A) ||
-				Input.GetKeyDown(KeyCode.S) ||
-				Input.GetKeyDown(KeyCode.D) ||
-				Input.GetKeyDown(KeyCode.F))
+			if (IsAnyKeyDown())
 			{
 				print("hitEmptySpotLabel");
 				SoundManager.Play(hitEmptySpotLabel);
