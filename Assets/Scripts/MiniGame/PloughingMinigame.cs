@@ -268,7 +268,6 @@ public class PloughingMinigame : BaseMinigame
 			{
 				if (Input.GetKeyDown(hitCodes[lastHitZone]))
 				{
-					print("hitRightSpotLabel");
 					SoundManager.Play(hitRightSpotLabel);
 					hitZoneSuccess[lastHitZone] = true;
 					image.color = successedHitZoneColor;
@@ -278,7 +277,6 @@ public class PloughingMinigame : BaseMinigame
 				{
 					if (IsAnyKeyDown())
 					{
-						print("hitWrongSpotLabel");
 						SoundManager.Play(hitWrongSpotLabel);
 					}
 				}
@@ -287,7 +285,6 @@ public class PloughingMinigame : BaseMinigame
 			{
 				if (!hitZoneSuccess[lastHitZone])
 				{
-					print("missSpotLabel");
 					SoundManager.Play(missSpotLabel);
 					image.color = failedHitZoneColor;
 				}
@@ -298,7 +295,6 @@ public class PloughingMinigame : BaseMinigame
 		{
 			if (IsAnyKeyDown())
 			{
-				print("hitEmptySpotLabel");
 				SoundManager.Play(hitEmptySpotLabel);
 			}
 

@@ -26,7 +26,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1102683645454536
 GameObject:
@@ -43,7 +43,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1341743874611934
 GameObject:
@@ -59,7 +59,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1736151048324888
 GameObject:
@@ -76,7 +76,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!1 &1958396358345876
 GameObject:
@@ -92,7 +92,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4181527083233516
 Transform:
@@ -178,7 +178,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 44af47fd71a2b314e9fee5925e712257, type: 3}
+  - {fileID: 2100000, guid: 871adc8ebb011e443ab277c90a8d0f0e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -248,7 +248,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 44af47fd71a2b314e9fee5925e712257, type: 3}
+  - {fileID: 2100000, guid: 4e1dbec555c13be47a0b60e2cfdf3b00, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -328,6 +328,10 @@ MonoBehaviour:
   fertiliserModels: []
   subFields:
   - {fileID: 4967479765127456}
+  plotRenderers:
+  - {fileID: 23391564446136122}
+  - {fileID: 23727490465030908}
+  - {fileID: 23240296718523372}
   status:
     fouled: 0
     plantedCrop: 0
@@ -346,5 +350,7 @@ MonoBehaviour:
       dropSeedPossibility: 0
       dropSeedNumber: 0
     currentGrowingPeriod: 0
+  afterPlougheMaterial: {fileID: 2100000, guid: c970b9b8e0200f74bb866be69a186a87,
+    type: 2}
   plantingSoundLabel: Planting
   harvestingSoundLabel: Harvesting

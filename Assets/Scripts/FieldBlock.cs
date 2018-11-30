@@ -27,10 +27,14 @@ public class FieldBlock : MonoInteractable
 	[SerializeField] GameObject[] cropModels;
 	[SerializeField] GameObject[] fertiliserModels;
 	[SerializeField] Transform[] subFields;
+	[SerializeField] MeshRenderer[] plotRenderers;
 
 	[SerializeField] FieldBlockStatus status;
+	[SerializeField] Material afterPlougheMaterial;
 	[SerializeField] string plantingSoundLabel = "Planting";
 	[SerializeField] string harvestingSoundLabel = "Harvesting";
+
+	Material[] beforePlougheMaterial;
 
 	public FieldBlockStatus Status
 	{
@@ -99,15 +103,20 @@ public class FieldBlock : MonoInteractable
 			Clear();
 			return;
 		}
-		
+
+		for (int i = 0; i < plotRenderers.Length; i++)
+		{
+			plotRenderers[i].material = afterPlougheMaterial;
+		}
+
 		var value = result * 1.2f;
 		if (value > 1)
-			Popup.Pop("+ " + (value - 1) * 100 + "%", transform.position + Vector3.up * 3, Color.green);
+			Popup.Pop("Product + " + Mathf.Round((value - 1) * 10000)/100 + "%", transform.position + Vector3.up * 3, Color.green);
 		else if (value < 1)
-			Popup.Pop("- " + (1 - value) * 100 + "%", transform.position + Vector3.up * 3, Color.red);
+			Popup.Pop("Product - " + Mathf.Round((value - 1) * -10000)/100 + "%", transform.position + Vector3.up * 3, Color.red);
 		else
-			Popup.Pop("100 %", transform.position + Vector3.up * 3);
-
+			Popup.Pop("Product no change", transform.position + Vector3.up * 3);
+		
 		status.lastPlantedCrop = status.currentCrop;
 		status.lastPlantedCrop.foodValue = (int)(status.lastPlantedCrop.foodValue * value);
 
@@ -126,10 +135,11 @@ public class FieldBlock : MonoInteractable
 		GameDataManager.UpdateValues();
 		SoundManager.Play(harvestingSoundLabel);
 
+		var crop = status.currentCrop.name;
 		if (status.currentCrop.foodValue == 0)
-			Popup.Pop("+ " + status.currentCrop.foodValue, transform.position + Vector3.up * 3);
+			Popup.Pop(crop + " + " + status.currentCrop.foodValue, transform.position + Vector3.up * 3);
 		else
-			Popup.Pop("+ " + status.currentCrop.foodValue, transform.position + Vector3.up * 3, Color.green);
+			Popup.Pop(crop + " + " + status.currentCrop.foodValue, transform.position + Vector3.up * 3, Color.green);
 
 		Clear();
 	}
@@ -201,6 +211,11 @@ public class FieldBlock : MonoInteractable
 				Destroy(fertiliserModels[i]);
 		}
 
+		for (int i = 0; i < plotRenderers.Length; i++)
+		{
+			plotRenderers[i].material = beforePlougheMaterial[i];
+		}
+
 		status.plantedCrop = false;
 		status.currentCrop = null;
 		status.currentGrowingPeriod = 0;
@@ -222,6 +237,12 @@ public class FieldBlock : MonoInteractable
 		TimeManager.OnTimePassed += TimeManager_OnTimePassed;
 		cropModels = new GameObject[subFields.Length];
 		fertiliserModels = new GameObject[subFields.Length];
+		beforePlougheMaterial = new Material[plotRenderers.Length];
+
+		for (int i = 0; i < plotRenderers.Length; i++)
+		{
+			beforePlougheMaterial[i] = plotRenderers[i].material;
+		}
 	}
 
 	private void TimeManager_OnTimePassed(int date)
