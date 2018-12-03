@@ -67,6 +67,11 @@ public class TimeManager : MonoSingleton<TimeManager>
 			OnTimePassed.Invoke(date);
 	}
 
+	private void OnDestroy()
+	{
+		Time.timeScale = 1;
+	}
+
 	private void OnApplicationFocus(bool focus)
 	{
 		if (Instance.timeFreezeCount <= 0)
