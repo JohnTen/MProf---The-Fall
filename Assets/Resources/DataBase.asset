@@ -155,7 +155,7 @@ MonoBehaviour:
       Production rates and hunger are back to default.'
     scenario: -1
     oddsOfOccuring:
-      constantValue: 0.9
+      constantValue: 0.3
       useGameValue: 0
       valueType: 3
       serializedtype: CropProduction
@@ -224,7 +224,7 @@ MonoBehaviour:
     - The War is over.
     scenario: -1
     oddsOfOccuring:
-      constantValue: 1
+      constantValue: 0.3
       useGameValue: 0
       valueType: 3
       serializedtype: CropProduction
@@ -262,7 +262,7 @@ MonoBehaviour:
       operators: 
       conditions: []
     MaxOccurencePerPlaythrough:
-      constantValue: 0.3
+      constantValue: 1
       useGameValue: 0
       valueType: 3
       serializedtype: CropProduction
