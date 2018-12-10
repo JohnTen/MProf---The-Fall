@@ -1,16 +1,42 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
 guid: ec69fd4946bbfff44833baae2f31b628
-=======
-guid: 8444ab33ace65bd4b832afd503ffefa6
->>>>>>> Stashed changes
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: SobPlayArmlessSpriteSheet_0
+    21300002: SobPlayArmlessSpriteSheet_1
+    21300004: SobPlayArmlessSpriteSheet_2
+    21300006: SobPlayArmlessSpriteSheet_3
+    21300008: SobPlayArmlessSpriteSheet_4
+    21300010: SobPlayArmlessSpriteSheet_5
+    21300012: SobPlayArmlessSpriteSheet_6
+    21300014: SobPlayArmlessSpriteSheet_7
+    21300016: SobPlayArmlessSpriteSheet_8
+    21300018: SobPlayArmlessSpriteSheet_9
+    21300020: SobPlayArmlessSpriteSheet_10
+    21300022: SobPlayArmlessSpriteSheet_11
+    21300024: SobPlayArmlessSpriteSheet_12
+    21300026: SobPlayArmlessSpriteSheet_13
+    21300028: SobPlayArmlessSpriteSheet_14
+    21300030: SobPlayArmlessSpriteSheet_15
+    21300032: SobPlayArmlessSpriteSheet_16
+    21300034: SobPlayArmlessSpriteSheet_17
+    21300036: SobPlayArmlessSpriteSheet_18
+    21300038: SobPlayArmlessSpriteSheet_19
+    21300040: SobPlayArmlessSpriteSheet_20
+    21300042: SobPlayArmlessSpriteSheet_21
+    21300044: SobPlayArmlessSpriteSheet_22
+    21300046: SobPlayArmlessSpriteSheet_23
+    21300048: SobPlayArmlessSpriteSheet_24
+    21300050: SobPlayArmlessSpriteSheet_25
+    21300052: SobPlayArmlessSpriteSheet_26
+    21300054: SobPlayArmlessSpriteSheet_27
+    21300056: SobPlayArmlessSpriteSheet_28
+    21300058: SobPlayArmlessSpriteSheet_29
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -36,24 +62,24 @@ TextureImporter:
     filterMode: -1
     aniso: -1
     mipBias: -1
-    wrapU: -1
-    wrapV: -1
+    wrapU: 1
+    wrapV: 1
     wrapW: -1
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   maxTextureSizeSet: 0
@@ -71,13 +97,657 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 1208
+        width: 256
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19a2d86b430e8474697832a2c3285260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 1208
+        width: 259
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67c4506c238135649be3e3023dcf9a63
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 1205
+        y: 1208
+        width: 261
+        height: 373
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbd76dae467582b499c63eefac80f7cb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 1720
+        y: 1208
+        width: 267
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34eccb65477b5774eba7db13bfc39b23
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 2238
+        y: 1208
+        width: 268
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bc5316125db2da49b048d150848b8ab
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 2754
+        y: 1208
+        width: 271
+        height: 376
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a1ba9b36d401ba40a35fdfbbb922270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 3272
+        y: 1208
+        width: 274
+        height: 376
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00980401dd976494d92ce7589314f250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 3787
+        y: 1208
+        width: 279
+        height: 376
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8912164c0a44e0143aef78f079ecbc49
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 4305
+        y: 1208
+        width: 282
+        height: 378
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a5b43b1a91b9dc44915e8dff5955f2b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 4823
+        y: 1208
+        width: 283
+        height: 379
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82fd5813ccde09446b988e8d299ea336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 639
+        width: 287
+        height: 378
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1ecd347057f1bd4e93606a7213f0d2b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 639
+        width: 292
+        height: 379
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6ee0ca2326ddd94e95e134521717352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 1169
+        y: 639
+        width: 297
+        height: 379
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3db75660cd936f548846550d16897fc5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 1685
+        y: 639
+        width: 302
+        height: 379
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 062fc6cf59e74674fa57e2fd78abb33f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 2200
+        y: 639
+        width: 306
+        height: 379
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e67b515f59c249649a90cbbfdeb57395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 2716
+        y: 639
+        width: 309
+        height: 379
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ec30eb02e4d0c4498b83b22d97447a4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 3231
+        y: 639
+        width: 315
+        height: 379
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60d9aa5500d99384e881b06a0d42b7b5
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 3749
+        y: 639
+        width: 317
+        height: 381
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7859342302bcafb4ca73c4cc838c5817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 4264
+        y: 639
+        width: 323
+        height: 381
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ffaa6982d7364e49bb931fd6a2036dd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 4780
+        y: 639
+        width: 326
+        height: 381
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a72260d179fd54848beaa9fce93fc2d2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_20
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 70
+        width: 325
+        height: 378
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c60cbc29bde30604dbb3836b7c75e8f8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_21
+      rect:
+        serializedVersion: 2
+        x: 621
+        y: 70
+        width: 325
+        height: 378
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e59550fbb029ce4aa33edb6be8c36d0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_22
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 70
+        width: 327
+        height: 378
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa9d27b9e8ad0a34b9c85d24760acc6c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_23
+      rect:
+        serializedVersion: 2
+        x: 1659
+        y: 70
+        width: 328
+        height: 378
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a14ac538b5f8bec43ba5a1c07395e542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_24
+      rect:
+        serializedVersion: 2
+        x: 2180
+        y: 70
+        width: 326
+        height: 377
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b88aa04abe6f8db4ab9e55d3dea07971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_25
+      rect:
+        serializedVersion: 2
+        x: 2700
+        y: 70
+        width: 325
+        height: 376
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 377b6e2c5a51efe42a2e3f702ba61834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_26
+      rect:
+        serializedVersion: 2
+        x: 3221
+        y: 70
+        width: 325
+        height: 376
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6afaa10c2679c034c8031baaf3130d51
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_27
+      rect:
+        serializedVersion: 2
+        x: 3762
+        y: 70
+        width: 304
+        height: 373
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7daa17dc852e99409b1b3a4935717d6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_28
+      rect:
+        serializedVersion: 2
+        x: 4305
+        y: 70
+        width: 282
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53f27db899ebb5c4dbdb5805434673b4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SobPlayArmlessSpriteSheet_29
+      rect:
+        serializedVersion: 2
+        x: 4851
+        y: 70
+        width: 255
+        height: 368
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cfdb3a8ca4cc2d43b8e4fc1d851341f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 56f783cdce6f78947865f7de962329b9
     vertices: []
     indices: 
     edges: []
