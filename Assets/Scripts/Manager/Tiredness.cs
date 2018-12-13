@@ -13,6 +13,7 @@ public class Tiredness : MonoBehaviour
 	[SerializeField] UnityEvent NewDay;
 
 	Timer timer;
+	bool halfThrough = false;
 
 	// Use this for initialization
 	void Start ()
@@ -25,8 +26,9 @@ public class Tiredness : MonoBehaviour
 	private void Update()
 	{
 		clockHandPivot.rotation = Quaternion.AngleAxis(Mathf.Lerp(0, 360, timer.PassedPercentage), Vector3.forward);
-		if (timer.PassedPercentage < 0.5f)
+		if (!halfThrough && timer.PassedPercentage < 0.5f)
 		{
+			halfThrough = true;
 			HalfWayThrough.Invoke();
 		}
 	}
@@ -38,9 +40,10 @@ public class Tiredness : MonoBehaviour
 
 	public void StartTiming()
 	{
-        if (timer.PassedPercentage >= 0.5f)
+        if (halfThrough)
         {
-            NewDay.Invoke();
+			halfThrough = false;
+			NewDay.Invoke();
         }
         timer.Start(time);
     }

@@ -40,8 +40,6 @@ public class HarvestingMinigame : BaseMinigame
 
 		Randomise();
 
-		print(choice);
-
 		meter.GetComponent<Image>().sprite = cropSprites[choice];
 
 		pointerMovingRange = (meter.sizeDelta.y - pointer.sizeDelta.y) / 2;
