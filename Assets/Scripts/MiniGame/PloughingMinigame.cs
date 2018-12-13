@@ -213,30 +213,6 @@ public class PloughingMinigame : BaseMinigame
 		plow.transform.localPosition += Vector3.right * pointerMoveSpeed * TimeManager.UnscaleDeltaTime;
 		plowMask.sizeDelta += Vector2.right * pointerMoveSpeed * TimeManager.UnscaleDeltaTime;
 
-		// Fast cheat - success
-		if (Input.GetKeyDown(KeyCode.O))
-		{
-			IsPlaying = false;
-			MessageBox.OnContinue += StopPlay;
-
-			MessageBox.DisplayMessage("Minigame Successed!", "You plouged the field perfectly!");
-			if (OnGameFinished != null)
-				OnGameFinished(1);
-			return;
-		}
-
-		// Fast cheat - fail
-		if (Input.GetKeyDown(KeyCode.P))
-		{
-			IsPlaying = false;
-			MessageBox.OnContinue += StopPlay;
-
-			MessageBox.DisplayMessage("Minigame Failed!", "You failed to plouge the field!");
-			if (OnGameFinished != null)
-				OnGameFinished(0);
-			return;
-		}
-
 		// If reached the end
 		if (plow.transform.localPosition.x >= ground.rect.xMax)
 		{
@@ -306,6 +282,31 @@ public class PloughingMinigame : BaseMinigame
 					break;
 				}
 			}
+		}
+
+		return;
+		// Fast cheat - success
+		if (Input.GetKeyDown(KeyCode.O))
+		{
+			IsPlaying = false;
+			MessageBox.OnContinue += StopPlay;
+
+			MessageBox.DisplayMessage("Minigame Successed!", "You plouged the field perfectly!");
+			if (OnGameFinished != null)
+				OnGameFinished(1);
+			return;
+		}
+
+		// Fast cheat - fail
+		if (Input.GetKeyDown(KeyCode.P))
+		{
+			IsPlaying = false;
+			MessageBox.OnContinue += StopPlay;
+
+			MessageBox.DisplayMessage("Minigame Failed!", "You failed to plouge the field!");
+			if (OnGameFinished != null)
+				OnGameFinished(0);
+			return;
 		}
 	}
 }

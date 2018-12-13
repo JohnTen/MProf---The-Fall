@@ -148,6 +148,7 @@ public class HarvestingMinigame : BaseMinigame
 			StartCoroutine(StartAnimation());
 		}
 
+		return;
 		if (Input.GetKeyDown(KeyCode.O))
 		{
 			MessageBox.DisplayMessage("Minigame won!", "You successfully harvest the crop!");
