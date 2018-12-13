@@ -60,7 +60,7 @@ public class SoundManager : MonoSingleton<SoundManager>
 	[SerializeField] SoundClips[] clips;
 	[SerializeField] List<AudioSource> sources;
 
-	protected void Start()
+	protected override void Awake()
 	{
 		base.Awake();
 

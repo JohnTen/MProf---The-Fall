@@ -38,9 +38,12 @@ public class Tiredness : MonoBehaviour
 
 	public void StartTiming()
 	{
-		timer.Start(time);
-		NewDay.Invoke();
-	}
+        if (timer.PassedPercentage >= 0.5f)
+        {
+            NewDay.Invoke();
+        }
+        timer.Start(time);
+    }
 
 	public void StopTiming()
 	{
