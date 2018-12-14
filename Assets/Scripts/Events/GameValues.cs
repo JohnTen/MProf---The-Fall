@@ -53,7 +53,7 @@ public class GameValues : ModifiableValueSystem<GameValueType>, ISerializationCa
 	[SerializeField] SerializedValue basicValues;
 	[SerializeField] SerializedValue modifiedValues;
 
-	[SerializeField] List<GameValueModifer> modifers = new List<GameValueModifer>();
+	[SerializeField] List<GameValueModifer> modifers;
 
 	protected override InnerValues BasicValue
 	{
@@ -67,6 +67,13 @@ public class GameValues : ModifiableValueSystem<GameValueType>, ISerializationCa
 		get { return modifiedValues; }
 
 		set { modifiedValues = value as SerializedValue; }
+	}
+
+	public GameValues()
+	{
+		basicValues = new SerializedValue();
+		modifiedValues = new SerializedValue();
+		modifers = new List<GameValueModifer>();
 	}
 
 	/// <summary>

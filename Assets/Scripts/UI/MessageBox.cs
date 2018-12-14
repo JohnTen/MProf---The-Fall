@@ -20,10 +20,22 @@ public class MessageBox : MonoSingleton<MessageBox>
 	Queue<Action> yesQueue = new Queue<Action>();
 	Queue<Action> noQueue = new Queue<Action>();
 
-	public static bool IsShowingMessage { get; private set; }
-	public static event Action OnContinue;
-	public static event Action OnFinished;
+	public static bool IsShowingMessage { get { return Instance.isShowingMessage; } }
+	public static event Action OnContinue
+	{
+		add { Instance.onContinue += value; }
+		remove { Instance.onContinue -= value; }
+	}
 
+	public static event Action OnFinished
+	{
+		add { Instance.onFinished += value; }
+		remove { Instance.onFinished -= value; }
+	}
+
+	bool isShowingMessage;
+	Action onContinue;
+	Action onFinished;
 	Action yesAction;
 	Action noAction;
 
@@ -48,7 +60,7 @@ public class MessageBox : MonoSingleton<MessageBox>
 			return;
 		}
 
-		IsShowingMessage = true;
+		Instance.isShowingMessage = true;
 		Instance.block.SetActive(false);
 		Instance.canvas.enabled = true;
 		Instance.titleText.text = title;
@@ -92,17 +104,17 @@ public class MessageBox : MonoSingleton<MessageBox>
 
 	public void NextMessage()
 	{
-		if (OnContinue != null)
-			OnContinue.Invoke();
+		if (onContinue != null)
+			onContinue.Invoke();
 
 		if (contentQueue.Count <= 0)
 		{
-			IsShowingMessage = false;
+			isShowingMessage = false;
 			Instance.canvas.enabled = false;
 			TimeManager.UnfreezeTime();
 
-			if (OnFinished != null)
-				OnFinished.Invoke();
+			if (onFinished != null)
+				onFinished.Invoke();
 			return;
 		}
 

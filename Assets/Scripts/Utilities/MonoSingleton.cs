@@ -10,10 +10,10 @@ namespace UnityUtility
 			get
 			{
 				if (_instance) return _instance;
-
+				
 				_instance = FindObjectOfType<T>();
 				if (_instance) return _instance;
-
+				
 				_instance = new GameObject(typeof(T).Name).AddComponent<T>();
 				return _instance;
 			}
@@ -31,8 +31,8 @@ namespace UnityUtility
 		protected virtual void OnDestroy()
 		{
 			if (Instance == null) return;
-
-			//DestroyImmediate(_instance);
+			
+			//Destroy(_instance);
 			_instance = null;
 		}
 	}
