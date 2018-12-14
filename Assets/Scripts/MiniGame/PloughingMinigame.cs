@@ -242,7 +242,7 @@ public class PloughingMinigame : BaseMinigame
 			var image = finalZones[lastHitZone].GetComponent<Image>();
 			if (IsWithinZone(finalZones[lastHitZone], plow.localPosition.x))
 			{
-				if (Input.GetKeyDown(hitCodes[lastHitZone]))
+				if (Input.inputString.Length < 2 && Input.GetKeyDown(hitCodes[lastHitZone]))
 				{
 					SoundManager.Play(hitRightSpotLabel);
 					hitZoneSuccess[lastHitZone] = true;

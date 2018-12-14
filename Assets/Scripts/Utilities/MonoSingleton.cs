@@ -32,7 +32,7 @@ namespace UnityUtility
 		{
 			if (Instance == null) return;
 
-			Destroy(_instance);
+			//DestroyImmediate(_instance);
 			_instance = null;
 		}
 	}
